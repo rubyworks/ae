@@ -1,0 +1,100 @@
+= AE -- Assertions Expressive
+
+* http://protuils.rubyforge.org/ae
+
+
+== DESCRIPTION
+
+AE (Assertions Expressive) is an assertions library
+intended for reuse by any TDD or BDD system.
+
+
+== FEATURES/ISSUES
+
+* Fluid notation.
+* Core extensions to promote testing.
+
+
+== RELEASE NOTES
+
+Please see HISTORY file.
+
+
+== SYNOPSIS
+
+AE offers a variety of nomenclatures, but by default uses
++assert+, +expect+ and +should+. Using fluid notation all
+three methods have the same effect.
+
+  1.assert == 1
+  1.expect == 1
+  1.should == 1
+
+They differ however in their use when arguments and/or a block
+is supplied.
+
+=== Assert
+
+The #assert method checks for truth if a single argument is given.
+
+  assert(true)
+
+Or if a lone block is given.
+
+  assert{true}
+
+If both an argument and a block are given then it uses equality (ie. ==)
+to compare them.
+
+  assert(1){1}
+
+=== Expect
+
+The #expect method works by comparing the receiver to the argument or block,
+but uses broad equality (#equate?).
+
+  Numeric.expect(5)
+
+  Numeric.expect{5}
+
+If both an argument and a block are given, then it compares the argument to
+the return value of the block.
+
+  expect(Numeric){3}
+
+=== Should
+
+The #should method work like this:
+
+  should "evalute as true" do
+    true
+  end
+
+All other optional subjunctive nomenclatures (eg. must, shall, will) work exactly
+like #should.
+
+
+== HOW TO INSTALL
+
+To install with RubyGems simply open a console and type:
+
+  gem install ae
+
+Local installation requires Setup.rb (gem install setup),
+then download the tarball package and type:
+
+  tar -xvzf ae-1.0.0.tgz
+  cd ae-1.0.0.tgz
+  sudo setup.rb all
+
+Windows users use 'ruby setup.rb all'.
+
+
+== LICENSE
+
+Copyright (c) 2009 Trans
+
+This program is ditributed unser the terms of the LGPLv3 license.
+
+See LICENSE file for details.
+

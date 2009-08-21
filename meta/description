@@ -1,0 +1,4 @@
+Assertion Expressions is an assertions library
+intended for reuse by any TDD or BDD system. It was
+designed to combine the best ideas of many different
+TDD/BDD framworks into a single reusable package.

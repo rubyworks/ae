@@ -1,0 +1,9 @@
+---
+rubyforge:
+  active  : true
+  service : Rubyforge
+  unixname: <%= project %>
+  groupid : ~
+  sitemap :
+    site: <%= package %>
+ 

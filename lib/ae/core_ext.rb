@@ -4,13 +4,12 @@
 # hack
 NoArgument = Object.new
 
-# TODO: Add blocks to equal? and eql?
 
 module Kernel
   # Force an Assertion failure.
   #
-  # TODO: Best here or in Assertor?
   # TODO: Can we call this #fail (overriding built-in)?
+  #
   def flunk(reason="flunk")
     raise Assertion.new(reason, :backtrace=>caller)
   end
@@ -30,9 +29,11 @@ module Kernel
     exp.object_id == object_id
   end
 
+  # Alias for #identical?
+  alias_method :identical_to?, :identical?
+
   # Word form of #==. Also can take a block.
   def eq?(value=NoArgument) #:yield:
-    raise ArgumentError if NoArgument.equal?(value) and !block_given?
     if block_given?
       self == yield
     else
@@ -42,7 +43,6 @@ module Kernel
 
   # Word form of #===. Also can take a block.
   def case?(value=NoArgument) #:yield:
-    raise ArgumentError if NoArgument.equal?(value) and !block_given?
     if block_given?
       self === yield
     else
@@ -50,9 +50,8 @@ module Kernel
     end
   end
 
-  #
+  # Word form for #=~. Also can take a block.
   def match?(value=NoArgument)
-    raise ArgumentError if NoArgument.equal?(value) and !block_given?
     if block_given?
       self =~ yield
     else
@@ -61,7 +60,6 @@ module Kernel
   end
 
   # Broad equality.
-  # DEPRECATE (?) Not very useful b/c of false positives.
   def equate?(x)
     equal?(x) || eql?(x) || self == x || self === x
   end
@@ -82,6 +80,28 @@ module Kernel
   #end
 end
 
+
+class Object
+
+  # Allows equal? to take a block.
+  def equal?(value=NoArgument) #:yield:
+    if block_given?
+      super(yield)
+    else
+      super
+    end
+  end
+
+  # Allows eql? to take a block.
+  def eql?(value=NoArgument) #:yield:
+    if block_given?
+      super(yield)
+    else
+      super
+    end
+  end
+
+end
 
 class Numeric
   # Is self and given number within delta tolerance.
@@ -179,4 +199,4 @@ class Exception
   end
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer [Ruby License]
+# Copyright (c) 2008,2009 Thomas Sawyer

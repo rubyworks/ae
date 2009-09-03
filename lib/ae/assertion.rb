@@ -24,4 +24,4 @@ class Assertion < Exception
 
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer [Ruby License]
+# Copyright (c) 2008,2009 Thomas Sawyer

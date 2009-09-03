@@ -1,4 +1,4 @@
-require 'ae/subjunctive/assertor'
+require 'ae/subjunctive'
 
 module AE
 
@@ -6,6 +6,8 @@ module AE
   #
   #   "It is not enough to succeed. Others must fail."
   #                           --Gore Vidal (1925 - )
+  #
+  # THIS IS AN OPTIONAL LIBRARY.
   #
   module Must
     # The #must method is functionaly the same as #should.
@@ -17,7 +19,7 @@ module AE
     #   end
     #
     def must(*args, &block)
-      Assertor::Subjunctive.new(self, :backtrace=>caller).be(*args, &block)
+      Assertor.new(self, :backtrace=>caller).be(*args, &block)
     end
 
     # Designate a negated expectation via a *functor*.
@@ -26,7 +28,7 @@ module AE
     #   4.must! == 4  #=> Assertion Error
     #
     def must!(*args, &block)
-      Assertor::Subjunctive.new(self, :backtrace=>caller).not(*args, &block)
+      Assertor.new(self, :backtrace=>caller).not(*args, &block)
     end
 
     # Perhaps not literally the counter-term to *must* (rather *will*),
@@ -43,4 +45,4 @@ class ::Object #:nodoc:
   include AE::Must
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer [Ruby License]
+# Copyright (c) 2008,2009 Thomas Sawyer

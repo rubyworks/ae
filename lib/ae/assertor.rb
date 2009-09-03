@@ -11,6 +11,7 @@ require 'ae/assertion'
 # rather then simply passing-off to an alternate reciever.
 #
 class Assertor
+  #
   instance_methods.each{ |m| protected m unless /^__/ =~ m.to_s }
 
   # New Assertor.
@@ -23,10 +24,9 @@ class Assertor
   end
 
   #
-  def not(*args, &block)
+  def not(msg=nil, &block)
     @negated = !@negated
-    return self if args.empty? && !block_given?
-    assert(*args, &block)
+    block ? assert(msg, &block) : self
   end
 
   # Internal assert, provides all functionality accosicated
@@ -101,4 +101,4 @@ class Assertor
   #end
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer [Ruby License]
+# Copyright (c) 2008,2009 Thomas Sawyer

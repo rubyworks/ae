@@ -4,7 +4,6 @@ module AE
 
   # = Assert
   #
-  #
   module Assert
 
     # Assert a operational relationship.
@@ -23,39 +22,8 @@ module AE
     #
     #   assert{ 4==3 }
     #
-    # If an argument is given with a block, #assert compares
-    # the argument to the result of evaluating the block.
-    #
-    #   assert(4){ 3 }
-    #
-    # #assert compares the expected value and the actual
-    # value with regular equality <code>#==</code>.
-    #
     def assert(*args, &block)
       return Assertor.new(self, :backtrace=>caller).assert(*args, &block)
-=begin
-      return Assertor.new(self, :backtrace=>caller) if NoArgument==test && !block
-      if block
-        result = block.call
-        if NoArgument.equal?(test)
-          if self.object_id == block.binding.eval('object_id')
-            pass = result ? true : false
-            msg  = "! #{result}" unless msg
-          else
-            pass = (self == result)
-            msg  = "#{self} != #{result}" unless msg
-          end
-          raise Assertion.new(msg, :backtrace=>caller) unless pass
-        else
-          pass = (test == result)
-          msg  = "#{test} != #{result}" unless msg
-          raise Assertion.new(msg, :backtrace=>caller) unless pass
-        end
-      else
-        msg = "failed assertion (no message given)" unless msg
-        raise Assertion.new(msg, :backtrace=>caller) unless test
-      end
-=end
     end
 
     # Assert not an operational relationship.
@@ -65,28 +33,12 @@ module AE
     #
     # See #assert.
     #
-    # AUHTOR'S NOTE: This method would not be necessary
-    # if Ruby would allow +!=+ to be define as a method,
-    # or at least +!+ as a unary method.
+    # AUHTOR'S NOTE: This method would not be necessary if Ruby would allow
+    # +!=+ to be define as a method, or at least +!+ as a unary method. This
+    # may be possible in Ruby 1.9.
     #
     def assert!(*args, &block)
       return Assertor.new(self, :backtrace=>caller).not(*args, &block)
-=begin
-      return Assertor.new(self, :backtrace=>caller, :negated=>true) if NoArgument==test && !block
-      if block
-        result = block.call
-        if NoArgument == test
-          raise Assertion.new(msg, :backtrace=>caller, :negated=>true) if result
-        else
-          pass = (test == result)
-          msg  = "#{test} != #{result}" unless msg
-          raise Assertion.new(msg, :backtrace=>caller, :negated=>true) if pass
-        end
-      else
-        msg = "failed assertion (no message given)" unless msg
-        raise Assertion.new(msg, :backtrace=>caller, :negated=>true) if test
-      end
-=end
     end
 
     # Alias for #assert!.
@@ -102,4 +54,4 @@ class ::Object #:nodoc:
   include AE::Assert
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer [Ruby License]
+# Copyright (c) 2008,2009 Thomas Sawyer

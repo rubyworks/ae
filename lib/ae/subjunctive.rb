@@ -32,7 +32,7 @@ module AE
         pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
         msg = args.shift || @message || block.inspect
       else
-        pass = args.shift.equate?(self)
+        pass = args.shift.equate?(@delegate)
         msg  = args.shift
       end
       __assert__(pass, msg)
@@ -55,7 +55,7 @@ module AE
         pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
         msg = args.shift || @message || block.inspect
       else
-        pass = (args.shift === self) # case equality
+        pass = (args.shift === @delegate) # case equality
         msg  = args.shift
       end
       __assert__(pass, msg)

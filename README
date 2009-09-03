@@ -1,18 +1,23 @@
-= AE -- Assertions Expressive
+= A.E. -- Assertive Expressive
 
 * http://protuils.rubyforge.org/ae
 
 
 == DESCRIPTION
 
-AE (Assertions Expressive) is an assertions library
-intended for reuse by any TDD or BDD system.
+Assertions Expressive (A.E.) is an assertions framework
+intended for reuse by any TDD, BDD or similar system.
 
 
 == FEATURES/ISSUES
 
-* Fluid notation.
-* Core extensions to promote testing.
+* Clear, simple and concise syntax.
+* Uses higher-order functions and fluid notation.
+* Reusable core extensions ease assertion construction.
+* Core extensions are stable and standardized via Ruby Facets.
+* Facets is an optional dependency; extensions are built-in.
+* Easily extensible allowing for alternate notations.
+* Eats it's own dog food.
 
 
 == RELEASE NOTES
@@ -22,56 +27,34 @@ Please see HISTORY file.
 
 == SYNOPSIS
 
-AE offers a variety of nomenclatures, but by default uses
-+assert+, +expect+ and +should+. Using fluid notation all
-three methods have the same effect.
-
-  1.assert == 1
-  1.expect == 1
-  1.should == 1
-
-They differ however in their use when arguments and/or a block
-is supplied.
-
-=== Assert
-
-The #assert method checks for truth if a single argument is given.
+AE defines the method +assert+. It's is compatible with the method
+as defined by Test::Unit and minitest, which verifies truth of a
+single argument (and can accept an optional failure message).
 
   assert(true)
 
-Or if a lone block is given.
+In addition AE's +assert+ method has been extended to accept a block,
+the result of which is likewise verified.
 
   assert{true}
 
-If both an argument and a block are given then it uses equality (ie. ==)
-to compare them.
+But these are simply legacy compatibility modes. The true power the
+AE's +assert+ method, lies in it's use without argument or block.
+In this case, it returns an +Assertor+ instance. An +Assertor+ is an
+Assertion Functor, or Higher-Order Function, which is a function
+that operates on another function. With it we can make assertions
+like:
 
-  assert(1){1}
+  x.assert == y
 
-=== Expect
+  a.assert.include? e
 
-The #expect method works by comparing the receiver to the argument or block,
-but uses broad equality (#equate?).
-
-  Numeric.expect(5)
-
-  Numeric.expect{5}
-
-If both an argument and a block are given, then it compares the argument to
-the return value of the block.
-
-  expect(Numeric){3}
-
-=== Should
-
-The #should method work like this:
-
-  should "evalute as true" do
-    true
+  StandardError.assert.raised? do
+    ...
   end
 
-All other optional subjunctive nomenclatures (eg. must, shall, will) work exactly
-like #should.
+And so forth. AE's abilities in this areas are quite extensive.
+You are encouraged to read the QEDocs to learn more.
 
 
 == HOW TO INSTALL
@@ -90,11 +73,12 @@ then download the tarball package and type:
 Windows users use 'ruby setup.rb all'.
 
 
-== LICENSE
+== COPYRIGHTS & LICENSE
 
-Copyright (c) 2009 Trans
+Copyright (c) 2008,2009 Thomas Sawyer
 
-This program is ditributed unser the terms of the LGPLv3 license.
+Unless otherwise provided for by the originating author, this
+program is distributed under the terms of the GPL v3 license.
 
 See LICENSE file for details.
 

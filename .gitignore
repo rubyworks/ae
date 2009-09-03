@@ -3,4 +3,4 @@ log
 doc/qedoc
 doc/rdoc
 doc/ri
-pack
+pack/ae*/

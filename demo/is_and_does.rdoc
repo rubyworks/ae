@@ -1,0 +1,13 @@
+= Is and Does
+
+  require 'ae/isdoes'
+
+  10.is.not == 5
+
+  10.is == 10
+
+  10.is 10
+
+  [1,2,3].does.include?(3)
+
+

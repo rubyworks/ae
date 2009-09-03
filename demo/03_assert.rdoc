@@ -1,0 +1,211 @@
+= Assert Method
+
+== Compatable with Test::Unit
+
+The +#assert+ method is designed to be backward compatible
+with the same method in +Test::Unit+.
+
+Using an argument, #assert will check that an argument evaluates
+to true. Optionally one can send along a meanigful message should
+the assertion fail.
+
+  assert(true, "Not true!")
+
+  Assertion.assert.raised? do
+    assert(false, "Not true!")
+  end
+
+
+== Assert with a Block
+
+In addition #assert has been extended to accept a block. Like the case of the
+argument, the block is expected to return something that evaluates as true.
+
+  assert do
+    true
+  end
+
+  Assertion.assert.raised? do
+    assert do
+      false
+    end
+  end
+
+
+== Antonyms for Assert
+
+We can state the opposite assertion using #assert!
+
+  10.assert! == 9
+
+Or, because some people do not like the use of a bang method, +#refute+.
+
+  10.refute == 9
+
+These terms can be used just as #assert is used in all examples,
+but with the opposite inference.
+
+Another way to get the opposite inference, is to use #not.
+
+  10.assert.not == 9
+
+
+== Identity Assertions
+
+Rather then the general form:
+
+  x = 10
+  x.assert.object_id == x.object_id
+
+We can use Ruby's own +equal?+ method.
+
+  x.assert.equal?(x)
+
+AE provides +identical?+ method as an alternative
+to make it a bit more clear.
+
+  x.assert.identical?(x)
+
+
+== Equality Assertions
+
+The most common assertion is that of value equality (+==_),
+as we have seen throughout this document. But other forms of
+equlity can be varified as easily. We have alredy mentioned 
+identity. In addition there is *Type Equality*.
+
+  17.assert.eql? 17
+
+  Assertion.assert.raised? do
+    17.assert.eql? 17.0
+  end
+
+And there is *Case Equality*.
+
+  Numeric.assert === 3
+
+
+== Checking Equality with a Block
+
+Becuase operators can not take blocks, and at times blocks can
+be convenient means of supplying a value to an assertion,
+AE has defined alternate renditions of the equality methods.
+For equal? and eql?, the method name remains the same, they simply
+can take a block instead of argument if need be.
+
+For *Value Equality*, +==+, the method is called +eq?+.
+
+  10.assert.eq? do
+    10.0
+  end
+
+And should it fail...
+
+  Assertion.assert.raised? do
+    10.assert.eq? do
+      20
+    end
+  end
+
+For *Case Equality, +===+, it is +case?+.
+
+  Numeric.assert.case? do
+    "3".to_i
+  end
+
+  Assertion.assert.raised? do
+    Numeric.assert.case? do
+      "3"
+    end
+  end
+
+
+== Exception Assestions
+
+Validating errors is easy too, as has already been shown
+in the document to verify assertion failures.
+
+  StandardError.assert.raised? do
+    unknown_method
+  end
+
+
+== Assertions on Object State
+
+While testing or specifying the internal state of an object is
+generally considered poor form, there are times when it is 
+necessay. Assert combined with +instance_eval+ makes it easy too.
+
+  class X
+    attr :a
+    def initialize(a); @a = a; end
+  end
+
+  x = X.new(1)
+
+  x.assert.instance_eval do
+    @a == 1
+  end
+
+
+== Catch/Try Assertions
+
+Catch/Try throws can be tested via +Symbol#thrown?+.
+
+  :hookme.assert.thrown? do
+    throw :hookme
+  end
+
+Alternatively, a lambda containing the potential throw
+can be the receiver using +throws?+.
+
+  hook = lambda{ throw :hookme }
+  
+  hook.assert.throws?(:hookme)
+
+
+== Assertions on Proc Changes
+
+I have to admit I'm not sure how this is useful,
+but I found it in the Bacon API and ported it over
+just for sake of thuroughness.
+
+  a = 0
+
+  l = lambda{ a }
+
+  l.assert.change?{ a +=1 }
+
+
+== Assertion on literal True, False and Nil.
+
+Ruby already provides the #nil? method.
+
+  nil.assert.nil?
+
+AE add true? and false? which acts accordingly.
+
+  true.assert.true?
+  false.assert.false?
+
+
+== Send Assertions
+
+Assert that a method can be successfully called.
+
+  "STRING".assert.send?(:upcase)
+
+
+== Numeric Delta and Epsilon
+
+You may wish to assert that a numeric value is with some
+range.
+
+  3.in_delta?(1,5)
+
+Or minimum range.
+
+  3.in_epsilon?(3,5)
+
+QED.
+

@@ -1,0 +1,141 @@
+= Subjunctives
+
+Okay. I can hear the BDDers rumbling, "where's the 'should'?"
+Well, AE has nothing against 'should', but there are different
+approaches for utilizing should-nomenclature in specifications,
+and AE wants to be open to these techiniques. One of which
+it the way Shoulda (http://) utilizes +#should+, analogous to
+the way RSpec uses +#it+.
+
+Regardless of this, AE provides a variant subclass of Assertor called
+Assertor::Subjunctive. This is an optional class which can be used
+to crate assertor methods using English-based subjunctive terms, such
+as +should+, or +must+, +shall+ and +will+. Whatever you like.
+Essentially it simply aliases #is as #be, #a and #an.
+
+  require 'ae/assertor/subjunctive'
+
+Then all that is required it to define your subjunctive method for all
+objects. Eg.
+
+  def will(*args, &block)
+    Assertor::Subjunctive.new(self, :backtrace=>caller).be(*args,&block)
+  end
+
+It's that easy. Becuase of their popularity AE provides two such terms,
++must+ and +should+ as optional add-ons out-of-the-box.
+
+  require 'ae/should'
+  require 'ae/must'
+
+We will use these two methods interchangable for the rest of this
+demonstration, but to be clear they both work exactly the same way,
+and almost exaclty like #assert.
+
+To be clear. AE's "endorsed" functinality does not entail subjunctive
+forms, or +should+ or +must+ assertor methods. These are simply options
+you can load via you demo_helper.rb script, if you prefer or need to
+support these nomenclatures.
+
+
+== Fluent Notation and Antonym
+
+Like +assert+, +should+ and +must+ can be used as a higher order function.
+
+  4.should == 4
+  4.must   == 4
+
+With the antonym of +should!+ (read as "should not") or +shouldnt+, and for
++must+, +must!+ or +wont+.
+
+  4.should!  == 5
+  4.shouldnt == 5
+
+  4.must! == 5
+  4.wont  == 5
+
+
+== Be and Indefinite Articles
+
+On occasions where the English readability of the sepcification is
+hindered, #be, #a and #an are equivalent forms.
+
+  StandardError.must.be.raised? do
+    unknown_method
+  end
+
+  "hi".must.be.an.instance_of?(String)
+
+This is the most significant differnece between #assert and these other
+terms, since #assertt does not have #be, #a or #an defined.
+
+
+== Block Form
+
+In block form +must+ works much like +assert+. If a block parameter is 
+used then the receiver will be passed into the block.
+
+We should also mention that, while probably not very useful, since
+the arity of a block can be checked, one can also pass the receiver
+into the block as a block argument.
+
+  "hi".must do |s|
+    /h/ =~ s
+  end
+
+
+== Verifying Object State
+
+The block notation of the subjunctive form is similar to +assert+, with 
+the important exception that the block is is evaluated in the scope of the
+receiver via #instance_eval, if no block prameter is designated.
+This can be also be used to test the state of an object.
+
+  class X
+    attr :a
+    def initialize(a); @a = a; end
+  end
+
+  x = X.new(4)
+
+  x.must do
+    4 == @a
+  end
+
+And should it fail...
+
+  Assertion.assert.raised? do
+    x.must do
+      5 == @a
+    end
+  end
+
+For some this might seem controversial --to test underlying
+implementation. And you will get no argument here, it should be used
+thoughfully, but there are occasions when such validations are
+necessary.
+
+
+== Negation via #not.
+
+The subjunctive can be inverted easily using #not.
+
+  x.must.not do |r|
+    r.a == 5
+  end
+
+
+
+== Lambda Assertions
+
+Passing a lambda to the subjunctive method, will use it as if it were
+a block of the method. This allows for a simple way to quicky
+create reusable assertions.
+
+  palindrom = lambda{ |x| x == x.reverse }
+
+  "abracarba".must.be.a palindrom
+
+QED.
+
+

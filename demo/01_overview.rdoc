@@ -1,105 +1,75 @@
-= AE Overview
+= Introduction
 
-Require the library with default nomenclatures.
+Ae is an assertions framework for Ruby. It's designed
+around the concept of an Assertor --an Assertion Functor,
+or Higher-Order Function, which reroutes messages while
+monitoring the calls for failed given conditions.
+
+== What's Provided
+
+Requiring the AE library.
 
   require 'ae'
 
-This provides +assert+, +expect+ and +should+.
-As we can see all three work the same when used
-fluidly (ie. magic-dot notation).
+Loads two classes, +Assertion+ and +Assertion+::+Assertor+,
+three primary Kernel methods +assert+, +expect+ and +must+
+and a few aliases there-of, and a handful of core extensions
+that make writing certain types of assertions easier.
+
+== Assertion and Assertor Classes
+
+The +Assertion+ class is a subclass of +Exception+. It is the
+error raised when an assertion fails. (FYI, in Test::Unit
+the equivalent class was called AssertionFailureError.
+Ae has adopted the shortend term for my fingers sake.)
+
+As mentioned above the Assertion::Assertor class is a type
+of Functor, or Higher-Order function, which interceeds
+with a nomral message invocation to monitor for raised
+Assertion exceptions.
+
+== Assertion Methods
+
+The three methods, +assert+, +expect+ and +must+ all return
+an Assertor instance when used fluidly, i.e. magic-dot notation,
+higher-order notation, functor notation, whatever you prefer
+to call it.
+
+  assert.assert.is_a?(Assertion::Assertor)
+
+This allows us to write statments like:
 
   1.assert == 1
   1.expect == 1
-  1.should == 1
+  1.must == 1
 
-If the operation returns false or nil, the an Assertion exception
+These all do the same thing. These examples all evaluate as true.
+If the operation returns false or nil, then an Assertion error
 is raised.
 
   Assertion.assert.raised? do
     1.assert == 2
     1.expect == 2
-    1.should == 2
+    1.must == 2
   end
 
-== Assert
+All three methods also have specialized functionality when supplied
+with a block and/or arguments.
 
-The #assert method can check that an argument evaluates to true.
-returned by a block.
+== How It All Works
 
-  assert(true)
+How does this work? An Assertor essentially sits in wait for 
+another method to be called on it, at which time it applies
+the method to the original receiver of #assert, but wrapped
+in a clause that raises an Assertion should the statement
+fail. So, if we wanted to be padantic, we could write our
+tests like:
 
-  Assertion.assert.raised? do
-    assert(false)
-  end
+  raise Assertion.new("1 != 1") unless 1 == 1
 
-The #assert method can also compare an argument to the value
-returned by a block with #==.
+Instead of 
 
-  assert(3) do
-    3
-  end
+  1.assert == 1
 
-  Assertion.assert.raised? do
-    assert(3) do
-      4
-    end
-  end
-
-
-== Expect
-
-Expect will comapre...
-
-  expect(self)
-
-Expect uses #equate? for comparison. +equate?+ can be thought of
-as "broad equality". It is defined as:
-
-  def equate?(x)
-    equal?(x) || eq?(x) || self == x || self === x
-  end
-
-So providing an argument and a block to +expect+ we can test for braod
-range of comparsion. For example we can test for subclass.
-
-  expect(Numeric) do
-    3
-  end
-
-If an Exception is provided, expect will test to see if the block
-raises an error.
-
-  expect(StandardError) do
-    some_undefined_method
-  end
-
-  expect(Assertion) do
-    expect(nil)
-  end
-
-  Assertion.assert.raised? do
-    expect(Numeric) do
-      "3"
-    end
-  end
-
-
-== Should
-
-Should is a subjunctive assertion method. It allows one to easily
-specify an assertion message to a blocc that must pass (ie. return
-value other than false or nil).
-
-  should "be true" do
-    true
-  end
-
-  Assertion.assert.raised? do
-    should "be true" do
-      false
-    end
-  end
-
-
-QED.
+Obviously using Assertor methods are whole lot nicer.
 

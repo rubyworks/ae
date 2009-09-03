@@ -29,8 +29,8 @@ class Assertor
     assert(*args, &block)
   end
 
-  # Internal assert, provides all functionality accosicate
-  # with #assert the Object method.
+  # Internal assert, provides all functionality accosicated
+  # with external #assert Object method.
   #
   # NOTE: I'm calling YAGNI on the extra arguments to the block.
   #

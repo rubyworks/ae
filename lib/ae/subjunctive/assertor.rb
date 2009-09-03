@@ -27,7 +27,7 @@ module AE
     #
     def be(*args, &block)
       return self if args.empty? && !block
-      block = args.shift if !block_given? && Proc == args.first
+      block = args.shift if !block_given? && Proc === args.first
       if block
         pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
         msg = args.shift || @message || block.inspect
@@ -46,7 +46,7 @@ module AE
     #
     def is(*args, &block)
       return self if args.empty? && !block
-      block = args.shift if !block_given? && Proc == args.first
+      block = args.shift if !block_given? && Proc === args.first
       if block
         pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
         msg = args.shift || @message || block.inspect
@@ -63,7 +63,7 @@ module AE
     #
     def a(*args, &block)
       return self if args.empty? && !block
-      block = args.shift if !block_given? && Proc == args.first
+      block = args.shift if !block_given? && Proc === args.first
       if block
         pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
         msg = args.shift || @message || block.inspect

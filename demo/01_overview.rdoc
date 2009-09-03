@@ -1,9 +1,10 @@
 = Introduction
 
-Ae is an assertions framework for Ruby. It's designed
-around the concept of an Assertor --an Assertion Functor,
-or Higher-Order Function, which reroutes messages while
-monitoring the calls for failed given conditions.
+AE is an assertions framework for Ruby. It's designed
+around the concept of an Assertor. The Assertor is an
+Assertion Functor, or Higher-Order Function, which 
+reroutes method calls while monitoring them for failing
+conditions.
 
 == What's Provided
 
@@ -11,59 +12,56 @@ Requiring the AE library.
 
   require 'ae'
 
-Loads two classes, +Assertion+ and +Assertion+::+Assertor+,
-three primary Kernel methods +assert+, +expect+ and +must+
-and a few aliases there-of, and a handful of core extensions
-that make writing certain types of assertions easier.
+Loads two classes, +Assertion+ and +Assertor+, the Kernel
+method +assert+ and it's ancillaries +assert!+ and +refute+
+and a set of core extensions that make writing certain types
+of assertions easier.
 
 == Assertion and Assertor Classes
 
 The +Assertion+ class is a subclass of +Exception+. It is the
 error raised when an assertion fails. (FYI, in Test::Unit
 the equivalent class was called AssertionFailureError.
-Ae has adopted the shortend term for my fingers sake.)
+AE has adopted the shortened term for my fingers sake.)
 
-As mentioned above the Assertion::Assertor class is a type
-of Functor, or Higher-Order function, which interceeds
-with a nomral message invocation to monitor for raised
-Assertion exceptions.
+As mentioned above the +Assertor+ class is a type
+of Functor, or Higher-Order function, which intercedes
+with a normal message invocation to monitor for failed
+conditions, upon which is raises Assertion exceptions.
 
 == Assertion Methods
 
-The three methods, +assert+, +expect+ and +must+ all return
+The three methods, +assert+, +assert!+ and +refute+ all return
 an Assertor instance when used fluidly, i.e. magic-dot notation,
 higher-order notation, functor notation, whatever you prefer
 to call it.
 
-  assert.assert.is_a?(Assertion::Assertor)
+  assert(Assertor === assert)
 
-This allows us to write statments like:
+This allows us to write statements like:
 
   1.assert == 1
-  1.expect == 1
-  1.must == 1
 
-These all do the same thing. These examples all evaluate as true.
-If the operation returns false or nil, then an Assertion error
+If the operation evaluates to false or nil, then an Assertion error
 is raised.
 
   Assertion.assert.raised? do
     1.assert == 2
-    1.expect == 2
-    1.must == 2
   end
 
-All three methods also have specialized functionality when supplied
-with a block and/or arguments.
+The methods +assert!+ and +refute+ are just like +assert+ expect
+they purport the negative condition. Patterned after Ruby's own
+use of +!+ as meaning +not+, +assert!+ should be read "assert not".
+While +refute+ exists for the sake of those that find the use of
+a "bang method" for this purpose unsuited to them.
 
 == How It All Works
 
-How does this work? An Assertor essentially sits in wait for 
-another method to be called on it, at which time it applies
-the method to the original receiver of #assert, but wrapped
-in a clause that raises an Assertion should the statement
-fail. So, if we wanted to be padantic, we could write our
-tests like:
+An Assertor essentially sits in wait for a method call (via
+method_missing). When that happens it applies the method to
+the original receiver, but wrapped in a clause that raises
+an Assertion should the statement fail. If we wanted to
+be pedantic, we could write our assertions like:
 
   raise Assertion.new("1 != 1") unless 1 == 1
 
@@ -71,5 +69,5 @@ Instead of
 
   1.assert == 1
 
-Obviously using Assertor methods are whole lot nicer.
+Obviously using Assertor methods are whole lot more concise.
 

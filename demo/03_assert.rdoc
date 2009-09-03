@@ -1,12 +1,12 @@
 = Assert Method
 
-== Compatable with Test::Unit
+== Compatible with Test::Unit
 
 The +#assert+ method is designed to be backward compatible
 with the same method in +Test::Unit+.
 
 Using an argument, #assert will check that an argument evaluates
-to true. Optionally one can send along a meanigful message should
+to true. Optionally one can send along a meaningful message should
 the assertion fail.
 
   assert(true, "Not true!")
@@ -71,7 +71,7 @@ to make it a bit more clear.
 
 The most common assertion is that of value equality (+==_),
 as we have seen throughout this document. But other forms of
-equlity can be varified as easily. We have alredy mentioned 
+equality can be verified as easily. We have already mentioned 
 identity. In addition there is *Type Equality*.
 
   17.assert.eql? 17
@@ -87,7 +87,7 @@ And there is *Case Equality*.
 
 == Checking Equality with a Block
 
-Becuase operators can not take blocks, and at times blocks can
+Because operators can not take blocks, and at times blocks can
 be convenient means of supplying a value to an assertion,
 AE has defined alternate renditions of the equality methods.
 For equal? and eql?, the method name remains the same, they simply
@@ -120,7 +120,7 @@ For *Case Equality, +===+, it is +case?+.
   end
 
 
-== Exception Assestions
+== Exception Assertions
 
 Validating errors is easy too, as has already been shown
 in the document to verify assertion failures.
@@ -168,7 +168,7 @@ can be the receiver using +throws?+.
 
 I have to admit I'm not sure how this is useful,
 but I found it in the Bacon API and ported it over
-just for sake of thuroughness.
+just for sake of thoroughness.
 
   a = 0
 
@@ -177,7 +177,7 @@ just for sake of thuroughness.
   l.assert.change?{ a +=1 }
 
 
-== Assertion on literal True, False and Nil.
+== Assertion on literal True, False and Nil
 
 Ruby already provides the #nil? method.
 
@@ -206,6 +206,17 @@ range.
 Or minimum range.
 
   3.in_epsilon?(3,5)
+
+
+== Custom Lambda Assertions
+
+Passing a lambda to the subjunctive method, will use it as if it were
+a block of the method. This allows for a simple way to quickly
+create reusable assertions.
+
+  palindrome = lambda{ |x| x == x.reverse }
+
+  "abracarba".assert palindrome
 
 QED.
 

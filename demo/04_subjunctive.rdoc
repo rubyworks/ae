@@ -3,42 +3,42 @@
 Okay. I can hear the BDDers rumbling, "where's the 'should'?"
 Well, AE has nothing against 'should', but there are different
 approaches for utilizing should-nomenclature in specifications,
-and AE wants to be open to these techiniques. One of which
-it the way Shoulda (http://) utilizes +#should+, analogous to
-the way RSpec uses +#it+.
+and AE wants to be open to these techniques. One of which
+it the way Shoulda (http://shoulda.rubyforge.org) utilizes
++#should+ in a way analogous to RSpec's use of +#it+.
 
-Regardless of this, AE provides a variant subclass of Assertor called
+Even so, AE provides a variant subclass of Assertor called
 Assertor::Subjunctive. This is an optional class which can be used
-to crate assertor methods using English-based subjunctive terms, such
-as +should+, or +must+, +shall+ and +will+. Whatever you like.
-Essentially it simply aliases #is as #be, #a and #an.
+to create assertor methods using English-based subjunctive terms
+such as +should+, or +must+, +shall+ and +will+. Whatever you like.
+To load this library use:
 
-  require 'ae/assertor/subjunctive'
+  require 'ae/subjunctive/assertor'
 
 Then all that is required it to define your subjunctive method for all
-objects. Eg.
+objects. For example:
 
   def will(*args, &block)
     Assertor::Subjunctive.new(self, :backtrace=>caller).be(*args,&block)
   end
 
-It's that easy. Becuase of their popularity AE provides two such terms,
-+must+ and +should+ as optional add-ons out-of-the-box.
+It's that easy. Because of their popularity AE provides two such terms,
++should+ and +must+ as optional add-ons out-of-the-box.
 
-  require 'ae/should'
-  require 'ae/must'
+  require 'ae/subjunctive/should'
+  require 'ae/subjunctive/must'
 
-We will use these two methods interchangable for the rest of this
+We will use these two methods interchangeable for the rest of this
 demonstration, but to be clear they both work exactly the same way,
-and almost exaclty like #assert.
+and almost exactly like #assert.
 
-To be clear. AE's "endorsed" functinality does not entail subjunctive
+To be clear. AE's "endorsed" functionality does not entail subjunctive
 forms, or +should+ or +must+ assertor methods. These are simply options
 you can load via you demo_helper.rb script, if you prefer or need to
 support these nomenclatures.
 
 
-== Fluent Notation and Antonym
+== Fluent Notation and Antonyms
 
 Like +assert+, +should+ and +must+ can be used as a higher order function.
 
@@ -57,7 +57,7 @@ With the antonym of +should!+ (read as "should not") or +shouldnt+, and for
 
 == Be and Indefinite Articles
 
-On occasions where the English readability of the sepcification is
+On occasions where the English readability of the specification is
 hindered, #be, #a and #an are equivalent forms.
 
   StandardError.must.be.raised? do
@@ -66,8 +66,8 @@ hindered, #be, #a and #an are equivalent forms.
 
   "hi".must.be.an.instance_of?(String)
 
-This is the most significant differnece between #assert and these other
-terms, since #assertt does not have #be, #a or #an defined.
+This is the most significant difference between #assert and these other
+terms, since #assert does not have #be, #a or #an defined.
 
 
 == Block Form
@@ -88,7 +88,7 @@ into the block as a block argument.
 
 The block notation of the subjunctive form is similar to +assert+, with 
 the important exception that the block is is evaluated in the scope of the
-receiver via #instance_eval, if no block prameter is designated.
+receiver via #instance_eval, if no block parameter is designated.
 This can be also be used to test the state of an object.
 
   class X
@@ -112,7 +112,7 @@ And should it fail...
 
 For some this might seem controversial --to test underlying
 implementation. And you will get no argument here, it should be used
-thoughfully, but there are occasions when such validations are
+thoughtfully, but there are occasions when such validations are
 necessary.
 
 
@@ -125,17 +125,15 @@ The subjunctive can be inverted easily using #not.
   end
 
 
-
 == Lambda Assertions
 
 Passing a lambda to the subjunctive method, will use it as if it were
-a block of the method. This allows for a simple way to quicky
+a block of the method. This allows for a simple way to quickly
 create reusable assertions.
 
-  palindrom = lambda{ |x| x == x.reverse }
+  palindrome = lambda{ |x| x == x.reverse }
 
-  "abracarba".must.be.a palindrom
+  "abracarba".must.be.a palindrome
 
 QED.
-
 

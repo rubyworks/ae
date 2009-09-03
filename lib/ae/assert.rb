@@ -1,13 +1,9 @@
-require 'ae/assertion'
+require 'ae/assertor'
 
 module AE
 
   # = Assert
   #
-  #   "The reserve of modern assertions is sometimes pushed to extremes,
-  #    in which the fear of being contradicted leads the writer to strip
-  #    himself of almost all sense and meaning."
-  #                              -- Sir Winston Churchill (1874 - 1965)
   #
   module Assert
 
@@ -35,12 +31,21 @@ module AE
     # #assert compares the expected value and the actual
     # value with regular equality <code>#==</code>.
     #
-    def assert(test=NoArgument, msg=nil, &block)
-      return Assertion::Assertor.new(self, :backtrace=>caller) if NoArgument==test && !block
+    def assert(*args, &block)
+      return Assertor.new(self, :backtrace=>caller).assert(*args, &block)
+=begin
+      return Assertor.new(self, :backtrace=>caller) if NoArgument==test && !block
       if block
         result = block.call
-        if NoArgument == test
-          raise Assertion.new(msg, :backtrace=>caller) unless result
+        if NoArgument.equal?(test)
+          if self.object_id == block.binding.eval('object_id')
+            pass = result ? true : false
+            msg  = "! #{result}" unless msg
+          else
+            pass = (self == result)
+            msg  = "#{self} != #{result}" unless msg
+          end
+          raise Assertion.new(msg, :backtrace=>caller) unless pass
         else
           pass = (test == result)
           msg  = "#{test} != #{result}" unless msg
@@ -50,6 +55,7 @@ module AE
         msg = "failed assertion (no message given)" unless msg
         raise Assertion.new(msg, :backtrace=>caller) unless test
       end
+=end
     end
 
     # Assert not an operational relationship.
@@ -63,36 +69,31 @@ module AE
     # if Ruby would allow +!=+ to be define as a method,
     # or at least +!+ as a unary method.
     #
-    def assert!(test=Exception, msg=nil, &block)
-      return Assertion::Assertor.new(self, :backtrace=>caller, :negate=>true) if NoArgument==test && !block
+    def assert!(*args, &block)
+      return Assertor.new(self, :backtrace=>caller).not(*args, &block)
+=begin
+      return Assertor.new(self, :backtrace=>caller, :negated=>true) if NoArgument==test && !block
       if block
         result = block.call
         if NoArgument == test
-          raise Assertion.new(msg, :backtrace=>caller, :negate=>true) if result
+          raise Assertion.new(msg, :backtrace=>caller, :negated=>true) if result
         else
           pass = (test == result)
           msg  = "#{test} != #{result}" unless msg
-          raise Assertion.new(msg, :backtrace=>caller, :negate=>true) if pass
+          raise Assertion.new(msg, :backtrace=>caller, :negated=>true) if pass
         end
       else
         msg = "failed assertion (no message given)" unless msg
-        raise Assertion.new(msg, :backtrace=>caller, :negate=>true) if test
+        raise Assertion.new(msg, :backtrace=>caller, :negated=>true) if test
       end
+=end
     end
-
-
-    # Alias for #assert!.
-    #
-    # 4.assert_not == 4  #=> Assertion Error
-    #
-    alias_method :assert_not, :assert!
 
     # Alias for #assert!.
     #
     # 4.refute == 4  #=> Assertion Error
     #
     alias_method :refute, :assert!
-
   end
 
 end
@@ -100,3 +101,5 @@ end
 class ::Object #:nodoc:
   include AE::Assert
 end
+
+# Copyright (c) 2008,2009 Thomas Sawyer [Ruby License]

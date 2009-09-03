@@ -1,0 +1,149 @@
+== Assett
+
+  r.assert == x
+
+  1.assert == 2
+
+  [1,2,3].assert.include? 2
+
+  ArgumentError.assert.raised? do
+    raise
+  end
+
+  assert.instance_eval do
+    @a == 1
+  end
+
+  4.assert == 3
+
+  5.assert == 9
+
+  /x/.assert =~ "x"
+ 
+  Numeric.assert === 3
+
+  3.assert.kind_of?(Numeric)
+
+  lambda{}.assert.raise?(ArgumentError)
+
+
+== Is and Does (?)
+
+  1.is == 2
+
+  [1,2,3].does.include? 2
+
+  ArgumentError.is.raised? do
+    raise
+  end
+
+  does.instance_eval do
+    @a == 1
+  end
+
+  4.is == 3
+
+  5.is == 9
+
+  /x/.does =~ "x"
+ 
+  Numeric.is === 3
+
+  3.is.kind_of?(Numeric)
+
+  lambda{}.does.raise?(ArgumentError)
+
+
+=== Must or Should
+
+  1.must == 2
+
+  [1,2,3].must.include? 2
+
+  ArgumentError.must.be.raised? do
+    raise
+  end
+
+  must.instance_eval do
+    @a == 1
+  end
+
+  4.must == 3
+
+  5.must == 9
+
+  /x/.must =~ "x"
+ 
+  Numeric.must === 3
+
+  3.must.be.kind_of?(Numeric)
+
+  lambda{}.must.raise?(ArgumentError)
+
+ 
+
+
+== Assert
+
+Assert as truth makes sense most possiblities,
+but allows for a equality testing when blocks
+are used.
+
+  r.assert a, &b
+
+  r  a  b
+  0  0  0  -> Assertor
+  0  0  b  -> if b
+  0  a  0  -> if a
+  0  a  b  -> a = b
+  r  0  0  -> Assertor
+  r  0  b  -> r = b
+  r  a  0  [same as 0 a 0]
+  r  a  b  ->
+
+
+== Expect
+
+The problem with expect is what type of equality to use.
+eql?, ==, === or some combination? It must be specific.
+If it is not specific, or at least nearly so, then it
+runs too  great a chance of false positives.
+
+  r.expect a, &b
+
+  r  a  b
+  -------
+  0  0  0  -> Assertor
+  0  0  b  -> nothing raised?
+  0  a  0  [same as r a 0]
+  0  a  b  -> a = b
+  r  0  0  -> Assertor
+  r  0  b  -> r = b
+  r  a  0  -> r = a
+  r  a  b  ->
+
+
+== Must
+
+Very limited in its ability to be consitant since
+only one form makes sense for an assert using
+instance_eval. The rest must be like expect using
+instance_eval.
+
+  r.must a, &b
+
+  r  a  b
+  -------
+  0  0  0  -> Assertor
+  0  0  b  -> if b*
+  0  a  0  [same as r a 0]
+  0  a  b  -> a = b*
+  r  0  0  -> Assertor
+  r  0  b  -> r = b*
+  r  a  0  [makes no sense]
+  r  a  b  -> 
+
+  * using instance_eval
+
+
+

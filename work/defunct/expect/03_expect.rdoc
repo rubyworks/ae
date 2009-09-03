@@ -1,0 +1,131 @@
+= Expect Method
+
+== Underlying Comparison
+
+Expect uses #=== for comparison. So providing an argument and a block to
++expect+ we can test for a somewhat broader range of comparsion than +#assert+.
+For example we can test for a subclass.
+
+  expect(Numeric) do
+    3
+  end
+
+  Assertion.assert.raised? do
+    expect Numeric do
+      "3"
+    end
+  end
+
+In addition, if an Exception class or instance is provided, expect also checks
+to see if the block raises that error.
+
+  expect StandardError do
+    some_undefined_method
+  end
+
+  expect Assertion do
+    expect(nil)
+  end
+
+Expect fallsback to the +===+ method if an exception passes
+but is not raised.
+
+  expect Exception do
+    Exception.new
+  end
+
+That +expect+ entails +===+ also means we can check for Regexp
+matches.
+
+  expect /x/ do
+    "oooxooo"
+  end
+
+== Fuctor (or Higher Order Function)
+
+Expect work like all other assertion methods when used as
+a *fluid* notation.
+
+  10.expect == 10
+
+== Function with Block
+
+Without an argument, the receiver itself becomes the expectation.
+
+  x = "dummy"
+
+  x.expect do
+    x
+  end
+
+== Function without Block
+
+Without a block, the receiver is compared to the argument using #equate?
+
+  x.expect x
+
+== Function with Argument and Block
+
+Expect as a function with an argument and a block checks identity,
+i.e. <tt>equal?</tt>.
+
+  x = Object.new
+  y = Object.new
+
+  expect x do
+    x
+  end
+
+  Assertion.assert.raised? do
+    expect x do
+      y
+    end
+  end
+
+Expect as a function with an argument and a block
+checks #eql?.
+
+  def x.eql?(o); true; end
+
+  expect x do
+    y
+  end
+
+Expect as a function with an argument and a block
+checks equality #==.
+
+  def x.eql?(o); false; end
+  def x.==(o); true; end
+
+  expect x do
+    y
+  end
+
+Expect as a function with an argument and a block
+checks #===.
+
+  def x.==(o); false; end
+  def x.===(o); true; end
+
+  expect x do
+    y
+  end
+
+  def x.===(o); false; end
+
+== Handling Exceptions
+
+In any of the above block-based examples, if the comparator is an 
+Exception class or a instance of an Exception class, then #expect
+will check to see if the block raises that kind of exception or not.
+
+  expect NameError do
+    raise NameError
+  end
+
+  NameError.expect do
+    raise NameError
+  end
+
+QED.
+

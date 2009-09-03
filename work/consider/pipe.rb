@@ -1,4 +1,4 @@
-require 'assertion'
+require 'ae/assertion'
 
 T = true
 F = false
@@ -14,26 +14,26 @@ class AE
     #
     #   x = "tom"
     #
-    #   T | x == "tom"
+    #   T* x == "tom"
     #
-    #   F | x == "tom"  # raises Asseretion
+    #   F* x == "tom"  # raises Asseretion
     #
-    #   T | case x
-    #       when 'tom' then true
-    #       else false
-    #       end
+    #   T* case x
+    #      when 'tom' then true
+    #      else false
+    #      end
     #
     module Pipe
 
       module True
-        def |(x)
-          raise Assertion if !x
+        def *(x)
+          raise Assertion.new(:backtrace=>caller) if !x
         end
       end
 
       module False
-        def |(x)
-          raise Assertion if x
+        def *(x)
+          raise Assertion.new(:backtrace=>caller) if x
         end
       end
     end
@@ -41,13 +41,13 @@ class AE
   end
 
   class ::TrueClass #:nodoc:
-    remove_method :|
-    include AE::Expression::Pipe::True
+    #remove_method :*
+    include AE::Kernel::Pipe::True
   end
 
   class ::FalseClass #:nodoc:
-    remove_method :|
-    include AE::Expression::Pipe::False
+    #remove_method :*
+    include AE::Kernel::Pipe::False
   end
 
 end
@@ -58,12 +58,23 @@ if __FILE__ == $0
 
   x = "tom"
 
-  T | x == "tom"
-  F | x == "tom"
+#Give that x is "tom" then we can assert it
+#is using an asseretion pipe.
 
-  T | case x
-      when 'tom' then true
-      else false
-      end
+  x = "tom"
+
+  T* x == "tom"
+
+#We can assert the opposite using F.
+
+  F* x == "tom"
+
+#These can be used at any point of return.
+
+  T* case x
+     when 'tom' then true
+     else false
+     end
 
 end
+

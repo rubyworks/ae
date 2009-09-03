@@ -1,6 +1,6 @@
 = A.E. -- Assertive Expressive
 
-* http://protuils.rubyforge.org/ae
+* http://proutils.rubyforge.org/ae/
 
 
 == DESCRIPTION
@@ -59,16 +59,26 @@ You are encouraged to read the QEDocs to learn more.
 
 == HOW TO INSTALL
 
-To install with RubyGems simply open a console and type:
+AE release it's gems via Gemcutter. If you don't have Gemcutter
+installed do:
+
+  $ gem install gemcutter
+  $ gem tumble
+
+Then you can install AE with:
 
   gem install ae
 
-Local installation requires Setup.rb (gem install setup),
-then download the tarball package and type:
+Local installation requires Setup.rb.
 
-  tar -xvzf ae-1.0.0.tgz
-  cd ae-1.0.0.tgz
-  sudo setup.rb all
+  gem install setup
+
+The Download the tarball package from GitHub (under pack/ directory)
+and do:
+
+  $ tar -xvzf ae-1.0.0.tgz
+  $ cd ae-1.0.0.tgz
+  $ sudo setup.rb all
 
 Windows users use 'ruby setup.rb all'.
 

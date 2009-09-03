@@ -91,37 +91,5 @@ The indefinite articles work well when a noun follow as an arguments.
 
   "abracarba".must.be.a palindrome
 
-
-== Verifying Object State
-
-The block notation of the subjunctive form is similar to +assert+, with 
-the important exception that the block is is evaluated in the scope of the
-receiver via #instance_eval, if no block parameter is designated.
-This can be also be used to test the state of an object.
-
-  class X
-    attr :a
-    def initialize(a); @a = a; end
-  end
-
-  x = X.new(4)
-
-  x.must do
-    4 == @a
-  end
-
-And should it fail...
-
-  Assertion.assert.raised? do
-    x.must do
-      5 == @a
-    end
-  end
-
-For some this might seem controversial --to test underlying
-implementation. And you will get no argument here, it should be used
-thoughtfully, but there are occasions when such validations are
-necessary.
-
 QED.
 

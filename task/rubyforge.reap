@@ -1,7 +1,7 @@
 ---
 rubyforge:
   active  : true
-  service : Rubyforge
+  service : RubyforgePublish
   unixname: <%= project %>
   groupid : ~
   sitemap :

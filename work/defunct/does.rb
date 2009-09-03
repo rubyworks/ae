@@ -1,8 +1,11 @@
 require 'ae/subjunctive/assertor'
 
 module AE
+module Subjunctive
 
   # = IsDoes
+  #
+  # An **optional** library. The provide #is and #does as Object methods.
   #
   module IsDoes
     # Designate a expectation via a *functor*.
@@ -16,7 +19,7 @@ module AE
     #   end
     #
     def is(*args, &block)
-      Assertor::Subjunctive.new(self, :backtrace=>caller).is(*args, &block)
+      Subjunctive::Assertor.new(self, :backtrace=>caller).is(*args, &block)
     end
 
     # Designate a expectation via a *functor* called #does.
@@ -35,7 +38,7 @@ module AE
     #   4.is! == 4  #=> Assertion Error
     #
     def is!(*args, &block)
-      Assertor::Subjunctive.new(self, :backtrace=>caller).not(*args, &block)
+      Subjunctive::Assertor.new(self, :backtrace=>caller).not(*args, &block)
     end
 
     # Designate a negated expectation via a *functor*.
@@ -47,9 +50,10 @@ module AE
   end
 
 end
-
-class ::Object #:nodoc:
-  include AE::IsDoes
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer [Ruby License]
+class ::Object #:nodoc:
+  include AE::Subjunctive::IsDoes
+end
+
+# Copyright (c) 2008,2009 Thomas Sawyer

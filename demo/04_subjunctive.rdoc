@@ -2,28 +2,27 @@
 
 Okay. I can hear the BDDers rumbling, "where's the 'should'?"
 Well, AE has nothing against 'should', but there are different
-approaches for utilizing should-nomenclature in specifications,
+approaches for utilizing should nomenclature in specifications,
 and AE wants to be open to these techniques. One of which
 it the way Shoulda (http://shoulda.rubyforge.org) utilizes
-+#should+ in a way analogous to RSpec's use of +#it+.
++should+ in a way analogous to RSpec's use of +it+.
 
-Even so, AE provides a variant subclass of Assertor called
-Assertor::Subjunctive. This is an optional class which can be used
-to create assertor methods using English-based subjunctive terms
-such as +should+, or +must+, +shall+ and +will+. Whatever you like.
+Even so, AE provides a an optional mixin called Subjunctive which
+can be used to create assertor methods using English subjunctive
+terms such as +should+ (or +must+, +shall+ and +will+. Whatever you like.)
 To load this library use:
 
-  require 'ae/subjunctive/assertor'
+  require 'ae/subjunctive'
 
 Then all that is required it to define your subjunctive method for all
 objects. For example:
 
   def will(*args, &block)
-    Assertor::Subjunctive.new(self, :backtrace=>caller).be(*args,&block)
+    Assertor.new(self, :backtrace=>caller).be(*args,&block)
   end
 
 It's that easy. Because of their popularity AE provides two such terms,
-+should+ and +must+ as optional add-ons out-of-the-box.
++should+ and +must+ as optional add-ons.
 
   require 'ae/subjunctive/should'
   require 'ae/subjunctive/must'
@@ -32,10 +31,10 @@ We will use these two methods interchangeable for the rest of this
 demonstration, but to be clear they both work exactly the same way,
 and almost exactly like #assert.
 
-To be clear. AE's "endorsed" functionality does not entail subjunctive
+Keep in mind, AE "conical" functionality does not entail subjunctive
 forms, or +should+ or +must+ assertor methods. These are simply options
-you can load via you demo_helper.rb script, if you prefer or need to
-support these nomenclatures.
+you can load via your test_helper.rb, or similar script, if you prefer
+or need to support these nomenclatures.
 
 
 == Fluent Notation and Antonyms
@@ -55,33 +54,42 @@ With the antonym of +should!+ (read as "should not") or +shouldnt+, and for
   4.wont  == 5
 
 
-== Be and Indefinite Articles
+== To Be
 
-On occasions where the English readability of the specification is
-hindered, #be, #a and #an are equivalent forms.
+On occasions where the English readability of a specification is
+hindered, +be+ can be used.
 
   StandardError.must.be.raised? do
     unknown_method
   end
 
+The +be+ method is the same as +assert+ with the single exception
+that it will compare a lone argument to the receiver using +equate?+,
+unlike +assert+ which simply check to see that the argument evalutates
+as true.
+
+  10.should.be 10
+  10.should.be 10.0
+  10.should.be Numeric
+
+
+== Indefinite Articles
+
+Addtional anglogic forms are 'a' and 'an', equivalent to 'be' except
+that they use +case?+ instead of +equate?+,
+
+  "hi".must.be.a String
+
+Otherwise they are interchangeble.
+
   "hi".must.be.an.instance_of?(String)
 
-This is the most significant difference between #assert and these other
-terms, since #assert does not have #be, #a or #an defined.
+The indefinite articles work well when a noun follow as an arguments.
 
 
-== Block Form
+  palindrome = lambda{ |x| x == x.reverse }
 
-In block form +must+ works much like +assert+. If a block parameter is 
-used then the receiver will be passed into the block.
-
-We should also mention that, while probably not very useful, since
-the arity of a block can be checked, one can also pass the receiver
-into the block as a block argument.
-
-  "hi".must do |s|
-    /h/ =~ s
-  end
+  "abracarba".must.be.a palindrome
 
 
 == Verifying Object State
@@ -114,26 +122,6 @@ For some this might seem controversial --to test underlying
 implementation. And you will get no argument here, it should be used
 thoughtfully, but there are occasions when such validations are
 necessary.
-
-
-== Negation via #not.
-
-The subjunctive can be inverted easily using #not.
-
-  x.must.not do |r|
-    r.a == 5
-  end
-
-
-== Lambda Assertions
-
-Passing a lambda to the subjunctive method, will use it as if it were
-a block of the method. This allows for a simple way to quickly
-create reusable assertions.
-
-  palindrome = lambda{ |x| x == x.reverse }
-
-  "abracarba".must.be.a palindrome
 
 QED.
 

@@ -31,6 +31,14 @@ argument, the block is expected to return something that evaluates as true.
     end
   end
 
+We should also mention that, while probably not very useful, since
+the arity of a block can be checked, one can also pass the receiver
+into the block as a block argument.
+
+  "hi".assert do |s|
+    /h/ =~ s
+  end
+
 
 == Antonyms for Assert
 

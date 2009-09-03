@@ -6,6 +6,7 @@ Assertion Functor, or Higher-Order Function, which
 reroutes method calls while monitoring them for failing
 conditions.
 
+
 == What's Provided
 
 Requiring the AE library.
@@ -17,17 +18,39 @@ method +assert+ and it's ancillaries +assert!+ and +refute+
 and a set of core extensions that make writing certain types
 of assertions easier.
 
+
 == Assertion and Assertor Classes
 
 The +Assertion+ class is a subclass of +Exception+. It is the
-error raised when an assertion fails. (FYI, in Test::Unit
-the equivalent class was called AssertionFailureError.
-AE has adopted the shortened term for my fingers sake.)
+error raised when an assertion fails. 
 
-As mentioned above the +Assertor+ class is a type
-of Functor, or Higher-Order function, which intercedes
-with a normal message invocation to monitor for failed
-conditions, upon which is raises Assertion exceptions.
+The +Assertion+ class is at the heart of AE. All other AE
+method resolve by... The +Assertion+ class is at subclass
+of Exception. When an assertion is made, and fails, it is
+an instance of Assertion that is raised.
+
+  Assertion.assert.raised? do
+    msg = "my failure message"
+    assert false, msg
+  end
+
+Like any raised exception, the last Assertion message is available
+via +$!+.
+
+(FYI, in Test::Unit the equivalent class was called AssertionFailureError.
+AE has adopted the shortened term for my fingers sake ;) Also, recently
+it was discoverd to be the choosen term in minitest --proving good ideas
+find their way to the top.)
+
+Assertions themsevles are not generally used in creating tests or
+behavior specifications. Rather they are used to create additonal
+types of assertion methods.
+
+As mentioned above the +Assertor+ class is a type of Functor,
+or Higher-Order function, which intercedes with a normal message
+invocation to monitor for failed conditions, upon which is raises
+Assertion exceptions.
+
 
 == Assertion Methods
 
@@ -54,6 +77,7 @@ they purport the negative condition. Patterned after Ruby's own
 use of +!+ as meaning +not+, +assert!+ should be read "assert not".
 While +refute+ exists for the sake of those that find the use of
 a "bang method" for this purpose unsuited to them.
+
 
 == How It All Works
 

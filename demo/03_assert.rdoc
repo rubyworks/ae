@@ -2,10 +2,10 @@
 
 == Compatible with Test::Unit
 
-The +#assert+ method is designed to be backward compatible
-with the same method in +Test::Unit+.
+The +assert+ method is designed to be backward compatible
+with the same method in <tt>Test::Unit</tt>.
 
-Using an argument, #assert will check that an argument evaluates
+Using an argument, +assert+ will check that an argument evaluates
 to true. Optionally one can send along a meaningful message should
 the assertion fail.
 
@@ -18,7 +18,7 @@ the assertion fail.
 
 == Assert with a Block
 
-In addition #assert has been extended to accept a block. Like the case of the
+In addition +assert+ has been extended to accept a block. Like the case of the
 argument, the block is expected to return something that evaluates as true.
 
   assert do
@@ -42,18 +42,18 @@ into the block as a block argument.
 
 == Antonyms for Assert
 
-We can state the opposite assertion using #assert!
+We can state the opposite assertion using <tt>assert!</tt>.
 
   10.assert! == 9
 
-Or, because some people do not like the use of a bang method, +#refute+.
+Or, because some people do not like the use of a bang method, +refute+.
 
   10.refute == 9
 
-These terms can be used just as #assert is used in all examples,
+These terms can be used just as +assert+ is used in all examples,
 but with the opposite inference.
 
-Another way to get the opposite inference, is to use #not.
+Another way to get the opposite inference, is to use +not+.
 
   10.assert.not == 9
 
@@ -65,11 +65,11 @@ Rather then the general form:
   x = 10
   x.assert.object_id == x.object_id
 
-We can use Ruby's own +equal?+ method.
+We can use Ruby's own <tt>equal?</tt> method.
 
   x.assert.equal?(x)
 
-AE provides +identical?+ method as an alternative
+AE provides <tt>identical?</tt> method as an alternative
 to make it a bit more clear.
 
   x.assert.identical?(x)
@@ -77,10 +77,10 @@ to make it a bit more clear.
 
 == Equality Assertions
 
-The most common assertion is that of value equality (+==_),
+The most common assertion is that of value equality (<tt>==</tt>),
 as we have seen throughout this document. But other forms of
 equality can be verified as easily. We have already mentioned 
-identity. In addition there is *Type Equality*.
+identity. In addition there is <i>type equality</i>.
 
   17.assert.eql? 17
 
@@ -88,7 +88,7 @@ identity. In addition there is *Type Equality*.
     17.assert.eql? 17.0
   end
 
-And there is *Case Equality*.
+And there is <i>case equality</i>.
 
   Numeric.assert === 3
 
@@ -98,10 +98,10 @@ And there is *Case Equality*.
 Because operators can not take blocks, and at times blocks can
 be convenient means of supplying a value to an assertion,
 AE has defined alternate renditions of the equality methods.
-For equal? and eql?, the method name remains the same, they simply
-can take a block instead of argument if need be.
+For equal? and eql?, the method names are the same, they simply
+can take a block in place of an argument if need be.
 
-For *Value Equality*, +==+, the method is called +eq?+.
+For <i>value equality</i> (<tt>==</tt>), the method is called <tt>eq?</tt>.
 
   10.assert.eq? do
     10.0
@@ -115,7 +115,7 @@ And should it fail...
     end
   end
 
-For *Case Equality, +===+, it is +case?+.
+For <i>case equality</i> (<tt>===</tt>), it is <tt>case?</tt>.
 
   Numeric.assert.case? do
     "3".to_i
@@ -158,14 +158,14 @@ necessay. Assert combined with +instance_eval+ makes it easy too.
 
 == Catch/Try Assertions
 
-Catch/Try throws can be tested via +Symbol#thrown?+.
+Catch/Try throws can be tested via <tt>Symbol#thrown?</tt>.
 
   :hookme.assert.thrown? do
     throw :hookme
   end
 
 Alternatively, a lambda containing the potential throw
-can be the receiver using +throws?+.
+can be the receiver using <tt>throws?</tt>.
 
   hook = lambda{ throw :hookme }
   
@@ -191,7 +191,7 @@ Ruby already provides the #nil? method.
 
   nil.assert.nil?
 
-AE add true? and false? which acts accordingly.
+AE adds <tt>true?</tt> and <tt>false?</tt> which acts accordingly.
 
   true.assert.true?
   false.assert.false?
@@ -229,12 +229,12 @@ create reusable assertions.
 
 == Verifying Object State
 
-NOTE: This functionality is not currently supported, but is being
-considered for a future version.
+NOTE: <i>This functionality is not currently supported, but is being
+considered for a future version.</i>
 
 If no block parameter is designated and the receiver differs from +self+
 in scope of the given block, then the block is evaluated in the scope of
-the receiver via #instance_eval. This can be also be used to verify the
+the receiver via +instance_eval+. This can be also be used to verify the
 state of an object.
 
   class X
@@ -260,5 +260,4 @@ For some this might be considered poor form, i.e. to test underlying
 implementation. You will get no argument here. It should be used
 thoughtfully, but I would not bet against there being occasions
 when such validations might be handy.
-
 

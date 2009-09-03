@@ -14,19 +14,16 @@ Requiring the AE library.
   require 'ae'
 
 Loads two classes, +Assertion+ and +Assertor+, the Kernel
-method +assert+ and it's ancillaries +assert!+ and +refute+
+method +assert+ and it's ancillaries <tt>assert!</tt> and +refute+
 and a set of core extensions that make writing certain types
 of assertions easier.
 
 
 == Assertion and Assertor Classes
 
-The +Assertion+ class is a subclass of +Exception+. It is the
-error raised when an assertion fails. 
-
 The +Assertion+ class is at the heart of AE. All other AE
-method resolve by... The +Assertion+ class is at subclass
-of Exception. When an assertion is made, and fails, it is
+methods depend on it. The +Assertion+ class is a subclass
+of Exception. When an assertion is made and fails, it is
 an instance of Assertion that is raised.
 
   Assertion.assert.raised? do
@@ -35,33 +32,31 @@ an instance of Assertion that is raised.
   end
 
 Like any raised exception, the last Assertion message is available
-via +$!+.
+via <tt>$!</tt>.
 
-(FYI, in Test::Unit the equivalent class was called AssertionFailureError.
-AE has adopted the shortened term for my fingers sake ;) Also, recently
-it was discoverd to be the choosen term in minitest --proving good ideas
-find their way to the top.)
+(FYI, in Test::Unit the equivalent class was called +AssertionFailedError+.)
 
 Assertions themsevles are not generally used in creating tests or
 behavior specifications. Rather they are used to create additonal
 types of assertion methods.
 
-As mentioned above the +Assertor+ class is a type of Functor,
-or Higher-Order function, which intercedes with a normal message
+As mentioned above the +Assertor+ class is a type of Higher-Order
+function, or Functor, which intercedes with a normal message
 invocation to monitor for failed conditions, upon which is raises
 Assertion exceptions.
 
 
 == Assertion Methods
 
-The three methods, +assert+, +assert!+ and +refute+ all return
-an Assertor instance when used fluidly, i.e. magic-dot notation,
-higher-order notation, functor notation, whatever you prefer
-to call it.
+The three methods, +assert+, <tt>assert!</tt> and +refute+ all
+return an Assertor instance when used fluidly, i.e. magic-dot
+notation, higher-order notation, functor notation, whatever you
+prefer to call it.
 
   assert(Assertor === assert)
 
-This allows us to write statements like:
+Through the use of +method_missing+, the Assertor allows us to write
+statements like:
 
   1.assert == 1
 
@@ -72,20 +67,20 @@ is raised.
     1.assert == 2
   end
 
-The methods +assert!+ and +refute+ are just like +assert+ expect
-they purport the negative condition. Patterned after Ruby's own
-use of +!+ as meaning +not+, +assert!+ should be read "assert not".
-While +refute+ exists for the sake of those that find the use of
-a "bang method" for this purpose unsuited to them.
+The methods <tt>assert!</tt> and +refute+ are just like +assert+
+expect they purport the negative condition. Patterned after Ruby's
+own use of "<tt>!</tt>" as meaning +not+, <tt>assert!</tt> should be
+read "assert not". While +refute+ exists for the sake of those who
+find the use of a bang method for this purpose unsuited to them.
 
 
-== How It All Works
+== How It Works
 
 An Assertor essentially sits in wait for a method call (via
-method_missing). When that happens it applies the method to
-the original receiver, but wrapped in a clause that raises
-an Assertion should the statement fail. If we wanted to
-be pedantic, we could write our assertions like:
+method_missing). When that happens it applies the method to the
+original receiver, but wrapped in a clause that raises an
+Assertion should the statement fail. If we wanted to be 
+pedantic, we could write our assertions like:
 
   raise Assertion.new("1 != 1") unless 1 == 1
 

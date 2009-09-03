@@ -53,7 +53,17 @@ like:
     ...
   end
 
-And so forth. AE's abilities in this areas are quite extensive.
+And so forth. In fact, any method can be used in conjunction
+with assert to make an assertion.
+
+  class String
+    def daffy?
+      /daffy/i =~ self
+    end
+  end
+
+  "Daffy Duck".assert.daffy?
+
 You are encouraged to read the QEDocs to learn more.
 
 
@@ -61,7 +71,7 @@ You are encouraged to read the QEDocs to learn more.
 
 === Gem Installs
 
-AE release it's gems via Gemcutter. If you don't have Gemcutter
+AE releases it's gems via Gemcutter. If you don't have Gemcutter
 installed do:
 
   $ gem install gemcutter

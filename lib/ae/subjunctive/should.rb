@@ -1,0 +1,47 @@
+require 'ae/subjunctive/assertor'
+
+module AE
+
+  # = Should
+  #
+  #  "Always and never are two words you should always
+  #   remember never to use."
+  #                              --Wendell Johnson
+  #
+  module Should
+    # The #must method is functionaly the same as #should.
+    #
+    #   4.should == 3  #=> Assertion Error
+    #
+    #   4.should do
+    #     self == 4
+    #   end
+    #
+    def should(*args, &block)
+      Assertor::Subjunctive.new(self, :backtrace=>caller).be(*args, &block)
+    end
+
+    # Designate a negated expectation via a *functor*.
+    # Read this as "must not".
+    #
+    #   4.should! == 4  #=> Assertion Error
+    #
+    def should!(*args, &block)
+      Assertor::Subjunctive.new(self, :backtrace=>caller).not(*args, &block)
+    end
+
+    # Not quite the literally the counter-term to *should* (rather *shall*), but
+    # it is close enough for our purposes and conveys the appropriate semantics.
+    #alias_method :shant, :should!
+
+    # Alias for #should! method.
+    alias_method :shouldnt, :should!
+  end
+
+end
+
+class ::Object #:nodoc:
+  include AE::Should
+end
+
+# Copyright (c) 2008,2009 Thomas Sawyer [Ruby License]

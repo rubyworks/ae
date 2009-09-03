@@ -39,11 +39,11 @@ module AE
       end
       if block
         exp = self if NoArgument == exp
-        if Exception >= exp
+        if Exception === exp || (Class===exp && exp.is?(Exception))
           begin
             r = block.call
-            t = exp.equate?(res)
-            m = "#{exp}.equate? #{res}"
+            t = exp === r #exp.equate?(r)
+            m = "#{exp} === #{r}" #"#{exp}.equate? #{r}"
           rescue exp => error
             t = true
           rescue Exception => error
@@ -52,12 +52,12 @@ module AE
           end
         else
           r = block.call
-          t = exp.equate?(r)
-          m = "#{exp}.equate? #{r}"
+          t = exp === r #exp.equate?(r)
+          m = "#{exp} === #{r}" #"#{exp}.equate? #{r}"
         end
       else
-        t = exp.equate?(self)
-        m = "#{exp}.equate? #{self}"
+        t = exp === self #exp.equate?(self)
+        m = "#{exp} === #{self}" #"#{exp}.equate? #{self}"
       end
       raise Assertion.new(m, :backtrace=>caller) unless t
     end
@@ -73,17 +73,17 @@ module AE
     # Ruby would allow +!=+ to be defined as a method,
     # or perhaps +!+ as a unary method.
     #
-    def expect!(exp=Assertion::Assertor, &block)
-      if Assertion::Assertor==exp and !block
+    def expect!(exp=NoArgument, &block)
+      if NoArgument==exp and !block
         return Assertion::Assertor.new(self, :negate=>true, :backtrace=>caller)
       end
       if block
         exp = self if Expectation == exp
-        if Exception === exp # no argument
+        if Exception === exp || (Class===exp && exp.is?(Exception))
           begin
             r = block.call
-            t = !exp.equate?(res)
-            m = "! #{exp}.equate? #{res}"
+            t = ! exp === r #!exp.equate?(r)
+            m = "! #{exp} === #{r}" #"! #{exp}.equate? #{r}"
           rescue exp => error
             t = false
             msg  = "#{exp} raised"
@@ -93,20 +93,18 @@ module AE
           end
         else
           r = block.call
-          t = !exp.equate?(r)
-          m = "! #{exp}.equate? #{r}"
+          t = ! exp === r #!exp.equate?(r)
+          m = "! #{exp} === #{r}" #"! #{exp}.equate? #{r}"
         end
       else
-        t = !exp.equate?(self)
-        m = "! #{exp}.equate? #{self}"
+        t = ! exp === self #!exp.equate?(self)
+        m = "! #{exp} === #{self}" #"! #{exp}.equate? #{self}"
       end
       raise Assertion.new(m, :backtrace=>caller) unless t
     end
 
-    # See #expect! method.
-    #
-    alias_method :expect_not, :expect!
-
+    # Alias for #expect! method.
+    alias_method :forbid, :expect!
   end
 
 end
@@ -114,3 +112,4 @@ end
 class ::Object #:nodoc:
   include AE::Expect
 end
+

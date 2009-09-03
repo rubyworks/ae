@@ -59,6 +59,8 @@ You are encouraged to read the QEDocs to learn more.
 
 == HOW TO INSTALL
 
+=== Gem Installs
+
 AE release it's gems via Gemcutter. If you don't have Gemcutter
 installed do:
 
@@ -68,6 +70,8 @@ installed do:
 Then you can install AE with:
 
   gem install ae
+
+=== Site Installs
 
 Local installation requires Setup.rb.
 

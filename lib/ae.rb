@@ -3,5 +3,6 @@ module AE
 end
 
 require 'ae/assert'
+#require 'ae/expect'
 
 # Copyright (c) 2008,2009 Thomas Sawyer

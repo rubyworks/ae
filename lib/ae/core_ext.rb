@@ -10,8 +10,8 @@ module Kernel
   #
   # TODO: Can we call this #fail (overriding built-in)?
   #
-  def flunk(reason="flunk")
-    raise Assertion.new(reason, :backtrace=>caller)
+  def flunk(reason=nil, backtrace=nil)
+    raise Assertion.new((reason || 'flunk'), :backtrace=>(backtrace || caller))
   end
 
   # Is literally true.

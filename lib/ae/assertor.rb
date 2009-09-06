@@ -48,6 +48,20 @@ class Assertor
   end
 
   #
+  #def expect(*args, &block)
+  #  return self if args.empty? && !block_given?
+  #  block = args.shift if !block_given? && Proc === args.first
+  #  if block
+  #    pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
+  #    msg = args.shift || @message || block.inspect
+  #  else
+  #    pass = args.shift  # truthiness
+  #    msg  = args.shift
+  #  end
+  #  __assert__(pass, msg)
+  #end
+
+  #
   def flunk(msg=nil)
     fail Assertion.new(msg || @message, :backtrace=>@backtrace)
   end

@@ -1,0 +1,79 @@
+= Expect Method
+
+== Underlying Comparison
+
+Expect uses #=== for comparison. So providing an argument and a block to
+#expect we can test for a somewhat broader range of comparsion than #assert.
+For example we can test for a subclass.
+
+  expect Numeric do
+    3
+  end
+
+  Assertion.assert.raised? do
+    expect Numeric do
+      "3"
+    end
+  end
+
+
+== Exception Expectation
+
+If the comparator is an Exception class or a instance of an Exception class,
+then #expect will check to see if the block raises that kind of exception or not.
+
+  expect StandardError do
+    some_undefined_method
+  end
+
+  expect Assertion do
+    expect(nil)
+  end
+
+This is an important distiction to note becuase it means #expect can not be used
+if verify instances of Exception classes.
+
+  Assertion.assert.raised? do
+    expect Exception do
+      Exception.new
+    end
+  end
+
+
+=== Regex Expectations
+
+That #expect entails #=== also means we can check for Regexp matches.
+
+  expect /x/ do
+    "oooxooo"
+  end
+
+
+== Expected Method
+
+We can use #expected to make the receiver the object of expectation.
+
+  x = "dummy"
+
+  /x/.expected do
+    "x"
+  end
+
+
+== Function without Block
+
+Without a block, the receiver is compared to the argument using #equate?
+
+  x.expect x
+
+
+== Functor, or Higher Order Function
+
+Like #assert, #expect can be used used as a *fluid* notation.
+
+  10.expect == 10
+
+In which case it works just like #assert.
+
+QED.
+

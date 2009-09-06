@@ -36,8 +36,8 @@ via <tt>$!</tt>.
 
 (FYI, in Test::Unit the equivalent class was called +AssertionFailedError+.)
 
-Assertions themsevles are not generally used in creating tests or
-behavior specifications. Rather they are used to create additonal
+Assertions themselves are not generally used in creating tests or
+behavior specifications. Rather they are used to create additional
 types of assertion methods.
 
 As mentioned above the +Assertor+ class is a type of Higher-Order

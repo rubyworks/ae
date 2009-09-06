@@ -142,7 +142,7 @@ in the document to verify assertion failures.
 
 While testing or specifying the internal state of an object is
 generally considered poor form, there are times when it is 
-necessay. Assert combined with +instance_eval+ makes it easy too.
+necessary. Assert combined with +instance_eval+ makes it easy too.
 
   class X
     attr :a

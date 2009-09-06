@@ -1,6 +1,6 @@
 = Subjunctives
 
-Okay. I can hear the BDDers rumbling, "where's the should?"
+Okay. I can hear the BDDers rumbling, "where's the *should?*"
 AE has nothing against "should", but there are different
 approaches for utilizing should nomenclature in specifications,
 and AE wants to be open to these techniques. One of which
@@ -14,15 +14,15 @@ To load this library use:
 
   require 'ae/subjunctive'
 
-Then all that is required it to define your subjunctive method for all
+Then all that is required it to define a subjunctive method for all
 objects. For example:
 
   def will(*args, &block)
     Assertor.new(self, :backtrace=>caller).be(*args,&block)
   end
 
-It's that easy. Because of their popularity AE provides two such terms,
-+should+ and +must+ as optional add-ons.
+It's that easy. Because of their commonality AE provides two such terms,
++should+ and +must+ as optional add-ons out-of-the-box.
 
   require 'ae/subjunctive/should'
   require 'ae/subjunctive/must'
@@ -31,7 +31,7 @@ We will use these two methods interchangeable for the rest of this
 demonstration, but to be clear they both work exactly the same way,
 and almost exactly like +assert+.
 
-Keep in mind, AE "conical" functionality does not entail subjunctive
+Keep in mind, AE "conical" functionality does not entail the subjunctive
 forms. These are simply options you can load via your <tt>test_helper.rb</tt>,
 or similar script, if you prefer these nomenclatures.
 
@@ -43,8 +43,8 @@ Like +assert+, +should+ and +must+ can be used as higher order functions.
   4.should == 4
   4.must   == 4
 
-With the antonym of <tt>should!</tt> (read "should not") or +shouldnt+, and for
-+must+, <tt>must!</tt> and +wont+.
+Antonyms provided for +should+ as <tt>should!</tt> (read "should not") and +shouldnt+.
+For +must+ +must+, they are <tt>must!</tt> and +wont+.
 
   4.should!  == 5
   4.shouldnt == 5
@@ -64,7 +64,7 @@ On occasions where the English readability of a specification is hindered,
 
 The +be+ method is the same as +assert+ with the single exception
 that it will compare a lone argument to the receiver using +equate?+,
-unlike +assert+ which simply checks to see that the argument evalutates
+unlike +assert+ which simply checks to see that the argument evaluates
 as true.
 
   10.should.be 10
@@ -78,9 +78,9 @@ as true.
 
 == Indefinite Articles
 
-Addtional English forms are +a+ and +an+, equivalent to +be+ except
-that they use <tt>case?</tt> instead of <tt>equate?</tt> when acting
-on a single argument.
+Additional English forms are +a+ and +an+, equivalent to +be+ except
+that they use <tt>case?</tt> (same as <tt>#===</tt>) instead of
+<tt>equate?</tt> when acting on a single argument.
 
   "hi".must.be.a String
 
@@ -88,7 +88,7 @@ on a single argument.
     /x/.must.be.a /x/
   end
 
-Otherwise they are interchangeble.
+Otherwise they are interchangeable.
 
   "hi".must.be.an.instance_of?(String)
 
@@ -97,6 +97,4 @@ The indefinite articles work well when a noun follows as an arguments.
   palindrome = lambda{ |x| x == x.reverse }
 
   "abracarba".must.be.a palindrome
-
-QED.
 

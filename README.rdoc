@@ -5,7 +5,7 @@
 
 == DESCRIPTION
 
-Assertions Expressive (A.E.) is an assertions framework
+Assertive Expressive (A.E.) is an assertions framework
 intended for reuse by any TDD, BDD or similar system.
 
 
@@ -14,7 +14,7 @@ intended for reuse by any TDD, BDD or similar system.
 * Clear, simple and concise syntax.
 * Uses higher-order functions and fluid notation.
 * Reusable core extensions ease assertion construction.
-* Core extensions are stable and standardized via Ruby Facets.
+* Core extensions are standardized around Ruby Facets.
 * Facets is an optional dependency; extensions are built-in.
 * Easily extensible allowing for alternate notations.
 * Eats it's own dog food.
@@ -38,12 +38,11 @@ the result of which is likewise verified.
 
   assert{true}
 
-But these are simply legacy compatibility modes. The true power the
-AE's +assert+ method, lies in it's use without argument or block.
-In this case, it returns an +Assertor+ instance. An +Assertor+ is an
-Assertion Functor, or Higher-Order Function, which is a function
-that operates on another function. With it we can make assertions
-like:
+However, the true power the AE's +assert+ method, lies in it's use
+without argument or block. In this case, it returns an instance of
++Assertor+. An +Assertor+ is an <i>Assertions Functor</i> --also 
+called a Higher-Order Function, it is a function that operates on
+another function. With it, we can make assertions like:
 
   x.assert == y
 
@@ -53,8 +52,8 @@ like:
     ...
   end
 
-And so forth. In fact, any method can be used in conjunction
-with assert to make an assertion.
+And so forth. Any method can be used in conjunction with +assert+
+to make an assertion. Eg.
 
   class String
     def daffy?
@@ -64,7 +63,7 @@ with assert to make an assertion.
 
   "Daffy Duck".assert.daffy?
 
-You are encouraged to read the QEDocs to learn more.
+Please have a look at the QEDocs and RDocs to learn more.
 
 
 == HOW TO INSTALL
@@ -87,7 +86,7 @@ Local installation requires Setup.rb.
 
   gem install setup
 
-The Download the tarball package from GitHub (under pack/ directory)
+Then download the tarball package from GitHub (under pack/ directory)
 and do:
 
   $ tar -xvzf ae-1.0.0.tgz

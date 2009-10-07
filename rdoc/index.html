@@ -1,15 +1,788 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
-<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
-  <head>
-    <title>AE</title>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
-  </head>
-  <frameset border='1' bordercolor='gray' cols='20%, *' frameborder='1'>
-    <frameset rows='15%, 35%, 50%'>
-      <frame name='Files' src='fr_file_index.html' title='Files'></frame>
-      <frame name='Classes' src='fr_class_index.html'></frame>
-      <frame name='Methods' src='fr_method_index.html'></frame>
-    </frameset>
-    <frame name='docwin' src='files/README_rdoc.html'></frame>
-  </frameset>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>AE</title>
+
+  <link rel="SHORTCUT ICON" href="images/ruby.png">
+
+  <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/thickbox.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/highlight.js" type="text/javascript" charset="utf-8"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+    });
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="js/github.css" title="GitHub" />
+
+  
+</head>
+<body class="indexpage">
+
+  <div class="head">
+    <h1>
+      <img src="images/project.png" align="absmiddle">&nbsp;
+      <a href="index.html">AE</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li class="module"><a href="AE.html">AE</a></li>
+        
+          <li class="module"><a href="AE/Assert.html">AE::Assert</a></li>
+        
+          <li class="module"><a href="AE/Expect.html">AE::Expect</a></li>
+        
+          <li class="module"><a href="AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+        
+          <li class="module"><a href="AE/Must.html">AE::Must</a></li>
+        
+          <li class="module"><a href="AE/Should.html">AE::Should</a></li>
+        
+          <li class="module"><a href="AE/Subjunctive.html">AE::Subjunctive</a></li>
+        
+          <li class="class"><a href="Assertion.html">Assertion</a></li>
+        
+          <li class="class"><a href="Assertor.html">Assertor</a></li>
+        
+          <li class="class"><a href="Exception.html">Exception</a></li>
+        
+          <li class="module"><a href="Kernel.html">Kernel</a></li>
+        
+          <li class="class"><a href="Module.html">Module</a></li>
+        
+          <li class="class"><a href="Numeric.html">Numeric</a></li>
+        
+          <li class="class"><a href="Proc.html">Proc</a></li>
+        
+          <li class="class"><a href="Symbol.html">Symbol</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      <!-- METHODS -->
+      <div id="methodindex-section" class="section project-section">
+        <h3 class="section-header">Method Index</h3>
+        <ul>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertor</span>
+              <a href="Assertor.html#M000037">::new</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertion</span>
+              <a href="Assertion.html#M000061">::new</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Exception</span>
+              <a href="Exception.html#M000030">::raised?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000031">#__assert__</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertor</span>
+              <a href="Assertor.html#M000050">#__assert__</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertor</span>
+              <a href="Assertor.html#M000047">#__msg__</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#M000017">#a</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#M000020">#an</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertor</span>
+              <a href="Assertor.html#M000039">#assert</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Assert</span>
+              <a href="AE/Assert.html#M000002">#assert</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000032">#assert</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Assert</span>
+              <a href="AE/Assert.html#M000003">#assert!</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000033">#assert_block</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000034">#assert_equal</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000035">#assert_in_delta</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000036">#assert_instance_of</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000040">#assert_kind_of</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000041">#assert_match</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000042">#assert_nil</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000043">#assert_no_match</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000046">#assert_not_equal</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000048">#assert_not_nil</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000049">#assert_not_same</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000051">#assert_operator</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000052">#assert_raises</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000053">#assert_respond_to</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000054">#assert_same</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000055">#assert_send</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000057">#assert_throws</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#M000007">#be</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000016">#case?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Proc</span>
+              <a href="Proc.html#M000028">#change?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Numeric</span>
+              <a href="Numeric.html#M000023">#close?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#M000013">#does</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000015">#eq?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000019">#equate?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Expect</span>
+              <a href="AE/Expect.html#M000000">#expect</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Expect</span>
+              <a href="AE/Expect.html#M000001">#expect!</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Expect</span>
+              <a href="AE/Expect.html#M000006">#expected</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000010">#false?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000008">#flunk</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertor</span>
+              <a href="Assertor.html#M000044">#flunk</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#M000060">#flunk</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Expect</span>
+              <a href="AE/Expect.html#M000005">#forbid</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000011">#identical?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000014">#identical_to?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Numeric</span>
+              <a href="Numeric.html#M000022">#in_delta?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Numeric</span>
+              <a href="Numeric.html#M000024">#in_epsilon?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#M000012">#is</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Module</span>
+              <a href="Module.html#M000025">#is?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000018">#match?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertor</span>
+              <a href="Assertor.html#M000045">#method_missing</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Must</span>
+              <a href="AE/Must.html#M000056">#must</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Must</span>
+              <a href="AE/Must.html#M000058">#must!</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertor</span>
+              <a href="Assertor.html#M000038">#not</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Proc</span>
+              <a href="Proc.html#M000026">#raises?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Assert</span>
+              <a href="AE/Assert.html#M000004">#refute</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000021">#send?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Should</span>
+              <a href="AE/Should.html#M000062">#should</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Should</span>
+              <a href="AE/Should.html#M000064">#should!</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Should</span>
+              <a href="AE/Should.html#M000065">#shouldnt</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Symbol</span>
+              <a href="Symbol.html#M000029">#thrown?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Proc</span>
+              <a href="Proc.html#M000027">#throws?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Assertion</span>
+              <a href="Assertion.html#M000063">#to_s</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;Kernel</span>
+              <a href="Kernel.html#M000009">#true?</a>
+            </li>
+          
+            <li class="method" style="clear: both;">
+              <span style="float: right; font-size: 0.8em;">&nbsp;AE::Must</span>
+              <a href="AE/Must.html#M000059">#wont</a>
+            </li>
+          
+        </ul>
+      </div>
+
+      
+
+    </div>
+
+    <!-- ISSUE: Can't find RDoc::Generator::Redfish::VERSION -->
+    <div id="validator-badges">
+      Generated with <a href="http://github.com/proutils/rdazzle">Razzle Dazzle Redfish</a><br/><br/>
+      <a href="http://validator.w3.org/check/referer">[Validate]</a>
+    </div>
+  </div>
+
+<!--
+  
+  
+  <h2>Files</h2>
+  <ul>
+    
+      <li class="file"><a href="HISTORY.html">HISTORY</a></li>
+    
+      <li class="file"><a href="LICENSE.html">LICENSE</a></li>
+    
+      <li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
+    
+  </ul>
+  
+
+  <h2>Classes/Modules</h2>
+  <ul>
+    
+    <li class="module"><a href="AE.html">AE</a></li>
+    
+    <li class="module"><a href="AE/Assert.html">AE::Assert</a></li>
+    
+    <li class="module"><a href="AE/Expect.html">AE::Expect</a></li>
+    
+    <li class="module"><a href="AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+    
+    <li class="module"><a href="AE/Must.html">AE::Must</a></li>
+    
+    <li class="module"><a href="AE/Should.html">AE::Should</a></li>
+    
+    <li class="module"><a href="AE/Subjunctive.html">AE::Subjunctive</a></li>
+    
+    <li class="class"><a href="Assertion.html">Assertion</a></li>
+    
+    <li class="class"><a href="Assertor.html">Assertor</a></li>
+    
+    <li class="class"><a href="Exception.html">Exception</a></li>
+    
+    <li class="module"><a href="Kernel.html">Kernel</a></li>
+    
+    <li class="class"><a href="Module.html">Module</a></li>
+    
+    <li class="class"><a href="Numeric.html">Numeric</a></li>
+    
+    <li class="class"><a href="Proc.html">Proc</a></li>
+    
+    <li class="class"><a href="Symbol.html">Symbol</a></li>
+    
+  </ul>
+
+  <h2>Methods</h2>
+  <ul>
+    
+      <li><a href="Assertor.html#M000037">::new &mdash; Assertor</a></li>
+    
+      <li><a href="Assertion.html#M000061">::new &mdash; Assertion</a></li>
+    
+      <li><a href="Exception.html#M000030">::raised? &mdash; Exception</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000031">#__assert__ &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="Assertor.html#M000050">#__assert__ &mdash; Assertor</a></li>
+    
+      <li><a href="Assertor.html#M000047">#__msg__ &mdash; Assertor</a></li>
+    
+      <li><a href="AE/Subjunctive.html#M000017">#a &mdash; AE::Subjunctive</a></li>
+    
+      <li><a href="AE/Subjunctive.html#M000020">#an &mdash; AE::Subjunctive</a></li>
+    
+      <li><a href="Assertor.html#M000039">#assert &mdash; Assertor</a></li>
+    
+      <li><a href="AE/Assert.html#M000002">#assert &mdash; AE::Assert</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000032">#assert &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Assert.html#M000003">#assert! &mdash; AE::Assert</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000033">#assert_block &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000034">#assert_equal &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000035">#assert_in_delta &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000036">#assert_instance_of &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000040">#assert_kind_of &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000041">#assert_match &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000042">#assert_nil &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000043">#assert_no_match &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000046">#assert_not_equal &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000048">#assert_not_nil &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000049">#assert_not_same &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000051">#assert_operator &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000052">#assert_raises &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000053">#assert_respond_to &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000054">#assert_same &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000055">#assert_send &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000057">#assert_throws &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Subjunctive.html#M000007">#be &mdash; AE::Subjunctive</a></li>
+    
+      <li><a href="Kernel.html#M000016">#case? &mdash; Kernel</a></li>
+    
+      <li><a href="Proc.html#M000028">#change? &mdash; Proc</a></li>
+    
+      <li><a href="Numeric.html#M000023">#close? &mdash; Numeric</a></li>
+    
+      <li><a href="AE/Subjunctive.html#M000013">#does &mdash; AE::Subjunctive</a></li>
+    
+      <li><a href="Kernel.html#M000015">#eq? &mdash; Kernel</a></li>
+    
+      <li><a href="Kernel.html#M000019">#equate? &mdash; Kernel</a></li>
+    
+      <li><a href="AE/Expect.html#M000000">#expect &mdash; AE::Expect</a></li>
+    
+      <li><a href="AE/Expect.html#M000001">#expect! &mdash; AE::Expect</a></li>
+    
+      <li><a href="AE/Expect.html#M000006">#expected &mdash; AE::Expect</a></li>
+    
+      <li><a href="Kernel.html#M000010">#false? &mdash; Kernel</a></li>
+    
+      <li><a href="Kernel.html#M000008">#flunk &mdash; Kernel</a></li>
+    
+      <li><a href="Assertor.html#M000044">#flunk &mdash; Assertor</a></li>
+    
+      <li><a href="AE/Legacy/Assertions.html#M000060">#flunk &mdash; AE::Legacy::Assertions</a></li>
+    
+      <li><a href="AE/Expect.html#M000005">#forbid &mdash; AE::Expect</a></li>
+    
+      <li><a href="Kernel.html#M000011">#identical? &mdash; Kernel</a></li>
+    
+      <li><a href="Kernel.html#M000014">#identical_to? &mdash; Kernel</a></li>
+    
+      <li><a href="Numeric.html#M000022">#in_delta? &mdash; Numeric</a></li>
+    
+      <li><a href="Numeric.html#M000024">#in_epsilon? &mdash; Numeric</a></li>
+    
+      <li><a href="AE/Subjunctive.html#M000012">#is &mdash; AE::Subjunctive</a></li>
+    
+      <li><a href="Module.html#M000025">#is? &mdash; Module</a></li>
+    
+      <li><a href="Kernel.html#M000018">#match? &mdash; Kernel</a></li>
+    
+      <li><a href="Assertor.html#M000045">#method_missing &mdash; Assertor</a></li>
+    
+      <li><a href="AE/Must.html#M000056">#must &mdash; AE::Must</a></li>
+    
+      <li><a href="AE/Must.html#M000058">#must! &mdash; AE::Must</a></li>
+    
+      <li><a href="Assertor.html#M000038">#not &mdash; Assertor</a></li>
+    
+      <li><a href="Proc.html#M000026">#raises? &mdash; Proc</a></li>
+    
+      <li><a href="AE/Assert.html#M000004">#refute &mdash; AE::Assert</a></li>
+    
+      <li><a href="Kernel.html#M000021">#send? &mdash; Kernel</a></li>
+    
+      <li><a href="AE/Should.html#M000062">#should &mdash; AE::Should</a></li>
+    
+      <li><a href="AE/Should.html#M000064">#should! &mdash; AE::Should</a></li>
+    
+      <li><a href="AE/Should.html#M000065">#shouldnt &mdash; AE::Should</a></li>
+    
+      <li><a href="Symbol.html#M000029">#thrown? &mdash; Symbol</a></li>
+    
+      <li><a href="Proc.html#M000027">#throws? &mdash; Proc</a></li>
+    
+      <li><a href="Assertion.html#M000063">#to_s &mdash; Assertion</a></li>
+    
+      <li><a href="Kernel.html#M000009">#true? &mdash; Kernel</a></li>
+    
+      <li><a href="AE/Must.html#M000059">#wont &mdash; AE::Must</a></li>
+    
+  </ul>
+-->
+
+  
+  <div id="documentation">
+    <h1>A.E. &#8212; Assertive Expressive</h1>
+<ul>
+<li><a href="http://proutils.rubyforge.org/ae/">proutils.rubyforge.org/ae/</a>
+
+</li>
+</ul>
+<h2>DESCRIPTION</h2>
+<p>
+Assertive Expressive (A.E.) is an assertions framework intended for reuse
+by any TDD, BDD or similar system.
+</p>
+<h2>FEATURES/ISSUES</h2>
+<ul>
+<li>Clear, simple and concise syntax.
+
+</li>
+<li>Uses higher-order functions and fluid notation.
+
+</li>
+<li>Reusable core extensions ease assertion construction.
+
+</li>
+<li>Core extensions are standardized around Ruby Facets.
+
+</li>
+<li>Facets is an optional dependency; extensions are built-in.
+
+</li>
+<li>Easily extensible allowing for alternate notations.
+
+</li>
+<li>Eats it&#8217;s own dog food.
+
+</li>
+</ul>
+<h2>RELEASE NOTES</h2>
+<p>
+Please see <a href="HISTORY.html">HISTORY</a> file.
+</p>
+<h2>SYNOPSIS</h2>
+<p>
+<a href="AE.html">AE</a> defines the method <tt>assert</tt>. It&#8217;s is
+compatible with the method as defined by Test::Unit and minitest, which
+verifies truth of a single argument (and can accept an optional failure
+message).
+</p>
+<pre>
+  assert(true)
+</pre>
+<p>
+In addition AE&#8217;s <tt>assert</tt> method has been extended to accept a
+block, the result of which is likewise verified.
+</p>
+<pre>
+  assert{true}
+</pre>
+<p>
+However, the true power the AE&#8217;s <tt>assert</tt> method, lies in
+it&#8217;s use without argument or block. In this case, it returns an
+instance of <tt>Assertor</tt>. An <tt>Assertor</tt> is an <em>Assertions
+Functor</em> &#8212;also called a Higher-Order Function, it is a function
+that operates on another function. With it, we can make assertions like:
+</p>
+<pre>
+  x.assert == y
+
+  a.assert.include? e
+
+  StandardError.assert.raised? do
+    ...
+  end
+</pre>
+<p>
+And so forth. Any method can be used in conjunction with <tt>assert</tt> to
+make an assertion. Eg.
+</p>
+<pre>
+  class String
+    def daffy?
+      /daffy/i =~ self
+    end
+  end
+
+  &quot;Daffy Duck&quot;.assert.daffy?
+</pre>
+<p>
+Please have a look at the QEDocs and RDocs to learn more.
+</p>
+<h2>HOW TO INSTALL</h2>
+<h3>Gem Installs</h3>
+<p>
+<a href="AE.html">AE</a> releases it&#8217;s gems via Gemcutter. If you
+don&#8217;t have Gemcutter installed do:
+</p>
+<pre>
+  $ gem install gemcutter
+  $ gem tumble
+</pre>
+<p>
+Then you can install <a href="AE.html">AE</a> with:
+</p>
+<pre>
+  gem install ae
+</pre>
+<h3>Site Installs</h3>
+<p>
+Local installation requires Setup.rb.
+</p>
+<pre>
+  gem install setup
+</pre>
+<p>
+Then download the tarball package from GitHub (under pack/ directory) and
+do:
+</p>
+<pre>
+  $ tar -xvzf ae-1.0.0.tgz
+  $ cd ae-1.0.0.tgz
+  $ sudo setup.rb all
+</pre>
+<p>
+Windows users use &#8216;ruby setup.rb all&#8217;.
+</p>
+<h2>COPYRIGHTS &amp; <a href="LICENSE.html">LICENSE</a></h2>
+<p>
+Copyright &#169; 2008,2009 Thomas Sawyer
+</p>
+<p>
+Unless otherwise provided for by the originating author, this program is
+distributed under the terms of the GPL v3 license.
+</p>
+<p>
+See <a href="LICENSE.html">LICENSE</a> file for details.
+</p>
+
+  </div>
+  
+
+</body>
 </html>
+

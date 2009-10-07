@@ -5,6 +5,7 @@ for use in your tests or specifications. Inspired by Jay Fields'
 Expectations library, it provides convenient syntax for creating
 exception and case equality assertions.
 
+  require 'ae/expect'
 
 == Underlying Comparison
 

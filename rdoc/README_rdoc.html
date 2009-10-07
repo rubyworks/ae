@@ -106,7 +106,7 @@
   </div>
 
   <div id="documentation">
-    <h1>A.E. &#8212; Assertive Expressive</h1>
+    <h1>Assertive Expressive</h1>
 <ul>
 <li><a href="http://proutils.rubyforge.org/ae/">proutils.rubyforge.org/ae/</a>
 
@@ -114,8 +114,8 @@
 </ul>
 <h2>DESCRIPTION</h2>
 <p>
-Assertive Expressive (A.E.) is an assertions framework intended for reuse
-by any TDD, BDD or similar system.
+Assertive Expressive (<a href="AE.html">AE</a>) is an assertions framework
+intended for reuse by any TDD, BDD or similar system.
 </p>
 <h2>FEATURES/ISSUES</h2>
 <ul>
@@ -163,11 +163,11 @@ block, the result of which is likewise verified.
   assert{true}
 </pre>
 <p>
-However, the true power the AE&#8217;s <tt>assert</tt> method, lies in
-it&#8217;s use without argument or block. In this case, it returns an
-instance of <tt>Assertor</tt>. An <tt>Assertor</tt> is an <em>Assertions
-Functor</em> &#8212;also called a Higher-Order Function, it is a function
-that operates on another function. With it, we can make assertions like:
+But the real power the AE&#8217;s <tt>assert</tt> method lies in it&#8217;s
+use without argument or block. In that case it returns an instance of
+<tt>Assertor</tt>. An <tt>Assertor</tt> is an <em>Assertions Functor</em>,
+or <em>Higher-Order Function</em>. It is a function that operates on
+another function. With it, we can make assertions like so:
 </p>
 <pre>
   x.assert == y
@@ -208,14 +208,14 @@ don&#8217;t have Gemcutter installed do:
 Then you can install <a href="AE.html">AE</a> with:
 </p>
 <pre>
-  gem install ae
+  $ gem install ae
 </pre>
 <h3>Site Installs</h3>
 <p>
 Local installation requires Setup.rb.
 </p>
 <pre>
-  gem install setup
+  $ gem install setup
 </pre>
 <p>
 Then download the tarball package from GitHub (under pack/ directory) and

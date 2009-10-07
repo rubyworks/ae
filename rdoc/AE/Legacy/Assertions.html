@@ -66,7 +66,7 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li class="method"><a href="#M000031">#__assert__</a></li>
+          <li class="method"><a href="#M000030">#__assert__</a></li>
           
           <li class="method"><a href="#M000032">#assert</a></li>
           
@@ -78,33 +78,33 @@
           
           <li class="method"><a href="#M000036">#assert_instance_of</a></li>
           
-          <li class="method"><a href="#M000040">#assert_kind_of</a></li>
+          <li class="method"><a href="#M000037">#assert_kind_of</a></li>
           
-          <li class="method"><a href="#M000041">#assert_match</a></li>
+          <li class="method"><a href="#M000038">#assert_match</a></li>
           
-          <li class="method"><a href="#M000042">#assert_nil</a></li>
+          <li class="method"><a href="#M000039">#assert_nil</a></li>
           
-          <li class="method"><a href="#M000043">#assert_no_match</a></li>
+          <li class="method"><a href="#M000040">#assert_no_match</a></li>
           
-          <li class="method"><a href="#M000046">#assert_not_equal</a></li>
+          <li class="method"><a href="#M000041">#assert_not_equal</a></li>
           
-          <li class="method"><a href="#M000048">#assert_not_nil</a></li>
+          <li class="method"><a href="#M000043">#assert_not_nil</a></li>
           
-          <li class="method"><a href="#M000049">#assert_not_same</a></li>
+          <li class="method"><a href="#M000046">#assert_not_same</a></li>
           
-          <li class="method"><a href="#M000051">#assert_operator</a></li>
+          <li class="method"><a href="#M000047">#assert_operator</a></li>
           
-          <li class="method"><a href="#M000052">#assert_raises</a></li>
+          <li class="method"><a href="#M000048">#assert_raises</a></li>
           
-          <li class="method"><a href="#M000053">#assert_respond_to</a></li>
+          <li class="method"><a href="#M000052">#assert_respond_to</a></li>
           
           <li class="method"><a href="#M000054">#assert_same</a></li>
           
           <li class="method"><a href="#M000055">#assert_send</a></li>
           
-          <li class="method"><a href="#M000057">#assert_throws</a></li>
+          <li class="method"><a href="#M000056">#assert_throws</a></li>
           
-          <li class="method"><a href="#M000060">#flunk</a></li>
+          <li class="method"><a href="#M000057">#flunk</a></li>
           
         </ul>
       </div>
@@ -199,7 +199,7 @@
 <p>
 This module provides a compatibility layer for Test::Unit. This is an
 optional module and is intended for providing an easier transition from
-Test::Unit::TestCase to Quarry Specifications.
+Test::Unit to <a href="../../AE.html">AE</a> assertions.
 </p>
 <p>
 Note that two methods are not provided, <tt>assert_nothing_raised</tt>, and
@@ -245,7 +245,7 @@ The assertion upon which all other assertions are based.
           <div class="method-source-code"
             id="assert-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 31</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 30</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">test</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">test</span>
           <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;failed assertion (no message given)&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -294,7 +294,7 @@ end
           <div class="method-source-code"
             id="assert-block-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 46</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 45</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_block</span>(<span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>) <span class="ruby-comment cmt"># :yields:</span>
         <span class="ruby-identifier">test</span> = <span class="ruby-operator">!</span> <span class="ruby-keyword kw">yield</span>
         <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;assertion failed&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -338,7 +338,7 @@ expected and actual.
           <div class="method-source-code"
             id="assert-equal-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 60</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 59</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_equal</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">exp</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">act</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to be equal to #{exp.inspect}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -377,7 +377,7 @@ Passes if expected_float and actual_float are equal within delta tolerance.
           <div class="method-source-code"
             id="assert-in-delta-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 70</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 69</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_in_delta</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">delta</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">exp</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">act</span>.<span class="ruby-identifier">to_f</span>).<span class="ruby-identifier">abs</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">delta</span>.<span class="ruby-identifier">to_f</span>
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{exp} to be within #{delta} of #{act}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -416,7 +416,7 @@ Passes if object .instance_of? klass
           <div class="method-source-code"
             id="assert-instance-of-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 80</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 79</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_instance_of</span>(<span class="ruby-identifier">cls</span>, <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">cls</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">obj</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj} to be a #{cls}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -431,7 +431,7 @@ Passes if object .instance_of? klass
 
     
       <div id="assert-kind-of-method" class="method-detail ">
-        <a name="M000040"></a>
+        <a name="M000037"></a>
 
         <div class="method-heading">
         
@@ -455,7 +455,7 @@ Passes if object .kind_of? klass
           <div class="method-source-code"
             id="assert-kind-of-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 90</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 89</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_kind_of</span>(<span class="ruby-identifier">cls</span>, <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-identifier">cls</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj.inspect} to be a kind of #{cls}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -470,7 +470,7 @@ Passes if object .kind_of? klass
 
     
       <div id="assert-match-method" class="method-detail ">
-        <a name="M000041"></a>
+        <a name="M000038"></a>
 
         <div class="method-heading">
         
@@ -494,7 +494,7 @@ Passes if string =~ pattern.
           <div class="method-source-code"
             id="assert-match-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 100</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 99</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_match</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">act</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">exp</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to match #{exp.inspect}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -509,7 +509,7 @@ Passes if string =~ pattern.
 
     
       <div id="assert-nil-method" class="method-detail ">
-        <a name="M000042"></a>
+        <a name="M000039"></a>
 
         <div class="method-heading">
         
@@ -533,7 +533,7 @@ Passes if object is nil.
           <div class="method-source-code"
             id="assert-nil-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 110</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 109</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_nil</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">nil?</span>
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj.inspect} to be nil&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -548,7 +548,7 @@ Passes if object is nil.
 
     
       <div id="assert-no-match-method" class="method-detail ">
-        <a name="M000043"></a>
+        <a name="M000040"></a>
 
         <div class="method-heading">
         
@@ -572,7 +572,7 @@ Passes if regexp !~ string
           <div class="method-source-code"
             id="assert-no-match-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 120</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 119</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_no_match</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">act</span> <span class="ruby-operator">!~</span> <span class="ruby-identifier">exp</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to match #{exp.inspect}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -587,7 +587,7 @@ Passes if regexp !~ string
 
     
       <div id="assert-not-equal-method" class="method-detail ">
-        <a name="M000046"></a>
+        <a name="M000041"></a>
 
         <div class="method-heading">
         
@@ -611,7 +611,7 @@ Passes if expected != actual
           <div class="method-source-code"
             id="assert-not-equal-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 130</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 129</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_not_equal</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">exp</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">act</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to not be equal to #{exp.inspect}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -626,7 +626,7 @@ Passes if expected != actual
 
     
       <div id="assert-not-nil-method" class="method-detail ">
-        <a name="M000048"></a>
+        <a name="M000043"></a>
 
         <div class="method-heading">
         
@@ -650,7 +650,7 @@ Passes if ! object .nil?
           <div class="method-source-code"
             id="assert-not-nil-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 140</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 139</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_not_nil</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = <span class="ruby-operator">!</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">nil?</span>
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj.inspect} to not be nil&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -665,7 +665,7 @@ Passes if ! object .nil?
 
     
       <div id="assert-not-same-method" class="method-detail ">
-        <a name="M000049"></a>
+        <a name="M000046"></a>
 
         <div class="method-heading">
         
@@ -689,7 +689,7 @@ Passes if ! actual .equal? expected
           <div class="method-source-code"
             id="assert-not-same-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 150</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 149</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_not_same</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">test</span> = <span class="ruby-operator">!</span> <span class="ruby-identifier">exp</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">act</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to not be the same as #{exp.inspect}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -704,7 +704,7 @@ Passes if ! actual .equal? expected
 
     
       <div id="assert-operator-method" class="method-detail ">
-        <a name="M000051"></a>
+        <a name="M000047"></a>
 
         <div class="method-heading">
         
@@ -731,7 +731,7 @@ Passes if object1.send(operator, object2) is true.
           <div class="method-source-code"
             id="assert-operator-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 162</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 161</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_operator</span>(<span class="ruby-identifier">o1</span>, <span class="ruby-identifier">op</span>, <span class="ruby-identifier">o2</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-value str">&quot;&quot;</span>)
         <span class="ruby-identifier">test</span> = <span class="ruby-identifier">o1</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">op</span>, <span class="ruby-identifier">o2</span>)
         <span class="ruby-identifier">msg</span> = <span class="ruby-node">&quot;Expected #{o1}.#{op}(#{o2}) to be true&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
@@ -746,7 +746,7 @@ Passes if object1.send(operator, object2) is true.
 
     
       <div id="assert-raises-method" class="method-detail ">
-        <a name="M000052"></a>
+        <a name="M000048"></a>
 
         <div class="method-heading">
         
@@ -772,7 +772,7 @@ Passes if the block raises one of the given exceptions.
           <div class="method-source-code"
             id="assert-raises-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 174</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 173</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_raises</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">msg</span> = (<span class="ruby-constant">Module</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span>)
         <span class="ruby-keyword kw">begin</span>
@@ -884,7 +884,7 @@ Passes if the block raises one of the given exceptions.
 
     
       <div id="assert-respond-to-method" class="method-detail ">
-        <a name="M000053"></a>
+        <a name="M000052"></a>
 
         <div class="method-heading">
         
@@ -908,7 +908,7 @@ Passes if <tt>object</tt> respond_to? <tt>method</tt>.
           <div class="method-source-code"
             id="assert-respond-to-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 208</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 207</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_respond_to</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">meth</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj} (#{obj.class}) to respond to ##{meth}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
         <span class="ruby-comment cmt">#flip = (Symbol === obj) &amp;&amp; ! (Symbol === meth) # HACK for specs</span>
@@ -951,7 +951,7 @@ instance).
           <div class="method-source-code"
             id="assert-same-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 221</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 220</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_same</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to be the same as #{exp.inspect}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
         <span class="ruby-identifier">test</span> = <span class="ruby-identifier">exp</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">act</span>)
@@ -1005,7 +1005,7 @@ Example:
           <div class="method-source-code"
             id="assert-send-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 238</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 237</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_send</span>(<span class="ruby-identifier">send_array</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">r</span>, <span class="ruby-identifier">m</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">send_array</span>
         <span class="ruby-identifier">test</span> = <span class="ruby-identifier">r</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">m</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
@@ -1021,7 +1021,7 @@ Example:
 
     
       <div id="assert-throws-method" class="method-detail ">
-        <a name="M000057"></a>
+        <a name="M000056"></a>
 
         <div class="method-heading">
         
@@ -1047,7 +1047,7 @@ Passes if the block throws expected_symbol
           <div class="method-source-code"
             id="assert-throws-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 251</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 250</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_throws</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{sym} to have been thrown&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
         <span class="ruby-identifier">test</span> = <span class="ruby-keyword kw">true</span>
@@ -1072,7 +1072,7 @@ Passes if the block throws expected_symbol
 
     
       <div id="flunk-method" class="method-detail ">
-        <a name="M000060"></a>
+        <a name="M000057"></a>
 
         <div class="method-heading">
         
@@ -1096,7 +1096,7 @@ Flunk always fails.
           <div class="method-source-code"
             id="flunk-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 271</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 270</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">__assert__</span>(<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">msg</span>)
       <span class="ruby-keyword kw">end</span></pre>
@@ -1115,7 +1115,7 @@ Flunk always fails.
 
     
       <div id="-assert--method" class="method-detail ">
-        <a name="M000031"></a>
+        <a name="M000030"></a>
 
         <div class="method-heading">
         
@@ -1137,7 +1137,7 @@ for <a href="Assertions.html#M000032">assert</a> itself).
           <div class="method-source-code"
             id="-assert--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 20</span>
+<span class="ruby-comment cmt"># File lib/ae/legacy.rb, line 19</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
         <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;failed assertion (no message given)&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-identifier">caller</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">test</span>

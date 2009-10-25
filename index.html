@@ -2,45 +2,100 @@
 <HEAD>
   <TITLE>A.E.</TITLE>
   <link REL="SHORTCUT ICON" HREF="assets/img/square.png"/>
-  <style>
-    * { margin: 0; padding: 0 }
-    body {
-      padding: 0; 
-      margin: 0;
-      color: black;
-      font: 1em sans-serif;
-      text-align: center;
-      background: url(../img/fade_yellow_up.jpg) bottom repeat-y;
-    }
-    a  { text-decoration: none; font-size: 10pt; font-weight: bold; }
-    a:hover { text-decoration: underline; }
-    h1 { font-size: 72pt; margin: 20px; font-style: italic; }
-    h2 { font-size: 24pt; margin-bottom: 30px; }
-    ul { margin: 0 auto; list-style-type: none; width: 300px; }
-    li { float: left; padding: 10px; text-align: center; }
-    .doc { padding: 70px; text-align: center; }
-  </style>
+
+  <link href="assets/styles/reset.css"  rel="stylesheet" type="text/css" />
+  <link href="assets/styles/site.css"  rel="stylesheet" type="text/css" />
 </HEAD>
 <BODY>
 
-<div class="doc">
+<div id="nav">
+<div class="page">
+  <a href="qedoc/index.html">Overview</a> &middot;
+  <a href="rdoc/index.html">API Documents</a> &middot;
+  <a href="http://groups.google.com/group/proutils">Mailing List</a> &middot;
+  <a href="http://github.com/proutils/ae">Development</a> &middot;
+</div>
+</div>
 
-  <img src="assets/images/logo.jpg" style="height: 300px;"/><br/>
+<div id="header">
+<div class="page">
+  <img src="assets/images/logo.jpg" style="height: 230px;" align="right" />
+  <i>A</i>ssertive <i>E</i>xpressive
+</div>
+</div>
 
-  <h1>A E</h1>
+<div id="main">
+<div class="page">
 
-  <h2><i>A</i>ssertive <i>E</i>xpressive</h2>
+<p>AE defines the method +assert+. It's is compatible with the method
+as defined by Test::Unit and minitest, which verifies truth of a
+single argument (and can accept an optional failure message).</p>
 
-  <a href="rdoc/index.html">RDocs</a> &middot;
-  <a href="qedoc/index.html">QEDocs</a> &middot;
-  <a href="http://github.com/proutils/ae">GitHub</a> &middot;
-  <a href="http://groups.google.com/group/proutils">GoogleGroup</a>
+  <pre>
+  assert( true )
+  </pre>
 
-  <br/><br/>
+<p>In addition AE's +assert+ method has been extended to accept a block,
+the result of which is likewise verified.</p>
 
-  <a href="http://proutils.rubyforge.org/">Back to ProUtils</a>
+  <pre>
+  assert{ true }
+  </pre>
+
+<p>But the real power the AE's +assert+ method lies in it's use
+without argument or block. In that case it returns an instance of
++Assertor+. An +Assertor+ is an <i>Assertions Functor</i>, or 
+<i>Higher-Order Function</i>. It is a function that operates on
+another function. With it, we can make assertions like so:</p>
+
+  <pre>
+  x.assert == y
+
+  a.assert.include? e
+
+  StandardError.assert.raised? do
+    ...
+  end
+  </pre>
+
+<p>And so forth. Any method can be used in conjunction with +assert+
+to make an assertion. Eg.</p>
+
+  <pre>
+  class String
+    def daffy?
+      /daffy/i =~ self
+    end
+  end
+
+  "Daffy Duck".assert.daffy?
+  </pre>
+
+<p>Please have a look at the QEDocs and RDocs to learn more.</p>
 
 </div>
+</div>
+
+<div id="footer">
+  <script type="text/javascript"><!--
+  google_ad_client = "pub-1126154564663472";
+  /* PROUTILS 09-10-14 728x90 */
+  google_ad_slot = "0711173189";
+  google_ad_width = 728;
+  google_ad_height = 90;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+
+  <br/>
+
+  <div class="copyright">
+  Copyright (c) 2009 Thomas Sawyer <br/><br/>
+  </div>
+</dir>
+
 </BODY>
 </HTML>
 

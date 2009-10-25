@@ -1,24 +1,36 @@
 
-p { color: white; font-weight: bold; }
-a { color: white; }
-a:hover { text-decoration: underline; }
+a { color: #FF5599; }
 
-h1 { font-size: 100px; margin: 20px 0; color: #FF5599; }
+h1 { font-size: 64px; margin: 20px 0; color: #FF5599; }
 h2 { margin-top: 30px; }
 
- pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: bold; padding: 20px 10px 10px 10px; }
-code { color: #ecc; }
+pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: bold; padding: 20px 10px 10px 10px; }
 
+#nav { padding: 20px 20px 20px 0; text-align: center; color: pink; }
+#nav a { font-size: 90%; color: #FF5599; font-variant: small-caps; }
 
-#nav { padding: 20px 20px 20px 0; text-align: center; background: #FF5599; color: pink; }
-#nav a { font-size: 90%; }
+#header { height: 225px; padding: 20px 0;
+          border-top: 2px solid pink; border-bottom: 2px solid pink; 
+          font-size: 58px; font-weight: bold; color: #FF5599; text-align: left; }
 
-#header { height: 225px; text-align: left; border-top: 2px solid pink; border-bottom: 2px solid pink; padding: 20px 0; font-size: 72px; font-weight: bold; color: #FF5599; }
-
-#main { background: #FF5599; color: white; border-bottom: 2px solid pink; padding: 10px 0 30px 0; }
-#main h2 { color: pink; }
+#main { border-bottom: 2px solid pink; padding: 10px 0 30px 0; }
 
 #footer { padding: 20px; text-align: center; margin: 0 auto; width: 800px; }
 #footer .copyright { color: #FF5599; padding-top: 40px; font-family: monospace; font-weight: bold; font-size: 90%; line-height: 150%; }
 
+/* SCHEMES */
+
 .page { width: 800px; margin: 0 auto; }
+
+.hued {
+  background: pink;
+  color: #222;
+}
+.heud a    { color: #FF5599; }
+.heud code { color: #555; }
+.hued h1 { color: #FF5599; }
+.hued h2 { color: pink; }
+
+.expressive {
+  color: white;
+}

@@ -1,11 +1,11 @@
-= A.E. -- Assertive Expressive
+= Assertive Expressive
 
 * http://proutils.rubyforge.org/ae/
 
 
 == DESCRIPTION
 
-Assertive Expressive (A.E.) is an assertions framework
+Assertive Expressive (AE) is an assertions framework
 intended for reuse by any TDD, BDD or similar system.
 
 
@@ -38,11 +38,11 @@ the result of which is likewise verified.
 
   assert{true}
 
-However, the true power the AE's +assert+ method, lies in it's use
-without argument or block. In this case, it returns an instance of
-+Assertor+. An +Assertor+ is an <i>Assertions Functor</i> --also 
-called a Higher-Order Function, it is a function that operates on
-another function. With it, we can make assertions like:
+But the real power the AE's +assert+ method lies in it's use
+without argument or block. In that case it returns an instance of
++Assertor+. An +Assertor+ is an <i>Assertions Functor</i>, or 
+<i>Higher-Order Function</i>. It is a function that operates on
+another function. With it, we can make assertions like so:
 
   x.assert == y
 
@@ -78,13 +78,13 @@ installed do:
 
 Then you can install AE with:
 
-  gem install ae
+  $ gem install ae
 
 === Site Installs
 
 Local installation requires Setup.rb.
 
-  gem install setup
+  $ gem install setup
 
 Then download the tarball package from GitHub (under pack/ directory)
 and do:

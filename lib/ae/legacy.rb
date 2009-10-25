@@ -6,8 +6,7 @@ module AE
     #
     # This module provides a compatibility layer for Test::Unit.
     # This is an optional module and is intended for providing
-    # an easier transition from Test::Unit::TestCase to Quarry
-    # Specifications.
+    # an easier transition from Test::Unit to AE assertions.
     #
     # Note that two methods are not provided, +#assert_nothing_raised+,
     # and +#assert_nothing_thrown+.

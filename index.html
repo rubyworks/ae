@@ -1,52 +1,59 @@
 <HTML>
 <HEAD>
   <TITLE>A.E.</TITLE>
-  <link REL="SHORTCUT ICON" HREF="assets/img/square.png"/>
+  <link REL="SHORTCUT ICON" HREF="assets/images/logo2.jpg"/>
 
   <link href="assets/styles/reset.css"  rel="stylesheet" type="text/css" />
   <link href="assets/styles/site.css"  rel="stylesheet" type="text/css" />
 </HEAD>
 <BODY>
 
-<div id="nav">
+<div id="nav" class="hued">
 <div class="page">
   <a href="qedoc/index.html">Overview</a> &middot;
   <a href="rdoc/index.html">API Documents</a> &middot;
   <a href="http://groups.google.com/group/proutils">Mailing List</a> &middot;
   <a href="http://github.com/proutils/ae">Development</a> &middot;
+  <h1><b class="expressive">A</b>ssertive <b class="expressive">E</b>xpressive</h1>
 </div>
 </div>
 
 <div id="header">
 <div class="page">
   <img src="assets/images/logo.jpg" style="height: 230px;" align="right" />
-  <i>A</i>ssertive <i>E</i>xpressive
+  Put on the Pink Boxing Gloves
 </div>
 </div>
 
-<div id="main">
+<div id="main" class="hued">
 <div class="page">
 
-<p>AE defines the method +assert+. It's is compatible with the method
-as defined by Test::Unit and minitest, which verifies truth of a
-single argument (and can accept an optional failure message).</p>
+<a href="qedoc/index.html"></a>
+
+<p>AE is an assertions framework. It was designed to serve as a reusable domain language
+for other test frameworks, such as <a href="http://proutils.github.com/qed">QED</a> and
+<a href="http://cukes.info">Cucumber</a>.
+
+Essentially AE defines the method <code>assert</code>. The method is compatible
+with the same method as defined by Test::Unit and minitest which verifies truth
+of a single argument (and can accept an optional failure message).</p>
 
   <pre>
   assert( true )
   </pre>
 
-<p>In addition AE's +assert+ method has been extended to accept a block,
-the result of which is likewise verified.</p>
+<p>In addition AE's <code>assert</code> method has been extended to accept a
+block, the result of which is likewise verified.</p>
 
   <pre>
   assert{ true }
   </pre>
 
-<p>But the real power the AE's +assert+ method lies in it's use
-without argument or block. In that case it returns an instance of
-+Assertor+. An +Assertor+ is an <i>Assertions Functor</i>, or 
-<i>Higher-Order Function</i>. It is a function that operates on
-another function. With it, we can make assertions like so:</p>
+<p>But the real power the AE's <code>assert</code> method lies in it's use
+without an argument or a block. In that case it returns an instance of
+<code>Assertor</code>. An <code>Assertor</code> is an <i>Assertions Functor</i>,
+or  <i>Higher-Order Function</i> --a function that operates on another function.
+With it, we easily make assertions with a fluent notation.</p>
 
   <pre>
   x.assert == y
@@ -58,8 +65,8 @@ another function. With it, we can make assertions like so:</p>
   end
   </pre>
 
-<p>And so forth. Any method can be used in conjunction with +assert+
-to make an assertion. Eg.</p>
+<p>And so forth. Any method can be used in conjunction with <code>assert</code>
+to make an assertion.</p>
 
   <pre>
   class String
@@ -71,7 +78,11 @@ to make an assertion. Eg.</p>
   "Daffy Duck".assert.daffy?
   </pre>
 
-<p>Please have a look at the QEDocs and RDocs to learn more.</p>
+<p>In addition to <code>assert</code>, AE provides two optional nomenclatures,
+<code>expect</code> and <code>should</code> (or <code>must</code>).</p>
+
+<p>Please have a look at the QED generated <a href="qedoc/index.html">Overview</a>
+or the RDoc generated <a href="rdoc/index.html">API Documentation</a> to learn more.</p>
 
 </div>
 </div>

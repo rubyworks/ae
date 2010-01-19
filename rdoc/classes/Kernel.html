@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Module: Kernel</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/icon/module.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="module">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/icon/module.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Ae</a>&nbsp;
+      <a href="/">Kernel</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../files/lib/ae/core_ext_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/core_ext.rb">lib/ae/core_ext.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#M000017">#case?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000016">#eq?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000020">#equate?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000013">#false?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000008">#flunk</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000014">#identical?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000015">#identical_to?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000018">#match?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000021">#send?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000012">#true?</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../files/COPYING.html">COPYING</a></li>
+        
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../classes/AE.html">AE</a></li>
+        
+          <li class="module"><a href="../classes/AE/Assert.html">AE::Assert</a></li>
+        
+          <li class="module"><a href="../classes/AE/Expect.html">AE::Expect</a></li>
+        
+          <li class="module"><a href="../classes/AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+        
+          <li class="module"><a href="../classes/AE/Must.html">AE::Must</a></li>
+        
+          <li class="module"><a href="../classes/AE/Should.html">AE::Should</a></li>
+        
+          <li class="module"><a href="../classes/AE/Subjunctive.html">AE::Subjunctive</a></li>
+        
+          <li class="class"><a href="../classes/Assertion.html">Assertion</a></li>
+        
+          <li class="class"><a href="../classes/Assertor.html">Assertor</a></li>
+        
+          <li class="class"><a href="../classes/Exception.html">Exception</a></li>
+        
+          <li class="module"><a href="../classes/Kernel.html">Kernel</a></li>
+        
+          <li class="class"><a href="../classes/Module.html">Module</a></li>
+        
+          <li class="class"><a href="../classes/Numeric.html">Numeric</a></li>
+        
+          <li class="class"><a href="../classes/Proc.html">Proc</a></li>
+        
+          <li class="class"><a href="../classes/Symbol.html">Symbol</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.1
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>Kernel</h1>
+      
+
+      
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="case--method" class="method-detail ">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">case?</span><span
+            class="method-args">(value=NoArgument)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Word form of #===. Also can take a block.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="case--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 45</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">case?</span>(<span class="ruby-identifier">value</span>=<span class="ruby-constant">NoArgument</span>) <span class="ruby-comment cmt">#:yield:</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">===</span> <span class="ruby-keyword kw">yield</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="eq--method" class="method-detail ">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">eq?</span><span
+            class="method-args">(value=NoArgument)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Word form of #==. Also can take a block.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="eq--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 36</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eq?</span>(<span class="ruby-identifier">value</span>=<span class="ruby-constant">NoArgument</span>) <span class="ruby-comment cmt">#:yield:</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">yield</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="equate--method" class="method-detail ">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">equate?</span><span
+            class="method-args">(x)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Broad equality.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="equate--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 63</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">equate?</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">x</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">x</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">x</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="false--method" class="method-detail ">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">false?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Is literally false.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="false--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 23</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">false?</span>
+    <span class="ruby-constant">FalseClass</span> <span class="ruby-operator">===</span> <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="flunk-method" class="method-detail ">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">flunk</span><span
+            class="method-args">(reason=nil, backtrace=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Force an <a href="Assertion.html">Assertion</a> failure.
+</p>
+<p>
+TODO: Can we call this fail (overriding built-in)?
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="flunk-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 13</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">reason</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">backtrace</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">new</span>((<span class="ruby-identifier">reason</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'flunk'</span>), <span class="ruby-identifier">:backtrace=</span><span class="ruby-operator">&gt;</span>(<span class="ruby-identifier">backtrace</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caller</span>))
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="identical--method" class="method-detail ">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">identical?</span><span
+            class="method-args">(exp)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Are identical, eg. object_id&#8217;s are equal.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="identical--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 28</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">identical?</span>(<span class="ruby-identifier">exp</span>)
+    <span class="ruby-identifier">exp</span>.<span class="ruby-identifier">object_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">object_id</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Kernel.html#M000015">identical_to?</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="identical-to--method" class="method-detail method-alias">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">identical_to?</span><span
+            class="method-args">(exp)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="Kernel.html#M000014">identical?</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="match--method" class="method-detail ">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">match?</span><span
+            class="method-args">(value=NoArgument)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Word form for #=~. Also can take a block.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="match--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 54</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match?</span>(<span class="ruby-identifier">value</span>=<span class="ruby-constant">NoArgument</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">=~</span> <span class="ruby-keyword kw">yield</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="send--method" class="method-detail ">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">send?</span><span
+            class="method-args">(method, *args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Can a message be sent to the receiver successfully?
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="send--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 68</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send?</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">rescue</span>
+      <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="true--method" class="method-detail ">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">true?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Is literally true.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="true--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 18</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">true?</span>
+    <span class="ruby-constant">TrueClass</span> <span class="ruby-operator">===</span> <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

@@ -6,24 +6,27 @@ h2 { margin-top: 30px; }
 
 pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: bold; padding: 20px 10px 10px 10px; }
 
-#nav { padding: 20px 20px 20px 0; text-align: center; color: pink; }
-#nav a { font-size: 90%; color: #FF5599; font-variant: small-caps; }
+.nav { padding: 40px; text-align: left; color: pink; font-size: 32px; }
+.nav a { font-size: 90%; color: black; font-variant: small-caps; }
+.nav a:hover { color: #FF5599; text-decoration: none; }
 
-#header { height: 225px; padding: 20px 0;
-          border-top: 2px solid pink; border-bottom: 2px solid pink; 
-          font-size: 58px; font-weight: bold; color: #FF5599; text-align: left; }
+.header { height: 220px; padding: 0; font-weight: bold; color: #FF5599; text-align: left; font-size: 20px; }
+.header h1 { color: black; }
 
-#main { border-bottom: 2px solid pink; padding: 10px 0 30px 0; }
+.footer { padding: 60px 40px 0 0; text-align: left; }
 
-#footer { padding: 20px; text-align: center; margin: 0 auto; width: 800px; }
-#footer .copyright { color: #FF5599; padding-top: 40px; font-family: monospace; font-weight: bold; font-size: 90%; line-height: 150%; }
+.copyright {
+   color: #FF5599; padding: 10px 40px 10px 10px;
+   font-family: times; font-weight: bold; font-size: 90%;
+   line-height: 150%; text-align: center; 
+}
 
 /* SCHEMES */
 
-.page { width: 800px; margin: 0 auto; }
+.page { width: 820px; margin: 0 auto; }
 
 .hued {
-  background: pink;
+  background: #FF5599;
   color: #222;
 }
 .heud a    { color: #FF5599; }
@@ -32,5 +35,14 @@ pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: 
 .hued h2 { color: pink; }
 
 .expressive {
-  color: white;
+  color: #FF5599;
 }
+
+.oldtimes {
+  font-family: times;
+  font-size: 20px;
+  color: #FF5599;
+  padding: 40px;
+}
+
+.oldtimes p { line-height: 130%; }

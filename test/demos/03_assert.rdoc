@@ -115,6 +115,8 @@ And should it fail...
     end
   end
 
+== Case Equality
+
 For <i>case equality</i> (<tt>===</tt>), it is <tt>case?</tt>.
 
   Numeric.assert.case? do
@@ -125,6 +127,25 @@ For <i>case equality</i> (<tt>===</tt>), it is <tt>case?</tt>.
     Numeric.assert.case? do
       "3"
     end
+  end
+
+
+== Regular Expressions
+
+Regular Expressions can be used to make assertions in much the same way as equality.
+
+  /i/.assert =~ "i"
+
+  Assertion.assert.raised? do
+    /i/.assert =~ "g"
+  end
+
+Conversely the String class recognizes the #=~ method as well.
+
+  "i".assert =~ /i/
+
+  Assertion.assert.raised? do
+    "i".assert =~ /g/
   end
 
 
@@ -244,14 +265,14 @@ state of an object.
 
   x = X.new(4)
 
-  x.must do
+  x.assert do
     4 == @a
   end
 
 And should it fail...
 
   Assertion.assert.raised? do
-    x.must do
+    x.assert do
       5 == @a
     end
   end

@@ -32,7 +32,7 @@ class Assertor
   # Internal assert, provides all functionality accosicated
   # with external #assert Object method.
   #
-  # NOTE: I'm calling YAGNI on the extra arguments to the block.
+  # NOTE: I'm calling YAGNI on any extra arguments to the block.
   #
   def assert(*args, &block)
     return self if args.empty? && !block_given?
@@ -66,9 +66,16 @@ class Assertor
     fail Assertion.new(msg || @message, :backtrace=>@backtrace)
   end
 
+  # Ruby seems to have a quark in it's implementation whereby
+  # this must be defined explicitly, otherwise it somehow
+  # skips #method_missing.
+  def =~(match)
+    method_missing(:"=~", match)
+  end
+
   private
 
-  # Converts missing methods into an Assertion.
+  # Converts a missing methods into an Assertion.
   #
   def method_missing(sym, *a, &b)
     pass = @delegate.__send__(sym, *a, &b)

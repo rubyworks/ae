@@ -1,5 +1,39 @@
 = RELEASE HISTORY
 
+== 1.2 / 2010-01-27
+
+Changes:
+
+* 1 Major Enhancement
+
+    * Expect method is now loaded by default when requiring 'ae'.
+
+* 1 Bug Fix
+
+    * Fixed bug where #=~ did not work correctly against Assertor.
+
+
+== 1.1 / 2009-09-06
+
+This release provided two major imporvements. The first is
+the #expect method which is similar to #assert, but uses 
+case equality (#===) for comparison. And second, an optional
+library <tt>ae/legacy.rb<tt>, is has been added that provides
+backward compatibility with Test::Unit assertions, should it
+be needed.
+
+Changes:
+
+* 2 Major Enhancements
+
+    * New #expect method.
+    * Proved legacy assertion in optional ae/legacy.rb library.
+
+* 1 Minor Enhancement
+
+    * Added backtrace parameter to flunk calls.
+
+
 == 1.0.0 / 2009-09-03
 
 This is the initial release of AE.

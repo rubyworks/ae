@@ -1,0 +1,78 @@
+---
+box:
+  service: Box
+  types  : [ gem, tar ]  # zip
+  include: [ bin, doc, lib, meta, test, "[A-Z]*" ]
+  exclude: [ doc/rdoc, doc/ri ]
+
+dnote:
+  service  : DNote
+  loadpath : ~
+  labels   : ~
+  output   : ~
+  format   : ~
+  active   : true
+
+stats:
+  service  : Stats
+  title    : ~
+  loadpath : ~
+  exclude  : ~
+  output   : ~
+  active   : true
+
+vclog:
+  service  : VClog
+  format   : html   # xml, txt
+  layout   : rel    # gnu
+  typed    : false
+  output   : ~
+  active   : false
+
+rdoc:
+  service: rdoc
+  exclude: [Syckfile]
+
+ridoc:
+  service: RIDoc
+  include: ~
+  exclude: ~
+  active : true
+
+syntax:
+  service  : Syntax
+  loadpath : ~
+  exclude  : ~
+  active   : false
+
+testrb:
+  service  : testrb
+  tests    : ~
+  exclude  : ~
+  loadpath : ~
+  requires : ~
+  live     : false   
+  active   : false
+
+grancher:
+  service: Grancher
+  sitemap:
+    - site
+    - [doc/rdoc, rdoc]
+    - [doc/qedoc, qedoc]
+  active: true
+
+email:
+  service : Email
+  file    : ~
+  subject : ~
+  mailto  : ruby-talk@ruby-lang.org
+  from    : admin@tigerops.org
+  server  : <%= ENV['EMAIL_SERVER'] %>
+  port    : <%= ENV['EMAIL_PORT'] %>
+  account : <%= ENV['EMAIL_ACCOUNT'] %>
+  domain  : <%= ENV['EMAIL_DOMAIN'] %>
+  login   : <%= ENV['EMAIL_LOGIN'] %>
+  secure  : <%= ENV['EMAIL_SECURE'] %>
+  active  : true
+

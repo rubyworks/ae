@@ -94,37 +94,42 @@
           
             
             <li class="singleton">
-              <a href="#M000042">::new</a>
+              <a href="#M000046">::new</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000053">#__assert__</a>
+              <a href="#M000053">#=~</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000051">#__msg__</a>
+              <a href="#M000057">#__assert__</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000045">#assert</a>
+              <a href="#M000056">#__msg__</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000049">#flunk</a>
+              <a href="#M000048">#assert</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000050">#method_missing</a>
+              <a href="#M000052">#flunk</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000044">#not</a>
+              <a href="#M000055">#method_missing</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000047">#not</a>
             </li>
           
         </ul>
@@ -253,7 +258,7 @@ operation applied, rather then simply passing-off to an alternate reciever.
 
     
       <div id="new-method" class="method-detail ">
-        <a name="M000042"></a>
+        <a name="M000046"></a>
 
         <div class="method-heading">
         
@@ -295,8 +300,44 @@ New <a href="Assertor.html">Assertor</a>.
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="--method" class="method-detail ">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">=~</span><span
+            class="method-args">(match)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Ruby seems to have a quark in it&#8217;s implementation whereby this must
+be defined explicitly, otherwise it somehow skips <a
+href="Assertor.html#M000055">method_missing</a>.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/ae/assertor.rb, line 72</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">=~</span>(<span class="ruby-identifier">match</span>)
+    <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">:&quot;=~&quot;</span>, <span class="ruby-identifier">match</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
       <div id="assert-method" class="method-detail ">
-        <a name="M000045"></a>
+        <a name="M000048"></a>
 
         <div class="method-heading">
         
@@ -310,10 +351,10 @@ New <a href="Assertor.html">Assertor</a>.
           
           <p>
 Internal assert, provides all functionality accosicated with external <a
-href="Assertor.html#M000045">assert</a> Object method.
+href="Assertor.html#M000048">assert</a> Object method.
 </p>
 <p>
-NOTE: I&#8217;m calling YAGNI on the extra arguments to the block.
+NOTE: I&#8217;m calling YAGNI on any extra arguments to the block.
 </p>
           
 
@@ -343,7 +384,7 @@ NOTE: I&#8217;m calling YAGNI on the extra arguments to the block.
 
     
       <div id="flunk-method" class="method-detail ">
-        <a name="M000049"></a>
+        <a name="M000052"></a>
 
         <div class="method-heading">
         
@@ -375,7 +416,7 @@ NOTE: I&#8217;m calling YAGNI on the extra arguments to the block.
 
     
       <div id="not-method" class="method-detail ">
-        <a name="M000044"></a>
+        <a name="M000047"></a>
 
         <div class="method-heading">
         
@@ -414,7 +455,7 @@ NOTE: I&#8217;m calling YAGNI on the extra arguments to the block.
 
     
       <div id="-assert--method" class="method-detail ">
-        <a name="M000053"></a>
+        <a name="M000057"></a>
 
         <div class="method-heading">
         
@@ -435,7 +476,7 @@ Pure old simple assert.
           <div class="method-source-code"
             id="-assert--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/assertor.rb, line 94</span>
+<span class="ruby-comment cmt"># File lib/ae/assertor.rb, line 101</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">pass</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
     <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@negated</span> <span class="ruby-operator">^</span> <span class="ruby-identifier">pass</span>
       <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">msg</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@message</span>) <span class="ruby-comment cmt">#raise Assertion.new(msg, :backtrace=&gt;@backtrace)</span>
@@ -451,7 +492,7 @@ Pure old simple assert.
 
     
       <div id="-msg--method" class="method-detail ">
-        <a name="M000051"></a>
+        <a name="M000056"></a>
 
         <div class="method-heading">
         
@@ -472,7 +513,7 @@ Puts together a suitable error message.
           <div class="method-source-code"
             id="-msg--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/assertor.rb, line 84</span>
+<span class="ruby-comment cmt"># File lib/ae/assertor.rb, line 91</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__msg__</span>(<span class="ruby-identifier">m</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@negated</span>
       <span class="ruby-node">&quot;! #{@delegate.inspect} #{m} #{a.collect{|x| x.inspect}.join(',')}&quot;</span>
@@ -490,7 +531,7 @@ Puts together a suitable error message.
 
     
       <div id="method-missing-method" class="method-detail ">
-        <a name="M000050"></a>
+        <a name="M000055"></a>
 
         <div class="method-heading">
         
@@ -503,7 +544,7 @@ Puts together a suitable error message.
         <div class="method-description">
           
           <p>
-Converts missing methods into an <a href="Assertion.html">Assertion</a>.
+Converts a missing methods into an <a href="Assertion.html">Assertion</a>.
 </p>
           
 
@@ -511,7 +552,7 @@ Converts missing methods into an <a href="Assertion.html">Assertion</a>.
           <div class="method-source-code"
             id="method-missing-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/ae/assertor.rb, line 73</span>
+<span class="ruby-comment cmt"># File lib/ae/assertor.rb, line 80</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
     <span class="ruby-identifier">pass</span> = <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
     <span class="ruby-comment cmt">#if (@negated ? pass : !pass)</span>

@@ -4,7 +4,6 @@
 # hack
 NoArgument = Object.new
 
-
 module Kernel
   # Force an Assertion failure.
   #

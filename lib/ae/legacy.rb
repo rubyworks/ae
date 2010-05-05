@@ -171,7 +171,7 @@ module AE
       #   end
       #
       def assert_raises(*args)
-        if msg = (Module === args.last ? nil : args.pop)
+        msg = (Module === args.last ? nil : args.pop)
         begin
           yield
           msg = "Expected #{exp} to be raised" unless msg
@@ -275,11 +275,16 @@ module AE
 
   end #module Legacy
 
-  # This could be in Object, but since they will only be needed in
-  # the context of a, well, Context...
-  #
-  class Context #:nodoc:
-    include Legacy::Assertions
-  end
+#  # This could be in Object, but since they will only be needed in
+#  # the context of a, well, Context...
+#  #
+#  class Context #:nodoc:
+#    include Legacy::Assertions
+#  end
 
 end
+
+class ::Object #:nodoc:
+  include AE::Legacy::Assertions
+end
+

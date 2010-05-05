@@ -1,0 +1,25 @@
+= Assertion Counts
+
+AE tracks the number of assertions made and the number that failed to pass.
+We can reset the count using the +recount+ class method.
+
+  Assertion.recount
+
+For example if we one assertion fails and another fails:
+
+  assert(true)
+  assert(false)
+
+We will see that AE counted two assertions and one failure.
+
+  Assertion.count.assert == 2
+  Assertion.fails.assert == 1
+
+The above calls simply access the actual global variables.
+
+  $assertions.assert == 4
+  $failures.assert == 1
+
+Notice there are now two additional assertions.
+
+

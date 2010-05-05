@@ -1,6 +1,6 @@
 require 'ae/assertion'
 
-# = Assertor, the Assertion Functor
+# = Assertor (Assertion Functor)
 #
 # == What is a Functor?
 #
@@ -11,6 +11,10 @@ require 'ae/assertion'
 # rather then simply passing-off to an alternate reciever.
 #
 class Assertor
+
+  $assertions = 0
+  $failures   = 0
+
   #
   instance_methods.each{ |m| protected m unless /^__/ =~ m.to_s }
 
@@ -29,11 +33,10 @@ class Assertor
     block ? assert(msg, &block) : self
   end
 
-  # Internal assert, provides all functionality accosicated
+  # Internal assert, provides all functionality associated
   # with external #assert Object method.
   #
-  # NOTE: I'm calling YAGNI on any extra arguments to the block.
-  #
+  # TODO: I'm calling YAGNI on any extra arguments to the block.
   def assert(*args, &block)
     return self if args.empty? && !block_given?
     block = args.shift if !block_given? && Proc === args.first
@@ -63,6 +66,7 @@ class Assertor
 
   #
   def flunk(msg=nil)
+    $failures += 1
     fail Assertion.new(msg || @message, :backtrace=>@backtrace)
   end
 
@@ -79,11 +83,13 @@ class Assertor
   #
   def method_missing(sym, *a, &b)
     pass = @delegate.__send__(sym, *a, &b)
+    __assert__(pass, @message || __msg__(sym, *a, &b))
+    #Assertor.count += 1
     #if (@negated ? pass : !pass)
-    unless @negated ^ pass
-      msg = @message || __msg__(sym, *a, &b)
-      flunk(msg) #fail Assertion.new(msg, :backtrace=>@backtrace)
-    end
+    #unless @negated ^ pass
+    #  msg = @message || __msg__(sym, *a, &b)
+    #  flunk(msg) #fail Assertion.new(msg, :backtrace=>@backtrace)
+    #end
   end
 
   # Puts together a suitable error message.
@@ -99,6 +105,7 @@ class Assertor
 
   # Pure old simple assert.
   def __assert__(pass, msg=nil)
+    $assertions += 1
     unless @negated ^ pass
       flunk(msg || @message) #raise Assertion.new(msg, :backtrace=>@backtrace)
     end
@@ -113,13 +120,6 @@ class Assertor
   #end
   #
   #message(:==){ |*a| "Expected #{a[0].inspect} to be equal to #{a[1].inspect}" }
-
-  #
-  #module Subjunctive
-  #  def be(*a, &b); is(*a, &b); end
-  #  def  a(*a, &b); is(*a, &b); end
-  #  def an(*a, &b); is(*a, &b); end
-  #end
 end
 
 # Copyright (c) 2008,2009 Thomas Sawyer

@@ -11,6 +11,14 @@ require 'ae/core_ext'
 #
 class Assertion < Exception
 
+  def self.recount
+    $assertions = 0
+    $failures   = 0
+  end
+
+  def self.count ; $assertions ; end
+  def self.fails ; $failures   ; end
+
   #
   def initialize(message=nil, opts={})
     backtrace = opts[:backtrace]

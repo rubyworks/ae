@@ -1,11 +1,11 @@
 --- 
 title  : AE
 summary: Assertive Expressive
-license: LGPLv3
 suite  : proutils
-contact: <proutils@googlegroups.com>
+contact: trans <transfire@gmail.com>
 created: 2008-08-17 09:00:06
-authors: Trans
+authors: Thomas Sawyer
+license: MIT
 
 description:
   Assertive Expressive is an assertions library intended for reuse
@@ -15,3 +15,4 @@ resources:
   homepage: http://proutils.github.com/ae
   repository: git://github.com/proutils/ae.git
 
+copyright: Copyright (c) 2008 Thomas Sawyer

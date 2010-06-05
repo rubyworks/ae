@@ -1,0 +1,17 @@
+--- 
+title  : AE
+summary: Assertive Expressive
+license: LGPLv3
+suite  : proutils
+contact: <proutils@googlegroups.com>
+created: 2008-08-17 09:00:06
+authors: Trans
+
+description:
+  Assertive Expressive is an assertions library intended for reuse
+  by any TDD, BDD or the like system.
+
+resources:
+  homepage: http://proutils.github.com/ae
+  repository: git://github.com/proutils/ae.git
+

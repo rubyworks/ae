@@ -26,6 +26,11 @@ module AE
       return Assertor.new(self, :backtrace=>caller).assert(*args, &block)
     end
 
+    #
+    def assert=(cmp)
+      return assert == cmp
+    end
+
     # Assert not an operational relationship.
     # Read it as "assert not".
     #

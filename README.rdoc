@@ -98,10 +98,10 @@ Windows users use 'ruby setup.rb all'.
 
 == COPYRIGHTS & LICENSE
 
-Copyright (c) 2008,2009 Thomas Sawyer
+Copyright (c) 2008 Thomas Sawyer
 
 Unless otherwise provided for by the originating author, this
-program is distributed under the terms of the LGPL v3 license.
+program is distributed under the terms of the MIT license.
 
-See COPYING file for details.
+See LICENSE file for details.
 

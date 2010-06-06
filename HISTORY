@@ -1,25 +1,35 @@
 = RELEASE HISTORY
 
-== 1.3 /
+== 1.2.1 / 2010-06-06
 
-* 1 Minor Enhancment
+Version 1.2.1 simply add one new feature --the ability to
+use 'object.assert = other' instead of 'object.assert == other'.
+This was added simply becuase I found I often made the mistake
+of a missing '=', and since #assert= has no definition, there
+was no reason not to have behave accordingly.
 
-    * Add `#assert=` method as a shortcut for `#assert ==`.
-
-== 1.2 / 2010-01-27
+Also note that I switched the license from LGPL to MIT.
+With regards to reusable libraries and I moving all my
+work, such that I am able, to MIT to maximize free usage.
 
 Changes:
 
-* 1 Major Enhancement
-
-    * Expect method is now loaded by default when requiring 'ae'.
-
-* 1 Bug Fix
-
-    * Fixed bug where #=~ did not work correctly against Assertor.
+* Add `#assert=` method as a shortcut for `#assert ==`.
+* Now distributed under MIT license.
 
 
-== 1.1 / 2009-09-06
+== 1.2.0 / 2010-01-27
+
+This release fixes '=~' assertions and now requires the
+ae/expect library by default.
+
+Changes:
+
+* Expect method is now loaded by default when requiring 'ae'.
+* Fixed bug where #=~ did not work correctly against Assertor.
+
+
+== 1.1.0 / 2009-09-06
 
 This release provided two major imporvements. The first is
 the #expect method which is similar to #assert, but uses 
@@ -30,14 +40,9 @@ be needed.
 
 Changes:
 
-* 2 Major Enhancements
-
-    * New #expect method.
-    * Proved legacy assertion in optional ae/legacy.rb library.
-
-* 1 Minor Enhancement
-
-    * Added backtrace parameter to flunk calls.
+* New #expect method.
+* Proved legacy assertion in optional ae/legacy.rb library.
+* Added backtrace parameter to flunk calls.
 
 
 == 1.0.0 / 2009-09-03
@@ -46,7 +51,5 @@ This is the initial release of AE.
 
 Changes:
 
-* 1 Major Enhancment
-
-    * Happy Birthday!
+* Happy Birthday!
 

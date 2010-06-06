@@ -1,8 +1,8 @@
 = RELEASE HISTORY
 
-== 1.2.1 / 2010-06-06
+== 1.2.2 / 2010-06-06
 
-Version 1.2.1 simply add one new feature --the ability to
+Version 1.2.2 simply add one new feature --the ability to
 use 'object.assert = other' instead of 'object.assert == other'.
 This was added simply becuase I found I often made the mistake
 of a missing '=', and since #assert= has no definition, there

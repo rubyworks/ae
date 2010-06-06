@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: Numeric</title>
+
+  
+    <link rel="SHORTCUT ICON" href="./assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="./assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="./assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="./assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="./assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="./index.html">AE</a>&nbsp;
+      <a href="/">Numeric</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="./lib/ae/core_ext_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/core_ext.rb">lib/ae/core_ext.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <!-- why was this class="link" ? -->
+          <li class="class"><a href="Object.html">Object</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#method-i-close%3F">#close?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-in_delta%3F">#in_delta?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-in_epsilon%3F">#in_epsilon?</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="./HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="./PROFILE.html">PROFILE</a></li>
+        
+          <li class="file"><a href="./LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="./VERSION.html">VERSION</a></li>
+        
+          <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="./REQUIRE.html">REQUIRE</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="./AE.html">AE</a></li>
+        
+          <li class="module"><a href="./AE/Assert.html">AE::Assert</a></li>
+        
+          <li class="module"><a href="./AE/Expect.html">AE::Expect</a></li>
+        
+          <li class="module"><a href="./AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+        
+          <li class="module"><a href="./AE/Must.html">AE::Must</a></li>
+        
+          <li class="module"><a href="./AE/Should.html">AE::Should</a></li>
+        
+          <li class="module"><a href="./AE/Subjunctive.html">AE::Subjunctive</a></li>
+        
+          <li class="class"><a href="./Assertion.html">Assertion</a></li>
+        
+          <li class="class"><a href="./Assertor.html">Assertor</a></li>
+        
+          <li class="class"><a href="./Exception.html">Exception</a></li>
+        
+          <li class="module"><a href="./Kernel.html">Kernel</a></li>
+        
+          <li class="class"><a href="./Module.html">Module</a></li>
+        
+          <li class="class"><a href="./Numeric.html">Numeric</a></li>
+        
+          <li class="class"><a href="./Proc.html">Proc</a></li>
+        
+          <li class="class"><a href="./Symbol.html">Symbol</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="./assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.2.1
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>Numeric</h1>
+      
+
+      
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="close--method" class="method-detail method-alias">
+        <a name="method-i-close%3F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">close?</span><span
+            class="method-args">(orig, delta=0.001)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for #.
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="in-delta--method" class="method-detail ">
+        <a name="method-i-in_delta%3F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">in_delta?</span><span
+            class="method-args">(orig, delta=0.001)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Is self and given number within delta tolerance.
+</p>
+<pre>
+  0.05.in_delta?(50000.0 / 10**6, 0.00001)</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="in-delta--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 110</span>
+110:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">in_delta?</span>(<span class="ruby-identifier">orig</span>, <span class="ruby-identifier">delta</span>=<span class="ruby-value">0.001</span>)
+111:     <span class="ruby-comment cmt">#(num.to_f - to_f).abs &lt;= delta.to_f</span>
+112:     <span class="ruby-identifier">delta</span> <span class="ruby-operator">&gt;=</span> (<span class="ruby-identifier">orig</span> <span class="ruby-operator">-</span> <span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">abs</span>
+113:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Numeric.html#method-i-close%3F">close?</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="in-epsilon--method" class="method-detail ">
+        <a name="method-i-in_epsilon%3F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">in_epsilon?</span><span
+            class="method-args">(orig, epsilon=0.001)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Verify epsilon tolerance.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="in-epsilon--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ae/core_ext.rb, line 119</span>
+119:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">in_epsilon?</span>(<span class="ruby-identifier">orig</span>, <span class="ruby-identifier">epsilon</span>=<span class="ruby-value">0.001</span>)
+120:     <span class="ruby-identifier">in_delta?</span>(<span class="ruby-identifier">orig</span>, [<span class="ruby-identifier">orig</span>, <span class="ruby-keyword kw">self</span>].<span class="ruby-identifier">min</span> * <span class="ruby-identifier">epsilon</span>)
+121:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

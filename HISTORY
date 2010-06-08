@@ -1,5 +1,10 @@
 = RELEASE HISTORY
 
+== 1.2.3 / 2010-06-07
+
+This release is a quick fix, which adds a missing `require 'yaml'`.
+
+
 == 1.2.2 / 2010-06-06
 
 Version 1.2.2 simply add one new feature --the ability to

@@ -21,8 +21,9 @@ stats:
   active   : true
 
 rdoc:
-  service: rdoc
-  exclude: [Syckfile]
+  service : rdoc
+  template: redfish
+  exclude : [Syckfile]
 
 ridoc:
   service: RIDoc

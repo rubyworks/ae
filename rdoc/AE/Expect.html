@@ -120,9 +120,9 @@
         
           <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
         
-          <li class="file"><a href="../VERSION.html">VERSION</a></li>
-        
           <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../PACKAGE.html">PACKAGE</a></li>
         
           <li class="file"><a href="../REQUIRE.html">REQUIRE</a></li>
         
@@ -271,34 +271,10 @@ Like # it can be used to designate an expectation via a <b>functor</b>.
           <div class="method-source-code"
             id="expect-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ae/expect.rb, line 43</span>
-43:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expect</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-44:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>
-45:       <span class="ruby-identifier">block</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Proc</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
-46:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block</span>
-47:         <span class="ruby-identifier">exp</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
-48:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Exception</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">exp</span> <span class="ruby-operator">||</span> (<span class="ruby-constant">Class</span><span class="ruby-operator">===</span><span class="ruby-identifier">exp</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">exp</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-constant">Exception</span>))
-49:           <span class="ruby-keyword kw">begin</span>
-50:             <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>
-51:             <span class="ruby-identifier">pass</span> = <span class="ruby-keyword kw">false</span>
-52:             <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;#{exp} not raised&quot;</span>
-53:           <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">exp</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">error</span>
-54:             <span class="ruby-identifier">pass</span> = <span class="ruby-keyword kw">true</span>
-55:           <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">error</span>
-56:             <span class="ruby-identifier">pass</span> = <span class="ruby-keyword kw">false</span>
-57:             <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;#{exp} expected but #{error.class} was raised&quot;</span>
-58:           <span class="ruby-keyword kw">end</span>
-59:         <span class="ruby-keyword kw">else</span>
-60:           <span class="ruby-identifier">res</span>  = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>
-61:           <span class="ruby-identifier">pass</span> = (<span class="ruby-identifier">exp</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">res</span>)
-62:           <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;#{exp} === #{res}&quot;</span>
-63:         <span class="ruby-keyword kw">end</span>
-64:       <span class="ruby-keyword kw">else</span>
-65:         <span class="ruby-identifier">pass</span> = (<span class="ruby-identifier">exp</span> <span class="ruby-operator">===</span> <span class="ruby-keyword kw">self</span>)
-66:         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;#{exp} === #{self}&quot;</span>
-67:       <span class="ruby-keyword kw">end</span>
-68:       <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-identifier">caller</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">pass</span>
-69:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ae/expect.rb, line 42</span>
+42:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expect</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+43:       <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">expect</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+44:     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
         </div>
@@ -313,7 +289,7 @@ Like # it can be used to designate an expectation via a <b>functor</b>.
         <div class="method-heading">
         
           <span class="method-name">expect!</span><span
-            class="method-args">(exp=NoArgument, &block)</span>
+            class="method-args">(*args, &block)</span>
           <span class="method-click-advice">click to toggle source</span>
         
         </div>
@@ -332,34 +308,10 @@ See <a href="Expect.html#method-i-expect">#</a>.
           <div class="method-source-code"
             id="expect--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ae/expect.rb, line 75</span>
- 75:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expect!</span>(<span class="ruby-identifier">exp</span>=<span class="ruby-constant">NoArgument</span>, &amp;<span class="ruby-identifier">block</span>)
- 76:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>
- 77:       <span class="ruby-identifier">block</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Proc</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
- 78:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block</span>
- 79:         <span class="ruby-identifier">exp</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
- 80:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Exception</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">exp</span> <span class="ruby-operator">||</span> (<span class="ruby-constant">Class</span><span class="ruby-operator">===</span><span class="ruby-identifier">exp</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">exp</span>.<span class="ruby-identifier">is?</span>(<span class="ruby-constant">Exception</span>))
- 81:           <span class="ruby-keyword kw">begin</span>
- 82:             <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>
- 83:             <span class="ruby-identifier">pass</span> = <span class="ruby-keyword kw">true</span>
- 84:           <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">exp</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">error</span>
- 85:             <span class="ruby-identifier">pass</span> = <span class="ruby-keyword kw">false</span>
- 86:             <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;#{exp} raised&quot;</span>
- 87:           <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">error</span>
- 88:             <span class="ruby-identifier">pass</span> = <span class="ruby-keyword kw">true</span>
- 89:             <span class="ruby-comment cmt">#msg  = &quot;#{exp} expected but #{error.class} was raised&quot;</span>
- 90:           <span class="ruby-keyword kw">end</span>
- 91:         <span class="ruby-keyword kw">else</span>
- 92:           <span class="ruby-identifier">res</span>  = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>
- 93:           <span class="ruby-identifier">pass</span> = <span class="ruby-operator">!</span>(<span class="ruby-identifier">exp</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">res</span>)
- 94:           <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;not #{exp} === #{res}&quot;</span>
- 95:         <span class="ruby-keyword kw">end</span>
- 96:       <span class="ruby-keyword kw">else</span>
- 97:         <span class="ruby-identifier">pass</span> = <span class="ruby-operator">!</span>(<span class="ruby-identifier">exp</span> <span class="ruby-operator">===</span> <span class="ruby-keyword kw">self</span>)
- 98:         <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;not #{exp} === #{self}&quot;</span>
- 99:       <span class="ruby-keyword kw">end</span>
-100:       <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-identifier">caller</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">pass</span>
-101:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ae/expect.rb, line 50</span>
+50:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expect!</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+51:       <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">not</span>.<span class="ruby-identifier">expect</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+52:     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
         </div>
@@ -399,10 +351,10 @@ the object of expectation.
           <div class="method-source-code"
             id="expected-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ae/expect.rb, line 113</span>
-113:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expected</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-114:       <span class="ruby-identifier">expect</span>(<span class="ruby-keyword kw">self</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-115:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ae/expect.rb, line 64</span>
+64:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expected</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+65:       <span class="ruby-identifier">expect</span>(<span class="ruby-keyword kw">self</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+66:     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
         </div>
@@ -417,7 +369,7 @@ the object of expectation.
         <div class="method-heading">
         
           <span class="method-name">forbid</span><span
-            class="method-args">(exp=NoArgument, &block)</span>
+            class="method-args">(*args, &block)</span>
           <span class="method-click-advice">click to toggle source</span>
         
         </div>

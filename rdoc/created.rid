@@ -1,20 +1,21 @@
-Tue, 08 Jun 2010 00:03:55 -0400
-lib/ae/subjunctive/must.rb	Fri, 25 Sep 2009 17:51:47 -0400
+Thu, 17 Jun 2010 12:48:42 -0400
+lib/ae/subjunctive/must.rb	Thu, 17 Jun 2010 12:27:54 -0400
 lib/ae/must.rb	Wed, 27 Jan 2010 08:28:53 -0500
 lib/ae/legacy.rb	Wed, 21 Apr 2010 22:53:02 -0400
 lib/ae/should.rb	Wed, 14 Oct 2009 23:53:31 -0400
 HISTORY	Tue, 08 Jun 2010 00:01:59 -0400
 PROFILE	Sat, 05 Jun 2010 15:06:39 -0400
 LICENSE	Sun, 06 Jun 2010 07:55:53 -0400
-lib/ae/version.yml	Tue, 08 Jun 2010 00:03:11 -0400
-lib/ae/assert.rb	Sun, 06 Jun 2010 10:27:26 -0400
-lib/ae.rb	Mon, 07 Jun 2010 22:15:24 -0400
-VERSION	Tue, 08 Jun 2010 00:03:11 -0400
+lib/ae/package.yml	Thu, 17 Jun 2010 12:29:57 -0400
+lib/ae/assert.rb	Thu, 17 Jun 2010 12:27:54 -0400
+lib/ae.rb	Thu, 17 Jun 2010 12:34:46 -0400
 README.rdoc	Sun, 06 Jun 2010 07:54:22 -0400
+PACKAGE	Thu, 17 Jun 2010 12:29:57 -0400
 REQUIRE	Sat, 05 Jun 2010 15:05:27 -0400
-lib/ae/expect.rb	Fri, 23 Apr 2010 09:51:15 -0400
-lib/ae/assertion.rb	Wed, 05 May 2010 12:28:20 -0400
-lib/ae/subjunctive/should.rb	Fri, 25 Sep 2009 17:51:47 -0400
-lib/ae/assertor.rb	Sat, 05 Jun 2010 15:00:12 -0400
-lib/ae/subjunctive.rb	Fri, 25 Sep 2009 17:51:47 -0400
+lib/ae/expect.rb	Thu, 17 Jun 2010 12:27:54 -0400
+lib/ae/assertion.rb	Thu, 17 Jun 2010 12:22:10 -0400
+lib/ae/subjunctive/should.rb	Thu, 17 Jun 2010 12:27:54 -0400
+lib/ae/assertor.rb	Thu, 17 Jun 2010 12:27:54 -0400
+lib/ae/profile.yml	Sat, 05 Jun 2010 15:06:39 -0400
+lib/ae/subjunctive.rb	Thu, 17 Jun 2010 12:27:54 -0400
 lib/ae/core_ext.rb	Wed, 05 May 2010 11:52:52 -0400

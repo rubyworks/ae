@@ -112,6 +112,18 @@
 
       <!-- Method Quickref -->
       
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#method-c-const_missing">::const_missing</a>
+            </li>
+          
+        </ul>
+      </div>
+      
 
       <!-- Included Modules -->
       
@@ -130,9 +142,9 @@
         
           <li class="file"><a href="./LICENSE.html">LICENSE</a></li>
         
-          <li class="file"><a href="./VERSION.html">VERSION</a></li>
-        
           <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="./PACKAGE.html">PACKAGE</a></li>
         
           <li class="file"><a href="./REQUIRE.html">REQUIRE</a></li>
         
@@ -217,6 +229,21 @@
       <h3 class="section-header">Constants</h3>
       <dl>
       
+        <dt><a name="DIRECTORY">DIRECTORY</a></dt>
+        
+        <dd class="description"></dd>
+        
+      
+        <dt><a name="PROFILE">PROFILE</a></dt>
+        
+        <dd class="description"></dd>
+        
+      
+        <dt><a name="PACKAGE">PACKAGE</a></dt>
+        
+        <dd class="description"></dd>
+        
+      
         <dt><a name="VERSION">VERSION</a></dt>
         
         <dd class="description"></dd>
@@ -231,6 +258,51 @@
 
     <!-- Methods -->
     
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="const-missing-method" class="method-detail ">
+        <a name="method-c-const_missing"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">const_missing</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="const-missing-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ae.rb, line 12</span>
+12:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+13:     <span class="ruby-identifier">key</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>
+14:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">PACKAGE</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+15:       <span class="ruby-constant">PACKAGE</span>[<span class="ruby-identifier">key</span>]
+16:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">PROFILE</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+17:       <span class="ruby-constant">PROFILE</span>[<span class="ruby-identifier">key</span>]
+18:     <span class="ruby-keyword kw">else</span>
+19:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">name</span>)
+20:     <span class="ruby-keyword kw">end</span>
+21:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
 
   </div>
 

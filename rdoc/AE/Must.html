@@ -115,9 +115,9 @@
         
           <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
         
-          <li class="file"><a href="../VERSION.html">VERSION</a></li>
-        
           <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../PACKAGE.html">PACKAGE</a></li>
         
           <li class="file"><a href="../REQUIRE.html">REQUIRE</a></li>
         
@@ -282,7 +282,7 @@ Designate a negated expectation via a <b>functor</b>. Read this as
 <pre>
     <span class="ruby-comment cmt"># File lib/ae/subjunctive/must.rb, line 30</span>
 30:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">must!</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-31:       <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">not</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+31:       <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">not</span>.<span class="ruby-identifier">be</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
 32:     <span class="ruby-keyword kw">end</span></pre>
           </div>
           

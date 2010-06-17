@@ -1,8 +1,28 @@
 = RELEASE HISTORY
 
+== 1.3.0 / 2010-06-17
+
+New release of AE adds support for RSpec-style matchers. This means
+it should be usable with Shoulda 3.0 and any other matchers library.
+This release also cleans up the underlying code, which is now
+extremely clean. Lastly a smal API change allows #asser to compare
+it's argument to the return of it's block using #==, just as #expect
+does using #===.
+
+Changes:
+
+* Add RSpec-style matchers support.
+* Move #expect code to Assertor.
+* #assert method can do equality camparison.
+
+
 == 1.2.3 / 2010-06-07
 
 This release is a quick fix, which adds a missing `require 'yaml'`.
+
+Changes:
+
+* Add missing require 'yaml'.
 
 
 == 1.2.2 / 2010-06-06

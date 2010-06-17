@@ -27,58 +27,101 @@ class Assertor
     @negated   = !!opts[:negated]
   end
 
+  # Negate the meaning of the assertion.
   #
-  def not(msg=nil, &block)
+  # TODO: Should this return a new Assertor instead of inplace negation?
+  def not(msg=nil)
     @negated = !@negated
-    block ? assert(msg, &block) : self
+    @message = msg if msg
+    self
   end
 
   # Internal assert, provides all functionality associated
-  # with external #assert Object method.
+  # with external #assert method. (See Assert#assert)
   #
-  # TODO: I'm calling YAGNI on any extra arguments to the block.
+  # NOTE: I'm calling YAGNI on using extra arguments to pass
+  # to the block. The interface is much nicer if a macro is
+  # created to handle any neccessry arguments. Eg.
+  #
+  #   assert something(parameter)
+  #
+  # instead of
+  #
+  #   assert something, parameter
+  #
   def assert(*args, &block)
     return self if args.empty? && !block_given?
 
     target = block || args.shift
 
-    if Proc===target || target.respond_to?(:to_proc)
-      block = target.to_proc
-      pass  = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
-      msg   = args.shift || @message || block.inspect
+    if Proc === target || target.respond_to?(:to_proc)
+      block  = target.to_proc
+      match  = args.shift
+      result = block.arity > 0 ? block.call(@delegate) : block.call
+      if match
+        pass = (match == result)
+        msg  = @message || "#{match.inspect} == #{result.inspect}"
+      else
+        pass = result
+        msg  = @message || block.inspect  # "#{result.inspect}"
+      end
     elsif target.respond_to?(:matches?)
-      pass = target.matches?(@delegate)
-      msg  = args.shift || @message || matcher_message(target) || target.inspect
+      pass   = target.matches?(@delegate)
+      msg    = @message || matcher_message(target) || target.inspect
     else
-      pass = target     # truthiness
-      msg  = args.shift # optional mesage for TestUnit compatiability
+      pass   = target     # truthiness
+      msg    = args.shift # optional mesage for TestUnit compatiability
     end
-
-    #block = args.shift if !block_given? && matcher?(args.first)
-    #if block
-    #  pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
-    #  msg = args.shift || @message || block.inspect
-    #else
-    #  pass = args.shift  # truthiness
-    #  msg  = args.shift
-    #end
 
     __assert__(pass, msg)
   end
 
+  # Internal expect, provides all functionality associated
+  # with external #expect method. (See Expect#expect)
   #
-  #def expect(*args, &block)
-  #  return self if args.empty? && !block_given?
-  #  block = args.shift if !block_given? && Proc === args.first
-  #  if block
-  #    pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
-  #    msg = args.shift || @message || block.inspect
-  #  else
-  #    pass = args.shift  # truthiness
-  #    msg  = args.shift
-  #  end
-  #  __assert__(pass, msg)
-  #end
+  #--
+  # TODO: Should we deprecate the receiver matches in favor of #expected ?
+  # In other words, should the <code>|| @delegate</code> be dropped?
+  #
+  # TODO: respond_to?(:exception) && match = exception if Exception === match
+  #++
+  def expect(*args, &block)
+    # same as #assert if no arguments of block given
+    return self if args.empty? && !block_given?
+
+    target = block || args.shift
+
+    if Proc === target || target.respond_to?(:to_proc)
+      block = target.to_proc
+      match = args.shift || @delegate
+      if Exception === match || (Class===match && match.ancestors.include?(Exception))
+        begin
+          block.arity > 0 ? block.call(@delegate) : block.call
+          pass = false
+          msg  = "#{match} not raised"
+        rescue match => error
+          pass = true
+          msg  = "#{match} raised"
+        rescue Exception => error
+          pass = false
+          msg  = "#{match} expected but #{error.class} was raised"
+        end
+      else
+        result = block.arity > 0 ? block.call(@delegte) : block.call
+        pass   = (match === result)
+        msg    = @message || "#{match.inspect} === #{result.inspect}"
+      end
+    elsif target.respond_to?(:matches?)
+      pass = target.matches?(@delegate)
+      msg  = @message || matcher_message(target) || target.inspect
+    else
+      pass = (target === @delegate)
+      msg  = @message || "#{target.inspect} === #{@delegate.inspect}"
+    end
+
+    #flunk(msg, caller) unless pass
+    __assert__(pass, msg)
+  end
 
   #
   def flunk(msg=nil)

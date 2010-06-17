@@ -1,11 +1,12 @@
 = Expect Method
 
-Expect is another optional assertion nomenclature available
-for use in your tests or specifications. Inspired by Jay Fields'
-Expectations library, it provides convenient syntax for creating
-exception and case equality assertions.
+Expect is another assertion nomenclature available for use in your
+tests or specifications. Inspired by Jay Fields' Expectations library,
+it provides convenient syntax for creating exception and case equality
+assertions.
 
   require 'ae/expect'
+
 
 == Underlying Comparison
 
@@ -67,11 +68,27 @@ We can use #expected to make the receiver the object of expectation.
   end
 
 
-== Function without Block
+== Without Block
 
 Without a block, the receiver is compared to the argument.
 
   x.expect String
+
+
+== Negative Forms
+
+Like #assert, #expect has a negated form called #expect!
+
+  expect! /x/ do
+    "o"
+  end
+
+The pure word form for those who do not like the clever use of the
+explimation mark is #forbid.
+
+  forbid /x/ do
+    "o"
+  end
 
 
 == Functor, or Higher Order Function
@@ -80,5 +97,9 @@ Like #assert, #expect can be used used as a *fluid* notation.
 
   10.expect == 10
 
-In which case it works just like #assert.
+In which case it works just like #assert, including negative forms.
+
+  10.expect! == 11
+  10.forbid  == 11
+
 

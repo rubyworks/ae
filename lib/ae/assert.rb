@@ -23,12 +23,12 @@ module AE
     #   assert{ 4==3 }
     #
     def assert(*args, &block)
-      return Assertor.new(self, :backtrace=>caller).assert(*args, &block)
+      Assertor.new(self, :backtrace=>caller).assert(*args, &block)
     end
 
     # Same as 'object.assert == other'.
     def assert=(cmp)
-      return Assertor.new(self, :backtrace=>caller).assert(*args, &block) == cmp
+      Assertor.new(self, :backtrace=>caller).assert(*args, &block) == cmp
     end
 
     # Assert not an operational relationship.
@@ -43,7 +43,7 @@ module AE
     # may be possible in Ruby 1.9.
     #
     def assert!(*args, &block)
-      return Assertor.new(self, :backtrace=>caller).not(*args, &block)
+      Assertor.new(self, :backtrace=>caller).not.assert(*args, &block)
     end
 
     # Alias for #assert!.

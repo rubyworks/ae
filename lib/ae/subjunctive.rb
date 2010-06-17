@@ -12,13 +12,6 @@ module AE
   #
   module Subjunctive
 
-    #
-    #def not(&block)
-    #  @negated = !@negated
-    #  return self if !block_given?
-    #  be(*args, &block)
-    #end
-
     # Like #assert, except if an argument if provided and no block,
     # uses #equate? to compare the argument to the receiver. This
     # allows for statements of the form:

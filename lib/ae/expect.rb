@@ -39,81 +39,16 @@ module AE
     #
     #   4.expect == 3
     #
-    #--
-    # TODO: Support matchers.
-    #
-    # TODO: respond_to?(:exception) && exp = exception if Exception === exp
-    #++
     def expect(*args, &block)
-      # same as assert if no arguments of block given
-      return Assertor.new(self, :backtrace=>caller) if args.empty? && !block
-
-      target = block || args.shift
-
-      if Proc === target || target.respond_to?(:to_proc)
-        block = target.to_proc
-        exp   = args.empty? ? self : args.shift
-        if Exception === exp || (Class===exp && exp.ancestors.include?(Exception))
-          begin
-            block.call
-            pass = false
-            msg  = "#{exp} not raised"
-          rescue exp => error
-            pass = true
-          rescue Exception => error
-            pass = false
-            msg  = "#{exp} expected but #{error.class} was raised"
-          end
-        else
-          res  = block.call
-          pass = (exp === res)
-          msg  = "#{exp} === #{res}"
-        end
-      elsif target.respond_to?(:matches?)
-        pass = target.matches?(@delegate)
-        msg  = matcher_message(target) || target.inspect
-      else
-        pass = (target === self)
-        msg  = "#{target} === #{self}"
-      end
-
-      flunk(msg, caller) unless pass
+      Assertor.new(self, :backtrace=>caller).expect(*args, &block)
     end
 
     # Designate a negated expectation. Read this as "expect not".
     #
     # See #expect.
     #
-    def expect!(exp=NoArgument, &block)
-      return Assertor.new(self, :backtrace=>caller) if args.empty? && !block
-
-      target = block || args.shift
-
-      if Proc === target || target.respond_to?(:to_proc)
-        block = target.to_proc
-        exp   = args.empty? ? self : args.shift
-        if Exception === exp || (Class===exp && exp.is?(Exception))
-          begin
-            block.call
-            pass = true
-          rescue exp => error
-            pass = false
-            msg  = "#{exp} raised"
-          rescue Exception => error
-            pass = true
-            #msg  = "#{exp} expected but #{error.class} was raised"
-          end
-        else
-          res  = block.call
-          pass = !(exp === res)
-          msg  = "not #{exp} === #{res}"
-        end
-      else
-        pass = !(target === self)
-        msg  = "not #{target} === #{self}"
-      end
-
-      flunk(msg, caller) unless pass
+    def expect!(*args, &block)
+      Assertor.new(self, :backtrace=>caller).not.expect(*args, &block)
     end
 
     # Alias for #expect! method.

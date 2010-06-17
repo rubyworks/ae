@@ -29,7 +29,7 @@ module AE
     #   4.should! == 4  #=> Assertion Error
     #
     def should!(*args, &block)
-      Assertor.new(self, :backtrace=>caller).not(*args, &block)
+      Assertor.new(self, :backtrace=>caller).not.be(*args, &block)
     end
 
     # Not quite the literally the counter-term to *should* (rather *shall*), but

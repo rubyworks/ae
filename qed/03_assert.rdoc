@@ -260,13 +260,8 @@ Or minimum range.
 
 == Verifying Object State
 
-NOTE: <i>This functionality is not currently supported, but is being
-considered for a future version.</i>
-
-If no block parameter is designated and the receiver differs from +self+
-in scope of the given block, then the block is evaluated in the scope of
-the receiver via +instance_eval+. This can be also be used to verify the
-state of an object.
+Not surprisingly if underlying object state needs to be verified, +instance_eval+
+can be used in conjunction with +assert+.
 
   class X
     attr :a
@@ -275,20 +270,20 @@ state of an object.
 
   x = X.new(4)
 
-  x.assert do
+  x.assert.instance_eval do
     4 == @a
   end
 
 And should it fail
 
   Assertion.assert.raised? do
-    x.assert do
+    x.assert.instance_eval do
       5 == @a
     end
   end
 
-For some this might be considered poor form, i.e. to test underlying
-implementation. You will get no argument here. It should be used
-thoughtfully, but I would not bet against there being occasions
-when such validations might be handy.
+For some testing underlying implementation might be considered poor
+form. You will get no argument here. It should be used thoughtfully,
+but I would not bet against there being occasions when such validations
+might be handy.
 

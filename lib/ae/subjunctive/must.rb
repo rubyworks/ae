@@ -28,7 +28,7 @@ module AE
     #   4.must! == 4  #=> Assertion Error
     #
     def must!(*args, &block)
-      Assertor.new(self, :backtrace=>caller).not(*args, &block)
+      Assertor.new(self, :backtrace=>caller).not.be(*args, &block)
     end
 
     # Perhaps not literally the counter-term to *must* (rather *will*),

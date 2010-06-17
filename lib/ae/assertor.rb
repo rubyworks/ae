@@ -39,14 +39,30 @@ class Assertor
   # TODO: I'm calling YAGNI on any extra arguments to the block.
   def assert(*args, &block)
     return self if args.empty? && !block_given?
-    block = args.shift if !block_given? && Proc === args.first
-    if block
-      pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
-      msg = args.shift || @message || block.inspect
+
+    target = block || args.shift
+
+    if Proc===target || target.respond_to?(:to_proc)
+      block = target.to_proc
+      pass  = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
+      msg   = args.shift || @message || block.inspect
+    elsif target.respond_to?(:matches?)
+      pass = target.matches?(@delegate)
+      msg  = args.shift || @message || matcher_message(target) || target.inspect
     else
-      pass = args.shift  # truthiness
-      msg  = args.shift
+      pass = target     # truthiness
+      msg  = args.shift # optional mesage for TestUnit compatiability
     end
+
+    #block = args.shift if !block_given? && matcher?(args.first)
+    #if block
+    #  pass = block.arity > 0 ? block.call(@delegate) : block.call  #@delegate.instance_eval(&block)
+    #  msg = args.shift || @message || block.inspect
+    #else
+    #  pass = args.shift  # truthiness
+    #  msg  = args.shift
+    #end
+
     __assert__(pass, msg)
   end
 
@@ -110,6 +126,19 @@ class Assertor
       flunk(msg || @message) #raise Assertion.new(msg, :backtrace=>@backtrace)
     end
     @negated ? !pass : !!pass
+  end
+
+  #
+  def matcher_message(matcher)
+    if @negated
+      if matcher.respond_to?(:negative_failure_message)
+        return matcher.failure_message
+      end
+    end
+    if matcher.respond_to?(:failure_message)
+      return matcher.failure_message
+    end
+    false
   end
 
   # TODO: Ultimately better messages might be nice.

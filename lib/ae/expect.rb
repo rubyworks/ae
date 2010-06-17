@@ -39,12 +39,20 @@ module AE
     #
     #   4.expect == 3
     #
+    #--
+    # TODO: Support matchers.
     #
+    # TODO: respond_to?(:exception) && exp = exception if Exception === exp
+    #++
     def expect(*args, &block)
+      # same as assert if no arguments of block given
       return Assertor.new(self, :backtrace=>caller) if args.empty? && !block
-      block = args.shift if !block_given? && Proc === args.first
-      if block
-        exp = args.empty? ? self : args.shift
+
+      target = block || args.shift
+
+      if Proc === target || target.respond_to?(:to_proc)
+        block = target.to_proc
+        exp   = args.empty? ? self : args.shift
         if Exception === exp || (Class===exp && exp.ancestors.include?(Exception))
           begin
             block.call
@@ -61,10 +69,14 @@ module AE
           pass = (exp === res)
           msg  = "#{exp} === #{res}"
         end
+      elsif target.respond_to?(:matches?)
+        pass = target.matches?(@delegate)
+        msg  = matcher_message(target) || target.inspect
       else
-        pass = (exp === self)
-        msg  = "#{exp} === #{self}"
+        pass = (target === self)
+        msg  = "#{target} === #{self}"
       end
+
       flunk(msg, caller) unless pass
     end
 
@@ -74,9 +86,12 @@ module AE
     #
     def expect!(exp=NoArgument, &block)
       return Assertor.new(self, :backtrace=>caller) if args.empty? && !block
-      block = args.shift if !block_given? && Proc === args.first
-      if block
-        exp = args.empty? ? self : args.shift
+
+      target = block || args.shift
+
+      if Proc === target || target.respond_to?(:to_proc)
+        block = target.to_proc
+        exp   = args.empty? ? self : args.shift
         if Exception === exp || (Class===exp && exp.is?(Exception))
           begin
             block.call
@@ -94,9 +109,10 @@ module AE
           msg  = "not #{exp} === #{res}"
         end
       else
-        pass = !(exp === self)
-        msg  = "not #{exp} === #{self}"
+        pass = !(target === self)
+        msg  = "not #{target} === #{self}"
       end
+
       flunk(msg, caller) unless pass
     end
 

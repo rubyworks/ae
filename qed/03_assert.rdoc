@@ -58,6 +58,27 @@ Another way to get the opposite inference, is to use +not+.
   10.assert.not == 9
 
 
+== Matchers & Lambda Assertions
+
+Passing a Proc object or an objec that responds to :to_prco, will use it
+as if it were a block of the method. This allows for a simple way to quickly
+create reusable assertions.
+
+  palindrome = lambda{ |word| word == word.reverse }
+
+  "abracarba".assert palindrome
+
+Additionally is the object responds to #matches? then the receiver
+will be passed to this method to determine passage.
+
+  palindrome = Object.new
+  def palindrome.matches?(word)
+    word == word.reverse
+  end
+
+  "abracarba".assert palindrome
+
+
 == Identity Assertions
 
 Rather then the general form:
@@ -237,17 +258,6 @@ Or minimum range.
   3.in_epsilon?(3,5)
 
 
-== Custom Lambda Assertions
-
-Passing a lambda to the subjunctive method, will use it as if it were
-a block of the method. This allows for a simple way to quickly
-create reusable assertions.
-
-  palindrome = lambda{ |x| x == x.reverse }
-
-  "abracarba".assert palindrome
-
-
 == Verifying Object State
 
 NOTE: <i>This functionality is not currently supported, but is being
@@ -269,7 +279,7 @@ state of an object.
     4 == @a
   end
 
-And should it fail...
+And should it fail
 
   Assertion.assert.raised? do
     x.assert do

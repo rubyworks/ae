@@ -6,7 +6,7 @@ module AE
   PROFILE = YAML.load(File.new(DIRECTORY + '/profile.yml')) rescue {}
   PACKAGE = YAML.load(File.new(DIRECTORY + '/package.yml')) rescue {}
 
-  VERSION = verfile.values_at('major','minor','patch','build').compact.join('.')
+  VERSION = PACKAGE.values_at('major','minor','patch','build').compact.join('.')
 
   #
   def self.const_missing(name)

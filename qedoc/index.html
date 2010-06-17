@@ -19,7 +19,7 @@
     h1 { border-bottom: 2px solid silver; }
     h2 { border-bottom: 2px solid silver; padding-top: 0.5em; }
 
-    hr { border: 1px solid silver; }
+    hr { color: #ccc; margin-top: 1.6em; }
 
     p { color: #222; text-align: justify; margin-top: 0.5em; margin-bottom: 0.5em; line-height: 1.4em; }
 
@@ -98,14 +98,15 @@
     </div>
 
     <div id="content">
-      <h1>Introduction</h1>
+      <body>
+<h1>Introduction</h1>
 <p>
-AE is an assertions framework for Ruby. It&#8217;s designed around the
+AE is an assertions framework for Ruby. It’s designed around the
 concept of an Assertor. The Assertor is an Assertion Functor, or
-Higher-Order Function, which reroutes method calls while monitoring them
+Higher-Order Function, which  reroutes method calls while monitoring them
 for failing conditions.
 </p>
-<h2>What&#8217;s Provided</h2>
+<h2>What’s Provided</h2>
 <p>
 Requiring the AE library.
 </p>
@@ -114,7 +115,7 @@ Requiring the AE library.
 </pre>
 <p>
 Loads two classes, <tt>Assertion</tt> and <tt>Assertor</tt>, the Kernel
-method <tt>assert</tt> and it&#8217;s ancillaries <tt>assert!</tt> and
+method <tt>assert</tt> and it’s ancillaries <tt>assert!</tt> and
 <tt>refute</tt> and a set of core extensions that make writing certain
 types of assertions easier.
 </p>
@@ -127,7 +128,7 @@ raised.
 </p>
 <pre>
   Assertion.assert.raised? do
-    msg = &quot;my failure message&quot;
+    msg = "my failure message"
     assert false, msg
   end
 </pre>
@@ -140,9 +141,9 @@ Like any raised exception, the last Assertion message is available via
 <tt>AssertionFailedError</tt>.)
 </p>
 <p>
-Assertions themsevles are not generally used in creating tests or behavior
-specifications. Rather they are used to create additonal types of assertion
-methods.
+Assertions themselves are not generally used in creating tests or behavior
+specifications. Rather they are used to create additional types of
+assertion methods.
 </p>
 <p>
 As mentioned above the <tt>Assertor</tt> class is a type of Higher-Order
@@ -177,8 +178,8 @@ raised.
 <p>
 The methods <tt>assert!</tt> and <tt>refute</tt> are just like
 <tt>assert</tt> expect they purport the negative condition. Patterned after
-Ruby&#8217;s own use of &quot;<tt>!</tt>&quot; as meaning <tt>not</tt>,
-<tt>assert!</tt> should be read &quot;assert not&quot;. While
+Ruby’s own use of “<tt>!</tt>“ as meaning <tt>not</tt>,
+<tt>assert!</tt> should be read “assert not”. While
 <tt>refute</tt> exists for the sake of those who find the use of a bang
 method for this purpose unsuited to them.
 </p>
@@ -187,14 +188,14 @@ method for this purpose unsuited to them.
 An Assertor essentially sits in wait for a method call (via
 method_missing). When that happens it applies the method to the original
 receiver, but wrapped in a clause that raises an Assertion should the
-statement fail. If we wanted to be pedantic, we could write our assertions
+statement fail. If we wanted to be  pedantic, we could write our assertions
 like:
 </p>
 <pre>
-  raise Assertion.new(&quot;1 != 1&quot;) unless 1 == 1
+  raise Assertion.new("1 != 1") unless 1 == 1
 </pre>
 <p>
-Instead of
+Instead of 
 </p>
 <pre>
   1.assert == 1
@@ -202,8 +203,9 @@ Instead of
 <p>
 Obviously using Assertor methods are whole lot more concise.
 </p>
+</body>
 
-
+<body>
 <h1>Assert Method</h1>
 <h2>Compatible with Test::Unit</h2>
 <p>
@@ -216,10 +218,10 @@ true. Optionally one can send along a meaningful message should the
 assertion fail.
 </p>
 <pre>
-  assert(true, &quot;Not true!&quot;)
+  assert(true, "Not true!")
 
   Assertion.assert.raised? do
-    assert(false, &quot;Not true!&quot;)
+    assert(false, "Not true!")
   end
 </pre>
 <h2>Assert with a Block</h2>
@@ -245,7 +247,7 @@ arity of a block can be checked, one can also pass the receiver into the
 block as a block argument.
 </p>
 <pre>
-  &quot;hi&quot;.assert do |s|
+  "hi".assert do |s|
     /h/ =~ s
   end
 </pre>
@@ -273,6 +275,29 @@ Another way to get the opposite inference, is to use <tt>not</tt>.
 <pre>
   10.assert.not == 9
 </pre>
+<h2>Matchers &amp; Lambda Assertions</h2>
+<p>
+Passing a Proc object or an objec that responds to :to_prco, will use it as
+if it were a block of the method. This allows for a simple way to quickly
+create reusable assertions.
+</p>
+<pre>
+  palindrome = lambda{ |word| word == word.reverse }
+
+  "abracarba".assert palindrome
+</pre>
+<p>
+Additionally is the object responds to #matches? then the receiver will be
+passed to this method to determine passage.
+</p>
+<pre>
+  palindrome = Object.new
+  def palindrome.matches?(word)
+    word == word.reverse
+  end
+
+  "abracarba".assert palindrome
+</pre>
 <h2>Identity Assertions</h2>
 <p>
 Rather then the general form:
@@ -282,7 +307,7 @@ Rather then the general form:
   x.assert.object_id == x.object_id
 </pre>
 <p>
-We can use Ruby&#8217;s own <tt>equal?</tt> method.
+We can use Ruby’s own <tt>equal?</tt> method.
 </p>
 <pre>
   x.assert.equal?(x)
@@ -298,7 +323,7 @@ more clear.
 <p>
 The most common assertion is that of value equality (<tt>==</tt>), as we
 have seen throughout this document. But other forms of equality can be
-verified as easily. We have already mentioned identity. In addition there
+verified as easily. We have already mentioned  identity. In addition there
 is <em>type equality</em>.
 </p>
 <pre>
@@ -332,7 +357,7 @@ For <em>value equality</em> (<tt>==</tt>), the method is called
   end
 </pre>
 <p>
-And should it fail&#8230;
+And should it fail…
 </p>
 <pre>
   Assertion.assert.raised? do
@@ -341,18 +366,41 @@ And should it fail&#8230;
     end
   end
 </pre>
+<h2>Case Equality</h2>
 <p>
 For <em>case equality</em> (<tt>===</tt>), it is <tt>case?</tt>.
 </p>
 <pre>
   Numeric.assert.case? do
-    &quot;3&quot;.to_i
+    "3".to_i
   end
 
   Assertion.assert.raised? do
     Numeric.assert.case? do
-      &quot;3&quot;
+      "3"
     end
+  end
+</pre>
+<h2>Regular Expressions</h2>
+<p>
+Regular Expressions can be used to make assertions in much the same way as
+equality.
+</p>
+<pre>
+  /i/.assert =~ "i"
+
+  Assertion.assert.raised? do
+    /i/.assert =~ "g"
+  end
+</pre>
+<p>
+Conversely the String class recognizes the #=~ method as well.
+</p>
+<pre>
+  "i".assert =~ /i/
+
+  Assertion.assert.raised? do
+    "i".assert =~ /g/
   end
 </pre>
 <h2>Exception Assertions</h2>
@@ -368,8 +416,8 @@ verify assertion failures.
 <h2>Assertions on Object State</h2>
 <p>
 While testing or specifying the internal state of an object is generally
-considered poor form, there are times when it is necessay. Assert combined
-with <tt>instance_eval</tt> makes it easy too.
+considered poor form, there are times when it is  necessary. Assert
+combined with <tt>instance_eval</tt> makes it easy too.
 </p>
 <pre>
   class X
@@ -398,12 +446,12 @@ using <tt>throws?</tt>.
 </p>
 <pre>
   hook = lambda{ throw :hookme }
-
+  
   hook.assert.throws?(:hookme)
 </pre>
 <h2>Assertions on Proc Changes</h2>
 <p>
-I have to admit I&#8217;m not sure how this is useful, but I found it in
+I have to admit I’m not sure how this is useful, but I found it in
 the Bacon API and ported it over just for sake of thoroughness.
 </p>
 <pre>
@@ -432,7 +480,7 @@ AE adds <tt>true?</tt> and <tt>false?</tt> which acts accordingly.
 Assert that a method can be successfully called.
 </p>
 <pre>
-  &quot;STRING&quot;.assert.send?(:upcase)
+  "STRING".assert.send?(:upcase)
 </pre>
 <h2>Numeric Delta and Epsilon</h2>
 <p>
@@ -447,27 +495,10 @@ Or minimum range.
 <pre>
   3.in_epsilon?(3,5)
 </pre>
-<h2>Custom Lambda Assertions</h2>
-<p>
-Passing a lambda to the subjunctive method, will use it as if it were a
-block of the method. This allows for a simple way to quickly create
-reusable assertions.
-</p>
-<pre>
-  palindrome = lambda{ |x| x == x.reverse }
-
-  &quot;abracarba&quot;.assert palindrome
-</pre>
 <h2>Verifying Object State</h2>
 <p>
-NOTE: <em>This functionality is not currently supported, but is being
-considered for a future version.</em>
-</p>
-<p>
-If no block parameter is designated and the receiver differs from
-<tt>self</tt> in scope of the given block, then the block is evaluated in
-the scope of the receiver via <tt>instance_eval</tt>. This can be also be
-used to verify the state of an object.
+Not surprisingly if underlying object state needs to be verified,
+<tt>instance_eval</tt> can be used in conjunction with <tt>assert</tt>.
 </p>
 <pre>
   class X
@@ -477,35 +508,35 @@ used to verify the state of an object.
 
   x = X.new(4)
 
-  x.must do
+  x.assert.instance_eval do
     4 == @a
   end
 </pre>
 <p>
-And should it fail&#8230;
+And should it fail
 </p>
 <pre>
   Assertion.assert.raised? do
-    x.must do
+    x.assert.instance_eval do
       5 == @a
     end
   end
 </pre>
 <p>
-For some this might be considered poor form, i.e. to test underlying
-implementation. You will get no argument here. It should be used
-thoughtfully, but I would not bet against there being occasions when such
-validations might be handy.
+For some testing underlying implementation might be considered poor form.
+You will get no argument here. It should be used thoughtfully, but I would
+not bet against there being occasions when such validations might be handy.
 </p>
-
+</body>
+<body>
 <h1>Subjunctives</h1>
 <p>
-Okay. I can hear the BDDers rumbling, &quot;where&#8217;s the should?&quot;
-AE has nothing against &quot;should&quot;, but there are different
-approaches for utilizing should nomenclature in specifications, and AE
-wants to be open to these techniques. One of which is how Shoulda
-(http://shoulda.rubyforge.org) utilizes <tt>should</tt> in a way analogous
-to RSpec&#8217;s use of <tt>it</tt>.
+Okay. I can hear the BDDers rumbling, “where’s the
+<b>should?</b>“ AE has nothing against “should”, but
+there are different approaches for utilizing should nomenclature in
+specifications, and AE wants to be open to these techniques. One of which
+is how Shoulda (<a href="http://shoulda.rubyforge.org">shoulda.rubyforge.org</a>) utilizes
+<tt>should</tt> in a way analogous to RSpec’s use of <tt>it</tt>.
 </p>
 <p>
 Even so, AE provides a an optional mixin called <tt>Subjunctive</tt> which
@@ -517,7 +548,7 @@ load this library use:
   require 'ae/subjunctive'
 </pre>
 <p>
-Then all that is required it to define your subjunctive method for all
+Then all that is required it to define a subjunctive method for all
 objects. For example:
 </p>
 <pre>
@@ -526,8 +557,9 @@ objects. For example:
   end
 </pre>
 <p>
-It&#8217;s that easy. Because of their popularity AE provides two such
-terms, <tt>should</tt> and <tt>must</tt> as optional add-ons.
+It’s that easy. Because of their commonality AE provides two such
+terms, <tt>should</tt> and <tt>must</tt> as optional add-ons
+out-of-the-box.
 </p>
 <pre>
   require 'ae/subjunctive/should'
@@ -539,7 +571,7 @@ demonstration, but to be clear they both work exactly the same way, and
 almost exactly like <tt>assert</tt>.
 </p>
 <p>
-Keep in mind, AE &quot;conical&quot; functionality does not entail
+Keep in mind, AE “conical” functionality does not entail the
 subjunctive forms. These are simply options you can load via your
 <tt>test_helper.rb</tt>, or similar script, if you prefer these
 nomenclatures.
@@ -554,8 +586,9 @@ higher order functions.
   4.must   == 4
 </pre>
 <p>
-With the antonym of <tt>should!</tt> (read &quot;should not&quot;) or
-<tt>shouldnt</tt>, and for <tt>must</tt>, <tt>must!</tt> and <tt>wont</tt>.
+Antonyms provided for <tt>should</tt> as <tt>should!</tt> (read
+“should not”) and <tt>shouldnt</tt>. For <tt>must</tt>
+<tt>must</tt>, they are <tt>must!</tt> and <tt>wont</tt>.
 </p>
 <pre>
   4.should!  == 5
@@ -577,8 +610,8 @@ On occasions where the English readability of a specification is hindered,
 <p>
 The <tt>be</tt> method is the same as <tt>assert</tt> with the single
 exception that it will compare a lone argument to the receiver using
-+equate?+, unlike <tt>assert</tt> which simply checks to see that the
-argument evalutates as true.
+<tt>equate?</tt>, unlike <tt>assert</tt> which simply checks to see that
+the argument evaluates as true.
 </p>
 <pre>
   10.should.be 10
@@ -586,27 +619,27 @@ argument evalutates as true.
   10.should.be Numeric
 
   Assertion.assert.raised? do
-    10.should.be &quot;40&quot;
+    10.should.be "40"
   end
 </pre>
 <h2>Indefinite Articles</h2>
 <p>
-Addtional English forms are <tt>a</tt> and <tt>an</tt>, equivalent to
-<tt>be</tt> except that they use <tt>case?</tt> instead of <tt>equate?</tt>
-when acting on a single argument.
+Additional English forms are <tt>a</tt> and <tt>an</tt>, equivalent to
+<tt>be</tt> except that they use <tt>case?</tt> (same as <tt>#===</tt>)
+instead of <tt>equate?</tt> when acting on a single argument.
 </p>
 <pre>
-  &quot;hi&quot;.must.be.a String
+  "hi".must.be.a String
 
   Assertion.assert.raised? do
     /x/.must.be.a /x/
   end
 </pre>
 <p>
-Otherwise they are interchangeble.
+Otherwise they are interchangeable.
 </p>
 <pre>
-  &quot;hi&quot;.must.be.an.instance_of?(String)
+  "hi".must.be.an.instance_of?(String)
 </pre>
 <p>
 The indefinite articles work well when a noun follows as an arguments.
@@ -614,12 +647,157 @@ The indefinite articles work well when a noun follows as an arguments.
 <pre>
   palindrome = lambda{ |x| x == x.reverse }
 
-  &quot;abracarba&quot;.must.be.a palindrome
+  "abracarba".must.be.a palindrome
+</pre>
+</body>
+<body>
+<h1>Expect Method</h1>
+<p>
+Expect is another assertion nomenclature available for use in your tests or
+specifications. Inspired by Jay Fields’ Expectations library, it
+provides convenient syntax for creating exception and case equality
+assertions.
+</p>
+<pre>
+  require 'ae/expect'
+</pre>
+<h2>Underlying Comparison</h2>
+<p>
+Expect uses #=== for comparison. So providing an argument and a block to
+#expect we can test for a somewhat broader range of compassion than
+#assert. For example we can test for a subclass.
+</p>
+<pre>
+  expect Numeric do
+    3
+  end
+
+  Assertion.assert.raised? do
+    expect Numeric do
+      "3"
+    end
+  end
+</pre>
+<h2>Exception Expectation</h2>
+<p>
+If the comparator is an Exception class or a instance of an Exception
+class, then #expect will check to see if the block raises that kind of
+exception.
+</p>
+<pre>
+  expect StandardError do
+    some_undefined_method
+  end
+
+  expect Assertion do
+    expect(nil)
+  end
 </pre>
 <p>
-QED.
+This is an important distinction to note because it means #expect can not
+be used if verify instances of Exception classes.
 </p>
+<pre>
+  Assertion.assert.raised? do
+    expect Exception do
+      Exception.new
+    end
+  end
+</pre>
+<h2>Regex Expectations</h2>
+<p>
+That #expect entails #=== also means we can check for Regexp matches.
+</p>
+<pre>
+  expect /x/ do
+    "oooxooo"
+  end
+</pre>
+<h2>Expected Method</h2>
+<p>
+We can use #expected to make the receiver the object of expectation.
+</p>
+<pre>
+  x = "dummy"
 
+  /x/.expected do
+    "x"
+  end
+</pre>
+<h2>Without Block</h2>
+<p>
+Without a block, the receiver is compared to the argument.
+</p>
+<pre>
+  x.expect String
+</pre>
+<h2>Negative Forms</h2>
+<p>
+Like #assert, #expect has a negated form called #expect!
+</p>
+<pre>
+  expect! /x/ do
+    "o"
+  end
+</pre>
+<p>
+The pure word form for those who do not like the clever use of the
+explimation mark is #forbid.
+</p>
+<pre>
+  forbid /x/ do
+    "o"
+  end
+</pre>
+<h2>Functor, or Higher Order Function</h2>
+<p>
+Like #assert, #expect can be used used as a <b>fluid</b> notation.
+</p>
+<pre>
+  10.expect == 10
+</pre>
+<p>
+In which case it works just like #assert, including negative forms.
+</p>
+<pre>
+  10.expect! == 11
+  10.forbid  == 11
+</pre>
+</body>
+<body>
+<h1>Assertion Counts</h1>
+<p>
+AE tracks the number of assertions made and the number that failed to pass.
+We can reset the count using the <tt>recount</tt> class method.
+</p>
+<pre>
+  Assertion.recount
+</pre>
+<p>
+For example if we one assertion fails and another fails:
+</p>
+<pre>
+  assert(true)
+  assert(false)
+</pre>
+<p>
+We will see that AE counted two assertions and one failure.
+</p>
+<pre>
+  Assertion.count.assert == 2
+  Assertion.fails.assert == 1
+</pre>
+<p>
+The above calls simply access the actual global variables.
+</p>
+<pre>
+  $assertions.assert == 4
+  $failures.assert == 1
+</pre>
+<p>
+Notice there are now two additional assertions.
+</p>
+</body>
 
     </div>
   </div>

@@ -28,7 +28,7 @@ module AE
 
     # Same as 'object.assert == other'.
     def assert=(cmp)
-      Assertor.new(self, :backtrace=>caller).assert(*args, &block) == cmp
+      Assertor.new(self, :backtrace=>caller).assert == cmp
     end
 
     # Assert not an operational relationship.

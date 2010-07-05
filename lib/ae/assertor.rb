@@ -154,10 +154,11 @@ class Assertor
   # Puts together a suitable error message.
   #
   def __msg__(m, *a, &b)
+    inspection = @delegate.send(:inspect)
     if @negated
-      "! #{@delegate.inspect} #{m} #{a.collect{|x| x.inspect}.join(',')}"
+      "! #{inspection} #{m} #{a.collect{|x| x.inspect}.join(',')}"
     else
-      "#{@delegate.inspect} #{m} #{a.collect{|x| x.inspect}.join(',')}"
+      "#{inspection} #{m} #{a.collect{|x| x.inspect}.join(',')}"
     end
     #self.class.message(m)[@delegate, *a] )
   end

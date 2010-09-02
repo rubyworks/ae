@@ -1,0 +1,8 @@
+name    : ae
+date    : 2010-06-17
+version : 1.4.0
+
+requires:
+  - syckle (build)
+  - qed    (test)
+

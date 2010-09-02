@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>File: HISTORY.rdoc [AE]</title>
+
+  <link rel="SHORTCUT ICON" href="./assets/icon/file.png">
+
+  <link type="text/css" rel="stylesheet" href="./assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="./assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="./assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+
+<body class="file"> <!-- .file-popup is no more -->
+<div id="main">
+
+  <div class="head">
+    <h1>
+      <img src="./assets/icon/file.png" align="absmiddle">&nbsp;
+      <a href="./index.html">AE</a>&nbsp;
+      <a href="/">HISTORY.rdoc</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="file-stats-section" class="section">
+      <h3 class="section-header">File Stats</h3>
+      <dl>
+        <dt class="modified-date">Last Modified</dt>
+        <dd class="modified-date">Thu Sep 02 12:52:41 -0400 2010</dd>
+
+        
+
+        
+      </dl>
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="./NOTICE.html">NOTICE</a></li>
+        
+          <li class="file"><a href="./HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="./LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li class="module"><a href="./AE.html">AE</a></li>
+        
+          <li class="module"><a href="./AE/Assert.html">AE::Assert</a></li>
+        
+          <li class="class"><a href="./AE/BasicObject.html">AE::BasicObject</a></li>
+        
+          <li class="module"><a href="./AE/Expect.html">AE::Expect</a></li>
+        
+          <li class="module"><a href="./AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+        
+          <li class="module"><a href="./AE/Must.html">AE::Must</a></li>
+        
+          <li class="module"><a href="./AE/Should.html">AE::Should</a></li>
+        
+          <li class="module"><a href="./AE/Subjunctive.html">AE::Subjunctive</a></li>
+        
+          <li class="module"><a href="./Kernel.html">Kernel</a></li>
+        
+          <li class="class"><a href="./Kernel/Pry.html">Kernel::Pry</a></li>
+        
+          <li class="class"><a href="./Assertion.html">Assertion</a></li>
+        
+          <li class="class"><a href="./Assertor.html">Assertor</a></li>
+        
+          <li class="class"><a href="./Exception.html">Exception</a></li>
+        
+          <li class="class"><a href="./FalseClass.html">FalseClass</a></li>
+        
+          <li class="class"><a href="./Module.html">Module</a></li>
+        
+          <li class="class"><a href="./Numeric.html">Numeric</a></li>
+        
+          <li class="class"><a href="./Proc.html">Proc</a></li>
+        
+          <li class="class"><a href="./Symbol.html">Symbol</a></li>
+        
+          <li class="class"><a href="./TrueClass.html">TrueClass</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      <!-- METHODS -->
+      <div id="methodindex-section" class="section project-section">
+        <h3 class="section-header">Method Index</h3>
+        <ul>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-c-basic_object_method_added">::basic_object_method_added</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE</span>
+              <a href="AE.html#method-c-const_missing">::const_missing</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Assertion</span>
+              <a href="Assertion.html#method-c-count">::count</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Assertion</span>
+              <a href="Assertion.html#method-c-fails">::fails</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::BasicObject</span>
+              <a href="AE/BasicObject.html#method-c-find_hidden_method">::find_hidden_method</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::BasicObject</span>
+              <a href="AE/BasicObject.html#method-c-hide">::hide</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-c-method_added">::method_added</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Assertion</span>
+              <a href="Assertion.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Kernel::Pry</span>
+              <a href="Kernel/Pry.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Exception</span>
+              <a href="Exception.html#method-c-raised%3F">::raised?</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Assertion</span>
+              <a href="Assertion.html#method-c-recount">::recount</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::BasicObject</span>
+              <a href="AE/BasicObject.html#method-c-reveal">::reveal</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-%3D%7E">#=~</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-__assert__">#__assert__</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-__assert__">#__assert__</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-__msg__">#__msg__</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#method-i-a">#a</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#method-i-an">#an</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Module</span>
+              <a href="Module.html#method-i-append_features">#append_features</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-assert">#assert</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert">#assert</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assert</span>
+              <a href="AE/Assert.html#method-i-assert">#assert</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assert</span>
+              <a href="AE/Assert.html#method-i-assert%21">#assert!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assert</span>
+              <a href="AE/Assert.html#method-i-assert%3D">#assert=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_block">#assert_block</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_equal">#assert_equal</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_in_delta">#assert_in_delta</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_instance_of">#assert_instance_of</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_kind_of">#assert_kind_of</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_match">#assert_match</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_nil">#assert_nil</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_no_match">#assert_no_match</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_not_equal">#assert_not_equal</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_not_nil">#assert_not_nil</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_not_same">#assert_not_same</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_operator">#assert_operator</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_raise">#assert_raise</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_raises">#assert_raises</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_respond_to">#assert_respond_to</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_same">#assert_same</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_send">#assert_send</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-assert_throws">#assert_throws</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Module</span>
+              <a href="Module.html#method-i-basic_object_original_append_features">#basic_object_original_append_features</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#method-i-be">#be</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-case%3F">#case?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Proc</span>
+              <a href="Proc.html#method-i-change%3F">#change?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Numeric</span>
+              <a href="Numeric.html#method-i-close%3F">#close?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#method-i-does">#does</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-eq%3F">#eq?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-equate%3F">#equate?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-expect">#expect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Expect</span>
+              <a href="AE/Expect.html#method-i-expect">#expect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Expect</span>
+              <a href="AE/Expect.html#method-i-expect%21">#expect!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Expect</span>
+              <a href="AE/Expect.html#method-i-expected">#expected</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">TrueClass</span>
+              <a href="TrueClass.html#method-i-false">#false</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">FalseClass</span>
+              <a href="FalseClass.html#method-i-false">#false</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-false%3F">#false?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-flunk">#flunk</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-flunk">#flunk</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Legacy::Assertions</span>
+              <a href="AE/Legacy/Assertions.html#method-i-flunk">#flunk</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Expect</span>
+              <a href="AE/Expect.html#method-i-forbid">#forbid</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-identical%3F">#identical?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-identical_to%3F">#identical_to?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Numeric</span>
+              <a href="Numeric.html#method-i-in_delta%3F">#in_delta?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Numeric</span>
+              <a href="Numeric.html#method-i-in_epsilon%3F">#in_epsilon?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Subjunctive</span>
+              <a href="AE/Subjunctive.html#method-i-is">#is</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Module</span>
+              <a href="Module.html#method-i-is%3F">#is?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-match%3F">#match?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-matcher_message">#matcher_message</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-method_missing">#method_missing</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel::Pry</span>
+              <a href="Kernel/Pry.html#method-i-method_missing">#method_missing</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Must</span>
+              <a href="AE/Must.html#method-i-must">#must</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Must</span>
+              <a href="AE/Must.html#method-i-must%21">#must!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-not">#not</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-pry">#pry</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-public_send">#public_send</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Proc</span>
+              <a href="Proc.html#method-i-raises%3F">#raises?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assert</span>
+              <a href="AE/Assert.html#method-i-refute">#refute</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assert</span>
+              <a href="AE/Assert.html#method-i-refute%3D">#refute=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertor</span>
+              <a href="Assertor.html#method-i-send">#send</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-send%3F">#send?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Should</span>
+              <a href="AE/Should.html#method-i-should">#should</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Should</span>
+              <a href="AE/Should.html#method-i-should%21">#should!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Should</span>
+              <a href="AE/Should.html#method-i-shouldnt">#shouldnt</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Symbol</span>
+              <a href="Symbol.html#method-i-thrown%3F">#thrown?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Proc</span>
+              <a href="Proc.html#method-i-throws%3F">#throws?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Assertion</span>
+              <a href="Assertion.html#method-i-to_s">#to_s</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">FalseClass</span>
+              <a href="FalseClass.html#method-i-true">#true</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">TrueClass</span>
+              <a href="TrueClass.html#method-i-true">#true</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-i-true%3F">#true?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Must</span>
+              <a href="AE/Must.html#method-i-wont">#wont</a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="./assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Redfish</a> 1.3.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <!-- .file-popup was wrapped:
+    <div id="documentation">
+      
+      <div class="description">
+          ... file.description ...
+      </div>
+      
+    </div>
+   So maybe that css is no longer needed.
+   -->
+
+  <div id="documentation">
+    <h1>RELEASE HISTORY</h1>
+<h2>1.4.0 / 2010-09-02</h2>
+<p>
+Version 1.4 brings Ruby 1.9 compatibility. The <a
+href="Assertor.html">Assertor</a> class is now a subclass of BasicObject.
+This fixes an issues <a href="Assertor.html">Assertor</a> would had
+applying to methods defined both in a class and <a
+href="Kernel.html">Kernel</a>.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+<a href="Assertor.html">Assertor</a> is a subclass of BasicObject.
+</p>
+</li>
+<li><p>
+Use custom BasicObject when using Ruby 1.8.
+</p>
+</li>
+<li><p>
+Add assert= which works like `assert ==`.
+</p>
+</li>
+<li><p>
+Add refute= which works like `refute ==`.
+</p>
+</li>
+</ul>
+<h2>1.3.0 / 2010-06-17</h2>
+<p>
+New release of <a href="AE.html">AE</a> adds support for RSpec-style
+matchers. This means it should be usable with Shoulda 3.0 and any other
+matchers library. This release also cleans up the underlying code, which is
+now extremely clean. Lastly a smal API change allows asser to compare
+it&#8217;s argument to the return of it&#8217;s block using #==, just as
+expect does using #===.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Add RSpec-style matchers support.
+</p>
+</li>
+<li><p>
+Move expect code to <a href="Assertor.html">Assertor</a>.
+</p>
+</li>
+<li><p>
+assert method can do equality camparison.
+</p>
+</li>
+</ul>
+<h2>1.2.3 / 2010-06-07</h2>
+<p>
+This release is a quick fix, which adds a missing `require
+&#8216;yaml&#8217;`.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Add missing require &#8216;yaml&#8217;.
+</p>
+</li>
+</ul>
+<h2>1.2.2 / 2010-06-06</h2>
+<p>
+Version 1.2.2 simply add one new feature &#8212;the ability to use
+&#8216;object.assert = other&#8217; instead of &#8216;object.assert ==
+other&#8217;. This was added simply becuase I found I often made the
+mistake of a missing &#8217;=&#8217;, and since assert= has no definition,
+there was no reason not to have behave accordingly.
+</p>
+<p>
+Also note that I switched the license from LGPL to MIT. With regards to
+reusable libraries and I moving all my work, such that I am able, to MIT to
+maximize free usage.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Add `assert=` method as a shortcut for `assert ==`.
+</p>
+</li>
+<li><p>
+Now distributed under MIT license.
+</p>
+</li>
+</ul>
+<h2>1.2.0 / 2010-01-27</h2>
+<p>
+This release fixes &#8217;=~&#8217; assertions and now requires the
+ae/expect library by default.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Expect method is now loaded by default when requiring &#8216;ae&#8217;.
+</p>
+</li>
+<li><p>
+Fixed bug where #=~ did not work correctly against <a
+href="Assertor.html">Assertor</a>.
+</p>
+</li>
+</ul>
+<h2>1.1.0 / 2009-09-06</h2>
+<p>
+This release provided two major imporvements. The first is the expect
+method which is similar to assert, but uses  case equality (#===) for
+comparison. And second, an optional library <tt>ae/legacy.rb<tt>, is has
+been added that provides backward compatibility with Test::Unit assertions,
+should it be needed.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+New expect method.
+</p>
+</li>
+<li><p>
+Proved legacy assertion in optional ae/legacy.rb library.
+</p>
+</li>
+<li><p>
+Added backtrace parameter to flunk calls.
+</p>
+</li>
+</ul>
+<h2>1.0.0 / 2009-09-03</h2>
+<p>
+This is the initial release of <a href="AE.html">AE</a>.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li><p>
+Happy Birthday!
+</p>
+</li>
+</ul>
+
+  </div>
+
+</div>
+</body>
+</html>
+

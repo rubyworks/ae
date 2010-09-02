@@ -1,4 +1,5 @@
 require 'ae/assertion'
+require 'ae/basic_object'
 
 # = Assertor (Assertion Functor)
 #
@@ -10,13 +11,17 @@ require 'ae/assertion'
 # in most respects, but is conditioned on the operation applied,
 # rather then simply passing-off to an alternate reciever.
 #
-class Assertor
+class Assertor < AE::BasicObject
 
   $assertions = 0
   $failures   = 0
 
   #
-  instance_methods.each{ |m| protected m unless /^__/ =~ m.to_s }
+  #instance_methods.each{ |m| protected m unless /^(__|object_id$)/ =~ m.to_s }
+
+  if ::RUBY_VERSION >= '1.9'
+    eval "private :==, :!, :!="  # using eval here b/c it's a syntax error in 1.8-
+  end
 
   # New Assertor.
   #
@@ -50,11 +55,11 @@ class Assertor
   #   assert something, parameter
   #
   def assert(*args, &block)
-    return self if args.empty? && !block_given?
+    return self if args.empty? && !block
 
     target = block || args.shift
 
-    if Proc === target || target.respond_to?(:to_proc)
+    if ::Proc === target || target.respond_to?(:to_proc)
       block  = target.to_proc
       match  = args.shift
       result = block.arity > 0 ? block.call(@delegate) : block.call
@@ -86,15 +91,15 @@ class Assertor
   # TODO: respond_to?(:exception) && match = exception if Exception === match
   #++
   def expect(*args, &block)
-    # same as #assert if no arguments of block given
-    return self if args.empty? && !block_given?
+    return self if args.empty? && !block_given?  # same as #assert
 
     target = block || args.shift
 
-    if Proc === target || target.respond_to?(:to_proc)
+    if ::Proc === target || target.respond_to?(:to_proc)
       block = target.to_proc
       match = args.shift || @delegate
-      if Exception === match || (Class===match && match.ancestors.include?(Exception))
+      if ::Exception === match || (::Class===match && match.ancestors.include?(::Exception))
+        $DEBUG, debug = false, $DEBUG  # b/c it always spits-out a NameError
         begin
           block.arity > 0 ? block.call(@delegate) : block.call
           pass = false
@@ -105,6 +110,8 @@ class Assertor
         rescue Exception => error
           pass = false
           msg  = "#{match} expected but #{error.class} was raised"
+        ensure
+          $DEBUG = debug
         end
       else
         result = block.arity > 0 ? block.call(@delegte) : block.call
@@ -126,7 +133,7 @@ class Assertor
   #
   def flunk(msg=nil)
     $failures += 1
-    fail Assertion.new(msg || @message, :backtrace=>@backtrace)
+    fail ::Assertion.new(msg || @message, :backtrace=>@backtrace)
   end
 
   # Ruby seems to have a quark in it's implementation whereby
@@ -136,12 +143,18 @@ class Assertor
     method_missing(:"=~", match)
   end
 
+  #
+  def send(op, *a, &b)
+    method_missing(op, *a, &b)
+  end
+
   private
 
   # Converts a missing methods into an Assertion.
   #
   def method_missing(sym, *a, &b)
     pass = @delegate.__send__(sym, *a, &b)
+    #pass = @delegate.public_send(sym, *a, &b)
     __assert__(pass, @message || __msg__(sym, *a, &b))
     #Assertor.count += 1
     #if (@negated ? pass : !pass)
@@ -194,5 +207,11 @@ class Assertor
   #
   #message(:==){ |*a| "Expected #{a[0].inspect} to be equal to #{a[1].inspect}" }
 end
+
+# DO WE MAKE THESE EXCEPTIONS?
+#class BasicObject
+#  def assert ;
+#  end
+#end
 
 # Copyright (c) 2008,2009 Thomas Sawyer

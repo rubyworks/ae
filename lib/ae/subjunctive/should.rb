@@ -11,7 +11,7 @@ module AE
   # THIS IS AN OPTIONAL LIBRARY.
   #
   module Should
-    # The #must method is functionaly the same as #should.
+    # Make an assertion in subjunctive tense.
     #
     #   4.should == 3  #=> Assertion Error
     #
@@ -24,7 +24,7 @@ module AE
     end
 
     # Designate a negated expectation via a *functor*.
-    # Read this as "must not".
+    # Read this as "should not".
     #
     #   4.should! == 4  #=> Assertion Error
     #

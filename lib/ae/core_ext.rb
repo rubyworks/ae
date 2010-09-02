@@ -68,7 +68,7 @@ module Kernel
     begin
       __send__(method, *args, &block)
       true
-    rescue
+    rescue NoMethodError
       false
     end
   end
@@ -77,6 +77,14 @@ module Kernel
   #def returns?(value) #:yield:
   #  value == yield
   #end
+
+  unless method_defined?(:public_send)
+    #
+    def public_send(m,*a,&b)
+      raise NoMethodError unless respond_to?(m)
+      __send__(m,*a,&b)
+    end
+  end
 end
 
 
@@ -196,6 +204,11 @@ class Exception
       true
     end
   end
+end
+
+# We need BasicObject for Assertor.
+unless defined?(BasicObject)
+  require 'ae/basic_object'
 end
 
 # Copyright (c) 2008,2009 Thomas Sawyer

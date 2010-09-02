@@ -5,7 +5,7 @@ We can reset the count using the +recount+ class method.
 
   Assertion.recount
 
-For example if we one assertion fails and another fails:
+For example if we one assertion fails and another fails.
 
   assert(true)
   assert(false)

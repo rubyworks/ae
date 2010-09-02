@@ -3,21 +3,15 @@ require 'yaml'
 module AE
   DIRECTORY = File.dirname(__FILE__) + '/ae'
 
-  PROFILE = YAML.load(File.new(DIRECTORY + '/profile.yml')) rescue {}
-  PACKAGE = YAML.load(File.new(DIRECTORY + '/package.yml')) rescue {}
+  PROFILE = YAML.load(File.new(DIRECTORY + '/meta/profile')) rescue {}
+  PACKAGE = YAML.load(File.new(DIRECTORY + '/meta/package')) rescue {}
 
-  VERSION = PACKAGE.values_at('major','minor','patch','build').compact.join('.')
+  VERSION = PACKAGE['version']
 
   #
   def self.const_missing(name)
     key = name.to_s.downcase
-    if PACKAGE.key?(key)
-      PACKAGE[key]
-    elsif PROFILE.key?(key)
-      PROFILE[key]
-    else
-      super(name)
-    end
+    PACAKGE[key] || PROFILE[key] || super(name)
   end
 end
 

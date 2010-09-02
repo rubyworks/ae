@@ -72,6 +72,7 @@ Additionally is the object responds to #matches? then the receiver
 will be passed to this method to determine passage.
 
   palindrome = Object.new
+
   def palindrome.matches?(word)
     word == word.reverse
   end
@@ -81,7 +82,7 @@ will be passed to this method to determine passage.
 
 == Identity Assertions
 
-Rather then the general form:
+Rather then the general form.
 
   x = 10
   x.assert.object_id == x.object_id

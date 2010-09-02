@@ -34,23 +34,27 @@ module AE
     # Assert not an operational relationship.
     # Read it as "assert not".
     #
-    #   4.assert! == 4
+    #   4.refute == 4  #=> Assertion Error
     #
     # See #assert.
-    #
-    # AUHTOR'S NOTE: This method would not be necessary if Ruby would allow
-    # +!=+ to be define as a method, or at least +!+ as a unary method. This
-    # may be possible in Ruby 1.9.
-    #
-    def assert!(*args, &block)
+    def refute(*args, &block)
       Assertor.new(self, :backtrace=>caller).not.assert(*args, &block)
+    end
+
+    # Same as 'object.assert == other'.
+    def refute=(cmp)
+      Assertor.new(self, :backtrace=>caller).not.assert == cmp
     end
 
     # Alias for #assert!.
     #
-    # 4.refute == 4  #=> Assertion Error
+    #   4.assert! == 4
     #
-    alias_method :refute, :assert!
+    # NOTE: This method would not be necessary if Ruby would allow
+    # +!=+ to be define as a method, or at least +!+ as a unary method.
+    # This may be possible in Ruby 1.9.
+    alias_method :assert!, :refute
+   
   end
 
 end

@@ -60,7 +60,7 @@ Another way to get the opposite inference, is to use +not+.
 
 == Matchers & Lambda Assertions
 
-Passing a Proc object or an objec that responds to :to_prco, will use it
+Passing a Proc object or an objec that responds to :to_proc, will use it
 as if it were a block of the method. This allows for a simple way to quickly
 create reusable assertions.
 

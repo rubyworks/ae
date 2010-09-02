@@ -6,6 +6,13 @@ Version 1.4 brings Ruby 1.9 compatibility. The Assertor class is now a
 subclass of BasicObject. This fixes an issues Assertor would had
 applying to methods defined both in a class and Kernel.
 
+Changes:
+
+* Assertor is a subclass of BasicObject.
+* Use custom BasicObject when using Ruby 1.8.
+* Add #assert= which works like `assert ==`.
+* Add #refute= which works like `refute ==`.
+
 
 == 1.3.0 / 2010-06-17
 

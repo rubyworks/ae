@@ -1,80 +1,68 @@
 require 'ae/assertion'
 
-T = true
-F = false
-
 class AE
 
-  module Kernel
-    # This is just a little experiment.
-    # If this pipe could be made to work
-    # like assert 2.0, eg. report the entire
-    # code section involved, the it could
-    # actually be pretty cool.
-    #
-    #   x = "tom"
-    #
-    #   T* x == "tom"
-    #
-    #   F* x == "tom"  # raises Asseretion
-    #
-    #   T* case x
-    #      when 'tom' then true
-    #      else false
-    #      end
-    #
-    module Pipe
+  # Given that x is "tom" then we can assert it
+  # is using an asseretion pipe.
+  #
+  #  x = "tom"
+  #
+  #  T x == "tom"
+  #
+  # We can assert the opposite using F.
+  #
+  #  F x == "tom"
+  #
+  # These can be used at any point of return.
+  #
+  #  T case x
+  #     when 'tom' then true
+  #     else false
+  #     end
+  #
+  module Detest
 
-      module True
-        def *(x)
-          raise Assertion.new(:backtrace=>caller) if !x
-        end
-      end
-
-      module False
-        def *(x)
-          raise Assertion.new(:backtrace=>caller) if x
-        end
-      end
+    # Test for true.
+    #
+    #   T 1 == 1
+    #
+    def T(x=nil, &b)
+      Assertion.test(x || b.call, :backtrace=>caller)
     end
 
-  end
+    # Test for not.
+    #
+    #   F 1 == 2
+    #
+    def F(x=nil, &b)
+      Assertion.test(!(x || b.call), :backtrace=>caller)
+    end
 
-  class ::TrueClass #:nodoc:
-    #remove_method :*
-    include AE::Kernel::Pipe::True
-  end
+    # Test for nil?.
+    #
+    #   N nil
+    #
+    def N(x=nil,&b)
+      Assertion.test(nil == (x || b.call), :backtrace=>caller)
+    end
 
-  class ::FalseClass #:nodoc:
-    #remove_method :*
-    include AE::Kernel::Pipe::False
+    # Expect and error.
+    #
+    #   E { raise }
+    #
+    # Unless #T, #F and #N, the #E method only supports block notation.
+    def E(&b)
+      expect(Exception, &b)
+    end
+
+    # Catch a symbol.
+    #def C
+    #end
+
   end
 
 end
 
-# examples
-
-if __FILE__ == $0
-
-  x = "tom"
-
-#Give that x is "tom" then we can assert it
-#is using an asseretion pipe.
-
-  x = "tom"
-
-  T* x == "tom"
-
-#We can assert the opposite using F.
-
-  F* x == "tom"
-
-#These can be used at any point of return.
-
-  T* case x
-     when 'tom' then true
-     else false
-     end
-
-end
-
+#class ::Object #:nodoc:
+#  include AE::Detest
+#end

@@ -1,14 +1,19 @@
-#!mast -x Syckfile bin expo qed lib test [A-Z]*
-expo/cucumber/features/cucumber.feature
-expo/cucumber/features/step_definitions/cucumber_steps.rb
-expo/cucumber/features/support/env.rb
+#!mast -x Syckfile bin demo qed lib test [A-Z]*
+demo/cucumber/features/cucumber.feature
+demo/cucumber/features/step_definitions/cucumber_steps.rb
+demo/cucumber/features/support/env.rb
+demo/minitest/example.rb
+demo/testunit/example.rb
 qed/01_overview.rdoc
 qed/02_assertion.rdoc
 qed/03_assert.rdoc
 qed/04_subjunctive.rdoc
 qed/05_expect.rdoc
-qed/06_counts.rdoc
 qed/07_matchers.rdoc
+lib/ae/adapter.rb
+lib/ae/adapters/minitest.rb
+lib/ae/adapters/rspec.rb
+lib/ae/adapters/testunit.rb
 lib/ae/assert.rb
 lib/ae/assertion.rb
 lib/ae/assertor.rb
@@ -27,6 +32,7 @@ lib/ae/subjunctive/must.rb
 lib/ae/subjunctive/should.rb
 lib/ae/subjunctive.rb
 lib/ae.rb
+test/06_counts.rdoc
 HISTORY.rdoc
 LICENSE
 README.rdoc

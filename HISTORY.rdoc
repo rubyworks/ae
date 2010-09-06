@@ -1,5 +1,21 @@
 = RELEASE HISTORY
 
+== 1.5.0 / 2010-09-06
+
+This release adds adapters for TestUnit, MiniTest and RSpec. AE worked with
+them previously but AE assertions were seen as errors rather than natice
+assertions. Likewise assertion counts were off in the final tally. These
+adapters insert AE's counts so the the tally's are correct.
+
+In addition to this the Assertion class itself now acts as the final end
+point for all assertions, which makes for a very clean interface.
+
+Changes:
+
+* Add adapters for TestUnit, MiniTest and RSpec.
+* Move final assertion call to Assertion#test.
+
+
 == 1.4.0 / 2010-09-02
 
 Version 1.4 brings Ruby 1.9 compatibility. The Assertor class is now a

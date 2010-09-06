@@ -1,21 +1,29 @@
-require 'yaml'
+Object.__send__(:remove_const, :VERSION) if Object.const_defined?(:VERSION)      # becuase Ruby 1.8~ gets in the way
 
 module AE
-  DIRECTORY = File.dirname(__FILE__) + '/ae'
+  DIRECTORY = File.dirname(__FILE__)
 
-  PROFILE = YAML.load(File.new(DIRECTORY + '/meta/profile')) rescue {}
-  PACKAGE = YAML.load(File.new(DIRECTORY + '/meta/package')) rescue {}
+  def self.package
+    @package ||= (
+      require 'yaml'
+      YAML.load(File.new(DIRECTORY + '/package'))
+    )
+  end
 
-  VERSION = PACKAGE['version']
+  def self.profile
+    @profile ||= (
+      require 'yaml'
+      YAML.load(File.new(DIRECTORY + '/profile'))
+    )
+  end
 
-  #
   def self.const_missing(name)
     key = name.to_s.downcase
-    PACAKGE[key] || PROFILE[key] || super(name)
+    package[key] || profile[key] || super(name)
   end
 end
 
 require 'ae/assert'
 require 'ae/expect'
 
-# Copyright (c) 2008 Thomas Sawyer
+# Copyright (c) 2008, 2010 Thomas Sawyer

@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'ae/adapters/test_unit'
+require 'ae/adapters/testunit'
 
 class TestUnitSupport < Test::Unit::TestCase
 

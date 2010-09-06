@@ -1,0 +1,29 @@
+= Assertion Counts
+
+AE tracks the number of assertions made and the number that failed to pass.
+We can reset the count using the +recount+ class method.
+
+  fails, total = Assertion.recount
+
+For example if we one assertion fails and another fails.
+
+  assert(true)
+
+  expect Assertion do
+    assert(false)
+  end
+
+We will see that AE counted three assertions and one failure.
+
+  Assertion.count.assert == 3
+  Assertion.fails.assert == 1
+
+The #expect call is an assertion too, which is why the count is 3
+rather than 2.
+
+Now that we are done checking counts we will restore them so that
+any other demos being run with this will tally correctly.
+
+  Assertion.fails = fails
+  Assertion.count = total + 3
+

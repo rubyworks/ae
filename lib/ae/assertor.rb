@@ -13,9 +13,6 @@ require 'ae/basic_object'
 #
 class Assertor < AE::BasicObject
 
-  $assertions = 0
-  $failures   = 0
-
   #
   #instance_methods.each{ |m| protected m unless /^(__|object_id$)/ =~ m.to_s }
 
@@ -87,18 +84,16 @@ class Assertor < AE::BasicObject
   #--
   # TODO: Should we deprecate the receiver matches in favor of #expected ?
   # In other words, should the <code>|| @delegate</code> be dropped?
-  #
-  # TODO: respond_to?(:exception) && match = exception if Exception === match
   #++
   def expect(*args, &block)
     return self if args.empty? && !block_given?  # same as #assert
 
     target = block || args.shift
 
-    if ::Proc === target || target.respond_to?(:to_proc)
-      block = target.to_proc
+    if ::Proc === target #|| target.respond_to?(:to_proc)
+      #block = target.to_proc
       match = args.shift || @delegate
-      if ::Exception === match || (::Class===match && match.ancestors.include?(::Exception))
+      if exception?(match)
         $DEBUG, debug = false, $DEBUG  # b/c it always spits-out a NameError
         begin
           block.arity > 0 ? block.call(@delegate) : block.call
@@ -126,14 +121,21 @@ class Assertor < AE::BasicObject
       msg  = @message || "#{target.inspect} === #{@delegate.inspect}"
     end
 
-    #flunk(msg, caller) unless pass
     __assert__(pass, msg)
   end
 
+  # Is the +object+ and Exception or an instance of one.
+  #--
+  # TODO: Should we use a more libreral determination of exception.
+  # e.g. <code>respond_to?(:exception)</code>.
+  #++
+  def exception?(object)
+    ::Exception === object or ::Class === object and object.ancestors.include?(::Exception)
+  end
+
   #
-  def flunk(msg=nil)
-    $failures += 1
-    fail ::Assertion.new(msg || @message, :backtrace=>@backtrace)
+  def flunk(message=nil)
+    __assert__(false, message || @message)
   end
 
   # Ruby seems to have a quark in it's implementation whereby
@@ -156,12 +158,6 @@ class Assertor < AE::BasicObject
     pass = @delegate.__send__(sym, *a, &b)
     #pass = @delegate.public_send(sym, *a, &b)
     __assert__(pass, @message || __msg__(sym, *a, &b))
-    #Assertor.count += 1
-    #if (@negated ? pass : !pass)
-    #unless @negated ^ pass
-    #  msg = @message || __msg__(sym, *a, &b)
-    #  flunk(msg) #fail Assertion.new(msg, :backtrace=>@backtrace)
-    #end
   end
 
   # Puts together a suitable error message.
@@ -177,13 +173,21 @@ class Assertor < AE::BasicObject
   end
 
   # Pure old simple assert.
-  def __assert__(pass, msg=nil)
-    $assertions += 1
-    unless @negated ^ pass
-      flunk(msg || @message) #raise Assertion.new(msg, :backtrace=>@backtrace)
-    end
-    @negated ? !pass : !!pass
+  #--
+  # TODO: Can the handling of the message be simplified/improved?
+  #++
+  def __assert__(pass, message=nil)
+    pass = @negated ^ pass
+    # msg = message || @message
+    ::Assertion.test(pass, :message=>message, :backtrace=>@backtrace)
+    return pass
   end
+
+  # This method can be replaced to support alternate frameworks.
+  # The idea is to use to record that an assertion took place. 
+  # def framework_assert(pass, message)
+  #   # by default nothing needed
+  # end
 
   #
   def matcher_message(matcher)
@@ -210,7 +214,7 @@ end
 
 # DO WE MAKE THESE EXCEPTIONS?
 #class BasicObject
-#  def assert ;
+#  def assert
 #  end
 #end
 

@@ -11,25 +11,63 @@ require 'ae/core_ext'
 #
 class Assertion < Exception
 
-  def self.recount
-    $assertions = 0
-    $failures   = 0
-  end
+  @count = 0
+  @fails = 0
 
-  def self.count ; $assertions ; end
-  def self.fails ; $failures   ; end
+  class << self
+    attr_accessor :count
+    attr_accessor :fails
+
+    #
+    def test(test, options={})
+      if test
+        increment(true)
+      else
+        framework_flunk(options)
+      end
+      test
+    end
+
+    #
+    #def self.framework_assert(options={})
+    #end
+
+    # This method can be replaced to support alternate frameworks.
+    # The intent of the methods is to raise the assertion failure
+    # class used.
+    def framework_flunk(options={})
+      message = options.delete(:message)
+      fail ::Assertion.new(message, options)
+    end
+
+    # Increment assertion counts. If +pass+ is true then only +@count+
+    # is increased. If +pass+ if false then both +@count+ and +@fails+
+    # are incremented.
+    def increment(pass)
+      @count += 1
+      @fails += 1 unless pass
+    end
+
+    # Reset counts.
+    def recount
+      @count = 0
+      @fails = 0
+    end
+  end
 
   #
-  def initialize(message=nil, opts={})
-    backtrace = opts[:backtrace]
+  def initialize(message=nil, options={})
     super(message)
+    backtrace = options[:backtrace]
     set_backtrace(backtrace) if backtrace
+    self.class.increment(false)
   end
 
+  #
   def to_s
     'fail ' + super
   end
 
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer
+# Copyright (c) 2008, 2010 Thomas Sawyer

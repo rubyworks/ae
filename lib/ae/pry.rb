@@ -21,7 +21,7 @@ module Kernel
   end
 
   # Pry Functor
-  class Pry < BasicObject
+  class Pry < AE::BasicObject
     #instance_methods.each{ |m| private m unless m.to_s =~ /^__/ }
     def initialize(&function)
       @function = function

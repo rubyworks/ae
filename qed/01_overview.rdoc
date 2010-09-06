@@ -26,7 +26,7 @@ methods depend on it. The +Assertion+ class is a subclass
 of Exception. When an assertion is made and fails, it is
 an instance of Assertion that is raised.
 
-  Assertion.assert.raised? do
+  expect Assertion do
     msg = "my failure message"
     assert false, msg
   end
@@ -63,7 +63,7 @@ statements like:
 If the operation evaluates to false or nil, then an Assertion error
 is raised.
 
-  Assertion.assert.raised? do
+  expect Assertion do
     1.assert == 2
   end
 

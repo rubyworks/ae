@@ -11,7 +11,7 @@ the assertion fail.
 
   assert(true, "Not true!")
 
-  Assertion.assert.raised? do
+  expect Assertion do
     assert(false, "Not true!")
   end
 
@@ -271,20 +271,22 @@ can be used in conjunction with +assert+.
 
   x = X.new(4)
 
+  x.instance_eval do
+    @a.assert == 4
+  end
+
+However #instance_eval is a reserved method for the underlying Assertor class,
+so it cannot be used on #assert, e.g.
+
   x.assert.instance_eval do
-    4 == @a
+    @a == "obvisouly wrong"
   end
 
-And should it fail
-
-  Assertion.assert.raised? do
-    x.assert.instance_eval do
-      5 == @a
-    end
-  end
+AE offers an optional helper method for times when testing underlying private
+or protected methods is important, called #pry. See the QED on pry for more
+information.
 
 For some testing underlying implementation might be considered poor
 form. You will get no argument here. It should be used thoughtfully,
 but I would not bet against there being occasions when such validations
-might be handy.
-
+might be needed.

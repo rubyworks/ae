@@ -50,8 +50,10 @@ class Assertion < Exception
 
     # Reset counts.
     def recount
+      f, c = @fails, @count
       @count = 0
       @fails = 0
+      return f, c
     end
   end
 

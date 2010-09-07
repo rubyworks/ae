@@ -15,7 +15,7 @@ intended for reuse by any TDD, BDD or similar system.
 * Uses higher-order functions and fluid notation.
 * Reusable core extensions ease assertion construction.
 * Core extensions are standardized around Ruby Facets.
-* Facets is an optional dependency; extensions are built-in.
+* But Facets is not a dependency; the extensions are built-in.
 * Easily extensible allowing for alternate notations.
 * Eats it's own dog food.
 
@@ -98,10 +98,9 @@ Windows users use 'ruby setup.rb all'.
 
 == COPYRIGHTS & LICENSE
 
-Copyright (c) 2008 Thomas Sawyer
+Copyright (c) 2008,2010 Thomas Sawyer
 
 Unless otherwise provided for by the originating author, this
-program is distributed under the terms of the MIT license.
+program is distributed under the terms of the Apache 2 license.
 
 See LICENSE file for details.
-

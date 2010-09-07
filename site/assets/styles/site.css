@@ -19,7 +19,7 @@ pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: 
 .header { height: 185px; padding: 0; font-weight: bold; color: #FF5599; text-align: left; font-size: 20px; }
 .header h1 { color: black; }
 
-.footer { padding: 40px; text-align: center; }
+.footer { padding: 20px; text-align: center; }
 
 .copyright {
    font-size: 16px;

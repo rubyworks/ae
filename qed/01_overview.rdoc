@@ -7,14 +7,14 @@ reroutes method calls while monitoring them for failing
 conditions.
 
 
-== What's Provided
+== What AE Provides
 
 Requiring the AE library.
 
   require 'ae'
 
 Loads two classes, +Assertion+ and +Assertor+, the Kernel
-method +assert+ and it's ancillaries <tt>assert!</tt> and +refute+
+method +assert+ and it's antonyms +assert!+ and +refute+
 and a set of core extensions that make writing certain types
 of assertions easier.
 

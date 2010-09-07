@@ -21,7 +21,7 @@ else
     # BlankSlate is useful as a base class when writing classes that
     # depend upon <tt>method_missing</tt> (e.g. dynamic proxies).
     #
-    class BasicObject
+    class BasicObject #:nodoc:
 
       # Hide the method named +name+ in the BlankSlate class.  Don't
       # hide +instance_eval+ or any method beginning with "__".
@@ -101,7 +101,7 @@ else
   # "feature" of Ruby prevents late includes into modules from being
   # exposed in the first place.
   #
-  class Module
+  class Module #:nodoc:
     alias basic_object_original_append_features append_features
     def append_features(mod)
       result = basic_object_original_append_features(mod)

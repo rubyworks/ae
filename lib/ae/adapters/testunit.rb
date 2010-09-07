@@ -1,8 +1,12 @@
-class Test::Unit::TestCase #:nodoc:
-  alias_method :_run, :run
-  def run(result, &block)
-    $_result = result
-    _run(result, &block)
+module Test #:nodoc:
+  module Unit #:nodoc:
+    class TestCase #:nodoc:
+      alias_method :_run, :run
+      def run(result, &block)
+        $_result = result
+        _run(result, &block)
+      end
+    end
   end
 end
 

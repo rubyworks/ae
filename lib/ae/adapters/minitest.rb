@@ -1,8 +1,10 @@
-class MiniTest::Unit #:nodoc:
-  def status io = @@out
-    ae_count = ::Assertion.count
-    format = "%d tests, %d assertions, %d failures, %d errors, %d skips"
-    io.puts format % [test_count, assertion_count + ae_count, failures, errors, skips]
+module MiniTest #:nodoc:
+  class Unit #:nodoc:
+    def status io = @@out
+      ae_count = ::Assertion.count
+      format = "%d tests, %d assertions, %d failures, %d errors, %d skips"
+      io.puts format % [test_count, assertion_count + ae_count, failures, errors, skips]
+    end
   end
 end
 

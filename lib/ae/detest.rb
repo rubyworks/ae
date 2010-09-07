@@ -63,6 +63,8 @@ class AE
 
 end
 
-#class ::Object #:nodoc:
-#  include AE::Detest
-#end
+# TODO: Reserve for adding to "test world" instead of all via Object ?
+class ::Object #:nodoc:
+  include AE::Detest
+end
+

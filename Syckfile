@@ -33,6 +33,12 @@ ridoc:
   output : ri
   active : true
 
+qedoc:
+  service: custom
+  cycle: main
+  document: |
+    puts `qedoc -o site/docs/qed -t "AE Demonstrandum" qed`
+
 testrb:
   service  : testrb
   tests    : ~

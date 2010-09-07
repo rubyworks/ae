@@ -8,8 +8,8 @@ a:hover { text-decoration: underline; }
 
 h1 { font-size: 100px; margin: 20px; }
 
-ul { margin: 0 auto; list-style-type: none; width: 300px; }
-li { float: left; padding: 10px; text-align: center; }
+ul { list-style-type: bullet; }
+li { padding: 5px; text-align: left; }
 
 pre { font-size: 90%; padding: 20px 0 10px 0; -moz-border-radius: 10px; font-family: courier, monospace; }
 code { font-family: courier, monospace; }

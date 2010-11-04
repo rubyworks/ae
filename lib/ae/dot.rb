@@ -6,15 +6,19 @@ class TrueClass
   #
   #   (x == y).true!
   #
-  def true!
+  def true!(msg=nil)
     true
   end
   # Assert false.
   #
   #   (x == y).false!
   #
-  def false!
-    fail Assertion.new('true', :backtrace=>caller)
+  def false!(err="not false")
+    if Exception === err
+      fail err
+    else
+      fail Assertion.new(err.to_s, :backtrace=>caller)
+    end
   end
 end
 
@@ -23,14 +27,18 @@ class FalseClass
   #
   #   (x == y).true!
   #
-  def true!
-    fail Assertion.new('false', :backtrace=>caller)
+  def true!(err="not true")
+    if Exception === err
+      fail err
+    else
+      fail Assertion.new(err.to_s, :backtrace=>caller)
+    end
   end
   # Assert false.
   #
   #   (x == y).false!
   #
-  def false!
+  def false!(msg=nil)
     true
   end
 end

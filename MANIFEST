@@ -3,12 +3,14 @@ demo/cucumber/features/cucumber.feature
 demo/cucumber/features/step_definitions/cucumber_steps.rb
 demo/cucumber/features/support/env.rb
 demo/minitest/example.rb
+demo/rspec/example.rb
 demo/testunit/example.rb
 qed/01_overview.rdoc
 qed/02_assertion.rdoc
 qed/03_assert.rdoc
 qed/04_subjunctive.rdoc
 qed/05_expect.rdoc
+qed/06_counts.rdoc
 qed/07_matchers.rdoc
 lib/ae/adapter.rb
 lib/ae/adapters/minitest.rb
@@ -18,7 +20,9 @@ lib/ae/assert.rb
 lib/ae/assertion.rb
 lib/ae/assertor.rb
 lib/ae/basic_object.rb
+lib/ae/check.rb
 lib/ae/core_ext.rb
+lib/ae/detest.rb
 lib/ae/dot.rb
 lib/ae/expect.rb
 lib/ae/legacy.rb
@@ -28,11 +32,8 @@ lib/ae/meta/profile
 lib/ae/must.rb
 lib/ae/pry.rb
 lib/ae/should.rb
-lib/ae/subjunctive/must.rb
-lib/ae/subjunctive/should.rb
 lib/ae/subjunctive.rb
 lib/ae.rb
-test/06_counts.rdoc
 HISTORY.rdoc
 LICENSE
 README.rdoc

@@ -102,7 +102,7 @@ class Assertor < AE::BasicObject
         rescue match => error
           pass = true
           msg  = "#{match} raised"
-        rescue Exception => error
+        rescue ::Exception => error
           pass = false
           msg  = "#{match} expected but #{error.class} was raised"
         ensure

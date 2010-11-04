@@ -11,6 +11,7 @@ require 'ae/core_ext'
 #
 class Assertion < Exception
 
+  # TODO: This doesn't seem to cut it anymore!
   @count = 0
   @fails = 0
 
@@ -44,6 +45,7 @@ class Assertion < Exception
     # is increased. If +pass+ if false then both +@count+ and +@fails+
     # are incremented.
     def increment(pass)
+      recount unless instance_variable_defined?('@count') # TODO: Come on, there has to be a better way!
       @count += 1
       @fails += 1 unless pass
     end

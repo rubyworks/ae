@@ -282,9 +282,10 @@ module AE
 #    include Legacy::Assertions
 #  end
 
+  module World
+    include AE::Legacy::Assertions
+  end
+
 end
 
-class ::Object #:nodoc:
-  include AE::Legacy::Assertions
-end
 

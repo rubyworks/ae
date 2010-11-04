@@ -1,9 +1,21 @@
 = RELEASE HISTORY
 
+== 1.6.0 / 2010-11-04
+
+Support libraries defining toplevel methods, such as `legacy.rb`, now place
+their methods in AE::World module instead of Object. So AE::World will now have
+to be included in the context desired for the testing framework used. This
+is important so as to prevent polution of the the Object namespace.
+
+Changes:
+
+* Toplevel extras are defined in AE::World instead of Object.
+
+
 == 1.5.0 / 2010-09-06
 
 This release adds adapters for TestUnit, MiniTest and RSpec. AE worked with
-them previously but AE assertions were seen as errors rather than natice
+them previously but AE assertions were seen as errors rather than nice
 assertions. Likewise assertion counts were off in the final tally. These
 adapters insert AE's counts so the the tally's are correct.
 

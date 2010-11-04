@@ -1,7 +1,6 @@
 require 'ae/assertion'
 
 class AE
-
   # Given that x is "tom" then we can assert it
   # is using an asseretion pipe.
   #
@@ -58,13 +57,12 @@ class AE
     # Catch a symbol.
     #def C
     #end
+  end
 
+  module World
+    include AE::Detest
   end
 
 end
 
-# TODO: Reserve for adding to "test world" instead of all via Object ?
-class ::Object #:nodoc:
-  include AE::Detest
-end
 

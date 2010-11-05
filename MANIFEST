@@ -1,10 +1,4 @@
 #!mast -x Syckfile bin demo qed lib test [A-Z]*
-demo/cucumber/features/cucumber.feature
-demo/cucumber/features/step_definitions/cucumber_steps.rb
-demo/cucumber/features/support/env.rb
-demo/minitest/example.rb
-demo/rspec/example.rb
-demo/testunit/example.rb
 qed/01_overview.rdoc
 qed/02_assertion.rdoc
 qed/03_assert.rdoc

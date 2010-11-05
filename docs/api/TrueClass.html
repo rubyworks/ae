@@ -91,12 +91,12 @@
           
             
             <li class="method">
-              <a href="#method-i-false">#false</a>
+              <a href="#method-i-false%21">#false!</a>
             </li>
           
             
             <li class="method">
-              <a href="#method-i-true">#true</a>
+              <a href="#method-i-true%21">#true!</a>
             </li>
           
         </ul>
@@ -142,11 +142,15 @@
         <!-- classpage.html : classes -->
         <ul class="link-list">
         
+          <li class="class"><a href="./AE.html">AE</a></li>
+        
           <li class="module"><a href="./AE.html">AE</a></li>
         
           <li class="module"><a href="./AE/Assert.html">AE::Assert</a></li>
         
-          <li class="class"><a href="./AE/BasicObject.html">AE::BasicObject</a></li>
+          <li class="module"><a href="./AE/CheckOK.html">AE::CheckOK</a></li>
+        
+          <li class="module"><a href="./AE/Detest.html">AE::Detest</a></li>
         
           <li class="module"><a href="./AE/Expect.html">AE::Expect</a></li>
         
@@ -158,19 +162,17 @@
         
           <li class="module"><a href="./AE/Subjunctive.html">AE::Subjunctive</a></li>
         
+          <li class="module"><a href="./AE/World.html">AE::World</a></li>
+        
           <li class="module"><a href="./Kernel.html">Kernel</a></li>
         
           <li class="class"><a href="./Kernel/Pry.html">Kernel::Pry</a></li>
-        
-          <li class="class"><a href="./Assertion.html">Assertion</a></li>
         
           <li class="class"><a href="./Assertor.html">Assertor</a></li>
         
           <li class="class"><a href="./Exception.html">Exception</a></li>
         
           <li class="class"><a href="./FalseClass.html">FalseClass</a></li>
-        
-          <li class="class"><a href="./Module.html">Module</a></li>
         
           <li class="class"><a href="./Numeric.html">Numeric</a></li>
         
@@ -190,7 +192,7 @@
       <div style="float: right; margin-right: 5px;">
         <a href="http://validator.w3.org/check/referer"><img src="./assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
       </div>
-      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Redfish</a> 1.3.0
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Redfish</a> 1.4.0
       <br/><br/>
     </div>
   </div>
@@ -202,10 +204,7 @@
         <h1>TrueClass</h1>
       
 
-      <p>
-Expiremental Concept
-</p>
-
+      
     </div>
 
     <!-- Constants -->
@@ -220,31 +219,38 @@ Expiremental Concept
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="false-method" class="method-detail ">
-        <a name="method-i-false"></a>
+      <div id="false--method" class="method-detail ">
+        <a name="method-i-false%21"></a>
 
         <div class="method-heading">
         
-          <span class="method-name">false</span><span
-            class="method-args">()</span>
+          <span class="method-name">false!</span><span
+            class="method-args">(err="not false")</span>
           <span class="method-click-advice">click to toggle source</span>
         
         </div>
 
         <div class="method-description">
           
-          
+          <p>
+Assert false.
+</p>
+<pre>
+  (x == y).false!</pre>
           
 
           
           <div class="method-source-code"
-            id="false-source">
+            id="false--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ae/dot.rb, line 7</span>
- 7:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">false</span>
- 8:     <span class="ruby-identifier">fail</span> <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'true'</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)
- 9:     <span class="ruby-comment cmt">#raise Assertion</span>
-10:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ae/dot.rb, line 16</span>
+16:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">false!</span>(<span class="ruby-identifier">err</span>=<span class="ruby-value str">&quot;not false&quot;</span>)
+17:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Exception</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">err</span>
+18:       <span class="ruby-identifier">fail</span> <span class="ruby-identifier">err</span>
+19:     <span class="ruby-keyword kw">else</span>
+20:       <span class="ruby-identifier">fail</span> <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">err</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)
+21:     <span class="ruby-keyword kw">end</span>
+22:   <span class="ruby-keyword kw">end</span></pre>
           </div>
           
         </div>
@@ -253,30 +259,34 @@ Expiremental Concept
       </div>
 
     
-      <div id="true-method" class="method-detail ">
-        <a name="method-i-true"></a>
+      <div id="true--method" class="method-detail ">
+        <a name="method-i-true%21"></a>
 
         <div class="method-heading">
         
-          <span class="method-name">true</span><span
-            class="method-args">()</span>
+          <span class="method-name">true!</span><span
+            class="method-args">(msg=nil)</span>
           <span class="method-click-advice">click to toggle source</span>
         
         </div>
 
         <div class="method-description">
           
-          
+          <p>
+Assert true.
+</p>
+<pre>
+  (x == y).true!</pre>
           
 
           
           <div class="method-source-code"
-            id="true-source">
+            id="true--source">
 <pre>
-   <span class="ruby-comment cmt"># File lib/ae/dot.rb, line 4</span>
-4:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">true</span>
-5:     <span class="ruby-keyword kw">true</span>
-6:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ae/dot.rb, line 9</span>
+ 9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">true!</span>(<span class="ruby-identifier">msg</span>=<span class="ruby-keyword kw">nil</span>)
+10:     <span class="ruby-keyword kw">true</span>
+11:   <span class="ruby-keyword kw">end</span></pre>
           </div>
           
         </div>

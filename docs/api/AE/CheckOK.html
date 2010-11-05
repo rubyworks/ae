@@ -5,10 +5,10 @@
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-  <title>Class: AE::BasicObject</title>
+  <title>Module: AE::CheckOK</title>
 
   
-    <link rel="SHORTCUT ICON" href="../assets/icon/class.png">
+    <link rel="SHORTCUT ICON" href="../assets/icon/module.png">
   
 
   <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
@@ -31,16 +31,16 @@
     });
   </script>
 </head>
-<body class="class">
+<body class="module">
 <div id="main">
 
   <div class="head">
     <h1>
       
-        <img src="../assets/icon/class.png" align="absmiddle">&nbsp;
+        <img src="../assets/icon/module.png" align="absmiddle">&nbsp;
       
       <a href="../index.html">AE</a>&nbsp;
-      <a href="/">AE::BasicObject</a>
+      <a href="/">AE::CheckOK</a>
     </h1>
   </div>
 
@@ -52,8 +52,8 @@
         <div class="section-body">
           <ul>
           
-            <li class="file"><a href="../lib/ae/basic_object_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/ae/basic_object.rb">lib/ae/basic_object.rb</a></li>
+            <li class="file"><a href="../lib/ae/check_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/check.rb">lib/ae/check.rb</a></li>
           
           </ul>
         </div>
@@ -69,21 +69,28 @@
 
       <!-- Parent Class -->
       
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        <ul>
-          
-          <!-- why was this class="link" ? -->
-          <li class="class"><a href="../Object.html">Object</a></li>
-          
-        </ul>
-      </div>
-      
 
       <!-- Namespace Contents -->
       
 
       <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#method-i-check">#check</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-ok">#ok</a>
+            </li>
+          
+        </ul>
+      </div>
       
 
       <!-- Included Modules -->
@@ -184,16 +191,10 @@
 
     <div id="description">
       
-        <h1>BasicObject</h1>
+        <h1>CheckOK</h1>
       
 
-      <p>
-BasicObject provides an abstract base class with no predefined methods
-(except for <tt>__send__</tt> and <tt>__id__</tt>). BlankSlate is useful as
-a base class when writing classes that depend upon <tt>method_missing</tt>
-(e.g. dynamic proxies).
-</p>
-
+      
     </div>
 
     <!-- Constants -->
@@ -204,6 +205,76 @@ a base class when writing classes that depend upon <tt>method_missing</tt>
 
     <!-- Methods -->
     
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="check-method" class="method-detail ">
+        <a name="method-i-check"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">check</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="check-source">
+<pre>
+   <span class="ruby-comment cmt"># File lib/ae/check.rb, line 4</span>
+4:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check</span>(&amp;<span class="ruby-identifier">block</span>)
+5:       <span class="ruby-ivar">@_check</span> = <span class="ruby-identifier">block</span>
+6:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="ok-method" class="method-detail ">
+        <a name="method-i-ok"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">ok</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="ok-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ae/check.rb, line 8</span>
+ 8:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ok</span>(*<span class="ruby-identifier">args</span>)
+ 9:       <span class="ruby-ivar">@_check</span>.<span class="ruby-identifier">call</span>(*<span class="ruby-identifier">args</span>)
+10:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
 
   </div>
 

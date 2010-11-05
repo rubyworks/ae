@@ -5,10 +5,10 @@
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-  <title>Class: Kernel::Pry</title>
+  <title>Module: AE::Detest</title>
 
   
-    <link rel="SHORTCUT ICON" href="../assets/icon/class.png">
+    <link rel="SHORTCUT ICON" href="../assets/icon/module.png">
   
 
   <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
@@ -31,16 +31,16 @@
     });
   </script>
 </head>
-<body class="class">
+<body class="module">
 <div id="main">
 
   <div class="head">
     <h1>
       
-        <img src="../assets/icon/class.png" align="absmiddle">&nbsp;
+        <img src="../assets/icon/module.png" align="absmiddle">&nbsp;
       
       <a href="../index.html">AE</a>&nbsp;
-      <a href="/">Kernel::Pry</a>
+      <a href="/">AE::Detest</a>
     </h1>
   </div>
 
@@ -52,8 +52,8 @@
         <div class="section-body">
           <ul>
           
-            <li class="file"><a href="../lib/ae/pry_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/ae/pry.rb">lib/ae/pry.rb</a></li>
+            <li class="file"><a href="../lib/ae/detest_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/detest.rb">lib/ae/detest.rb</a></li>
           
           </ul>
         </div>
@@ -69,16 +69,6 @@
 
       <!-- Parent Class -->
       
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        <ul>
-          
-          <!-- why was this class="link" ? -->
-          <li class="class"><a href="../AE/BasicObject.html">AE::BasicObject</a></li>
-          
-        </ul>
-      </div>
-      
 
       <!-- Namespace Contents -->
       
@@ -90,13 +80,23 @@
         <ul class="link-list">
           
             
-            <li class="singleton">
-              <a href="#method-c-new">::new</a>
+            <li class="method">
+              <a href="#method-i-E">#E</a>
             </li>
           
             
             <li class="method">
-              <a href="#method-i-method_missing">#method_missing</a>
+              <a href="#method-i-F">#F</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-N">#N</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-T">#T</a>
             </li>
           
         </ul>
@@ -201,12 +201,32 @@
 
     <div id="description">
       
-        <h1>Pry</h1>
+        <h1>Detest</h1>
       
 
       <p>
-<a href="Pry.html">Pry</a> Functor
+Given that x is &#8220;tom&#8221; then we can assert it is using an
+asseretion pipe.
 </p>
+<pre>
+ x = &quot;tom&quot;
+
+ T x == &quot;tom&quot;
+</pre>
+<p>
+We can assert the opposite using <a href="Detest.html#method-i-F">F</a>.
+</p>
+<pre>
+ F x == &quot;tom&quot;
+</pre>
+<p>
+These can be used at any point of return.
+</p>
+<pre>
+ T case x
+    when 'tom' then true
+    else false
+    end</pre>
 
     </div>
 
@@ -218,17 +238,17 @@
 
     <!-- Methods -->
     
-    <div id="public-class-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="new-method" class="method-detail ">
-        <a name="method-c-new"></a>
+      <div id="--method" class="method-detail ">
+        <a name="method-i-E"></a>
 
         <div class="method-heading">
         
-          <span class="method-name">new</span><span
-            class="method-args">(&function)</span>
+          <span class="method-name">E</span><span
+            class="method-args">(&b)</span>
           <span class="method-click-advice">click to toggle source</span>
         
         </div>
@@ -236,18 +256,27 @@
         <div class="method-description">
           
           <p>
-instance_methods.each{ |m| private m unless m.to_s =~ /^__/ }
+<a href="Expect.html">Expect</a> and error.
+</p>
+<pre>
+  E { raise }
+</pre>
+<p>
+Unless #<a href="Detest.html#method-i-T">T</a>, #<a
+href="Detest.html#method-i-F">F</a> and #<a
+href="Detest.html#method-i-N">N</a>, the #<a
+href="Detest.html#method-i-E">E</a> method only supports block notation.
 </p>
           
 
           
           <div class="method-source-code"
-            id="new-source">
+            id="--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ae/pry.rb, line 26</span>
-26:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(&amp;<span class="ruby-identifier">function</span>)
-27:       <span class="ruby-ivar">@function</span> = <span class="ruby-identifier">function</span>
-28:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ae/detest.rb, line 53</span>
+53:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">E</span>(&amp;<span class="ruby-identifier">b</span>)
+54:       <span class="ruby-identifier">expect</span>(<span class="ruby-constant">Exception</span>, &amp;<span class="ruby-identifier">b</span>)
+55:     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
         </div>
@@ -256,36 +285,106 @@ instance_methods.each{ |m| private m unless m.to_s =~ /^__/ }
       </div>
 
     
-    </div>
-  
-    <div id="public-instance-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-missing-method" class="method-detail ">
-        <a name="method-i-method_missing"></a>
+      <div id="--method" class="method-detail ">
+        <a name="method-i-F"></a>
 
         <div class="method-heading">
         
-          <span class="method-name">method_missing</span><span
-            class="method-args">(op, *a, &b)</span>
+          <span class="method-name">F</span><span
+            class="method-args">(x=nil, &b)</span>
           <span class="method-click-advice">click to toggle source</span>
         
         </div>
 
         <div class="method-description">
           
-          
+          <p>
+Test for not.
+</p>
+<pre>
+  F 1 == 2</pre>
           
 
           
           <div class="method-source-code"
-            id="method-missing-source">
+            id="--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ae/pry.rb, line 29</span>
-29:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">op</span>, *<span class="ruby-identifier">a</span>, &amp;<span class="ruby-identifier">b</span>)
-30:       <span class="ruby-ivar">@function</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">op</span>, *<span class="ruby-identifier">a</span>, &amp;<span class="ruby-identifier">b</span>)
-31:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ae/detest.rb, line 36</span>
+36:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">F</span>(<span class="ruby-identifier">x</span>=<span class="ruby-keyword kw">nil</span>, &amp;<span class="ruby-identifier">b</span>)
+37:       <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">test</span>(<span class="ruby-operator">!</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">call</span>), <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)
+38:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="method-i-N"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">N</span><span
+            class="method-args">(x=nil,&b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Test for nil?.
+</p>
+<pre>
+  N nil</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ae/detest.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">N</span>(<span class="ruby-identifier">x</span>=<span class="ruby-keyword kw">nil</span>,&amp;<span class="ruby-identifier">b</span>)
+45:       <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">test</span>(<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">==</span> (<span class="ruby-identifier">x</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">call</span>), <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)
+46:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="method-i-T"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">T</span><span
+            class="method-args">(x=nil, &b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Test for true.
+</p>
+<pre>
+  T 1 == 1</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ae/detest.rb, line 28</span>
+28:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">T</span>(<span class="ruby-identifier">x</span>=<span class="ruby-keyword kw">nil</span>, &amp;<span class="ruby-identifier">b</span>)
+29:       <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">test</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">call</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)
+30:     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
         </div>

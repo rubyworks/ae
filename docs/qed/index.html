@@ -1,6 +1,8 @@
 <html>
 <head>
-  <title>Assertive Expressive</title>
+  <title>AE Demonstrandum</title>
+
+  <!-- TODO: most of the css before the '*' can be removed. -->
 
   <style>
     #container{ margin: 0 auto; width: 800px; }
@@ -23,7 +25,8 @@
 
     p { color: #222; text-align: justify; margin-top: 0.5em; margin-bottom: 0.5em; line-height: 1.4em; }
 
-    pre { padding: 10; margin: 0; font-family: monospace; font-size: 0.9em; }
+    /* pre { padding: 10; margin: 0; font-family: monospace; font-size: 0.9em; } */
+
     pre.pass { color: green; }
     pre.fail { color: red; }
     pre.error { color: red; font-weight: bold; }
@@ -59,6 +62,45 @@
 
     thead { font-weight: bold; }
     tfoot { font-weight: bold; }
+
+    *{margin:0;padding:0;}
+    html,body{height:100%;color:black;}
+    body{background-color:white;font:13.34px helvetica,arial,freesans,clean,sans-serif;*font-size:small;}
+    table{font-size:inherit;font:100%;}
+    select,input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+    select,option{padding:0 .25em;}
+    optgroup{margin-top:.5em;}
+    input.text{padding:1px 0;}
+    pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+    body *{line-height:1.4em;}
+    p{margin:1em 0;}
+    img{border:0;}
+    abbr{border-bottom:none;}
+
+    .wikistyle h1,.wikistyle h2,.wikistyle h3,.wikistyle h4,.wikistyle h5,.wikistyle h6{border:0!important;}
+    .wikistyle h1{font-size:170%!important;border-top:4px solid #aaa!important;padding-top:.5em!important;margin-top:1.5em!important;}
+    .wikistyle h1:first-child{margin-top:0!important;padding-top:.25em!important;border-top:none!important;}
+    .wikistyle h2{font-size:150%!important;margin-top:1.5em!important;border-top:4px solid #e0e0e0!important;padding-top:.5em!important;}
+    .wikistyle h3{margin-top:1em!important;}
+    .wikistyle p{margin:1em 0!important;line-height:1.5em!important;}
+    .wikistyle ul{margin:1em 0 1em 2em!important;}
+    .wikistyle ol{margin:1em 0 1em 2em!important;}
+    .wikistyle ul ul,.wikistyle ul ol,.wikistyle ol ol,.wikistyle ol ul{margin-top:0!important;margin-bottom:0!important;}
+    .wikistyle blockquote{margin:1em 0!important;border-left:5px solid #ddd!important;padding-left:.6em!important;color:#555!important;}
+    .wikistyle dt{font-weight:bold!important;margin-left:1em!important;}
+    .wikistyle dd{margin-left:2em!important;margin-bottom:1em!important;}
+    .wikistyle table{margin:1em 0!important;}
+    .wikistyle table th{border-bottom:1px solid #bbb!important;padding:.2em 1em!important;}
+    .wikistyle table td{border-bottom:1px solid #ddd!important;padding:.2em 1em!important;}
+    .wikistyle pre{margin:1em 0!important;font-size:90%!important;background-color:#f8f8ff!important;border:1px solid #dedede!important;padding:.5em!important;line-height:1.5em!important;color:#444!important;overflow:auto!important;}
+    .wikistyle pre code{padding:0!important;font-size:100%!important;background-color:#f8f8ff!important;border:none!important;}
+    .wikistyle code{font-size:90%!important;background-color:#f8f8ff!important;color:#444!important;padding:0 .2em!important;border:1px solid #dedede!important;}
+    .wikistyle pre.console{margin:1em 0!important;font-size:90%!important;background-color:black!important;padding:.5em!important;line-height:1.5em!important;color:white!important;}
+    .wikistyle pre.console code{padding:0!important;font-size:100%!important;background-color:black!important;border:none!important;color:white!important;}
+    .wikistyle pre.console span{color:#888!important;}
+    .wikistyle pre.console span.command{color:yellow!important;}
+
+    .title { font-size: 2em; }
   </style>
 
   <!-- TODO: only include if these files exists -->
@@ -73,7 +115,7 @@
 
 </head>
 
-<body>
+<body class="wikistyle">
 
   <!-- Side Table of Contents -->
   <div id="sidebar" style="position: fixed; top: 10; right: 10; background: white;">
@@ -89,7 +131,7 @@
     <div id="header">
       <img src="img/icon/book.jpg" align="left" style="padding-right: 10px;" alt=""/>
 
-      <h1 class="title">Assertive Expressive</h1>
+      <div class="title">AE Demonstrandum</div>
 
       <h1>Table of Contents</h1>
 
@@ -98,15 +140,14 @@
     </div>
 
     <div id="content">
-      <body>
-<h1>Introduction</h1>
+      <h1>Introduction</h1>
 <p>
-AE is an assertions framework for Ruby. It’s designed around the
+AE is an assertions framework for Ruby. It&#8217;s designed around the
 concept of an Assertor. The Assertor is an Assertion Functor, or
 Higher-Order Function, which  reroutes method calls while monitoring them
 for failing conditions.
 </p>
-<h2>What’s Provided</h2>
+<h2>What AE Provides</h2>
 <p>
 Requiring the AE library.
 </p>
@@ -115,7 +156,7 @@ Requiring the AE library.
 </pre>
 <p>
 Loads two classes, <tt>Assertion</tt> and <tt>Assertor</tt>, the Kernel
-method <tt>assert</tt> and it’s ancillaries <tt>assert!</tt> and
+method <tt>assert</tt> and it&#8217;s antonyms <tt>assert!</tt> and
 <tt>refute</tt> and a set of core extensions that make writing certain
 types of assertions easier.
 </p>
@@ -127,8 +168,8 @@ an assertion is made and fails, it is an instance of Assertion that is
 raised.
 </p>
 <pre>
-  Assertion.assert.raised? do
-    msg = "my failure message"
+  expect Assertion do
+    msg = &quot;my failure message&quot;
     assert false, msg
   end
 </pre>
@@ -171,15 +212,15 @@ If the operation evaluates to false or nil, then an Assertion error is
 raised.
 </p>
 <pre>
-  Assertion.assert.raised? do
+  expect Assertion do
     1.assert == 2
   end
 </pre>
 <p>
 The methods <tt>assert!</tt> and <tt>refute</tt> are just like
 <tt>assert</tt> expect they purport the negative condition. Patterned after
-Ruby’s own use of “<tt>!</tt>“ as meaning <tt>not</tt>,
-<tt>assert!</tt> should be read “assert not”. While
+Ruby&#8217;s own use of &#8220;<tt>!</tt>&#8220; as meaning <tt>not</tt>,
+<tt>assert!</tt> should be read &#8220;assert not&#8221;. While
 <tt>refute</tt> exists for the sake of those who find the use of a bang
 method for this purpose unsuited to them.
 </p>
@@ -192,7 +233,7 @@ statement fail. If we wanted to be  pedantic, we could write our assertions
 like:
 </p>
 <pre>
-  raise Assertion.new("1 != 1") unless 1 == 1
+  raise Assertion.new(&quot;1 != 1&quot;) unless 1 == 1
 </pre>
 <p>
 Instead of 
@@ -203,9 +244,13 @@ Instead of
 <p>
 Obviously using Assertor methods are whole lot more concise.
 </p>
-</body>
 
-<body>
+<h1>Assertion Class</h1>
+<p>
+The Assertion class is a subclass of Exception and is the error raised when
+and assertion fails.
+</p>
+
 <h1>Assert Method</h1>
 <h2>Compatible with Test::Unit</h2>
 <p>
@@ -218,10 +263,10 @@ true. Optionally one can send along a meaningful message should the
 assertion fail.
 </p>
 <pre>
-  assert(true, "Not true!")
+  assert(true, &quot;Not true!&quot;)
 
-  Assertion.assert.raised? do
-    assert(false, "Not true!")
+  expect Assertion do
+    assert(false, &quot;Not true!&quot;)
   end
 </pre>
 <h2>Assert with a Block</h2>
@@ -247,7 +292,7 @@ arity of a block can be checked, one can also pass the receiver into the
 block as a block argument.
 </p>
 <pre>
-  "hi".assert do |s|
+  &quot;hi&quot;.assert do |s|
     /h/ =~ s
   end
 </pre>
@@ -277,14 +322,14 @@ Another way to get the opposite inference, is to use <tt>not</tt>.
 </pre>
 <h2>Matchers &amp; Lambda Assertions</h2>
 <p>
-Passing a Proc object or an objec that responds to :to_prco, will use it as
+Passing a Proc object or an objec that responds to :to_proc, will use it as
 if it were a block of the method. This allows for a simple way to quickly
 create reusable assertions.
 </p>
 <pre>
   palindrome = lambda{ |word| word == word.reverse }
 
-  "abracarba".assert palindrome
+  &quot;abracarba&quot;.assert palindrome
 </pre>
 <p>
 Additionally is the object responds to #matches? then the receiver will be
@@ -292,22 +337,23 @@ passed to this method to determine passage.
 </p>
 <pre>
   palindrome = Object.new
+
   def palindrome.matches?(word)
     word == word.reverse
   end
 
-  "abracarba".assert palindrome
+  &quot;abracarba&quot;.assert palindrome
 </pre>
 <h2>Identity Assertions</h2>
 <p>
-Rather then the general form:
+Rather then the general form.
 </p>
 <pre>
   x = 10
   x.assert.object_id == x.object_id
 </pre>
 <p>
-We can use Ruby’s own <tt>equal?</tt> method.
+We can use Ruby&#8217;s own <tt>equal?</tt> method.
 </p>
 <pre>
   x.assert.equal?(x)
@@ -357,7 +403,7 @@ For <em>value equality</em> (<tt>==</tt>), the method is called
   end
 </pre>
 <p>
-And should it fail…
+And should it fail&#8230;
 </p>
 <pre>
   Assertion.assert.raised? do
@@ -372,12 +418,12 @@ For <em>case equality</em> (<tt>===</tt>), it is <tt>case?</tt>.
 </p>
 <pre>
   Numeric.assert.case? do
-    "3".to_i
+    &quot;3&quot;.to_i
   end
 
   Assertion.assert.raised? do
     Numeric.assert.case? do
-      "3"
+      &quot;3&quot;
     end
   end
 </pre>
@@ -387,20 +433,20 @@ Regular Expressions can be used to make assertions in much the same way as
 equality.
 </p>
 <pre>
-  /i/.assert =~ "i"
+  /i/.assert =~ &quot;i&quot;
 
   Assertion.assert.raised? do
-    /i/.assert =~ "g"
+    /i/.assert =~ &quot;g&quot;
   end
 </pre>
 <p>
 Conversely the String class recognizes the #=~ method as well.
 </p>
 <pre>
-  "i".assert =~ /i/
+  &quot;i&quot;.assert =~ /i/
 
   Assertion.assert.raised? do
-    "i".assert =~ /g/
+    &quot;i&quot;.assert =~ /g/
   end
 </pre>
 <h2>Exception Assertions</h2>
@@ -451,7 +497,7 @@ using <tt>throws?</tt>.
 </pre>
 <h2>Assertions on Proc Changes</h2>
 <p>
-I have to admit I’m not sure how this is useful, but I found it in
+I have to admit I&#8217;m not sure how this is useful, but I found it in
 the Bacon API and ported it over just for sake of thoroughness.
 </p>
 <pre>
@@ -480,7 +526,7 @@ AE adds <tt>true?</tt> and <tt>false?</tt> which acts accordingly.
 Assert that a method can be successfully called.
 </p>
 <pre>
-  "STRING".assert.send?(:upcase)
+  &quot;STRING&quot;.assert.send?(:upcase)
 </pre>
 <h2>Numeric Delta and Epsilon</h2>
 <p>
@@ -508,38 +554,43 @@ Not surprisingly if underlying object state needs to be verified,
 
   x = X.new(4)
 
-  x.assert.instance_eval do
-    4 == @a
+  x.instance_eval do
+    @a.assert == 4
   end
 </pre>
 <p>
-And should it fail
+However #instance_eval is a reserved method for the underlying Assertor
+class, so it cannot be used on #assert, e.g.
 </p>
 <pre>
-  Assertion.assert.raised? do
-    x.assert.instance_eval do
-      5 == @a
-    end
+  x.assert.instance_eval do
+    @a == &quot;obvisouly wrong&quot;
   end
 </pre>
+<p>
+AE offers an optional helper method for times when testing underlying
+private or protected methods is important, called #pry. See the QED on pry
+for more information.
+</p>
 <p>
 For some testing underlying implementation might be considered poor form.
 You will get no argument here. It should be used thoughtfully, but I would
-not bet against there being occasions when such validations might be handy.
+not bet against there being occasions when such validations might be
+needed.
 </p>
-</body>
-<body>
+
 <h1>Subjunctives</h1>
 <p>
-Okay. I can hear the BDDers rumbling, “where’s the
-<b>should?</b>“ AE has nothing against “should”, but
+Okay. I can hear the BDDers rumbling, &#8220;where&#8217;s the
+<b>should?</b>&#8220; AE has nothing against &#8220;should&#8221;, but
 there are different approaches for utilizing should nomenclature in
 specifications, and AE wants to be open to these techniques. One of which
-is how Shoulda (<a href="http://shoulda.rubyforge.org">shoulda.rubyforge.org</a>) utilizes
-<tt>should</tt> in a way analogous to RSpec’s use of <tt>it</tt>.
+is how Shoulda (<a
+href="http://shoulda.rubyforge.org">shoulda.rubyforge.org</a>) utilizes
+<tt>should</tt> in a way analogous to RSpec&#8217;s use of <tt>it</tt>.
 </p>
 <p>
-Even so, AE provides a an optional mixin called <tt>Subjunctive</tt> which
+Even so, AE provides an optional mixin called <tt>Subjunctive</tt> which
 can be used to create assertor methods with English subjunctive terms, such
 as <tt>should</tt>, or <tt>must</tt>, <tt>shall</tt> and <tt>will</tt>. To
 load this library use:
@@ -557,13 +608,13 @@ objects. For example:
   end
 </pre>
 <p>
-It’s that easy. Because of their commonality AE provides two such
+It&#8217;s that easy. Because of their commonality AE provides two such
 terms, <tt>should</tt> and <tt>must</tt> as optional add-ons
 out-of-the-box.
 </p>
 <pre>
-  require 'ae/subjunctive/should'
-  require 'ae/subjunctive/must'
+  require 'ae/should'
+  require 'ae/must'
 </pre>
 <p>
 We will use these two methods interchangeable for the rest of this
@@ -571,7 +622,7 @@ demonstration, but to be clear they both work exactly the same way, and
 almost exactly like <tt>assert</tt>.
 </p>
 <p>
-Keep in mind, AE “conical” functionality does not entail the
+Keep in mind, AE &#8220;conical&#8221; functionality does not entail the
 subjunctive forms. These are simply options you can load via your
 <tt>test_helper.rb</tt>, or similar script, if you prefer these
 nomenclatures.
@@ -587,7 +638,7 @@ higher order functions.
 </pre>
 <p>
 Antonyms provided for <tt>should</tt> as <tt>should!</tt> (read
-“should not”) and <tt>shouldnt</tt>. For <tt>must</tt>
+&#8220;should not&#8221;) and <tt>shouldnt</tt>. For <tt>must</tt>
 <tt>must</tt>, they are <tt>must!</tt> and <tt>wont</tt>.
 </p>
 <pre>
@@ -619,7 +670,7 @@ the argument evaluates as true.
   10.should.be Numeric
 
   Assertion.assert.raised? do
-    10.should.be "40"
+    10.should.be &quot;40&quot;
   end
 </pre>
 <h2>Indefinite Articles</h2>
@@ -629,7 +680,7 @@ Additional English forms are <tt>a</tt> and <tt>an</tt>, equivalent to
 instead of <tt>equate?</tt> when acting on a single argument.
 </p>
 <pre>
-  "hi".must.be.a String
+  &quot;hi&quot;.must.be.a String
 
   Assertion.assert.raised? do
     /x/.must.be.a /x/
@@ -639,7 +690,7 @@ instead of <tt>equate?</tt> when acting on a single argument.
 Otherwise they are interchangeable.
 </p>
 <pre>
-  "hi".must.be.an.instance_of?(String)
+  &quot;hi&quot;.must.be.an.instance_of?(String)
 </pre>
 <p>
 The indefinite articles work well when a noun follows as an arguments.
@@ -647,14 +698,13 @@ The indefinite articles work well when a noun follows as an arguments.
 <pre>
   palindrome = lambda{ |x| x == x.reverse }
 
-  "abracarba".must.be.a palindrome
+  &quot;abracarba&quot;.must.be.a palindrome
 </pre>
-</body>
-<body>
+
 <h1>Expect Method</h1>
 <p>
 Expect is another assertion nomenclature available for use in your tests or
-specifications. Inspired by Jay Fields’ Expectations library, it
+specifications. Inspired by Jay Fields&#8217; Expectations library, it
 provides convenient syntax for creating exception and case equality
 assertions.
 </p>
@@ -674,7 +724,7 @@ Expect uses #=== for comparison. So providing an argument and a block to
 
   Assertion.assert.raised? do
     expect Numeric do
-      "3"
+      &quot;3&quot;
     end
   end
 </pre>
@@ -710,7 +760,7 @@ That #expect entails #=== also means we can check for Regexp matches.
 </p>
 <pre>
   expect /x/ do
-    "oooxooo"
+    &quot;oooxooo&quot;
   end
 </pre>
 <h2>Expected Method</h2>
@@ -718,10 +768,10 @@ That #expect entails #=== also means we can check for Regexp matches.
 We can use #expected to make the receiver the object of expectation.
 </p>
 <pre>
-  x = "dummy"
+  x = &quot;dummy&quot;
 
   /x/.expected do
-    "x"
+    &quot;x&quot;
   end
 </pre>
 <h2>Without Block</h2>
@@ -737,7 +787,7 @@ Like #assert, #expect has a negated form called #expect!
 </p>
 <pre>
   expect! /x/ do
-    "o"
+    &quot;o&quot;
   end
 </pre>
 <p>
@@ -746,7 +796,7 @@ explimation mark is #forbid.
 </p>
 <pre>
   forbid /x/ do
-    "o"
+    &quot;o&quot;
   end
 </pre>
 <h2>Functor, or Higher Order Function</h2>
@@ -763,45 +813,88 @@ In which case it works just like #assert, including negative forms.
   10.expect! == 11
   10.forbid  == 11
 </pre>
-</body>
-<body>
+
 <h1>Assertion Counts</h1>
 <p>
 AE tracks the number of assertions made and the number that failed to pass.
 We can reset the count using the <tt>recount</tt> class method.
 </p>
 <pre>
-  Assertion.recount
+  fails, total = Assertion.recount
 </pre>
 <p>
-For example if we one assertion fails and another fails:
+For example if we one assertion fails and another fails.
 </p>
 <pre>
   assert(true)
-  assert(false)
+
+  expect Assertion do
+    assert(false)
+  end
 </pre>
 <p>
-We will see that AE counted two assertions and one failure.
+We will see that AE counted three assertions and one failure.
 </p>
 <pre>
-  Assertion.count.assert == 2
+  Assertion.count.assert == 3
   Assertion.fails.assert == 1
 </pre>
 <p>
-The above calls simply access the actual global variables.
+The #expect call is an assertion too, which is why the count is 3 rather
+than 2.
+</p>
+<p>
+Now that we are done checking counts we will restore them so that any other
+demos being run with this will tally correctly.
 </p>
 <pre>
-  $assertions.assert == 4
-  $failures.assert == 1
+  Assertion.fails = fails
+  Assertion.count = total + 3
 </pre>
+
+<h1>Matchers</h1>
 <p>
-Notice there are now two additional assertions.
+Matchers are simply Procs or objects with the proper interface that can be
+passed to #assert or #refute (or other Assertor) as an ecapsulated test.
 </p>
-</body>
+<h2>Proc or #to_proc</h2>
+<p>
+Passing a Proc object or an object that responds to :to_proc, will use it
+as if it were a block of the method. This allows for a simple way to
+quickly create reusable assertions.
+</p>
+<pre>
+  palindrome = lambda{ |word| word == word.reverse }
+
+  &quot;abracarba&quot;.assert palindrome
+</pre>
+<h2>#matches?</h2>
+<p>
+Additionally if an object responds to #matches? then the receiver will be
+passed to this method to determine if the assertion passes.
+</p>
+<pre>
+  palindrome = Object.new
+
+  def palindrome.matches?(word)
+    word == word.reverse
+  end
+
+  &quot;abracarba&quot;.assert palindrome
+</pre>
+<h2>RSpec, Shoulda and other 3rd-Party Matchers </h2>
+<p>
+With tha addition of #matches?, AE supports the same interface for matchers
+as RSpec. Any matcher library designed for use with RSpec should therefore
+be usable with AE as well. This includes RSpecs own matchers and
+Shoulda&#8217;s excellent Rails matchers.
+</p>
+
 
     </div>
   </div>
 
+  <br/><br/><br/>
 </body>
 
 </html>

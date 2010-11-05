@@ -1,5 +1,17 @@
 = RELEASE HISTORY
 
+== 1.6.1 / 2010-11-05
+
+This release has test passing for Ruby 1.9.2. Ruby 1.9.2 doesn't appear
+to like &block and block_given? to be used in same method scope. It
+may be a Ruby bug, nonetheless AE has been adjusted to circumvent the
+problem.
+
+Changes:
+
+* Use `&block` and not `block_given?`.
+
+
 == 1.6.0 / 2010-11-04
 
 Support libraries defining toplevel methods, such as `legacy.rb`, now place

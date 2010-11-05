@@ -1,39 +1,51 @@
-body { font-size: 24px; }
+body { font-size: 20px; font-family: times; }
 
 p { margin: 0; padding: 0 0 20px 0; }
 a { color: #FF5599; }
 li,li { text-align: left; }
 
-ul { margin: 0 0 0 105px; list-style-type: bullet; width: 390px; }
-li { padding: 5px; text-align: left; }
+ul { margin: 0 0 0 10px; list-style-type: bullet; width: 550px; }
+li { padding: 5px; text-align: left; font-size: 0.9em; }
 
-h1 { font-size: 64px; margin: 20px 0; color: #FF5599; }
+h1 { font-size: 64px; margin: 0 0; color: #FF5599; line-height: 1em; }
 h2 { margin-top: 30px; }
 
 pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: bold; padding: 20px 10px 10px 10px; }
 
-.nav { padding: 0 40px 10px 0; text-align: right; color: pink; font-size: 32px; }
-.nav a { font-size: 90%; color: black; font-variant: small-caps; }
+
+.page { margin: 0 auto; width: 700px; }
+
+.header {
+  text-align: center; height: 260px;
+  margin-left: 0; padding: 40px 0 0 0;
+  text-align: left;
+  background: url(../images/boxing-sm.jpg) top left no-repeat;
+}
+.header .quote { width: 300px; margin: 20px 0 0 375px; text-align: right; }
+
+.quote { font-size: 0.7em; font-style: italic; font-weight: normal; }
+.quote cite { padding-left: 10px; font-style: normal; font-size: 0.9em; text-align: right; }
+
+
+.title {
+  text-align: center;
+  margin-left: 0; padding: 20px 0 0;
+  text-align: left;
+ }
+.title h1 { color: #FF5599; font-weight: bold; color: black; padding-bottom: 20px; }
+
+
+.nav {
+   float: left; width: 80px;
+   margin: 20px 20px 10px 0; color: pink;
+   margin-left: -140px; text-align: right;
+}
+.nav a { font-size: 1.5em; color: black; font-variant: small-caps; text-align: right; }
 .nav a:hover { color: #FF5599; text-decoration: none; }
 
-.header { height: 185px; padding: 0; font-weight: bold; color: #FF5599; text-align: left; font-size: 20px; }
-.header h1 { color: black; }
-
-.footer { padding: 20px; text-align: center; }
-
-.copyright {
-   font-size: 16px;
-   color: #FF5599; padding: 10px 40px 10px 10px;
-   font-family: times; font-weight: bold;
-   line-height: 150%; text-align: center; 
+.main {
+  margin: 0; padding: 0 0 20px 0;
 }
-
-/* SCHEMES */
-
-.sidebar { width: 450px; height: 100%; float: left; }
-.sidebar p { padding: 10px 50px 10px 30px; font-size: 12px; font-style: italic; }
-
-.page { margin: 0 20px; width: 700px; margin-left: 450px; }
 
 .hued {
   background: #FF5599;
@@ -50,9 +62,18 @@ pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: 
 
 .oldtimes {
   font-family: times;
-  font-size: 24px;
-  padding: 25px 20px;
   vertical-align: top;
 }
 
 .oldtimes p { line-height: 130%; }
+
+
+.copyright {
+   font-size: 0.7em;
+   color: #FF5599; padding: 30px 10px;
+   font-family: times; font-weight: bold;
+   line-height: 150%; text-align: left; 
+}
+
+.footer { text-align: center; margin-top: 30px; }
+

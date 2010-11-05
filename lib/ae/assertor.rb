@@ -86,7 +86,7 @@ class Assertor < AE::BasicObject
   # In other words, should the <code>|| @delegate</code> be dropped?
   #++
   def expect(*args, &block)
-    return self if args.empty? && !block_given?  # same as #assert
+    return self if args.empty? && !block  # same as #assert
 
     target = block || args.shift
 

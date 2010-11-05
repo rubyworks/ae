@@ -1,6 +1,7 @@
 = Assertive Expressive
 
-* http://proutils.rubyforge.org/ae/
+* home: http://rubyworks.github.com/ae/
+* code: http://github.com/rubyworks/ae/
 
 
 == DESCRIPTION
@@ -86,7 +87,7 @@ Local installation requires Setup.rb.
 
   $ gem install setup
 
-Then download the tarball package from GitHub (under pack/ directory)
+Then download the tarball package from GitHub
 and do:
 
   $ tar -xvzf ae-1.0.0.tgz

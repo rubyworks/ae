@@ -3,13 +3,15 @@
 == 1.6.0 / 2010-11-04
 
 Support libraries defining toplevel methods, such as `legacy.rb`, now place
-their methods in AE::World module instead of Object. So AE::World will now have
+their methods in AE::World module instead of Object. AE::World needs to
 to be included in the context desired for the testing framework used. This
-is important so as to prevent polution of the the Object namespace.
+is important to prevent polution of the the Object namespace.
 
 Changes:
 
 * Toplevel extras are defined in AE::World instead of Object.
+* In dot.rb #true/#false methods renamed to `#true!`/`#false!`.
+* In dot.rb `#true!`/`#false!` methods can take an error or error message.
 
 
 == 1.5.0 / 2010-09-06

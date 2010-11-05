@@ -102,4 +102,3 @@ In which case it works just like #assert, including negative forms.
   10.expect! == 11
   10.forbid  == 11
 
-

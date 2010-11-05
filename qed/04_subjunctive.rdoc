@@ -7,7 +7,7 @@ and AE wants to be open to these techniques. One of which
 is how Shoulda (http://shoulda.rubyforge.org) utilizes
 +should+ in a way analogous to RSpec's use of +it+.
 
-Even so, AE provides a an optional mixin called +Subjunctive+ which
+Even so, AE provides an optional mixin called +Subjunctive+ which
 can be used to create assertor methods with English subjunctive
 terms, such as +should+, or +must+, +shall+ and +will+.
 To load this library use:
@@ -24,8 +24,8 @@ objects. For example:
 It's that easy. Because of their commonality AE provides two such terms,
 +should+ and +must+ as optional add-ons out-of-the-box.
 
-  require 'ae/subjunctive/should'
-  require 'ae/subjunctive/must'
+  require 'ae/should'
+  require 'ae/must'
 
 We will use these two methods interchangeable for the rest of this
 demonstration, but to be clear they both work exactly the same way,

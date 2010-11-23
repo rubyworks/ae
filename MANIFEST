@@ -1,4 +1,4 @@
-#!mast -x Syckfile bin demo qed lib test [A-Z]*
+#!mast bin demo qed lib test [A-Z]*
 qed/01_overview.rdoc
 qed/02_assertion.rdoc
 qed/03_assert.rdoc
@@ -20,15 +20,18 @@ lib/ae/detest.rb
 lib/ae/dot.rb
 lib/ae/expect.rb
 lib/ae/legacy.rb
-lib/ae/meta/data.rb
-lib/ae/meta/package
-lib/ae/meta/profile
 lib/ae/must.rb
+lib/ae/profile.yml
 lib/ae/pry.rb
 lib/ae/should.rb
 lib/ae/subjunctive.rb
+lib/ae/version.rb
+lib/ae/version.yml
 lib/ae.rb
 HISTORY.rdoc
+PROFILE
 LICENSE
 README.rdoc
 NOTICE
+Syckfile
+VERSION

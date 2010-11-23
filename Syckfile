@@ -24,20 +24,20 @@ rdoc:
   service : rdoc
   template: redfish
   exclude : [Syckfile, PACKAGE, PROFILE, REQUIRE]
-  output  : site/docs/api
+  output  : doc/api
 
 ridoc:
   service: RIDoc
   include: ~
   exclude: ~
-  output : ri
+  output : doc/ri
   active : true
 
 qedoc:
   service: custom
   cycle: main
   document: |
-    puts `qedoc -o site/docs/qed -t "AE Demonstrandum" qed`
+    puts `qedoc -o doc/qed -t "AE Demonstrandum" qed`
 
 testrb:
   service  : testrb

@@ -1,29 +1,6 @@
-Object.__send__(:remove_const, :VERSION) if Object.const_defined?(:VERSION)      # becuase Ruby 1.8~ gets in the way
+# AE, Copyright (c) 2008 Thomas Sawyer
 
-module AE
-  DIRECTORY = File.dirname(__FILE__)
-
-  def self.package
-    @package ||= (
-      require 'yaml'
-      YAML.load(File.new(DIRECTORY + '/package'))
-    )
-  end
-
-  def self.profile
-    @profile ||= (
-      require 'yaml'
-      YAML.load(File.new(DIRECTORY + '/profile'))
-    )
-  end
-
-  def self.const_missing(name)
-    key = name.to_s.downcase
-    package[key] || profile[key] || super(name)
-  end
-end
-
+require 'ae/version'
 require 'ae/assert'
 require 'ae/expect'
 
-# Copyright (c) 2008, 2010 Thomas Sawyer

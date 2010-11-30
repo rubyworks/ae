@@ -1,11 +1,11 @@
 --- 
 title  : AE
 summary: Assertive Expressive
-suite  : proutils
+suite  : rubyworks
 contact: trans <transfire@gmail.com>
 created: 2008-08-17
 authors: Thomas Sawyer
-license: MIT
+license: Apache 2.0
 
 description:
   Assertive Expressive is an assertions library specifically 

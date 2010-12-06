@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+Dir.entries('.ruby').each do |file|
+  next if file == '.'
+  next if file == '..'
+  next if file == 'resources'
+  next if file == 'requires'
+  __send__(file, File.read(".ruby/#{file}").strip)
+end
+
+File.readlines('.ruby/resources').each do |line|
+  label, url = *line.strip.split(/\s+/)
+  resource(label, url)
+end
+
+requires File.readlines('.ruby/requires').map{ |gem| gem.strip }
+
+manifest 'MANIFEST'
+

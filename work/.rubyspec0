@@ -1,0 +1,31 @@
+--- 
+name    : ae
+date    : 2010-11-05
+version : 1.6.1
+
+requires:
+  - syckle (build)
+  - qed    (test)
+
+title  : AE
+summary: Assertive Expressive
+suite  : rubyworks
+contact: trans <transfire@gmail.com>
+created: 2008-08-17
+authors: Thomas Sawyer
+license: Apache 2.0
+
+description:
+  Assertive Expressive is an assertions library specifically 
+  designed for reuse by other test frameworks.
+
+resources:
+  home: http://proutils.github.com/ae
+  code: http://github.com/proutils/ae
+  docs: http://wiki.github.com/proutils/ae/docs/qed
+  wiki: http://wiki.github.com/proutils/ae
+  bugs: http://github.com/proutils/ae/issues
+  mail: http://groups.google.com/group/rubyworks-mailinglist
+  repo: git://github.com/proutils/ae.git
+
+copyright: Copyright (c) 2008 Thomas Sawyer

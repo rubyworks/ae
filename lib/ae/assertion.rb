@@ -11,19 +11,20 @@ require 'ae/core_ext'
 #
 class Assertion < Exception
 
-  # DEPRECATE
-  def self.count
-    $assertion_counts[:total]
+  # DEPRECATE: It might be better to get the count methods out of this class.
+
+  #
+  def self.counts
+    $assertion_counts
   end
 
-  # DEPRECATE
-  def self.passes
-    $assertion_counts[:pass]
-  end
-
-  # DEPRECATE
-  def self.fails
-    $assertion_counts[:fail]
+  # Reset counts.
+  def self.recount(reset={})
+    counts = $assertion_counts
+    reset.each do |type, value|
+      $assertion_counts[type.to_sym] = value
+    end
+    return counts
   end
 
   #

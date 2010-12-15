@@ -124,7 +124,7 @@ class Assertor < AE::BasicObject
     __assert__(pass, msg)
   end
 
-  # Is the +object+ and Exception or an instance of one.
+  # Is the +object+ an Exception or an instance of one.
   #--
   # TODO: Should we use a more libreral determination of exception.
   # e.g. <code>respond_to?(:exception)</code>.
@@ -134,7 +134,7 @@ class Assertor < AE::BasicObject
   end
 
   #
-  def flunk(message=nil)
+  def flunk(message=nil, backtrace=nil)
     __assert__(false, message || @message)
   end
 
@@ -179,8 +179,9 @@ class Assertor < AE::BasicObject
   def __assert__(pass, message=nil)
     pass = @negated ^ pass
     # msg = message || @message
-    ::Assertion.test(pass, :message=>message, :backtrace=>@backtrace)
-    return pass
+    super(pass, message, @backtrace)
+    #::Assertion.test(pass, :message=>message, :backtrace=>@backtrace)
+    #return pass
   end
 
   # This method can be replaced to support alternate frameworks.

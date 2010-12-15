@@ -11,6 +11,36 @@ require 'ae/core_ext'
 #
 class Assertion < Exception
 
+  def self.count
+    $assertions_passed + $assertions_failed
+  end
+
+  def self.passed
+    $assertions_passed
+  end
+
+  def self.fails
+    $assertions_failed
+  end
+
+  #
+  def initialize(message=nil, options={})
+    super(message)
+    backtrace = options[:backtrace]
+    set_backtrace(backtrace) if backtrace
+  end
+
+  #
+  def assertion?
+    true
+  end
+
+  #
+  def to_s
+    'fail ' + super
+  end
+
+=begin
   # TODO: This doesn't seem to cut it anymore!
   @count = 0
   @fails = 0
@@ -18,6 +48,7 @@ class Assertion < Exception
   class << self
     attr_accessor :count
     attr_accessor :fails
+
 
     #
     def test(test, options={})
@@ -58,20 +89,8 @@ class Assertion < Exception
       return f, c
     end
   end
-
-  #
-  def initialize(message=nil, options={})
-    super(message)
-    backtrace = options[:backtrace]
-    set_backtrace(backtrace) if backtrace
-    self.class.increment(false)
-  end
-
-  #
-  def to_s
-    'fail ' + super
-  end
+=end
 
 end
 
-# Copyright (c) 2008, 2010 Thomas Sawyer
+# Copyright (c) 2008,2010 Thomas Sawyer

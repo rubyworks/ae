@@ -155,7 +155,6 @@ class Assertor < AE::BasicObject
   # Converts a missing methods into an Assertion.
   #
   def method_missing(sym, *a, &b)
-p sym
     pass = @delegate.__send__(sym, *a, &b)
     #pass = @delegate.public_send(sym, *a, &b)
     __assert__(pass, @message || __msg__(sym, *a, &b))

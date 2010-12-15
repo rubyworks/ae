@@ -13,17 +13,17 @@ class Assertion < Exception
 
   # DEPRECATE
   def self.count
-    $assertions_called
+    $assertion_counts[:total]
   end
 
   # DEPRECATE
   def self.passes
-    $assertions_passed
+    $assertion_counts[:pass]
   end
 
   # DEPRECATE
   def self.fails
-    $assertions_failed
+    $assertion_counts[:fail]
   end
 
   #

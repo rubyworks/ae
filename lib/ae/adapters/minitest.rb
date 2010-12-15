@@ -1,18 +1,18 @@
+require 'ae'
+
 module MiniTest #:nodoc:
   class Unit #:nodoc:
     def status io = @@out
-      ae_count = ::Assertion.count
+      ae_count = $assertion_counts[:total]
       format = "%d tests, %d assertions, %d failures, %d errors, %d skips"
       io.puts format % [test_count, assertion_count + ae_count, failures, errors, skips]
     end
   end
 end
 
-require 'ae'
+module Kernel #:nodoc:
 
-class Assertion #:nodoc:
-
-  def self.framework_flunk(options)
+  def raise_assertion(options)
     message   = options.delete(:message)
     backtrace = options.delete(:backtrace)
 
@@ -22,3 +22,5 @@ class Assertion #:nodoc:
   end
 
 end
+
+

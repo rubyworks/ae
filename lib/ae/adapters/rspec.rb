@@ -1,8 +1,8 @@
 require 'ae'
 
-class Assertion
+module Kernel
 
-  def self.framework_flunk(options)
+  def raise_assertion(options)
     message   = options.delete(:message)
     backtrace = options.delete(:backtrace)
 

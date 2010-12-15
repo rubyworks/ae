@@ -1,3 +1,5 @@
+require 'ae'
+
 module Test #:nodoc:
   module Unit #:nodoc:
     class TestCase #:nodoc:
@@ -10,18 +12,18 @@ module Test #:nodoc:
   end
 end
 
-require 'ae'
+module Kernel #:nodoc:
 
-class Assertion #:nodoc:
+  alias __assert_without_testunit__ __assert__
 
-  def self.increment(pass)
-    @count += 1
-    @fails += 1 unless pass
-
+  # For some reason TestUnit needs this to count correctly.
+  def __assert__(test, message=nil, backtrace=nil)
+    backtrace ||= caller
     $_result.add_assertion if $_result
+    __assert_without_testunit__(test, message=nil, backtrace)
   end
 
-  def self.framework_flunk(options)
+  def raise_assertion(options)
     message   = options.delete(:message)
     backtrace = options.delete(:backtrace)
 

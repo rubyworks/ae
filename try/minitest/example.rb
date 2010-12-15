@@ -15,20 +15,20 @@ class MiniTestSupport < MiniTest::Unit::TestCase
     x.assert == y
   end
 
-  def test_assert_fail_original
-    x = 5
-    y = 6
-    assert_equal(x, y)
-  end
-
   def test_assert_pass_original
     x = 5
     y = 5
     assert_equal(x, y)
   end
 
+  def test_assert_fail_original
+    x = 5
+    y = 6
+    assert_equal(x, y)
+  end
+
   def test_exception
-    raise
+    raise "This should raise an exception."
   end
 
 end

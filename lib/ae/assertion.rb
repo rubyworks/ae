@@ -11,14 +11,17 @@ require 'ae/core_ext'
 #
 class Assertion < Exception
 
+  # DEPRECATE
   def self.count
-    $assertions_passed + $assertions_failed
+    $assertions_called
   end
 
-  def self.passed
+  # DEPRECATE
+  def self.passes
     $assertions_passed
   end
 
+  # DEPRECATE
   def self.fails
     $assertions_failed
   end

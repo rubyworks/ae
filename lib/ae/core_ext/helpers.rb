@@ -80,7 +80,6 @@ end
 
 
 class Object
-
   # Allows equal? to take a block.
   def equal?(value=NoArgument) #:yield:
     if block_given?
@@ -98,7 +97,6 @@ class Object
       super
     end
   end
-
 end
 
 class Numeric

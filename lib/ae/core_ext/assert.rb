@@ -1,14 +1,14 @@
-$assertions_passed = 0
-$assertions_failed = 0
+$assertion_counts = {:total=>0,:pass=>0,:fail=>0}
 
 module Kernel
   # Make an assertion.
   def assert(test, message=nil, backtrace=nil)
+    $assertion_counts[:total] += 1
     if test
-      $assertions_passed += 1
+      $assertion_counts[:pass] += 1
       test
     else
-      $assertions_failed += 1
+      $assertion_counts[:fail] += 1
       backtrace = backtrace || caller
       message   = message   || 'flunk'
       raise_assertion(:message=>message,:backtrace=>backtrace)
@@ -33,15 +33,3 @@ module Kernel
   end
 
 end
-
-
-class Exception
-  # Is this exception from an assertion?
-  def assertion?
-    @assertion ||= false
-  end
-  def set_assertion(boolean)
-    @assertion = !!boolean
-  end
-end
-

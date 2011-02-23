@@ -1,13 +1,13 @@
-body { font-size: 20px; font-family: times; }
+body { font-size: 20px; font-family: times; margin: 0; padding: 0; }
 
 p { margin: 0; padding: 0 0 20px 0; }
 a { color: #FF5599; }
-li,li { text-align: left; }
+li { text-align: left; }
 
-ul { margin: 0 0 0 10px; list-style-type: bullet; width: 550px; }
+ul { margin: 0 0 0 10px; padding: 15px 10px; list-style-type: bullet; width: 550px; }
 li { padding: 5px; text-align: left; font-size: 0.9em; }
 
-h1 { font-size: 64px; margin: 0 0; color: #FF5599; line-height: 1em; }
+h1 { font-size: 48px; margin: 25px 0 15px 0; color: #FF5599; line-height: 1em; }
 h2 { margin-top: 30px; }
 
 pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: bold; padding: 20px 10px 10px 10px; }
@@ -15,24 +15,29 @@ pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: 
 
 .page { margin: 0 auto; width: 700px; }
 
-.header {
-  text-align: center; height: 260px;
-  margin-left: 0; padding: 40px 0 0 0;
-  text-align: left;
-  background: url(../images/boxing-sm.jpg) top left no-repeat;
+.page-wide {
+  margin: 0 auto;
+  width: 900px;
 }
-.header .quote { width: 300px; margin: 20px 0 0 375px; text-align: right; }
+
+.header {
+  text-align: left;
+  height: 360px;
+  margin: 5px 0 0 0; padding: 40px 0 0 0;
+
+}
+.header .quote { float: right; width: 300px; margin: 20px 0; text-align: right; }
 
 .quote { font-size: 0.7em; font-style: italic; font-weight: normal; }
 .quote cite { padding-left: 10px; font-style: normal; font-size: 0.9em; text-align: right; }
 
 
 .title {
-  text-align: center;
-  margin-left: 0; padding: 20px 0 0;
+  margin-left: 0; padding: 400px 0 0;
   text-align: left;
+  background: url(../images/gun-art-pink-black.gif) top left no-repeat;
  }
-.title h1 { color: #FF5599; font-weight: bold; color: black; padding-bottom: 20px; }
+.title h1 { font-size: 64px; color: #FF5599; font-weight: bold; color: black; padding-bottom: 20px; }
 
 
 .nav {

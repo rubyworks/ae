@@ -21,15 +21,10 @@ intended for reuse by any TDD, BDD or similar system.
 * Eats it's own dog food.
 
 
-== RELEASE NOTES
-
-Please see HISTORY file.
-
-
 == SYNOPSIS
 
 AE defines the method +assert+. It's is compatible with the method
-as defined by Test::Unit and minitest, which verifies truth of a
+as defined by Test::Unit and MiniTest, which verifies truth of a
 single argument (and can accept an optional failure message).
 
   assert(true)
@@ -64,7 +59,14 @@ to make an assertion. Eg.
 
   "Daffy Duck".assert.daffy?
 
-Please have a look at the QEDocs and RDocs to learn more.
+When an assertion fails an Assertion exception is raised. Any test
+framework can catch this exception and process it accordingly.
+Technically the framework should check to see that the exception
+object responds affirmatively to the #assertion? method. This way any
+type of exception can be used as a means of assertion, not just AE's
+Assertion class.
+
+Please have a look at the QED and API documentation to learn more.
 
 
 == HOW TO INSTALL

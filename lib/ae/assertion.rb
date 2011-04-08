@@ -27,6 +27,10 @@ class Assertion < Exception
     return counts
   end
 
+  # New assertion (failure).
+  #
+  # message - the failure message
+  # options - such as :backtrace
   #
   def initialize(message=nil, options={})
     super(message)
@@ -34,7 +38,10 @@ class Assertion < Exception
     set_backtrace(backtrace) if backtrace
   end
 
-  #
+  # Technically any object that affirmatively responds to #assertion?
+  # can be taken to be an Assertion. This makes it easier for various 
+  # libraries to work together without having to depend upon a common
+  # Assertion base class.
   def assertion?
     true
   end

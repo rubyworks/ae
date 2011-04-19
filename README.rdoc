@@ -10,7 +10,7 @@ Assertive Expressive (AE) is an assertions framework
 intended for reuse by any TDD, BDD or similar system.
 
 
-== FEATURES/ISSUES
+== FEATURES
 
 * Clear, simple and concise syntax.
 * Uses higher-order functions and fluid notation.
@@ -69,13 +69,13 @@ Assertion class.
 Please have a look at the QED and API documentation to learn more.
 
 
-== USAGE
+== INTEGRATION
 
 Generally speaking, AE can be used with any test framework simply by putting
 <code>require 'ae'</code> in a test helper script. However to fully
 integrate with a test framework and ensure the test framework recognizes
 AE assertions (as more than just exceptions) and to ensure assertion
-counts are correct, a little extra intefacing code may be neccessary.
+counts are correct, a little extra interfacing code may be necessary.
 
 Lucky for you AE has already done the leg work for the most common
 test frameworks:

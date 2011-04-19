@@ -15,7 +15,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-04-08 00:00:00 -04:00
+date: 2011-04-19 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
@@ -72,6 +72,9 @@ files:
 - lib/ae/assertor.rb
 - lib/ae/basic_object.rb
 - lib/ae/check.rb
+- lib/ae/core_ext/assert.rb
+- lib/ae/core_ext/exception.rb
+- lib/ae/core_ext/helpers.rb
 - lib/ae/core_ext.rb
 - lib/ae/detest.rb
 - lib/ae/dot.rb
@@ -83,13 +86,13 @@ files:
 - lib/ae/subjunctive.rb
 - lib/ae/version.rb
 - lib/ae.rb
-- HISTORY.rdoc
+- lib/ae.yml
 - Profile
-- LICENSE
 - README.rdoc
-- NOTICE
 - Syckfile
-- VERSION
+- History.rdoc
+- License.txt
+- NOTICE.rdoc
 has_rdoc: true
 homepage: http://rubyworks.github.com/ae
 licenses: 

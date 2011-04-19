@@ -1,12 +1,3 @@
-#--
-# Copyright 2004, 2006 by Jim Weirich (jim@weirichhouse.org).
-# All rights reserved.
-#
-# Permission is granted for use, copying, modification, distribution,
-# and distribution of modified versions of this work as long as the
-# above copyright notice is included.
-#++
-
 if RUBY_VERSION >= '1.9'
 
   module AE
@@ -18,9 +9,14 @@ else
   module AE
     # BasicObject provides an abstract base class with no predefined
     # methods (except for <tt>\_\_send__</tt> and <tt>\_\_id__</tt>).
-    # BlankSlate is useful as a base class when writing classes that
+    # BasicObject is useful as a base class when writing classes that
     # depend upon <tt>method_missing</tt> (e.g. dynamic proxies).
     #
+    # BasicObject is based on BlankSlate by Jim Weirich.
+    #
+    # Copyright 2004, 2006 by Jim Weirich (jim@weirichhouse.org).
+    # All rights reserved.
+
     class BasicObject #:nodoc:
 
       # Hide the method named +name+ in the BlankSlate class.  Don't

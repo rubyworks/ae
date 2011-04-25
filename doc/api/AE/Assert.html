@@ -293,13 +293,14 @@ block evalutes truthfully, i.e. not as nil or false.</p>
 
         <div class="method-description">
           
-          <p>Alias for <a href="Assert.html#method-i-assert-21">assert!</a>.</p>
+          <p>Alias for <a href="Assert.html#method-i-refute">refute</a>. Read it as
+“assert not”.</p>
 
 <pre>4.assert! == 4</pre>
 
 <p>NOTE: This method would not be necessary if Ruby would allow +!=+ to be
-define as a method, or at least +!+ as a unary method. This may be possible
-in Ruby 1.9.</p>
+define as a method, or at least +!+ as a unary method. Looks like this is
+possible in Ruby 1.9, but we will wait until Ruby 1.9 is the norm.</p>
           
 
           
@@ -354,19 +355,16 @@ in Ruby 1.9.</p>
 
         <div class="method-description">
           
-          <p><a href="Assert.html">Assert</a> not an operational relationship. Read it
-as “assert not”.</p>
+          <p>Opposite of assert.</p>
 
 <pre>4.refute == 4  #=&gt; Assertion Error</pre>
-
-<p>See <a href="Assert.html#method-i-assert">assert</a>.</p>
           
 
           
           <div class="method-source-code"
             id="refute-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assert.rb, line 40</span>
+<span class="ruby-comment"># File lib/ae/assert.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">refute</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">not</span>.<span class="ruby-identifier">assert</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -395,14 +393,14 @@ as “assert not”.</p>
 
         <div class="method-description">
           
-          <p>Same as ‘object.assert == other’.</p>
+          <p>Same as ‘object.refute == other’.</p>
           
 
           
           <div class="method-source-code"
             id="refute-3D-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assert.rb, line 45</span>
+<span class="ruby-comment"># File lib/ae/assert.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">refute=</span>(<span class="ruby-identifier">cmp</span>)
   <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">not</span>.<span class="ruby-identifier">assert</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">cmp</span>
 <span class="ruby-keyword">end</span></pre>

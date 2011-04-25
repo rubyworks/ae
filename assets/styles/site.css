@@ -4,7 +4,7 @@ p { margin: 0; padding: 0 0 20px 0; }
 a { color: #FF5599; }
 li { text-align: left; }
 
-ul { margin: 0 0 0 10px; padding: 15px 10px; list-style-type: bullet; width: 550px; }
+ul { margin: 0 0 0 10px; padding: 10px 10px; list-style-type: bullet; width: 550px; }
 li { padding: 5px; text-align: left; font-size: 0.9em; }
 
 h1 { font-size: 48px; margin: 25px 0 15px 0; color: #FF5599; line-height: 1em; }

@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Object</title>
+
+  
+    <link rel="SHORTCUT ICON" href="./assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="./assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="./assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="./assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="./assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="./index.html">&quot;AE&quot;</a>&nbsp;
+      <a href="">Object</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="./lib/ae/expect_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/expect.rb">lib/ae/expect.rb</a></li>
+          
+            <li class="file"><a href="./lib/ae/assert_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/assert.rb">lib/ae/assert.rb</a></li>
+          
+            <li class="file"><a href="./lib/ae/core_ext/helpers_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/core_ext/helpers.rb">lib/ae/core_ext/helpers.rb</a></li>
+          
+            <li class="file"><a href="./lib/ae/basic_object_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/basic_object.rb">lib/ae/basic_object.rb</a></li>
+          
+            <li class="file"><a href="./lib/ae/must_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/must.rb">lib/ae/must.rb</a></li>
+          
+            <li class="file"><a href="./lib/ae/should_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/should.rb">lib/ae/should.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+            <li class="class">Object</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#method-c-basic_object_method_added">::basic_object_method_added</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#method-c-find_hidden_method">::find_hidden_method</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#method-c-method_added">::method_added</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-eql-3F">#eql?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-equal-3F">#equal?</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="./History_rdoc.html">History.rdoc</a></li>
+        
+          <li class="file"><a href="./License_txt.html">License.txt</a></li>
+        
+          <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="./Notice_rdoc.html">Notice.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="./AE.html">AE</a></li>
+        
+          <li class="class"><a href="./AE.html">AE</a></li>
+        
+          <li class="module"><a href="./AE/Assert.html">AE::Assert</a></li>
+        
+          <li class="module"><a href="./AE/CheckOK.html">AE::CheckOK</a></li>
+        
+          <li class="module"><a href="./AE/Detest.html">AE::Detest</a></li>
+        
+          <li class="module"><a href="./AE/Expect.html">AE::Expect</a></li>
+        
+          <li class="module"><a href="./AE/Legacy.html">AE::Legacy</a></li>
+        
+          <li class="module"><a href="./AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+        
+          <li class="module"><a href="./AE/Must.html">AE::Must</a></li>
+        
+          <li class="module"><a href="./AE/Should.html">AE::Should</a></li>
+        
+          <li class="module"><a href="./AE/Subjunctive.html">AE::Subjunctive</a></li>
+        
+          <li class="module"><a href="./AE/World.html">AE::World</a></li>
+        
+          <li class="module"><a href="./Kernel.html">Kernel</a></li>
+        
+          <li class="class"><a href="./Kernel/Pry.html">Kernel::Pry</a></li>
+        
+          <li class="class"><a href="./Assertion.html">Assertion</a></li>
+        
+          <li class="class"><a href="./Assertor.html">Assertor</a></li>
+        
+          <li class="class"><a href="./Exception.html">Exception</a></li>
+        
+          <li class="class"><a href="./FalseClass.html">FalseClass</a></li>
+        
+          <li class="class"><a href="./Module.html">Module</a></li>
+        
+          <li class="class"><a href="./Numeric.html">Numeric</a></li>
+        
+          <li class="class"><a href="./Object.html">Object</a></li>
+        
+          <li class="class"><a href="./Proc.html">Proc</a></li>
+        
+          <li class="class"><a href="./Symbol.html">Symbol</a></li>
+        
+          <li class="class"><a href="./TrueClass.html">TrueClass</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="./assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle</a>
+                     <a href="http://rubyworks.github.com/redfish">RedFish</a>
+                     v1.0.1
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>Object</h1>
+      
+
+      
+<p>Same as above, except in <a href="Object.html">Object</a>.</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+    <div id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt><a name="NoArgument">NoArgument</a></dt>
+        
+        <dd class="description"><p>hack</p></dd>
+        
+      
+      </dl>
+    </div>
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="basic_object_method_added-method" class="method-detail method-alias">
+        <a name="method-c-basic_object_method_added"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">basic_object_method_added</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="find_hidden_method-method" class="method-detail ">
+        <a name="method-c-find_hidden_method"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">find_hidden_method</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="find_hidden_method-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/basic_object.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_hidden_method</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="method_added-method" class="method-detail ">
+        <a name="method-c-method_added"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">method_added</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Detect method additions to <a href="Object.html">Object</a> and remove them
+in the BlankSlate class.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="method_added-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/basic_object.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_added</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">basic_object_method_added</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">result</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Object</span>
+  <span class="ruby-constant">AE</span><span class="ruby-operator">::</span><span class="ruby-constant">BasicObject</span>.<span class="ruby-identifier">hide</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Object.html#method-c-basic_object_method_added">basic_object_method_added</a>
+        </div>
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="eql-3F-method" class="method-detail ">
+        <a name="method-i-eql-3F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">eql?</span><span
+            class="method-args">(value=NoArgument)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Allows eql? to take a block.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="eql-3F-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/core_ext/helpers.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">value</span>=<span class="ruby-constant">NoArgument</span>) <span class="ruby-comment">#:yield:</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-keyword">super</span>(<span class="ruby-keyword">yield</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="equal-3F-method" class="method-detail ">
+        <a name="method-i-equal-3F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">equal?</span><span
+            class="method-args">(value=NoArgument)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Allows equal? to take a block.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="equal-3F-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/core_ext/helpers.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">value</span>=<span class="ruby-constant">NoArgument</span>) <span class="ruby-comment">#:yield:</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-keyword">super</span>(<span class="ruby-keyword">yield</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

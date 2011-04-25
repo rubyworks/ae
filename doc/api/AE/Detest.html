@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Module: AE::Detest</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/icon/module.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="module">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/icon/module.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">&quot;AE&quot;</a>&nbsp;
+      <a href="">AE::Detest</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../lib/ae/detest_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/detest.rb">lib/ae/detest.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#method-i-E">#E</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-F">#F</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-N">#N</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-T">#T</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../History_rdoc.html">History.rdoc</a></li>
+        
+          <li class="file"><a href="../License_txt.html">License.txt</a></li>
+        
+          <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../Notice_rdoc.html">Notice.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../AE.html">AE</a></li>
+        
+          <li class="class"><a href="../AE.html">AE</a></li>
+        
+          <li class="module"><a href="../AE/Assert.html">AE::Assert</a></li>
+        
+          <li class="module"><a href="../AE/CheckOK.html">AE::CheckOK</a></li>
+        
+          <li class="module"><a href="../AE/Detest.html">AE::Detest</a></li>
+        
+          <li class="module"><a href="../AE/Expect.html">AE::Expect</a></li>
+        
+          <li class="module"><a href="../AE/Legacy.html">AE::Legacy</a></li>
+        
+          <li class="module"><a href="../AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+        
+          <li class="module"><a href="../AE/Must.html">AE::Must</a></li>
+        
+          <li class="module"><a href="../AE/Should.html">AE::Should</a></li>
+        
+          <li class="module"><a href="../AE/Subjunctive.html">AE::Subjunctive</a></li>
+        
+          <li class="module"><a href="../AE/World.html">AE::World</a></li>
+        
+          <li class="module"><a href="../Kernel.html">Kernel</a></li>
+        
+          <li class="class"><a href="../Kernel/Pry.html">Kernel::Pry</a></li>
+        
+          <li class="class"><a href="../Assertion.html">Assertion</a></li>
+        
+          <li class="class"><a href="../Assertor.html">Assertor</a></li>
+        
+          <li class="class"><a href="../Exception.html">Exception</a></li>
+        
+          <li class="class"><a href="../FalseClass.html">FalseClass</a></li>
+        
+          <li class="class"><a href="../Module.html">Module</a></li>
+        
+          <li class="class"><a href="../Numeric.html">Numeric</a></li>
+        
+          <li class="class"><a href="../Object.html">Object</a></li>
+        
+          <li class="class"><a href="../Proc.html">Proc</a></li>
+        
+          <li class="class"><a href="../Symbol.html">Symbol</a></li>
+        
+          <li class="class"><a href="../TrueClass.html">TrueClass</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle</a>
+                     <a href="http://rubyworks.github.com/redfish">RedFish</a>
+                     v1.0.1
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>Detest</h1>
+      
+
+      
+<p>Given that x is “tom” then we can assert it is using an asseretion
+pipe.</p>
+
+<pre>x = &quot;tom&quot;
+
+T x == &quot;tom&quot;</pre>
+
+<p>We can assert the opposite using <a href="Detest.html#method-i-F">F</a>.</p>
+
+<pre>F x == &quot;tom&quot;</pre>
+
+<p>These can be used at any point of return.</p>
+
+<pre>T case x
+   when 'tom' then true
+   else false
+   end</pre>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="E-method" class="method-detail ">
+        <a name="method-i-E"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">E</span><span
+            class="method-args">(&b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p><a href="Expect.html">Expect</a> and error.</p>
+
+<pre>E { raise }</pre>
+
+<p>Unless #<a href="Detest.html#method-i-T">T</a>, #<a
+href="Detest.html#method-i-F">F</a> and #<a
+href="Detest.html#method-i-N">N</a>, the #<a
+href="Detest.html#method-i-E">E</a> method only supports block notation.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="E-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/detest.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">E</span>(&amp;<span class="ruby-identifier">b</span>)
+  <span class="ruby-identifier">expect</span>(<span class="ruby-constant">Exception</span>, &amp;<span class="ruby-identifier">b</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="F-method" class="method-detail ">
+        <a name="method-i-F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">F</span><span
+            class="method-args">(x=nil, &b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Test for not.</p>
+
+<pre>F 1 == 2</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="F-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/detest.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">F</span>(<span class="ruby-identifier">x</span>=<span class="ruby-keyword">nil</span>, &amp;<span class="ruby-identifier">b</span>)
+  <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">test</span>(<span class="ruby-operator">!</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">call</span>), <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="N-method" class="method-detail ">
+        <a name="method-i-N"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">N</span><span
+            class="method-args">(x=nil,&b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Test for nil?.</p>
+
+<pre>N nil</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="N-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/detest.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">N</span>(<span class="ruby-identifier">x</span>=<span class="ruby-keyword">nil</span>,&amp;<span class="ruby-identifier">b</span>)
+  <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">test</span>(<span class="ruby-keyword">nil</span> <span class="ruby-operator">==</span> (<span class="ruby-identifier">x</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">call</span>), <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="T-method" class="method-detail ">
+        <a name="method-i-T"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">T</span><span
+            class="method-args">(x=nil, &b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Test for true.</p>
+
+<pre>T 1 == 1</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="T-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/detest.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">T</span>(<span class="ruby-identifier">x</span>=<span class="ruby-keyword">nil</span>, &amp;<span class="ruby-identifier">b</span>)
+  <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">test</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">call</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

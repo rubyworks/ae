@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Module: AE::Subjunctive</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/icon/module.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="module">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/icon/module.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">&quot;AE&quot;</a>&nbsp;
+      <a href="">AE::Subjunctive</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../lib/ae/subjunctive_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/subjunctive.rb">lib/ae/subjunctive.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#method-i-a">#a</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-an">#an</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-be">#be</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-does">#does</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-is">#is</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../History_rdoc.html">History.rdoc</a></li>
+        
+          <li class="file"><a href="../License_txt.html">License.txt</a></li>
+        
+          <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../Notice_rdoc.html">Notice.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../AE.html">AE</a></li>
+        
+          <li class="class"><a href="../AE.html">AE</a></li>
+        
+          <li class="module"><a href="../AE/Assert.html">AE::Assert</a></li>
+        
+          <li class="module"><a href="../AE/CheckOK.html">AE::CheckOK</a></li>
+        
+          <li class="module"><a href="../AE/Detest.html">AE::Detest</a></li>
+        
+          <li class="module"><a href="../AE/Expect.html">AE::Expect</a></li>
+        
+          <li class="module"><a href="../AE/Legacy.html">AE::Legacy</a></li>
+        
+          <li class="module"><a href="../AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+        
+          <li class="module"><a href="../AE/Must.html">AE::Must</a></li>
+        
+          <li class="module"><a href="../AE/Should.html">AE::Should</a></li>
+        
+          <li class="module"><a href="../AE/Subjunctive.html">AE::Subjunctive</a></li>
+        
+          <li class="module"><a href="../AE/World.html">AE::World</a></li>
+        
+          <li class="module"><a href="../Kernel.html">Kernel</a></li>
+        
+          <li class="class"><a href="../Kernel/Pry.html">Kernel::Pry</a></li>
+        
+          <li class="class"><a href="../Assertion.html">Assertion</a></li>
+        
+          <li class="class"><a href="../Assertor.html">Assertor</a></li>
+        
+          <li class="class"><a href="../Exception.html">Exception</a></li>
+        
+          <li class="class"><a href="../FalseClass.html">FalseClass</a></li>
+        
+          <li class="class"><a href="../Module.html">Module</a></li>
+        
+          <li class="class"><a href="../Numeric.html">Numeric</a></li>
+        
+          <li class="class"><a href="../Object.html">Object</a></li>
+        
+          <li class="class"><a href="../Proc.html">Proc</a></li>
+        
+          <li class="class"><a href="../Symbol.html">Symbol</a></li>
+        
+          <li class="class"><a href="../TrueClass.html">TrueClass</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle</a>
+                     <a href="http://rubyworks.github.com/redfish">RedFish</a>
+                     v1.0.1
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      
+<h1><a href="Subjunctive.html">Subjunctive</a></h1>
+
+<p>Mixin for <a href="../Assertor.html">Assertor</a> that provides additional
+English-eque verbage such as ‘be’ and ‘an’. This makes it easier to
+create assertor methods of subjunctive terms like ‘should’.</p>
+
+<p>THIS IS AN OPTIONAL LIBRARY.</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="a-method" class="method-detail ">
+        <a name="method-i-a"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">a</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>The indefinite article is like <a
+href="Subjunctive.html#method-i-be">be</a>, excpet that it compares a lone
+argument with #case?, rather than #equate?</p>
+          
+
+          
+          <div class="method-source-code"
+            id="a-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/subjunctive.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">a</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>
+  <span class="ruby-identifier">block</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
+    <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-ivar">@delegate</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>  <span class="ruby-comment">#@delegate.instance_eval(&amp;block)</span>
+    <span class="ruby-identifier">msg</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@message</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">inspect</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">pass</span> = (<span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">===</span> <span class="ruby-ivar">@delegate</span>) <span class="ruby-comment"># case equality</span>
+    <span class="ruby-identifier">msg</span>  = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">pass</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Subjunctive.html#method-i-an">an</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="an-method" class="method-detail method-alias">
+        <a name="method-i-an"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">an</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="be-method" class="method-detail ">
+        <a name="method-i-be"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">be</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Like #assert, except if an argument if provided and no block, uses #equate?
+to compare the argument to the receiver. This allows for statements of the
+form:</p>
+
+<pre>5.should.be Numeric</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="be-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/subjunctive.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">be</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>
+  <span class="ruby-identifier">block</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
+    <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-ivar">@delegate</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>  <span class="ruby-comment">#@delegate.instance_eval(&amp;block)</span>
+    <span class="ruby-identifier">msg</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@message</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">inspect</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">equate?</span>(<span class="ruby-ivar">@delegate</span>)
+    <span class="ruby-identifier">msg</span>  = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">pass</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Subjunctive.html#method-i-is">is</a>, <a href="Subjunctive.html#method-i-does">does</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="does-method" class="method-detail method-alias">
+        <a name="method-i-does"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">does</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="is-method" class="method-detail method-alias">
+        <a name="method-i-is"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">is</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Alias of <a href="Subjunctive.html#method-i-be">be</a>.</p>
+
+<pre>5.assert.is Numeric</pre>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

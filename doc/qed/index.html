@@ -140,755 +140,649 @@
     </div>
 
     <div id="content">
-      <h1>Introduction</h1>
-<p>
-AE is an assertions framework for Ruby. It&#8217;s designed around the
-concept of an Assertor. The Assertor is an Assertion Functor, or
-Higher-Order Function, which  reroutes method calls while monitoring them
-for failing conditions.
-</p>
+      
+<h1>Introduction</h1>
+
+<p>AE is an assertions framework for Ruby. It’s designed around the concept
+of an Assertor. The Assertor is an Assertion Functor, or Higher-Order
+Function, which  reroutes method calls while monitoring them for failing
+conditions.</p>
+
 <h2>What AE Provides</h2>
-<p>
-Requiring the AE library.
-</p>
-<pre>
-  require 'ae'
-</pre>
-<p>
-Loads two classes, <tt>Assertion</tt> and <tt>Assertor</tt>, the Kernel
-method <tt>assert</tt> and it&#8217;s antonyms <tt>assert!</tt> and
+
+<p>Requiring the AE library.</p>
+
+<pre>require 'ae'</pre>
+
+<p>Loads two classes, <tt>Assertion</tt> and <tt>Assertor</tt>, the Kernel
+method <tt>assert</tt> and it’s antonyms <tt>assert!</tt> and
 <tt>refute</tt> and a set of core extensions that make writing certain
-types of assertions easier.
-</p>
+types of assertions easier.</p>
+
 <h2>Assertion and Assertor Classes</h2>
-<p>
-The <tt>Assertion</tt> class is at the heart of AE. All other AE methods
+
+<p>The <tt>Assertion</tt> class is at the heart of AE. All other AE methods
 depend on it. The <tt>Assertion</tt> class is a subclass of Exception. When
 an assertion is made and fails, it is an instance of Assertion that is
-raised.
-</p>
-<pre>
-  expect Assertion do
-    msg = &quot;my failure message&quot;
-    assert false, msg
-  end
-</pre>
-<p>
-Like any raised exception, the last Assertion message is available via
-<tt>$!</tt>.
-</p>
-<p>
-(FYI, in Test::Unit the equivalent class was called
-<tt>AssertionFailedError</tt>.)
-</p>
-<p>
-Assertions themselves are not generally used in creating tests or behavior
+raised.</p>
+
+<pre>expect Assertion do
+  msg = &quot;my failure message&quot;
+  assert false, msg
+end</pre>
+
+<p>Like any raised exception, the last Assertion message is available via
+<tt>$!</tt>.</p>
+
+<p>(FYI, in Test::Unit the equivalent class was called
+<tt>AssertionFailedError</tt>.)</p>
+
+<p>Assertions themselves are not generally used in creating tests or behavior
 specifications. Rather they are used to create additional types of
-assertion methods.
-</p>
-<p>
-As mentioned above the <tt>Assertor</tt> class is a type of Higher-Order
+assertion methods.</p>
+
+<p>As mentioned above the <tt>Assertor</tt> class is a type of Higher-Order
 function, or Functor, which intercedes with a normal message invocation to
-monitor for failed conditions, upon which is raises Assertion exceptions.
-</p>
+monitor for failed conditions, upon which is raises Assertion exceptions.</p>
+
 <h2>Assertion Methods</h2>
-<p>
-The three methods, <tt>assert</tt>, <tt>assert!</tt> and <tt>refute</tt>
+
+<p>The three methods, <tt>assert</tt>, <tt>assert!</tt> and <tt>refute</tt>
 all return an Assertor instance when used fluidly, i.e. magic-dot notation,
-higher-order notation, functor notation, whatever you prefer to call it.
-</p>
-<pre>
-  assert(Assertor === assert)
-</pre>
-<p>
-Through the use of <tt>method_missing</tt>, the Assertor allows us to write
-statements like:
-</p>
-<pre>
-  1.assert == 1
-</pre>
-<p>
-If the operation evaluates to false or nil, then an Assertion error is
-raised.
-</p>
-<pre>
-  expect Assertion do
-    1.assert == 2
-  end
-</pre>
-<p>
-The methods <tt>assert!</tt> and <tt>refute</tt> are just like
+higher-order notation, functor notation, whatever you prefer to call it.</p>
+
+<pre>assert(Assertor === assert)</pre>
+
+<p>Through the use of <tt>method_missing</tt>, the Assertor allows us to write
+statements like:</p>
+
+<pre>1.assert == 1</pre>
+
+<p>If the operation evaluates to false or nil, then an Assertion error is
+raised.</p>
+
+<pre>expect Assertion do
+  1.assert == 2
+end</pre>
+
+<p>The methods <tt>assert!</tt> and <tt>refute</tt> are just like
 <tt>assert</tt> expect they purport the negative condition. Patterned after
-Ruby&#8217;s own use of &#8220;<tt>!</tt>&#8220; as meaning <tt>not</tt>,
-<tt>assert!</tt> should be read &#8220;assert not&#8221;. While
-<tt>refute</tt> exists for the sake of those who find the use of a bang
-method for this purpose unsuited to them.
-</p>
+Ruby’s own use of “<tt>!</tt>” as meaning <tt>not</tt>,
+<tt>assert!</tt> should be read “assert not”. While <tt>refute</tt>
+exists for the sake of those who find the use of a bang method for this
+purpose unsuited to them.</p>
+
 <h2>How It Works</h2>
-<p>
-An Assertor essentially sits in wait for a method call (via
+
+<p>An Assertor essentially sits in wait for a method call (via
 method_missing). When that happens it applies the method to the original
 receiver, but wrapped in a clause that raises an Assertion should the
 statement fail. If we wanted to be  pedantic, we could write our assertions
-like:
-</p>
-<pre>
-  raise Assertion.new(&quot;1 != 1&quot;) unless 1 == 1
-</pre>
-<p>
-Instead of 
-</p>
-<pre>
-  1.assert == 1
-</pre>
-<p>
-Obviously using Assertor methods are whole lot more concise.
-</p>
+like:</p>
+
+<pre>raise Assertion.new(&quot;1 != 1&quot;) unless 1 == 1</pre>
+
+<p>Instead of</p>
+
+<pre>1.assert == 1</pre>
+
+<p>Obviously using Assertor methods are whole lot more concise.</p>
+
 
 <h1>Assertion Class</h1>
-<p>
-The Assertion class is a subclass of Exception and is the error raised when
-and assertion fails.
-</p>
+
+<p>The Assertion class is a subclass of Exception and is the error raised when
+and assertion fails.</p>
+
 
 <h1>Assert Method</h1>
+
 <h2>Compatible with Test::Unit</h2>
-<p>
-The <tt>assert</tt> method is designed to be backward compatible with the
-same method in <tt>Test::Unit</tt>.
-</p>
-<p>
-Using an argument, <tt>assert</tt> will check that an argument evaluates to
+
+<p>The <tt>assert</tt> method is designed to be backward compatible with the
+same method in <tt>Test::Unit</tt>.</p>
+
+<p>Using an argument, <tt>assert</tt> will check that an argument evaluates to
 true. Optionally one can send along a meaningful message should the
-assertion fail.
-</p>
-<pre>
-  assert(true, &quot;Not true!&quot;)
+assertion fail.</p>
 
-  expect Assertion do
-    assert(false, &quot;Not true!&quot;)
-  end
-</pre>
+<pre>assert(true, &quot;Not true!&quot;)
+
+expect Assertion do
+  assert(false, &quot;Not true!&quot;)
+end</pre>
+
 <h2>Assert with a Block</h2>
-<p>
-In addition <tt>assert</tt> has been extended to accept a block. Like the
+
+<p>In addition <tt>assert</tt> has been extended to accept a block. Like the
 case of the argument, the block is expected to return something that
-evaluates as true.
-</p>
-<pre>
+evaluates as true.</p>
+
+<pre>assert do
+  true
+end
+
+Assertion.assert.raised? do
   assert do
-    true
+    false
   end
+end</pre>
 
-  Assertion.assert.raised? do
-    assert do
-      false
-    end
-  end
-</pre>
-<p>
-We should also mention that, while probably not very useful, since the
+<p>We should also mention that, while probably not very useful, since the
 arity of a block can be checked, one can also pass the receiver into the
-block as a block argument.
-</p>
-<pre>
-  &quot;hi&quot;.assert do |s|
-    /h/ =~ s
-  end
-</pre>
+block as a block argument.</p>
+
+<pre>&quot;hi&quot;.assert do |s|
+  /h/ =~ s
+end</pre>
+
 <h2>Antonyms for Assert</h2>
-<p>
-We can state the opposite assertion using <tt>assert!</tt>.
-</p>
-<pre>
-  10.assert! == 9
-</pre>
-<p>
-Or, because some people do not like the use of a bang method,
-<tt>refute</tt>.
-</p>
-<pre>
-  10.refute == 9
-</pre>
-<p>
-These terms can be used just as <tt>assert</tt> is used in all examples,
-but with the opposite inference.
-</p>
-<p>
-Another way to get the opposite inference, is to use <tt>not</tt>.
-</p>
-<pre>
-  10.assert.not == 9
-</pre>
+
+<p>We can state the opposite assertion using <tt>assert!</tt>.</p>
+
+<pre>10.assert! == 9</pre>
+
+<p>Or, because some people do not like the use of a bang method,
+<tt>refute</tt>.</p>
+
+<pre>10.refute == 9</pre>
+
+<p>These terms can be used just as <tt>assert</tt> is used in all examples,
+but with the opposite inference.</p>
+
+<p>Another way to get the opposite inference, is to use <tt>not</tt>.</p>
+
+<pre>10.assert.not == 9</pre>
+
 <h2>Matchers &amp; Lambda Assertions</h2>
-<p>
-Passing a Proc object or an objec that responds to :to_proc, will use it as
+
+<p>Passing a Proc object or an objec that responds to :to_proc, will use it as
 if it were a block of the method. This allows for a simple way to quickly
-create reusable assertions.
-</p>
-<pre>
-  palindrome = lambda{ |word| word == word.reverse }
+create reusable assertions.</p>
 
-  &quot;abracarba&quot;.assert palindrome
-</pre>
-<p>
-Additionally is the object responds to #matches? then the receiver will be
-passed to this method to determine passage.
-</p>
-<pre>
-  palindrome = Object.new
+<pre>palindrome = lambda{ |word| word == word.reverse }
 
-  def palindrome.matches?(word)
-    word == word.reverse
-  end
+&quot;abracarba&quot;.assert palindrome</pre>
 
-  &quot;abracarba&quot;.assert palindrome
-</pre>
+<p>Additionally is the object responds to #matches? then the receiver will be
+passed to this method to determine passage.</p>
+
+<pre>palindrome = Object.new
+
+def palindrome.matches?(word)
+  word == word.reverse
+end
+
+&quot;abracarba&quot;.assert palindrome</pre>
+
 <h2>Identity Assertions</h2>
-<p>
-Rather then the general form.
-</p>
-<pre>
-  x = 10
-  x.assert.object_id == x.object_id
-</pre>
-<p>
-We can use Ruby&#8217;s own <tt>equal?</tt> method.
-</p>
-<pre>
-  x.assert.equal?(x)
-</pre>
-<p>
-AE provides <tt>identical?</tt> method as an alternative to make it a bit
-more clear.
-</p>
-<pre>
-  x.assert.identical?(x)
-</pre>
+
+<p>Rather then the general form.</p>
+
+<pre>x = 10
+x.assert.object_id == x.object_id</pre>
+
+<p>We can use Ruby’s own <tt>equal?</tt> method.</p>
+
+<pre>x.assert.equal?(x)</pre>
+
+<p>AE provides <tt>identical?</tt> method as an alternative to make it a bit
+more clear.</p>
+
+<pre>x.assert.identical?(x)</pre>
+
 <h2>Equality Assertions</h2>
-<p>
-The most common assertion is that of value equality (<tt>==</tt>), as we
+
+<p>The most common assertion is that of value equality (<tt>==</tt>), as we
 have seen throughout this document. But other forms of equality can be
 verified as easily. We have already mentioned  identity. In addition there
-is <em>type equality</em>.
-</p>
-<pre>
-  17.assert.eql? 17
+is <em>type equality</em>.</p>
 
-  Assertion.assert.raised? do
-    17.assert.eql? 17.0
-  end
-</pre>
-<p>
-And there is <em>case equality</em>.
-</p>
-<pre>
-  Numeric.assert === 3
-</pre>
+<pre>17.assert.eql? 17
+
+Assertion.assert.raised? do
+  17.assert.eql? 17.0
+end</pre>
+
+<p>And there is <em>case equality</em>.</p>
+
+<pre>Numeric.assert === 3</pre>
+
 <h2>Checking Equality with a Block</h2>
-<p>
-Because operators can not take blocks, and at times blocks can be
+
+<p>Because operators can not take blocks, and at times blocks can be
 convenient means of supplying a value to an assertion, AE has defined
 alternate renditions of the equality methods. For equal? and eql?, the
 method names are the same, they simply can take a block in place of an
-argument if need be.
-</p>
-<p>
-For <em>value equality</em> (<tt>==</tt>), the method is called
-<tt>eq?</tt>.
-</p>
-<pre>
+argument if need be.</p>
+
+<p>For <em>value equality</em> (<tt>==</tt>), the method is called
+<tt>eq?</tt>.</p>
+
+<pre>10.assert.eq? do
+  10.0
+end</pre>
+
+<p>And should it fail…</p>
+
+<pre>Assertion.assert.raised? do
   10.assert.eq? do
-    10.0
+    20
   end
-</pre>
-<p>
-And should it fail&#8230;
-</p>
-<pre>
-  Assertion.assert.raised? do
-    10.assert.eq? do
-      20
-    end
-  end
-</pre>
+end</pre>
+
 <h2>Case Equality</h2>
-<p>
-For <em>case equality</em> (<tt>===</tt>), it is <tt>case?</tt>.
-</p>
-<pre>
+
+<p>For <em>case equality</em> (<tt>===</tt>), it is <tt>case?</tt>.</p>
+
+<pre>Numeric.assert.case? do
+  &quot;3&quot;.to_i
+end
+
+Assertion.assert.raised? do
   Numeric.assert.case? do
-    &quot;3&quot;.to_i
+    &quot;3&quot;
   end
+end</pre>
 
-  Assertion.assert.raised? do
-    Numeric.assert.case? do
-      &quot;3&quot;
-    end
-  end
-</pre>
 <h2>Regular Expressions</h2>
-<p>
-Regular Expressions can be used to make assertions in much the same way as
-equality.
-</p>
-<pre>
-  /i/.assert =~ &quot;i&quot;
 
-  Assertion.assert.raised? do
-    /i/.assert =~ &quot;g&quot;
-  end
-</pre>
-<p>
-Conversely the String class recognizes the #=~ method as well.
-</p>
-<pre>
-  &quot;i&quot;.assert =~ /i/
+<p>Regular Expressions can be used to make assertions in much the same way as
+equality.</p>
 
-  Assertion.assert.raised? do
-    &quot;i&quot;.assert =~ /g/
-  end
-</pre>
+<pre>/i/.assert =~ &quot;i&quot;
+
+Assertion.assert.raised? do
+  /i/.assert =~ &quot;g&quot;
+end</pre>
+
+<p>Conversely the String class recognizes the #=~ method as well.</p>
+
+<pre>&quot;i&quot;.assert =~ /i/
+
+Assertion.assert.raised? do
+  &quot;i&quot;.assert =~ /g/
+end</pre>
+
 <h2>Exception Assertions</h2>
-<p>
-Validating errors is easy too, as has already been shown in the document to
-verify assertion failures.
-</p>
-<pre>
-  StandardError.assert.raised? do
-    unknown_method
-  end
-</pre>
+
+<p>Validating errors is easy too, as has already been shown in the document to
+verify assertion failures.</p>
+
+<pre>StandardError.assert.raised? do
+  unknown_method
+end</pre>
+
 <h2>Assertions on Object State</h2>
-<p>
-While testing or specifying the internal state of an object is generally
+
+<p>While testing or specifying the internal state of an object is generally
 considered poor form, there are times when it is  necessary. Assert
-combined with <tt>instance_eval</tt> makes it easy too.
-</p>
-<pre>
-  class X
-    attr :a
-    def initialize(a); @a = a; end
-  end
+combined with <tt>instance_eval</tt> makes it easy too.</p>
 
-  x = X.new(1)
+<pre>class X
+  attr :a
+  def initialize(a); @a = a; end
+end
 
-  x.assert.instance_eval do
-    @a == 1
-  end
-</pre>
+x = X.new(1)
+
+x.assert.instance_eval do
+  @a == 1
+end</pre>
+
 <h2>Catch/Try Assertions</h2>
-<p>
-Catch/Try throws can be tested via <tt>Symbol#thrown?</tt>.
-</p>
-<pre>
-  :hookme.assert.thrown? do
-    throw :hookme
-  end
-</pre>
-<p>
-Alternatively, a lambda containing the potential throw can be the receiver
-using <tt>throws?</tt>.
-</p>
-<pre>
-  hook = lambda{ throw :hookme }
-  
-  hook.assert.throws?(:hookme)
-</pre>
+
+<p>Catch/Try throws can be tested via <tt>Symbol#thrown?</tt>.</p>
+
+<pre>:hookme.assert.thrown? do
+  throw :hookme
+end</pre>
+
+<p>Alternatively, a lambda containing the potential throw can be the receiver
+using <tt>throws?</tt>.</p>
+
+<pre>hook = lambda{ throw :hookme }
+
+hook.assert.throws?(:hookme)</pre>
+
 <h2>Assertions on Proc Changes</h2>
-<p>
-I have to admit I&#8217;m not sure how this is useful, but I found it in
-the Bacon API and ported it over just for sake of thoroughness.
-</p>
-<pre>
-  a = 0
 
-  l = lambda{ a }
+<p>I have to admit I’m not sure how this is useful, but I found it in the
+Bacon API and ported it over just for sake of thoroughness.</p>
 
-  l.assert.change?{ a +=1 }
-</pre>
+<pre>a = 0
+
+l = lambda{ a }
+
+l.assert.change?{ a +=1 }</pre>
+
 <h2>Assertion on literal True, False and Nil</h2>
-<p>
-Ruby already provides the #nil? method.
-</p>
-<pre>
-  nil.assert.nil?
-</pre>
-<p>
-AE adds <tt>true?</tt> and <tt>false?</tt> which acts accordingly.
-</p>
-<pre>
-  true.assert.true?
-  false.assert.false?
-</pre>
+
+<p>Ruby already provides the #nil? method.</p>
+
+<pre>nil.assert.nil?</pre>
+
+<p>AE adds <tt>true?</tt> and <tt>false?</tt> which acts accordingly.</p>
+
+<pre>true.assert.true?
+false.assert.false?</pre>
+
 <h2>Send Assertions</h2>
-<p>
-Assert that a method can be successfully called.
-</p>
-<pre>
-  &quot;STRING&quot;.assert.send?(:upcase)
-</pre>
+
+<p>Assert that a method can be successfully called.</p>
+
+<pre>&quot;STRING&quot;.assert.send?(:upcase)</pre>
+
 <h2>Numeric Delta and Epsilon</h2>
-<p>
-You may wish to assert that a numeric value is with some range.
-</p>
-<pre>
-  3.in_delta?(1,5)
-</pre>
-<p>
-Or minimum range.
-</p>
-<pre>
-  3.in_epsilon?(3,5)
-</pre>
+
+<p>You may wish to assert that a numeric value is with some range.</p>
+
+<pre>3.in_delta?(1,5)</pre>
+
+<p>Or minimum range.</p>
+
+<pre>3.in_epsilon?(3,5)</pre>
+
 <h2>Verifying Object State</h2>
-<p>
-Not surprisingly if underlying object state needs to be verified,
-<tt>instance_eval</tt> can be used in conjunction with <tt>assert</tt>.
-</p>
-<pre>
-  class X
-    attr :a
-    def initialize(a); @a = a; end
-  end
 
-  x = X.new(4)
+<p>Not surprisingly if underlying object state needs to be verified,
+<tt>instance_eval</tt> can be used in conjunction with <tt>assert</tt>.</p>
 
-  x.instance_eval do
-    @a.assert == 4
-  end
-</pre>
-<p>
-However #instance_eval is a reserved method for the underlying Assertor
-class, so it cannot be used on #assert, e.g.
-</p>
-<pre>
-  x.assert.instance_eval do
-    @a == &quot;obvisouly wrong&quot;
-  end
-</pre>
-<p>
-AE offers an optional helper method for times when testing underlying
+<pre>class X
+  attr :a
+  def initialize(a); @a = a; end
+end
+
+x = X.new(4)
+
+x.instance_eval do
+  @a.assert == 4
+end</pre>
+
+<p>However #instance_eval is a reserved method for the underlying Assertor
+class, so it cannot be used on #assert, e.g.</p>
+
+<pre>x.assert.instance_eval do
+  @a == &quot;obvisouly wrong&quot;
+end</pre>
+
+<p>AE offers an optional helper method for times when testing underlying
 private or protected methods is important, called #pry. See the QED on pry
-for more information.
-</p>
-<p>
-For some testing underlying implementation might be considered poor form.
+for more information.</p>
+
+<p>For some testing underlying implementation might be considered poor form.
 You will get no argument here. It should be used thoughtfully, but I would
 not bet against there being occasions when such validations might be
-needed.
-</p>
+needed.</p>
+
 
 <h1>Subjunctives</h1>
-<p>
-Okay. I can hear the BDDers rumbling, &#8220;where&#8217;s the
-<b>should?</b>&#8220; AE has nothing against &#8220;should&#8221;, but
-there are different approaches for utilizing should nomenclature in
-specifications, and AE wants to be open to these techniques. One of which
-is how Shoulda (<a
+
+<p>Okay. I can hear the BDDers rumbling, “where’s the <b>should?</b>” AE
+has nothing against “should”, but there are different approaches for
+utilizing should nomenclature in specifications, and AE wants to be open to
+these techniques. One of which is how Shoulda (<a
 href="http://shoulda.rubyforge.org">shoulda.rubyforge.org</a>) utilizes
-<tt>should</tt> in a way analogous to RSpec&#8217;s use of <tt>it</tt>.
-</p>
-<p>
-Even so, AE provides an optional mixin called <tt>Subjunctive</tt> which
+<tt>should</tt> in a way analogous to RSpec’s use of <tt>it</tt>.</p>
+
+<p>Even so, AE provides an optional mixin called <tt>Subjunctive</tt> which
 can be used to create assertor methods with English subjunctive terms, such
 as <tt>should</tt>, or <tt>must</tt>, <tt>shall</tt> and <tt>will</tt>. To
-load this library use:
-</p>
-<pre>
-  require 'ae/subjunctive'
-</pre>
-<p>
-Then all that is required it to define a subjunctive method for all
-objects. For example:
-</p>
-<pre>
-  def will(*args, &amp;block)
-    Assertor.new(self, :backtrace=&gt;caller).be(*args,&amp;block)
-  end
-</pre>
-<p>
-It&#8217;s that easy. Because of their commonality AE provides two such
-terms, <tt>should</tt> and <tt>must</tt> as optional add-ons
-out-of-the-box.
-</p>
-<pre>
-  require 'ae/should'
-  require 'ae/must'
-</pre>
-<p>
-We will use these two methods interchangeable for the rest of this
+load this library use:</p>
+
+<pre>require 'ae/subjunctive'</pre>
+
+<p>Then all that is required it to define a subjunctive method for all
+objects. For example:</p>
+
+<pre>def will(*args, &amp;block)
+  Assertor.new(self, :backtrace=&gt;caller).be(*args,&amp;block)
+end</pre>
+
+<p>It’s that easy. Because of their commonality AE provides two such terms,
+<tt>should</tt> and <tt>must</tt> as optional add-ons out-of-the-box.</p>
+
+<pre>require 'ae/should'
+require 'ae/must'</pre>
+
+<p>We will use these two methods interchangeable for the rest of this
 demonstration, but to be clear they both work exactly the same way, and
-almost exactly like <tt>assert</tt>.
-</p>
-<p>
-Keep in mind, AE &#8220;conical&#8221; functionality does not entail the
+almost exactly like <tt>assert</tt>.</p>
+
+<p>Keep in mind, AE “conical” functionality does not entail the
 subjunctive forms. These are simply options you can load via your
 <tt>test_helper.rb</tt>, or similar script, if you prefer these
-nomenclatures.
-</p>
-<h2>Fluent Notation and Antonyms</h2>
-<p>
-Like <tt>assert</tt>, <tt>should</tt> and <tt>must</tt> can be used as
-higher order functions.
-</p>
-<pre>
-  4.should == 4
-  4.must   == 4
-</pre>
-<p>
-Antonyms provided for <tt>should</tt> as <tt>should!</tt> (read
-&#8220;should not&#8221;) and <tt>shouldnt</tt>. For <tt>must</tt>
-<tt>must</tt>, they are <tt>must!</tt> and <tt>wont</tt>.
-</p>
-<pre>
-  4.should!  == 5
-  4.shouldnt == 5
+nomenclatures.</p>
 
-  4.must! == 5
-  4.wont  == 5
-</pre>
+<h2>Fluent Notation and Antonyms</h2>
+
+<p>Like <tt>assert</tt>, <tt>should</tt> and <tt>must</tt> can be used as
+higher order functions.</p>
+
+<pre>4.should == 4
+4.must   == 4</pre>
+
+<p>Antonyms provided for <tt>should</tt> as <tt>should!</tt> (read “should
+not”) and <tt>shouldnt</tt>. For <tt>must</tt> <tt>must</tt>, they are
+<tt>must!</tt> and <tt>wont</tt>.</p>
+
+<pre>4.should!  == 5
+4.shouldnt == 5
+
+4.must! == 5
+4.wont  == 5</pre>
+
 <h2>To Be</h2>
-<p>
-On occasions where the English readability of a specification is hindered,
-<tt>be</tt> can be used.
-</p>
-<pre>
-  StandardError.must.be.raised? do
-    unknown_method
-  end
-</pre>
-<p>
-The <tt>be</tt> method is the same as <tt>assert</tt> with the single
+
+<p>On occasions where the English readability of a specification is hindered,
+<tt>be</tt> can be used.</p>
+
+<pre>StandardError.must.be.raised? do
+  unknown_method
+end</pre>
+
+<p>The <tt>be</tt> method is the same as <tt>assert</tt> with the single
 exception that it will compare a lone argument to the receiver using
 <tt>equate?</tt>, unlike <tt>assert</tt> which simply checks to see that
-the argument evaluates as true.
-</p>
-<pre>
-  10.should.be 10
-  10.should.be 10.0
-  10.should.be Numeric
+the argument evaluates as true.</p>
 
-  Assertion.assert.raised? do
-    10.should.be &quot;40&quot;
-  end
-</pre>
+<pre>10.should.be 10
+10.should.be 10.0
+10.should.be Numeric
+
+Assertion.assert.raised? do
+  10.should.be &quot;40&quot;
+end</pre>
+
 <h2>Indefinite Articles</h2>
-<p>
-Additional English forms are <tt>a</tt> and <tt>an</tt>, equivalent to
+
+<p>Additional English forms are <tt>a</tt> and <tt>an</tt>, equivalent to
 <tt>be</tt> except that they use <tt>case?</tt> (same as <tt>#===</tt>)
-instead of <tt>equate?</tt> when acting on a single argument.
-</p>
-<pre>
-  &quot;hi&quot;.must.be.a String
+instead of <tt>equate?</tt> when acting on a single argument.</p>
 
-  Assertion.assert.raised? do
-    /x/.must.be.a /x/
-  end
-</pre>
-<p>
-Otherwise they are interchangeable.
-</p>
-<pre>
-  &quot;hi&quot;.must.be.an.instance_of?(String)
-</pre>
-<p>
-The indefinite articles work well when a noun follows as an arguments.
-</p>
-<pre>
-  palindrome = lambda{ |x| x == x.reverse }
+<pre>&quot;hi&quot;.must.be.a String
 
-  &quot;abracarba&quot;.must.be.a palindrome
-</pre>
+Assertion.assert.raised? do
+  /x/.must.be.a /x/
+end</pre>
+
+<p>Otherwise they are interchangeable.</p>
+
+<pre>&quot;hi&quot;.must.be.an.instance_of?(String)</pre>
+
+<p>The indefinite articles work well when a noun follows as an arguments.</p>
+
+<pre>palindrome = lambda{ |x| x == x.reverse }
+
+&quot;abracarba&quot;.must.be.a palindrome</pre>
+
 
 <h1>Expect Method</h1>
-<p>
-Expect is another assertion nomenclature available for use in your tests or
-specifications. Inspired by Jay Fields&#8217; Expectations library, it
-provides convenient syntax for creating exception and case equality
-assertions.
-</p>
-<pre>
-  require 'ae/expect'
-</pre>
+
+<p>Expect is another assertion nomenclature available for use in your tests or
+specifications. Inspired by Jay Fields’ Expectations library, it provides
+convenient syntax for creating exception and case equality assertions.</p>
+
+<pre>require 'ae/expect'</pre>
+
 <h2>Underlying Comparison</h2>
-<p>
-Expect uses #=== for comparison. So providing an argument and a block to
+
+<p>Expect uses #=== for comparison. So providing an argument and a block to
 #expect we can test for a somewhat broader range of compassion than
-#assert. For example we can test for a subclass.
-</p>
-<pre>
+#assert. For example we can test for a subclass.</p>
+
+<pre>expect Numeric do
+  3
+end
+
+Assertion.assert.raised? do
   expect Numeric do
-    3
+    &quot;3&quot;
   end
+end</pre>
 
-  Assertion.assert.raised? do
-    expect Numeric do
-      &quot;3&quot;
-    end
-  end
-</pre>
 <h2>Exception Expectation</h2>
-<p>
-If the comparator is an Exception class or a instance of an Exception
+
+<p>If the comparator is an Exception class or a instance of an Exception
 class, then #expect will check to see if the block raises that kind of
-exception.
-</p>
-<pre>
-  expect StandardError do
-    some_undefined_method
-  end
+exception.</p>
 
-  expect Assertion do
-    expect(nil)
+<pre>expect StandardError do
+  some_undefined_method
+end
+
+expect Assertion do
+  expect(nil)
+end</pre>
+
+<p>This is an important distinction to note because it means #expect can not
+be used if verify instances of Exception classes.</p>
+
+<pre>Assertion.assert.raised? do
+  expect Exception do
+    Exception.new
   end
-</pre>
-<p>
-This is an important distinction to note because it means #expect can not
-be used if verify instances of Exception classes.
-</p>
-<pre>
-  Assertion.assert.raised? do
-    expect Exception do
-      Exception.new
-    end
-  end
-</pre>
+end</pre>
+
 <h2>Regex Expectations</h2>
-<p>
-That #expect entails #=== also means we can check for Regexp matches.
-</p>
-<pre>
-  expect /x/ do
-    &quot;oooxooo&quot;
-  end
-</pre>
-<h2>Expected Method</h2>
-<p>
-We can use #expected to make the receiver the object of expectation.
-</p>
-<pre>
-  x = &quot;dummy&quot;
 
-  /x/.expected do
-    &quot;x&quot;
-  end
-</pre>
+<p>That #expect entails #=== also means we can check for Regexp matches.</p>
+
+<pre>expect /x/ do
+  &quot;oooxooo&quot;
+end</pre>
+
+<h2>Expected Method</h2>
+
+<p>We can use #expected to make the receiver the object of expectation.</p>
+
+<pre>x = &quot;dummy&quot;
+
+/x/.expected do
+  &quot;x&quot;
+end</pre>
+
 <h2>Without Block</h2>
-<p>
-Without a block, the receiver is compared to the argument.
-</p>
-<pre>
-  x.expect String
-</pre>
+
+<p>Without a block, the receiver is compared to the argument.</p>
+
+<pre>x.expect String</pre>
+
 <h2>Negative Forms</h2>
-<p>
-Like #assert, #expect has a negated form called #expect!
-</p>
-<pre>
-  expect! /x/ do
-    &quot;o&quot;
-  end
-</pre>
-<p>
-The pure word form for those who do not like the clever use of the
-explimation mark is #forbid.
-</p>
-<pre>
-  forbid /x/ do
-    &quot;o&quot;
-  end
-</pre>
+
+<p>Like #assert, #expect has a negated form called #expect!</p>
+
+<pre>expect! /x/ do
+  &quot;o&quot;
+end</pre>
+
+<p>The pure word form for those who do not like the clever use of the
+explimation mark is #forbid.</p>
+
+<pre>forbid /x/ do
+  &quot;o&quot;
+end</pre>
+
 <h2>Functor, or Higher Order Function</h2>
-<p>
-Like #assert, #expect can be used used as a <b>fluid</b> notation.
-</p>
-<pre>
-  10.expect == 10
-</pre>
-<p>
-In which case it works just like #assert, including negative forms.
-</p>
-<pre>
-  10.expect! == 11
-  10.forbid  == 11
-</pre>
+
+<p>Like #assert, #expect can be used used as a <b>fluid</b> notation.</p>
+
+<pre>10.expect == 10</pre>
+
+<p>In which case it works just like #assert, including negative forms.</p>
+
+<pre>10.expect! == 11
+10.forbid  == 11</pre>
+
 
 <h1>Assertion Counts</h1>
-<p>
-AE tracks the number of assertions made and the number that failed to pass.
-We can reset the count using the <tt>recount</tt> class method.
-</p>
-<pre>
-  fails, total = Assertion.recount
-</pre>
-<p>
-For example if we one assertion fails and another fails.
-</p>
-<pre>
-  assert(true)
 
-  expect Assertion do
-    assert(false)
-  end
-</pre>
-<p>
-We will see that AE counted three assertions and one failure.
-</p>
-<pre>
-  Assertion.count.assert == 3
-  Assertion.fails.assert == 1
-</pre>
-<p>
-The #expect call is an assertion too, which is why the count is 3 rather
-than 2.
-</p>
-<p>
-Now that we are done checking counts we will restore them so that any other
-demos being run with this will tally correctly.
-</p>
-<pre>
-  Assertion.fails = fails
-  Assertion.count = total + 3
-</pre>
+<p>AE tracks the number of assertions made and the number that failed to pass.
+We can reset the count using the <tt>recount</tt> class method.</p>
+
+<pre>old_counts = Assertion.recount</pre>
+
+<p>For example if we have one assertion pass and another fail.</p>
+
+<pre>assert(true)
+
+expect Assertion do
+  assert(false)
+end</pre>
+
+<p>We will see that AE counted three assertions and one failure.</p>
+
+<pre>counts = Assertion.counts.dup
+
+counts[:total].assert == 3
+counts[:pass].assert  == 2
+counts[:fail].assert  == 1</pre>
+
+<p>The #expect call is an assertion too, which is why the total count is 3
+rather than 2.</p>
+
+<p>Now that we are done checking counts we will restore them so that any other
+demos being run with this will tally correctly.</p>
+
+<pre>Assertion.recount(old_counts)
+Assertion.counts[:total] += 3
+Assertion.counts[:pass]  += 3</pre>
+
 
 <h1>Matchers</h1>
-<p>
-Matchers are simply Procs or objects with the proper interface that can be
-passed to #assert or #refute (or other Assertor) as an ecapsulated test.
-</p>
+
+<p>Matchers are simply Procs or objects with the proper interface that can be
+passed to #assert or #refute (or other Assertor) as an ecapsulated test.</p>
+
 <h2>Proc or #to_proc</h2>
-<p>
-Passing a Proc object or an object that responds to :to_proc, will use it
+
+<p>Passing a Proc object or an object that responds to :to_proc, will use it
 as if it were a block of the method. This allows for a simple way to
-quickly create reusable assertions.
-</p>
-<pre>
-  palindrome = lambda{ |word| word == word.reverse }
+quickly create reusable assertions.</p>
 
-  &quot;abracarba&quot;.assert palindrome
-</pre>
+<pre>palindrome = lambda{ |word| word == word.reverse }
+
+&quot;abracarba&quot;.assert palindrome</pre>
+
 <h2>#matches?</h2>
-<p>
-Additionally if an object responds to #matches? then the receiver will be
-passed to this method to determine if the assertion passes.
-</p>
-<pre>
-  palindrome = Object.new
 
-  def palindrome.matches?(word)
-    word == word.reverse
-  end
+<p>Additionally if an object responds to #matches? then the receiver will be
+passed to this method to determine if the assertion passes.</p>
 
-  &quot;abracarba&quot;.assert palindrome
-</pre>
+<pre>palindrome = Object.new
+
+def palindrome.matches?(word)
+  word == word.reverse
+end
+
+&quot;abracarba&quot;.assert palindrome</pre>
+
 <h2>RSpec, Shoulda and other 3rd-Party Matchers </h2>
-<p>
-With tha addition of #matches?, AE supports the same interface for matchers
+
+<p>With tha addition of #matches?, AE supports the same interface for matchers
 as RSpec. Any matcher library designed for use with RSpec should therefore
 be usable with AE as well. This includes RSpecs own matchers and
-Shoulda&#8217;s excellent Rails matchers.
-</p>
+Shoulda’s excellent Rails matchers.</p>
 
 
     </div>

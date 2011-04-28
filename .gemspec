@@ -128,7 +128,5 @@ rubygems_version: 1.3.7
 signing_key: 
 specification_version: 3
 summary: Assertive Expressive
-test_files: 
-- lib/ae/adapters/minitest.rb
-- lib/ae/adapters/testunit.rb
-- lib/ae/detest.rb
+test_files: []
+

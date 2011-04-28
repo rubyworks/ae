@@ -2,7 +2,6 @@
 name   : ae
 title  : AE
 summary: Assertive Expressive
-suite  : rubyworks
 contact: trans <transfire@gmail.com>
 created: 2008-08-17
 authors: Thomas Sawyer
@@ -24,6 +23,8 @@ resources:
   bugs: http://github.com/rubyworks/ae/issues
   mail: http://groups.google.com/group/rubyworks-mailinglist
   repo: git://github.com/rubyworks/ae.git
+
+organization: Rubyworks
 
 copyright: Copyright (c) 2008 Thomas Sawyer
 

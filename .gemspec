@@ -86,11 +86,11 @@ files:
 - lib/ae/version.rb
 - lib/ae.rb
 - lib/ae.yml
-- Notice.rdoc
 - README.rdoc
+- Apache2.txt
 - Syckfile
 - History.rdoc
-- License.txt
+- NOTICE.rdoc
 has_rdoc: true
 homepage: http://rubyworks.github.com/ae
 licenses: 

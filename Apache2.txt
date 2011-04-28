@@ -1,4 +1,6 @@
-.
+AE is open-source software distributed under the terms of the following license:
+
+
                              Apache License
                         Version 2.0, January 2004
                      http://www.apache.org/licenses/

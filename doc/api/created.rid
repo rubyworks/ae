@@ -1,4 +1,4 @@
-Thu, 28 Apr 2011 15:03:56 -0400
+Thu, 28 Apr 2011 16:02:05 -0400
 lib/ae/must.rb	Mon, 25 Apr 2011 11:00:09 -0400
 lib/ae/legacy.rb	Thu, 04 Nov 2010 07:27:27 -0400
 lib/ae/should.rb	Wed, 01 Sep 2010 00:39:05 -0400
@@ -11,7 +11,7 @@ lib/ae/basic_object.rb	Wed, 27 Apr 2011 22:07:03 -0400
 lib/ae/check.rb	Thu, 04 Nov 2010 06:29:55 -0400
 lib/ae/assert.rb	Thu, 28 Apr 2011 12:07:59 -0400
 lib/ae.rb	Thu, 28 Apr 2011 13:54:30 -0400
-README.rdoc	Thu, 28 Apr 2011 14:42:56 -0400
+README.rdoc	Thu, 28 Apr 2011 16:01:31 -0400
 lib/ae/core_ext/helpers.rb	Wed, 15 Dec 2010 14:01:25 -0500
 lib/ae.yml	Thu, 28 Apr 2011 14:46:11 -0400
 lib/ae/adapters/rspec.rb	Thu, 28 Apr 2011 13:19:32 -0400

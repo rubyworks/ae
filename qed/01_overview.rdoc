@@ -53,7 +53,7 @@ return an Assertor instance when used fluidly, i.e. magic-dot
 notation, higher-order notation, functor notation, whatever you
 prefer to call it.
 
-  assert(Assertor === assert)
+  assert(AE::Assertor === assert)
 
 Through the use of +method_missing+, the Assertor allows us to write
 statements like:

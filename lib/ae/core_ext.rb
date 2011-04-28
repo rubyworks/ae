@@ -1,4 +1,3 @@
-require 'ae/core_ext/assert'
 require 'ae/core_ext/exception'
 require 'ae/core_ext/helpers'
 

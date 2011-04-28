@@ -32,7 +32,11 @@ module AE
     end
 
     # Perhaps not literally the counter-term to *must* (rather *will*),
-    # it is close enough for our purposes and conveys the appropriate semantics.
+    # it is close enough for our purposes and conveys the appropriate
+    # semantics, and I think more sightly than *mustnt*.
+    #
+    # This method may be deprecated in the future when Ruby 1.9 becomes
+    # mainstream, as it allows for redefining *#!* as a method.
     alias_method :wont, :must!
 
     # Alias for #must! method.

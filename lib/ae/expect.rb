@@ -1,4 +1,4 @@
-require 'ae/assertion'
+require 'ae/assertor'
 
 module AE
 
@@ -67,7 +67,7 @@ module AE
 
   end
 
-end#module QED
+end
 
 class ::Object #:nodoc:
   include AE::Expect

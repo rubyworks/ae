@@ -1,35 +1,34 @@
 require 'ae'
 
+AE.assertion_error = ::Test::Unit::AssertionFailedError
+
+# TestUnit uses #add_assertion on it's +result+ object to track counts.
+# We capture the result object by overriding the TestCase#run method,
+# store it in a global variable and then use it when AE increments
+# assertion counts.
+
 module Test #:nodoc:
   module Unit #:nodoc:
     class TestCase #:nodoc:
       alias_method :_run, :run
       def run(result, &block)
-        $_result = result
+        $_test_unit_result = result
         _run(result, &block)
       end
     end
   end
 end
 
-module Kernel #:nodoc:
-
-  alias __assert_without_testunit__ __assert__
-
-  # For some reason TestUnit needs this to count correctly.
-  def __assert__(test, message=nil, backtrace=nil)
-    backtrace ||= caller
-    $_result.add_assertion if $_result
-    __assert_without_testunit__(test, message=nil, backtrace)
+class AE::Assertor #:nodoc:
+  def self.increment_counts(pass)
+    $_test_unit_result.add_assertion if $_test_unit_result
+    counts[:total] += 1
+    if pass
+      counts[:pass] += 1
+    else
+      counts[:fail] += 1
+    end
+    return counts
   end
-
-  def raise_assertion(options)
-    message   = options.delete(:message)
-    backtrace = options.delete(:backtrace)
-
-    err = Test::Unit::AssertionFailedError.new(message)
-    err.set_backtrace(backtrace) if backtrace
-    fail err
-  end
-
 end
+

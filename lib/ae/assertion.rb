@@ -1,107 +1,53 @@
+# Copyright (c) 2008,2010 Thomas Sawyer
+
 require 'ae/core_ext'
 
-# = Assertion
-#
-#   "The reserve of modern assertions is sometimes pushed to extremes,
-#    in which the fear of being contradicted leads the writer to strip
-#    himself of almost all sense and meaning."
-#                              -- Sir Winston Churchill (1874 - 1965)
-#
-# This is the underlying Exception class of the whole system.
-#
-class Assertion < Exception
+module AE
 
-  # DEPRECATE: It might be better to get the count methods out of this class.
-
+  # The Assertion class is simply a subclass of Exception that is used
+  # by AE as the default error raised when an assertion fails.
   #
-  def self.counts
-    $assertion_counts
-  end
+  #   "The reserve of modern assertions is sometimes pushed to extremes,
+  #    in which the fear of being contradicted leads the writer to strip
+  #    himself of almost all sense and meaning."
+  #                              -- Sir Winston Churchill (1874 - 1965)
+  #
+  #
+  class Assertion < Exception
 
-  # Reset counts.
-  def self.recount(reset={})
-    counts = $assertion_counts
-    reset.each do |type, value|
-      $assertion_counts[type.to_sym] = value
+    # DEPRECATE: This will be removed in favor of Assertor#counts.
+    def self.counts
+      AE::Assertor.counts
     end
-    return counts
-  end
 
-  # New assertion (failure).
-  #
-  # message - the failure message
-  # options - such as :backtrace
-  #
-  def initialize(message=nil, options={})
-    super(message)
-    backtrace = options[:backtrace]
-    set_backtrace(backtrace) if backtrace
-  end
-
-  # Technically any object that affirmatively responds to #assertion?
-  # can be taken to be an Assertion. This makes it easier for various 
-  # libraries to work together without having to depend upon a common
-  # Assertion base class.
-  def assertion?
-    true
-  end
-
-  #
-  def to_s
-    'fail ' + super
-  end
-
-=begin
-  # TODO: This doesn't seem to cut it anymore!
-  @count = 0
-  @fails = 0
-
-  class << self
-    attr_accessor :count
-    attr_accessor :fails
-
-
+    # New assertion (failure).
     #
-    def test(test, options={})
-      if test
-        increment(true)
-      else
-        framework_flunk(options)
-      end
-      test
+    # message - the failure message
+    # options - such as :backtrace
+    #
+    def initialize(message=nil, options={})
+      super(message)
+      backtrace = options[:backtrace]
+      set_backtrace(backtrace) if backtrace
+      set_assertion(true)
+    end
+
+    # Technically any object that affirmatively responds to #assertion?
+    # can be taken to be an Assertion. This makes it easier for various 
+    # libraries to work together without having to depend upon a common
+    # Assertion base class.
+    def assertion?
+      true
     end
 
     #
-    #def self.framework_assert(options={})
-    #end
-
-    # This method can be replaced to support alternate frameworks.
-    # The intent of the methods is to raise the assertion failure
-    # class used.
-    def framework_flunk(options={})
-      message = options.delete(:message)
-      fail ::Assertion.new(message, options)
+    def to_s
+      '(assertion) ' + super
     end
 
-    # Increment assertion counts. If +pass+ is true then only +@count+
-    # is increased. If +pass+ if false then both +@count+ and +@fails+
-    # are incremented.
-    def increment(pass)
-      recount unless instance_variable_defined?('@count') # TODO: Come on, there has to be a better way!
-      @count += 1
-      @fails += 1 unless pass
-    end
-
-    # Reset counts.
-    def recount
-      f, c = @fails, @count
-      @count = 0
-      @fails = 0
-      return f, c
-    end
   end
-=end
 
 end
 
-# Copyright (c) 2008,2010 Thomas Sawyer
+# Set top-level Assertion to AE::Assertion
+Assertion = AE::Assertion

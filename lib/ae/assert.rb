@@ -2,8 +2,10 @@ require 'ae/assertor'
 
 module AE
 
-  # = Assert
+  # The Assert module is simple a conatiner module for the core
+  # extension methods: #assert, #expect, etc.
   #
+  # This module is included directory into the Object class.
   module Assert
 
     # Assert a operational relationship.
@@ -31,30 +33,35 @@ module AE
       Assertor.new(self, :backtrace=>caller).assert == cmp
     end
 
-    # Assert not an operational relationship.
-    # Read it as "assert not".
+    # Opposite of assert.
     #
     #   4.refute == 4  #=> Assertion Error
     #
-    # See #assert.
     def refute(*args, &block)
       Assertor.new(self, :backtrace=>caller).not.assert(*args, &block)
     end
 
-    # Same as 'object.assert == other'.
+    # Same as 'object.refute == other'.
     def refute=(cmp)
       Assertor.new(self, :backtrace=>caller).not.assert == cmp
     end
 
-    # Alias for #assert!.
+    # Alias for #refute. Read it as "assert not".
     #
     #   4.assert! == 4
     #
     # NOTE: This method would not be necessary if Ruby would allow
     # +!=+ to be define as a method, or at least +!+ as a unary method.
-    # This may be possible in Ruby 1.9.
+    # Looks like this is possible in Ruby 1.9, but we will wait until
+    # Ruby 1.9 is the norm.
     alias_method :assert!, :refute
-   
+
+    # Directly raise an Assertion failure.
+    def flunk(message=nil, backtrace=nil)
+      #Assertor.new(self, :backtrace=>caller).assert(false, message)
+      Assertor.assert(false, message, caller)
+    end
+
   end
 
 end

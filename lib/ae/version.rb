@@ -1,19 +1,19 @@
 module AE
   #
-  def self.version
-    @version ||= (
+  def self.metadata
+    @metadata ||= (
       require 'yaml'
-      YAML.load(File.new(File.dirname(__FILE__) + '/version.yml'))
+      YAML.load(File.new(File.dirname(__FILE__) + '/../ae.yml'))
     )
   end
 
   #
   def self.const_missing(name)
     key = name.to_s.downcase
-    version[key] || super(name)
+    metadata[key] || super(name)
   end
 
   # becuase Ruby 1.8~ gets in the way :(
-  VERSION = version['version']
+  VERSION = metadata['version']
 end
 

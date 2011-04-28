@@ -59,7 +59,7 @@ module AE
 
 end#module AE
 
-class Assertor
+class AE::Assertor
   include ::AE::Subjunctive
 end
 

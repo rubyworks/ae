@@ -22,8 +22,8 @@ stats:
 
 rdoc:
   service : rdoc
-  template: redfish
-  exclude : [Syckfile, PACKAGE, PROFILE, REQUIRE]
+  format  : redfish
+  exclude : [Syckfile, Profile, Manifest.txt]
   output  : site/doc/api
 
 ridoc:

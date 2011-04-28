@@ -1,13 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: ae
 version: !ruby/object:Gem::Version 
-  hash: 13
+  hash: 11
   prerelease: false
   segments: 
   - 1
   - 6
-  - 1
-  version: 1.6.1
+  - 2
+  version: 1.6.2
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -15,7 +15,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-04-19 00:00:00 -04:00
+date: 2011-04-28 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
@@ -72,7 +72,6 @@ files:
 - lib/ae/assertor.rb
 - lib/ae/basic_object.rb
 - lib/ae/check.rb
-- lib/ae/core_ext/assert.rb
 - lib/ae/core_ext/exception.rb
 - lib/ae/core_ext/helpers.rb
 - lib/ae/core_ext.rb
@@ -88,11 +87,11 @@ files:
 - lib/ae.rb
 - lib/ae.yml
 - Profile
+- Notice.rdoc
 - README.rdoc
 - Syckfile
 - History.rdoc
 - License.txt
-- NOTICE.rdoc
 has_rdoc: true
 homepage: http://rubyworks.github.com/ae
 licenses: 

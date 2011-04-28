@@ -16,7 +16,6 @@ lib/ae/assertion.rb
 lib/ae/assertor.rb
 lib/ae/basic_object.rb
 lib/ae/check.rb
-lib/ae/core_ext/assert.rb
 lib/ae/core_ext/exception.rb
 lib/ae/core_ext/helpers.rb
 lib/ae/core_ext.rb
@@ -32,8 +31,8 @@ lib/ae/version.rb
 lib/ae.rb
 lib/ae.yml
 Profile
+Notice.rdoc
 README.rdoc
 Syckfile
 History.rdoc
 License.txt
-NOTICE.rdoc

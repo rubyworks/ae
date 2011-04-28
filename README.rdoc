@@ -1,9 +1,5 @@
 = Assertive Expressive
 
-* home: http://rubyworks.github.com/ae/
-* code: http://github.com/rubyworks/ae/
-
-
 == DESCRIPTION
 
 Assertive Expressive (AE) is an assertions framework
@@ -19,6 +15,12 @@ intended for reuse by any TDD, BDD or similar system.
 * But Facets is not a dependency; the extensions are built-in.
 * Easily extensible allowing for alternate notations.
 * Eats it's own dog food.
+
+
+== RESOURCES
+
+* home: http://rubyworks.github.com/ae/
+* code: http://github.com/rubyworks/ae/
 
 
 == SYNOPSIS

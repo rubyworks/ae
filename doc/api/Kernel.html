@@ -55,23 +55,11 @@
             <li class="file"><a href="./lib/ae/pry_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
               class="thickbox" title="lib/ae/pry.rb">lib/ae/pry.rb</a></li>
           
-            <li class="file"><a href="./lib/ae/core_ext/assert_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/ae/core_ext/assert.rb">lib/ae/core_ext/assert.rb</a></li>
-          
             <li class="file"><a href="./lib/ae/core_ext/helpers_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
               class="thickbox" title="lib/ae/core_ext/helpers.rb">lib/ae/core_ext/helpers.rb</a></li>
           
             <li class="file"><a href="./lib/ae/basic_object_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
               class="thickbox" title="lib/ae/basic_object.rb">lib/ae/basic_object.rb</a></li>
-          
-            <li class="file"><a href="./lib/ae/adapters/testunit_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/ae/adapters/testunit.rb">lib/ae/adapters/testunit.rb</a></li>
-          
-            <li class="file"><a href="./lib/ae/adapters/minitest_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/ae/adapters/minitest.rb">lib/ae/adapters/minitest.rb</a></li>
-          
-            <li class="file"><a href="./lib/ae/adapters/rspec_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/ae/adapters/rspec.rb">lib/ae/adapters/rspec.rb</a></li>
           
           </ul>
         </div>
@@ -118,16 +106,6 @@
           
             
             <li class="method">
-              <a href="#method-i-__assert__">#__assert__</a>
-            </li>
-          
-            
-            <li class="method">
-              <a href="#method-i-assert">#assert</a>
-            </li>
-          
-            
-            <li class="method">
               <a href="#method-i-case-3F">#case?</a>
             </li>
           
@@ -144,11 +122,6 @@
             
             <li class="method">
               <a href="#method-i-false-3F">#false?</a>
-            </li>
-          
-            
-            <li class="method">
-              <a href="#method-i-flunk">#flunk</a>
             </li>
           
             
@@ -178,11 +151,6 @@
           
             
             <li class="method">
-              <a href="#method-i-raise_assertion">#raise_assertion</a>
-            </li>
-          
-            
-            <li class="method">
               <a href="#method-i-send-3F">#send?</a>
             </li>
           
@@ -206,13 +174,15 @@
         <h3 class="section-header">Information</h3>
         <ul>
         
-          <li class="file"><a href="./History_rdoc.html">History.rdoc</a></li>
+          <li class="file"><a href="./Version.html">Version</a></li>
         
-          <li class="file"><a href="./License_txt.html">License.txt</a></li>
+          <li class="file"><a href="./History_rdoc.html">History.rdoc</a></li>
         
           <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
         
-          <li class="file"><a href="./Notice_rdoc.html">Notice.rdoc</a></li>
+          <li class="file"><a href="./Apache2_txt.html">Apache2.txt</a></li>
+        
+          <li class="file"><a href="./NOTICE_rdoc.html">NOTICE.rdoc</a></li>
         
         </ul>
       </div>
@@ -240,6 +210,12 @@
         
           <li class="module"><a href="./AE/Assert.html">AE::Assert</a></li>
         
+          <li class="class"><a href="./AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="./AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="./AE/Assertor.html">AE::Assertor</a></li>
+        
           <li class="module"><a href="./AE/CheckOK.html">AE::CheckOK</a></li>
         
           <li class="module"><a href="./AE/Detest.html">AE::Detest</a></li>
@@ -262,9 +238,9 @@
         
           <li class="class"><a href="./Kernel/Pry.html">Kernel::Pry</a></li>
         
-          <li class="class"><a href="./Assertion.html">Assertion</a></li>
+          <li class="class"><a href="./Object.html">Object</a></li>
         
-          <li class="class"><a href="./Assertor.html">Assertor</a></li>
+          <li class="class"><a href="./AE/Assertion.html">Object::Assertion</a></li>
         
           <li class="class"><a href="./Exception.html">Exception</a></li>
         
@@ -273,8 +249,6 @@
           <li class="class"><a href="./Module.html">Module</a></li>
         
           <li class="class"><a href="./Numeric.html">Numeric</a></li>
-        
-          <li class="class"><a href="./Object.html">Object</a></li>
         
           <li class="class"><a href="./Proc.html">Proc</a></li>
         
@@ -394,74 +368,6 @@ in the BasicObject class.</p>
   
     <div id="public-instance-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="__assert__-method" class="method-detail method-alias">
-        <a name="method-i-__assert__"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">__assert__</span><span
-            class="method-args">(test, message=nil, backtrace=nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p>Use this as needed to circument potential overrides.</p>
-          
-
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="assert-method" class="method-detail ">
-        <a name="method-i-assert"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">assert</span><span
-            class="method-args">(test, message=nil, backtrace=nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p>Make an assertion.</p>
-          
-
-          
-          <div class="method-source-code"
-            id="assert-source">
-<pre>
-<span class="ruby-comment"># File lib/ae/core_ext/assert.rb, line 5</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">message</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">backtrace</span>=<span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">$assertion_counts</span>[<span class="ruby-value">:total</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">test</span>
-    <span class="ruby-identifier">$assertion_counts</span>[<span class="ruby-value">:pass</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-    <span class="ruby-identifier">test</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">$assertion_counts</span>[<span class="ruby-value">:fail</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-    <span class="ruby-identifier">backtrace</span> = <span class="ruby-identifier">backtrace</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caller</span>
-    <span class="ruby-identifier">message</span>   = <span class="ruby-identifier">message</span>   <span class="ruby-operator">||</span> <span class="ruby-string">'flunk'</span>
-    <span class="ruby-identifier">raise_assertion</span>(<span class="ruby-value">:message=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">message</span>,<span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">backtrace</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-        <div class="aliases">
-          Also aliased as: <a href="Kernel.html#method-i-__assert__">__assert__</a>
-        </div>
-        
-      </div>
 
     
       <div id="case-3F-method" class="method-detail ">
@@ -591,38 +497,6 @@ in the BasicObject class.</p>
 <span class="ruby-comment"># File lib/ae/core_ext/helpers.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">false?</span>
   <span class="ruby-constant">FalseClass</span> <span class="ruby-operator">===</span> <span class="ruby-keyword">self</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="flunk-method" class="method-detail ">
-        <a name="method-i-flunk"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">flunk</span><span
-            class="method-args">(message=nil, backtrace=nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p>Directly raise an <a href="Assertion.html">Assertion</a> failure.</p>
-          
-
-          
-          <div class="method-source-code"
-            id="flunk-source">
-<pre>
-<span class="ruby-comment"># File lib/ae/core_ext/assert.rb, line 31</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">message</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">backtrace</span>=<span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">__assert__</span>(<span class="ruby-keyword">false</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">backtrace</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -792,41 +666,6 @@ sometimes is necessary to test them directly, or if you wish to achieve
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">public_send</span>(<span class="ruby-identifier">m</span>,*<span class="ruby-identifier">a</span>,&amp;<span class="ruby-identifier">b</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">NoMethodError</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">m</span>)
   <span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">m</span>,*<span class="ruby-identifier">a</span>,&amp;<span class="ruby-identifier">b</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="raise_assertion-method" class="method-detail ">
-        <a name="method-i-raise_assertion"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">raise_assertion</span><span
-            class="method-args">(options)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p>This method can be replaced to support alternate frameworks. The intent of
-the method is to raise the assertion failure class the frame work uses.</p>
-          
-
-          
-          <div class="method-source-code"
-            id="raise_assertion-source">
-<pre>
-<span class="ruby-comment"># File lib/ae/core_ext/assert.rb, line 24</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">raise_assertion</span>(<span class="ruby-identifier">options</span>)
-  <span class="ruby-identifier">message</span>   = <span class="ruby-identifier">options</span>[<span class="ruby-value">:message</span>]
-  <span class="ruby-identifier">backtrace</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:backtrace</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">caller</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">message</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">backtrace</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           

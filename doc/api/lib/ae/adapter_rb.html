@@ -74,13 +74,15 @@
         <h3 class="section-header">Information</h3>
         <ul>
         
-          <li class="file"><a href="../../History_rdoc.html">History.rdoc</a></li>
+          <li class="file"><a href="../../Version.html">Version</a></li>
         
-          <li class="file"><a href="../../License_txt.html">License.txt</a></li>
+          <li class="file"><a href="../../History_rdoc.html">History.rdoc</a></li>
         
           <li class="file"><a href="../../README_rdoc.html">README.rdoc</a></li>
         
-          <li class="file"><a href="../../Notice_rdoc.html">Notice.rdoc</a></li>
+          <li class="file"><a href="../../Apache2_txt.html">Apache2.txt</a></li>
+        
+          <li class="file"><a href="../../NOTICE_rdoc.html">NOTICE.rdoc</a></li>
         
         </ul>
       </div>
@@ -107,6 +109,12 @@
         
           <li class="module"><a href="../../AE/Assert.html">AE::Assert</a></li>
         
+          <li class="class"><a href="../../AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="../../AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="../../AE/Assertor.html">AE::Assertor</a></li>
+        
           <li class="module"><a href="../../AE/CheckOK.html">AE::CheckOK</a></li>
         
           <li class="module"><a href="../../AE/Detest.html">AE::Detest</a></li>
@@ -129,9 +137,9 @@
         
           <li class="class"><a href="../../Kernel/Pry.html">Kernel::Pry</a></li>
         
-          <li class="class"><a href="../../Assertion.html">Assertion</a></li>
+          <li class="class"><a href="../../Object.html">Object</a></li>
         
-          <li class="class"><a href="../../Assertor.html">Assertor</a></li>
+          <li class="class"><a href="../../AE/Assertion.html">Object::Assertion</a></li>
         
           <li class="class"><a href="../../Exception.html">Exception</a></li>
         
@@ -140,8 +148,6 @@
           <li class="class"><a href="../../Module.html">Module</a></li>
         
           <li class="class"><a href="../../Numeric.html">Numeric</a></li>
-        
-          <li class="class"><a href="../../Object.html">Object</a></li>
         
           <li class="class"><a href="../../Proc.html">Proc</a></li>
         
@@ -160,8 +166,20 @@
           
             
             <li class="singleton" style="clear: both;">
-              <span class="method-parent-aside">Kernel</span>
-              <a href="Kernel.html#method-c-basic_object_method_added">::basic_object_method_added</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-c-assert">::assert</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-c-assertion_error">::assertion_error</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE</span>
+              <a href="AE.html#method-c-assertion_error-3D">::assertion_error=</a>
             </li>
           
             
@@ -172,14 +190,38 @@
           
             
             <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Kernel</span>
+              <a href="Kernel.html#method-c-basic_object_method_added">::basic_object_method_added</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
               <span class="method-parent-aside">AE</span>
               <a href="AE.html#method-c-const_missing">::const_missing</a>
             </li>
           
             
             <li class="singleton" style="clear: both;">
-              <span class="method-parent-aside">Assertion</span>
-              <a href="Assertion.html#method-c-counts">::counts</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-c-counts">::counts</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-c-counts">::counts</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-c-counts">::counts</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-c-counts">::counts</a>
             </li>
           
             
@@ -190,14 +232,14 @@
           
             
             <li class="singleton" style="clear: both;">
-              <span class="method-parent-aside">AE</span>
-              <a href="AE.html#method-c-metadata">::metadata</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-c-increment_counts">::increment_counts</a>
             </li>
           
             
             <li class="singleton" style="clear: both;">
-              <span class="method-parent-aside">Object</span>
-              <a href="Object.html#method-c-method_added">::method_added</a>
+              <span class="method-parent-aside">AE</span>
+              <a href="AE.html#method-c-metadata">::metadata</a>
             </li>
           
             
@@ -208,20 +250,44 @@
           
             
             <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Object</span>
+              <a href="Object.html#method-c-method_added">::method_added</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
               <span class="method-parent-aside">Kernel::Pry</span>
               <a href="Kernel/Pry.html#method-c-new">::new</a>
             </li>
           
             
             <li class="singleton" style="clear: both;">
-              <span class="method-parent-aside">Assertor</span>
-              <a href="Assertor.html#method-c-new">::new</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-c-new">::new</a>
             </li>
           
             
             <li class="singleton" style="clear: both;">
-              <span class="method-parent-aside">Assertion</span>
-              <a href="Assertion.html#method-c-new">::new</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-c-raise_assertion">::raise_assertion</a>
             </li>
           
             
@@ -232,20 +298,14 @@
           
             
             <li class="singleton" style="clear: both;">
-              <span class="method-parent-aside">Assertion</span>
-              <a href="Assertion.html#method-c-recount">::recount</a>
-            </li>
-          
-            
-            <li class="singleton" style="clear: both;">
-              <span class="method-parent-aside">AE</span>
-              <a href="AE.html#method-c-version">::version</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-c-recount">::recount</a>
             </li>
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertor</span>
-              <a href="Assertor.html#method-i-3D-7E">#=~</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-i-3D-7E">#=~</a>
             </li>
           
             
@@ -274,12 +334,6 @@
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Kernel</span>
-              <a href="Kernel.html#method-i-__assert__">#__assert__</a>
-            </li>
-          
-            
-            <li class="method" style="clear: both;">
               <span class="method-parent-aside">AE::Subjunctive</span>
               <a href="AE/Subjunctive.html#method-i-a">#a</a>
             </li>
@@ -292,26 +346,20 @@
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Kernel</span>
-              <a href="Kernel.html#method-i-assert">#assert</a>
-            </li>
-          
-            
-            <li class="method" style="clear: both;">
-              <span class="method-parent-aside">AE::Assert</span>
-              <a href="AE/Assert.html#method-i-assert">#assert</a>
-            </li>
-          
-            
-            <li class="method" style="clear: both;">
               <span class="method-parent-aside">AE::Legacy::Assertions</span>
               <a href="AE/Legacy/Assertions.html#method-i-assert">#assert</a>
             </li>
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertor</span>
-              <a href="Assertor.html#method-i-assert">#assert</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-i-assert">#assert</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assert</span>
+              <a href="AE/Assert.html#method-i-assert">#assert</a>
             </li>
           
             
@@ -436,14 +484,26 @@
           
             
             <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-i-assertion-3F">#assertion?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-i-assertion-3F">#assertion?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
               <span class="method-parent-aside">Exception</span>
               <a href="Exception.html#method-i-assertion-3F">#assertion?</a>
             </li>
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertion</span>
-              <a href="Assertion.html#method-i-assertion-3F">#assertion?</a>
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-i-assertion-3F">#assertion?</a>
             </li>
           
             
@@ -508,20 +568,14 @@
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertor</span>
-              <a href="Assertor.html#method-i-exception-3F">#exception?</a>
-            </li>
-          
-            
-            <li class="method" style="clear: both;">
               <span class="method-parent-aside">AE::Expect</span>
               <a href="AE/Expect.html#method-i-expect">#expect</a>
             </li>
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertor</span>
-              <a href="Assertor.html#method-i-expect">#expect</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-i-expect">#expect</a>
             </li>
           
             
@@ -556,20 +610,20 @@
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Kernel</span>
-              <a href="Kernel.html#method-i-flunk">#flunk</a>
-            </li>
-          
-            
-            <li class="method" style="clear: both;">
               <span class="method-parent-aside">AE::Legacy::Assertions</span>
               <a href="AE/Legacy/Assertions.html#method-i-flunk">#flunk</a>
             </li>
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertor</span>
-              <a href="Assertor.html#method-i-flunk">#flunk</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-i-flunk">#flunk</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assert</span>
+              <a href="AE/Assert.html#method-i-flunk">#flunk</a>
             </li>
           
             
@@ -600,6 +654,12 @@
             <li class="method" style="clear: both;">
               <span class="method-parent-aside">Numeric</span>
               <a href="Numeric.html#method-i-in_epsilon-3F">#in_epsilon?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-i-inspect">#inspect</a>
             </li>
           
             
@@ -640,8 +700,8 @@
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertor</span>
-              <a href="Assertor.html#method-i-not">#not</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-i-not">#not</a>
             </li>
           
             
@@ -664,12 +724,6 @@
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Kernel</span>
-              <a href="Kernel.html#method-i-raise_assertion">#raise_assertion</a>
-            </li>
-          
-            
-            <li class="method" style="clear: both;">
               <span class="method-parent-aside">Proc</span>
               <a href="Proc.html#method-i-raises-3F">#raises?</a>
             </li>
@@ -688,8 +742,8 @@
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertor</span>
-              <a href="Assertor.html#method-i-send">#send</a>
+              <span class="method-parent-aside">AE::Assertor</span>
+              <a href="AE/Assertor.html#method-i-send">#send</a>
             </li>
           
             
@@ -736,8 +790,20 @@
           
             
             <li class="method" style="clear: both;">
-              <span class="method-parent-aside">Assertion</span>
-              <a href="Assertion.html#method-i-to_s">#to_s</a>
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-i-to_s">#to_s</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-i-to_s">#to_s</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">AE::Assertion</span>
+              <a href="AE/Assertion.html#method-i-to_s">#to_s</a>
             </li>
           
             

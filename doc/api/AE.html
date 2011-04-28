@@ -121,6 +121,10 @@
           
           <li class="module"><a href="AE/World.html">AE::World</a></li>
           
+          <li class="class"><a href="AE/Assertion.html">AE::Assertion</a></li>
+          
+          <li class="class"><a href="AE/Assertor.html">AE::Assertor</a></li>
+          
         </ul>
       </div>
       
@@ -133,17 +137,17 @@
           
             
             <li class="singleton">
+              <a href="#method-c-assertion_error-3D">::assertion_error=</a>
+            </li>
+          
+            
+            <li class="singleton">
               <a href="#method-c-const_missing">::const_missing</a>
             </li>
           
             
             <li class="singleton">
               <a href="#method-c-metadata">::metadata</a>
-            </li>
-          
-            
-            <li class="singleton">
-              <a href="#method-c-version">::version</a>
             </li>
           
         </ul>
@@ -161,13 +165,15 @@
         <h3 class="section-header">Information</h3>
         <ul>
         
-          <li class="file"><a href="./History_rdoc.html">History.rdoc</a></li>
+          <li class="file"><a href="./Version.html">Version</a></li>
         
-          <li class="file"><a href="./License_txt.html">License.txt</a></li>
+          <li class="file"><a href="./History_rdoc.html">History.rdoc</a></li>
         
           <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
         
-          <li class="file"><a href="./Notice_rdoc.html">Notice.rdoc</a></li>
+          <li class="file"><a href="./Apache2_txt.html">Apache2.txt</a></li>
+        
+          <li class="file"><a href="./NOTICE_rdoc.html">NOTICE.rdoc</a></li>
         
         </ul>
       </div>
@@ -195,6 +201,12 @@
         
           <li class="module"><a href="./AE/Assert.html">AE::Assert</a></li>
         
+          <li class="class"><a href="./AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="./AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="./AE/Assertor.html">AE::Assertor</a></li>
+        
           <li class="module"><a href="./AE/CheckOK.html">AE::CheckOK</a></li>
         
           <li class="module"><a href="./AE/Detest.html">AE::Detest</a></li>
@@ -217,9 +229,9 @@
         
           <li class="class"><a href="./Kernel/Pry.html">Kernel::Pry</a></li>
         
-          <li class="class"><a href="./Assertion.html">Assertion</a></li>
+          <li class="class"><a href="./Object.html">Object</a></li>
         
-          <li class="class"><a href="./Assertor.html">Assertor</a></li>
+          <li class="class"><a href="./AE/Assertion.html">Object::Assertion</a></li>
         
           <li class="class"><a href="./Exception.html">Exception</a></li>
         
@@ -228,8 +240,6 @@
           <li class="class"><a href="./Module.html">Module</a></li>
         
           <li class="class"><a href="./Numeric.html">Numeric</a></li>
-        
-          <li class="class"><a href="./Object.html">Object</a></li>
         
           <li class="class"><a href="./Proc.html">Proc</a></li>
         
@@ -262,7 +272,7 @@
       
 
       
-<p><a href="AE.html">AE</a>, Copyright © 2008 Thomas Sawyer</p>
+<p>AE’s namespace.</p>
 
     </div>
 
@@ -295,6 +305,42 @@
       <h3 class="section-header">Public Class Methods</h3>
 
     
+      <div id="assertion_error-3D-method" class="method-detail ">
+        <a name="method-c-assertion_error-3D"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assertion_error=</span><span
+            class="method-args">(exception_class)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Set <a href="AE/Assertion.html">Assertion</a> class. This is a convenience
+method for framework adapters, used to set the exception class that a
+framework uses to raise an assertion error.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="assertion_error-3D-source">
+<pre>
+<span class="ruby-comment"># File lib/ae.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">assertion_error=</span>(<span class="ruby-identifier">exception_class</span>)
+  <span class="ruby-identifier">verbose</span>, <span class="ruby-identifier">$VERBOSE</span> = <span class="ruby-identifier">$VERBOSE</span>, <span class="ruby-keyword">nil</span>
+  <span class="ruby-constant">Object</span>.<span class="ruby-identifier">const_set</span>(<span class="ruby-value">:Assertion</span>, <span class="ruby-identifier">exception_class</span>)
+  <span class="ruby-identifier">$VERBOSE</span> = <span class="ruby-identifier">verbose</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
       <div id="const_missing-method" class="method-detail ">
         <a name="method-c-const_missing"></a>
 
@@ -315,7 +361,7 @@
           <div class="method-source-code"
             id="const_missing-source">
 <pre>
-<span class="ruby-comment"># File lib/ae.rb, line 12</span>
+<span class="ruby-comment"># File lib/ae/version.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">key</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>
   <span class="ruby-identifier">metadata</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">super</span>(<span class="ruby-identifier">name</span>)
@@ -348,46 +394,11 @@
           <div class="method-source-code"
             id="metadata-source">
 <pre>
-<span class="ruby-comment"># File lib/ae.rb, line 4</span>
+<span class="ruby-comment"># File lib/ae/version.rb, line 3</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">metadata</span>
   <span class="ruby-ivar">@metadata</span> <span class="ruby-operator">||=</span> (
     <span class="ruby-identifier">require</span> <span class="ruby-string">'yaml'</span>
-    <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>) <span class="ruby-operator">+</span> <span class="ruby-string">'/ae.yml'</span>))
-  )
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="version-method" class="method-detail ">
-        <a name="method-c-version"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">version</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="version-source">
-<pre>
-<span class="ruby-comment"># File lib/ae/version.rb, line 3</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">version</span>
-  <span class="ruby-ivar">@version</span> <span class="ruby-operator">||=</span> (
-    <span class="ruby-identifier">require</span> <span class="ruby-string">'yaml'</span>
-    <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>) <span class="ruby-operator">+</span> <span class="ruby-string">'/version.yml'</span>))
+    <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>) <span class="ruby-operator">+</span> <span class="ruby-string">'/../ae.yml'</span>))
   )
 <span class="ruby-keyword">end</span></pre>
           </div>

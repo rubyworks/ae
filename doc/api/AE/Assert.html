@@ -96,6 +96,11 @@
           
             
             <li class="method">
+              <a href="#method-i-flunk">#flunk</a>
+            </li>
+          
+            
+            <li class="method">
               <a href="#method-i-refute">#refute</a>
             </li>
           
@@ -119,13 +124,15 @@
         <h3 class="section-header">Information</h3>
         <ul>
         
-          <li class="file"><a href="../History_rdoc.html">History.rdoc</a></li>
+          <li class="file"><a href="../Version.html">Version</a></li>
         
-          <li class="file"><a href="../License_txt.html">License.txt</a></li>
+          <li class="file"><a href="../History_rdoc.html">History.rdoc</a></li>
         
           <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
         
-          <li class="file"><a href="../Notice_rdoc.html">Notice.rdoc</a></li>
+          <li class="file"><a href="../Apache2_txt.html">Apache2.txt</a></li>
+        
+          <li class="file"><a href="../NOTICE_rdoc.html">NOTICE.rdoc</a></li>
         
         </ul>
       </div>
@@ -153,6 +160,12 @@
         
           <li class="module"><a href="../AE/Assert.html">AE::Assert</a></li>
         
+          <li class="class"><a href="../AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="../AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="../AE/Assertor.html">AE::Assertor</a></li>
+        
           <li class="module"><a href="../AE/CheckOK.html">AE::CheckOK</a></li>
         
           <li class="module"><a href="../AE/Detest.html">AE::Detest</a></li>
@@ -175,9 +188,9 @@
         
           <li class="class"><a href="../Kernel/Pry.html">Kernel::Pry</a></li>
         
-          <li class="class"><a href="../Assertion.html">Assertion</a></li>
+          <li class="class"><a href="../Object.html">Object</a></li>
         
-          <li class="class"><a href="../Assertor.html">Assertor</a></li>
+          <li class="class"><a href="../AE/Assertion.html">Object::Assertion</a></li>
         
           <li class="class"><a href="../Exception.html">Exception</a></li>
         
@@ -186,8 +199,6 @@
           <li class="class"><a href="../Module.html">Module</a></li>
         
           <li class="class"><a href="../Numeric.html">Numeric</a></li>
-        
-          <li class="class"><a href="../Object.html">Object</a></li>
         
           <li class="class"><a href="../Proc.html">Proc</a></li>
         
@@ -216,9 +227,16 @@
 
     <div id="description">
       
+        <h1>Assert</h1>
+      
 
       
-<h1><a href="Assert.html">Assert</a></h1>
+<p>The <a href="Assert.html">Assert</a> module is simple a conatiner module
+for the core extension methods: <a
+href="Assert.html#method-i-assert">assert</a>, #expect, etc.</p>
+
+<p>This module is included directory into the <a
+href="../Object.html">Object</a> class.</p>
 
     </div>
 
@@ -268,7 +286,7 @@ block evalutes truthfully, i.e. not as nil or false.</p>
           <div class="method-source-code"
             id="assert-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assert.rb, line 25</span>
+<span class="ruby-comment"># File lib/ae/assert.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">assert</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">assert</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -330,9 +348,42 @@ possible in Ruby 1.9, but we will wait until Ruby 1.9 is the norm.</p>
           <div class="method-source-code"
             id="assert-3D-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assert.rb, line 30</span>
+<span class="ruby-comment"># File lib/ae/assert.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">assert=</span>(<span class="ruby-identifier">cmp</span>)
   <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">assert</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">cmp</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="flunk-method" class="method-detail ">
+        <a name="method-i-flunk"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">flunk</span><span
+            class="method-args">(message=nil, backtrace=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Directly raise an <a href="Assertion.html">Assertion</a> failure.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="flunk-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/assert.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">message</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">backtrace</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-comment">#Assertor.new(self, :backtrace=&gt;caller).assert(false, message)</span>
+  <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">assert</span>(<span class="ruby-keyword">false</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">caller</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -364,7 +415,7 @@ possible in Ruby 1.9, but we will wait until Ruby 1.9 is the norm.</p>
           <div class="method-source-code"
             id="refute-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assert.rb, line 38</span>
+<span class="ruby-comment"># File lib/ae/assert.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">refute</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">not</span>.<span class="ruby-identifier">assert</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -400,7 +451,7 @@ possible in Ruby 1.9, but we will wait until Ruby 1.9 is the norm.</p>
           <div class="method-source-code"
             id="refute-3D-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assert.rb, line 43</span>
+<span class="ruby-comment"># File lib/ae/assert.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">refute=</span>(<span class="ruby-identifier">cmp</span>)
   <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>).<span class="ruby-identifier">not</span>.<span class="ruby-identifier">assert</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">cmp</span>
 <span class="ruby-keyword">end</span></pre>

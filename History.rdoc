@@ -1,5 +1,23 @@
 = RELEASE HISTORY
 
+== 1.7.0 / 2011-04-28
+
+AE now uses proper namespace for all classes. In particular, the `Assertor`
+class has become `AE::Assertor`. Only the `Assertion` class remains outside
+the `AE` namespace, as it is now used to map to the current exception class
+for raising assertions as defined by current test framwework. In addition,
+AE's Kernel extensions, which are used to adapt AE for use with any given
+test framework have been moved to the AE and AE::Assertor classes as
+class methods along with AE's assertion count methods.
+
+Changes:
+
+* All AE classes use proper namespace.
+* Framework methods moved to AE::Assertor class.
+* Assertion count tracking methods moved to AE::Assertor class.
+* AE::Assertion class simplified to a simple sublcass of Exception.
+
+
 == 1.6.1 / 2010-11-05
 
 This release has test passing for Ruby 1.9.2. Ruby 1.9.2 doesn't appear

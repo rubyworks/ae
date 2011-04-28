@@ -1,10 +1,8 @@
 --- 
 spec_version: 1.0.0
-engines_tested: 
-- ruby 1.8.7 (2010-01-10 patchlevel 249) [x86_64-linux]
-- ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-linux]
 name: ae
 title: AE
+engine_check: ruby 1.8.7 (2010-08-16 patchlevel 302) [x86_64-linux]
 contact: trans <transfire@gmail.com>
 resources: 
   repo: git://github.com/rubyworks/ae.git
@@ -24,8 +22,8 @@ requires:
   name: qed
   version: 0+
 suite: rubyworks
-version: 1.6.2
 manifest: /home/trans/Documents/programs/github.com/rubyworks/ae/Manifest.txt
+version: 1.7.0
 copyright: Copyright (c) 2008 Thomas Sawyer
 description: Assertive Expressive is an assertions library specifically designed for reuse by other test frameworks.
 authors: 

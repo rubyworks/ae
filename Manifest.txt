@@ -1,4 +1,4 @@
-#!mast -x Syckle .ruby bin demo qed lib test [A-Z]*
+#!mast -x Syckle -x Profile -x Version .ruby bin demo qed lib test [A-Z]*
 .ruby
 qed/01_overview.rdoc
 qed/02_assertion.rdoc
@@ -30,7 +30,6 @@ lib/ae/subjunctive.rb
 lib/ae/version.rb
 lib/ae.rb
 lib/ae.yml
-Profile
 Notice.rdoc
 README.rdoc
 Syckfile

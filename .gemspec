@@ -5,9 +5,9 @@ version: !ruby/object:Gem::Version
   prerelease: false
   segments: 
   - 1
-  - 6
-  - 2
-  version: 1.6.2
+  - 7
+  - 0
+  version: 1.7.0
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -86,7 +86,6 @@ files:
 - lib/ae/version.rb
 - lib/ae.rb
 - lib/ae.yml
-- Profile
 - Notice.rdoc
 - README.rdoc
 - Syckfile

@@ -12,8 +12,8 @@ description:
   designed for reuse by other test frameworks.
 
 requires:
-  - syckle (build)
-  - qed    (test)
+  - redline (build)
+  - qed     (test)
 
 resources:
   home: http://rubyworks.github.com/ae

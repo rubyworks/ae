@@ -1,4 +1,5 @@
 require 'test/unit'
+#require 'assay'
 require 'ae/adapters/testunit'
 
 class TestUnitSupport < Test::Unit::TestCase
@@ -10,8 +11,8 @@ class TestUnitSupport < Test::Unit::TestCase
   end
 
   def test_assert_fail
-    x = 5
-    y = 6
+    x = "12345678901234567890"
+    y = "123456789X1234567890"
     x.assert == y
   end
 

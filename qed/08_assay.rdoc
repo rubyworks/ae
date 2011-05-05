@@ -1,0 +1,13 @@
+= Assay Integration
+
+A.E. can integrate with Assay.
+
+  require 'assay'
+
+Not assertion errors will be more specific.
+
+  expect ::Assay::EqualityFailure do
+    "abcdefghijklmnopqrstuvwxyz".assert == "abcdefghijklmnopqrstuvw"
+  end
+
+QED.

@@ -59,7 +59,7 @@ module AE
     # Directly raise an Assertion failure.
     def flunk(message=nil, backtrace=nil)
       #Assertor.new(self, :backtrace=>caller).assert(false, message)
-      Assertor.assert(false, message, caller)
+      Assertor.assert(false, message, backtrace || caller)
     end
 
   end

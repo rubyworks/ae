@@ -1,13 +1,14 @@
 = RELEASE HISTORY
 
-== 1.8.0 / 2011-05-06
+== 1.7.1 / 2011-05-06
 
-A quick step up to version 1.8, this release adds a new message system
-to allow common assertions have more forensic output.
+This release adds a specialized message for certain comparision
+operators to allow them have a more forensic output. This is done
+via ANSI::Diff library.
 
 Changes:
 
-* Add Message module to house custom messages.
+* Add special message for comparison assertions.
 
 
 == 1.7.0 / 2011-04-28

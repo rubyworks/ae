@@ -22,7 +22,9 @@ resources:
   wiki: http://wiki.github.com/rubyworks/ae
   bugs: http://github.com/rubyworks/ae/issues
   mail: http://groups.google.com/group/rubyworks-mailinglist
-  repo: git://github.com/rubyworks/ae.git
+
+repositories:
+  public: git://github.com/rubyworks/ae.git
 
 organization: Rubyworks
 

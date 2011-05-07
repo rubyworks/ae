@@ -1,5 +1,9 @@
 = Assertive Expressive
 
+Author:: Thomas Sawyer
+License:: Apache 2.0
+
+
 == DESCRIPTION
 
 Assertive Expressive (AE) is an assertions framework
@@ -19,8 +23,11 @@ intended for reuse by any TDD, BDD or similar system.
 
 == RESOURCES
 
-* home: http://rubyworks.github.com/ae/
-* code: http://github.com/rubyworks/ae/
+* home: http://rubyworks.github.com/ae
+* code: http://github.com/rubyworks/ae
+* docs: http://wiki.github.com/rubyworks/ae/docs/qed
+* wiki: http://wiki.github.com/rubyworks/ae
+* bugs: http://github.com/rubyworks/ae/issues
 * mail: http://googlegroups.com/group/rubyworks-mailinglist
 
 
@@ -162,4 +169,6 @@ See the Apache2.txt for details.
 
 Portions of this program may be copyrighted by others. See the 
 NOTICE.rdoc file for details.
+
+AE is a Rubyworks[http://rubyworks.github.com] project.
 

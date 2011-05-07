@@ -1,5 +1,15 @@
 = RELEASE HISTORY
 
+== 1.8.0 / 2011-05-06
+
+A quick step up to version 1.8, this release adds a new message system
+to allow common assertions have more forensic output.
+
+Changes:
+
+* Add Message module to house custom messages.
+
+
 == 1.7.0 / 2011-04-28
 
 AE now uses proper namespace for all classes. In particular, the `Assertor`

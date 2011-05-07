@@ -1,5 +1,6 @@
 require 'ae/assertion'
 require 'ae/basic_object'
+require 'ae/message'
 
 module AE
 
@@ -27,17 +28,17 @@ module AE
 
     # Reset assertion counts.
     #
-    # reset - Hash which will be used to set counts manually (optional).
+    # reset - Hash which can be used to set counts manually (optional).
     #
     # Returns the Hash of previous counts.
-    def self.recount(reset={})
+    def self.recount(reset=nil)
       old_counts = counts.dup
-      if reset.empty?
-        counts.replace(ZERO_COUNTS.dup)
-      else
+      if reset
         reset.each do |type, value|
           counts[type.to_sym] = value
         end
+      else
+        counts.replace(ZERO_COUNTS.dup)
       end
       return old_counts
     end
@@ -57,21 +58,24 @@ module AE
 
     # Basic assertion. This method by-passes all the Assertor fluent
     # constructs and performs the underlying assertion procedure. It
-    # is used by Assertor as the end result of an assertion.
-    def self.assert(pass, message=nil, backtrace=nil, error=nil)
+    # is used by Assertor as the end call of an assertion.
+    def self.assert(pass, error=nil, negated=nil, backtrace=nil)
+      pass = negated ^ !!pass
       increment_counts(pass)
       if !pass
         backtrace = backtrace || caller
-        #message   = message   || 'flunk'
-        raise_assertion(message, backtrace, error)
+        raise_assertion(error, negated, backtrace)
       end
       return pass
     end
 
-    # The intent of the method is to raise the assertion failure
-    # class that a test framework uses.
-    def self.raise_assertion(message, backtrace=nil, error=nil)
-      error = assertion_error.new(message) if !error
+    # The intent of the method is to raise an assertion failure
+    # class that the test framework supports.
+    def self.raise_assertion(error, negated, backtrace=nil)
+      if not Exception === error
+        error = assertion_error.new(error)
+      end
+      error.set_negative(negated)
       error.set_backtrace(backtrace || caller)
       error.set_assertion(true)
       fail error
@@ -82,9 +86,20 @@ module AE
       ::Assertion
     end
 
-    # Is ::Assay defined. This is used for integration of the Assay library.
-    def self.assay?
-      @_assay ||= defined?(::Assay)
+    # NOT HAPPENING
+    ## Is ::Assay defined. This is used for integration of the Assay library.
+    #def self.assay?
+    #  @_assay ||= defined?(::Assay)
+    #end
+
+    #
+    def self.message(sym, neg, *args, &blk)
+      if method = Message.lookup(sym) 
+        method = "non_#{method}" if neg
+        Message.send(method, *args, &blk)
+      else
+        nil
+      end
     end
 
     #
@@ -126,36 +141,45 @@ module AE
     #   assert something, parameter
     #
     # Returns +true+ or +false+ based on assertions success.
+    #--
+    # The use of #to_proc and #matches? as sepcial cases is not
+    # a robust solution.
+    #++
     def assert(*args, &block)
       return self if args.empty? && !block
 
       target = block || args.shift
       error  = nil
 
+      # Lambda
       if ::Proc === target || target.respond_to?(:to_proc)
         block  = target.to_proc
         match  = args.shift
         result = block.arity > 0 ? block.call(@delegate) : block.call
         if match
-          pass = (match == result)
-          msg  = @message || "#{match.inspect} == #{result.inspect}"
+          pass  = (match == result)
+          error = @message || "#{match.inspect} == #{result.inspect}"
         else
-          pass = result
-          msg  = @message || block.inspect  # "#{result.inspect}"
+          pass  = result
+          error = @message || block.inspect  # "#{result.inspect}"
         end
-      elsif target.respond_to?(:matches?)
-        pass   = target.matches?(@delegate)
-        msg    = @message #|| matcher_message(target) || target.inspect
-        if target.respond_to?(:failure)
+
+      # Matcher
+      elsif target.respond_to?(:matches?) # Matchers
+        pass  = target.matches?(@delegate)
+        error = @message || matcher_message(target) #|| target.inspect
+        if target.respond_to?(:exception)
           #error_class = target.failure_class
-          error = target.failure
+          error = target.exception #(:backtrace=>@backtrace, :negated=>@negated)
         end
+
+      # Truthiness
       else
-        pass   = target     # truthiness
-        msg    = args.shift # optional message for TestUnit compatiability
+        pass  = target     # truthiness
+        error = args.shift # optional message for TestUnit compatiability
       end
 
-      __assert__(pass, msg, error)
+      __assert__(pass, error)
     end
 
     # Internal expect, provides all functionality associated
@@ -171,6 +195,7 @@ module AE
       target = block || args.shift
       error  = nil
 
+      # Lambda
       if ::Proc === target #|| target.respond_to?(:to_proc)
         #block = target.to_proc
         match = args.shift || @delegate
@@ -178,35 +203,39 @@ module AE
           $DEBUG, debug = false, $DEBUG  # b/c it always spits-out a NameError
           begin
             block.arity > 0 ? block.call(@delegate) : block.call
-            pass = false
-            msg  = "#{match} not raised"
+            pass  = false
+            error = "#{match} not raised"
           rescue match => error
-            pass = true
-            msg  = "#{match} raised"
+            pass  = true
+            error = "#{match} raised"
           rescue ::Exception => error
-            pass = false
-            msg  = "#{match} expected but #{error.class} was raised"
+            pass  = false
+            error = "#{match} expected but #{error.class} was raised"
           ensure
             $DEBUG = debug
           end
         else
           result = block.arity > 0 ? block.call(@delegte) : block.call
           pass   = (match === result)
-          msg    = @message || "#{match.inspect} === #{result.inspect}"
+          error  = @message || "#{match.inspect} === #{result.inspect}"
         end
+
+      # Matcher
       elsif target.respond_to?(:matches?)
-        pass = target.matches?(@delegate)
-        msg  = @message #|| matcher_message(target) || target.inspect
-        if target.respond_to?(:failure)
+        pass  = target.matches?(@delegate)
+        error = @message || matcher_message(target) #|| target.inspect
+        if target.respond_to?(:exception)
           #error_class = target.failure_class
-          error = target.failure
+          error = target.exception #failure(:backtrace=>@backtrace, :negated=>@negated)
         end
+
+      # Case Equals
       else
-        pass = (target === @delegate)
-        msg  = @message || "#{target.inspect} === #{@delegate.inspect}"
+        pass  = (target === @delegate)
+        error = @message || "#{target.inspect} === #{@delegate.inspect}"
       end
 
-      __assert__(pass, msg, error)
+      __assert__(pass, error)
     end
 
     #
@@ -245,24 +274,17 @@ module AE
     # Converts a missing method into an Assertion.
     #
     # TODO: In future should probably be `@delegate.public_send(sym, *a, &b)`.
-    def method_missing(sym, *a, &b)
-      error = nil
-      if Assertor.assay? && error = ::Assay.lookup(sym)
-        message = nil
-        error   = error.new(@message, :arguments=>[@delegate, *a], :negated=>@negated, :backtrace=>@backtrace)
-        #if error
-        #  if @negated
-        #    message = @message || error.fail_message!(@delegate, *a)
-        #  else
-        #    message = @message || error.fail_message(@delegate, *a)
-        #  end
-        #end
+    def method_missing(sym, *args, &block)
+      #if error = Assertor.lookup(sym)
+      if error = Assertor.message(sym, !!@negate, @delegate, *args, &block)  # TODO: self.__class__.lookup(sym) fix BasicObject ?
+        #error = error.new(@message, @delegate, *args, &block)
+        #error.set_backtrace(@backtrace)
+        #error.set_negative(@negated)
       else
-        message = @message || __msg__(sym, *a, &b)
-        error   = nil
+        error = @message || __msg__(sym, *args, &block)
       end
-      pass = @delegate.__send__(sym, *a, &b)
-      __assert__(pass, message, error)
+      pass = @delegate.__send__(sym, *args, &block)
+      __assert__(pass, error)
     end
 
     # Puts together a suitable error message.
@@ -281,34 +303,24 @@ module AE
     #--
     # TODO: Can the handling of the message be simplified/improved?
     #++
-    def __assert__(pass, message=nil, error=nil)
-      pass = @negated ^ pass
-      Assertor.assert(pass, message, @backtrace, error)
+    def __assert__(pass, error=nil)
+      Assertor.assert(pass, error, @negated, @backtrace)
     end
 
-=begin
     #
     def matcher_message(matcher)
       if @negated
         if matcher.respond_to?(:negative_failure_message)
           return matcher.failure_message
         end
+      else
+        if matcher.respond_to?(:failure_message)
+          return matcher.failure_message
+        end
       end
-      if matcher.respond_to?(:failure_message)
-        return matcher.failure_message
-      end
-      false
+      return nil
     end
-=end
 
-    # TODO: Ultimately better messages might be nice.
-    #
-    #def self.message(op,&block)
-    #  @message ||= {}
-    #  block ? @message[op.to_sym] = block : @message[op.to_sym]
-    #end
-    #
-    #message(:==){ |*a| "Expected #{a[0].inspect} to be equal to #{a[1].inspect}" }
   end
 
 end

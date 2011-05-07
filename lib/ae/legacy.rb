@@ -275,13 +275,6 @@ module AE
 
   end #module Legacy
 
-#  # This could be in Object, but since they will only be needed in
-#  # the context of a, well, Context...
-#  #
-#  class Context #:nodoc:
-#    include Legacy::Assertions
-#  end
-
   module World
     include AE::Legacy::Assertions
   end

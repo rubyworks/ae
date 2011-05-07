@@ -1,5 +1,3 @@
-# Copyright (c) 2008,2010 Thomas Sawyer
-
 require 'ae/core_ext'
 
 module AE

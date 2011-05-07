@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# AE's namespace.
+# AE namespace.
 module AE
 
   # Set Assertion class. This is a convenience method

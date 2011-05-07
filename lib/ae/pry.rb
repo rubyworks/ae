@@ -13,7 +13,10 @@ module Kernel
   # considered implementation details. But sometimes is necessary
   # to test them directly, or if you wish to achieve *absolute
   # coverage*, say in mission critical systems.
-
+  #
+  #--
+  # TODO: Is th cache really neccessry?
+  #++
   def pry
     $PRY_TABLE[self] ||= Pry.new do |op, *a, &b|
       __send__(op, *a, &b)

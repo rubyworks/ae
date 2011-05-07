@@ -21,6 +21,7 @@ intended for reuse by any TDD, BDD or similar system.
 
 * home: http://rubyworks.github.com/ae/
 * code: http://github.com/rubyworks/ae/
+* mail: http://googlegroups.com/group/rubyworks-mailinglist
 
 
 == SYNOPSIS
@@ -82,14 +83,46 @@ counts are correct, a little extra interfacing code may be necessary.
 Lucky for you AE has already done the leg work for the most common
 test frameworks:
 
-* require 'ae/adapters/testunit'
-* require 'ae/adapters/minitest'
-* require 'ae/adapters/rspec'
+  require 'ae/adapters/testunit'
+  require 'ae/adapters/minitest'
+  require 'ae/adapters/rspec'
 
-Note that Cucumber does not need an adapter.
+(Note that Cucumber does not need an adapter.)
+
+AE also includes a script that will automatically detect the current
+test framework by checking for the existence of thier respective 
+namespace modules.
+
+  require 'ae/adapter'
 
 
-== HOW TO INSTALL
+== NOMENCLATURE
+
+With AE, defining asseretions centers around the use of the #assert method. So
+"assert" is AE's primary nomenclature. However, variant nomenclatures have been
+popularized by other test frameworks, terms like "should" and "must". If you
+have grown acustom to these other terms or simply prefer one of them, AE
+provides optional libraries for utilizing them.
+
+  require 'ae/should'
+  require 'ae/must'
+
+
+== LEGACY
+
+To ease transition from TestUnit style assertion methods, AE provides
+a TestUnit legacy module.
+
+  require 'ae/legacy'
+
+This provides a module AE::Legacy::Assertions which is included in AE::World
+and can be mixed into test environment, to provide old-school asseetion methods,
+e.g.
+
+  assert_equal(foo, bar, "it failed")
+
+
+== INSTALLATION
 
 === Gem Installs
 

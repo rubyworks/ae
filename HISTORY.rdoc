@@ -4,11 +4,13 @@
 
 This release adds a specialized message for certain comparision
 operators to allow them have a more forensic output. This is done
-via ANSI::Diff library.
+via ANSI::Diff library. This release also deprecateds the optional
+dot.rb and detest.rb emulation scripts.
 
 Changes:
 
 * Add special message for comparison assertions.
+* Remove optional dot.rb and detest.rb emulation scripts.
 
 
 == 1.7.0 / 2011-04-28

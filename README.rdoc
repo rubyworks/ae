@@ -90,7 +90,7 @@ test frameworks:
 (Note that Cucumber does not need an adapter.)
 
 AE also includes a script that will automatically detect the current
-test framework by checking for the existence of thier respective 
+test framework by checking for the existence of their respective 
 namespace modules.
 
   require 'ae/adapter'
@@ -98,14 +98,18 @@ namespace modules.
 
 == NOMENCLATURE
 
-With AE, defining asseretions centers around the use of the #assert method. So
-"assert" is AE's primary nomenclature. However, variant nomenclatures have been
-popularized by other test frameworks, terms like "should" and "must". If you
-have grown acustom to these other terms or simply prefer one of them, AE
-provides optional libraries for utilizing them.
+With AE, defining assertions centers around the #assert method. So
+*assert* can be thought of as AE's primary _nomenclature_. However, variant
+nomenclatures have been popularized by other test frameworks, in particular
+*should* and *must*. If you prefer one of them terms, AE provides optional
+libraries that can loaded for utilizing them.
 
   require 'ae/should'
   require 'ae/must'
+
+By loading one of these scripts (or both) into your test system (e.g. via a test
+helper script) you gain access to subjunctive terminology. See the API documentation
+for the Subjunctive module for details.
 
 
 == LEGACY
@@ -116,8 +120,8 @@ a TestUnit legacy module.
   require 'ae/legacy'
 
 This provides a module AE::Legacy::Assertions which is included in AE::World
-and can be mixed into test environment, to provide old-school asseetion methods,
-e.g.
+and can be mixed into your test environment to provide old-school assertion
+methods. E.g.
 
   assert_equal(foo, bar, "it failed")
 

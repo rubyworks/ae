@@ -23,7 +23,7 @@ rdoc:
   service : rdoc
   format  : redfish
   exclude : [Redfile, Profile, MANIFEST, Version]
-  output  : site/doc/api
+  output  : site/docs/api
 
 ri:
   service: RI
@@ -36,7 +36,7 @@ qedoc:
   service: custom
   cycle: main
   document: |
-    puts `qedoc -o site/doc/qed -t "AE Demonstrandum" qed`
+    puts `qedoc -o site/docs/qed -t "AE Demonstrandum" qed`
 
 testrb:
   service  : testrb

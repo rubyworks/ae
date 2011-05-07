@@ -1,5 +1,6 @@
 require 'ae/assertion'
 require 'ae/basic_object'
+require 'ansi/diff'
 
 module AE
 
@@ -310,7 +311,7 @@ module AE
     def compare_message(operator, *args, &blk)
       return nil unless COMPARISON_OPERATORS.key?(operator)
       prefix = ""
-      a, b   = @delegate, args.first
+      a, b   = @delegate.inspect, args.first.inspect
       if @negated
         op = COMPARISON_OPERATORS[operator]
         if op

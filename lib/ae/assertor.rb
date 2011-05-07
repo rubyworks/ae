@@ -1,6 +1,5 @@
 require 'ae/assertion'
 require 'ae/basic_object'
-require 'ae/message'
 
 module AE
 
@@ -93,14 +92,14 @@ module AE
     #end
 
     #
-    def self.message(sym, neg, *args, &blk)
-      if method = Message.lookup(sym) 
-        method = "non_#{method}" if neg
-        Message.send(method, *args, &blk)
-      else
-        nil
-      end
-    end
+    #def self.message(sym, neg, *args, &blk)
+    #  if method = Message.lookup(sym) 
+    #    method = "non_#{method}" if neg
+    #    Message.send(method, *args, &blk)
+    #  else
+    #    nil
+    #  end
+    #end
 
     #
     if ::RUBY_VERSION >= '1.9'
@@ -275,29 +274,13 @@ module AE
     #
     # TODO: In future should probably be `@delegate.public_send(sym, *a, &b)`.
     def method_missing(sym, *args, &block)
-      #if error = Assertor.lookup(sym)
-      if error = Assertor.message(sym, !!@negate, @delegate, *args, &block)  # TODO: self.__class__.lookup(sym) fix BasicObject ?
-        #error = error.new(@message, @delegate, *args, &block)
-        #error.set_backtrace(@backtrace)
-        #error.set_negative(@negated)
-      else
-        error = @message || __msg__(sym, *args, &block)
-      end
+      error = @message || compare_message(sym, *args, &block) || generic_message(sym, *args, &block)
+
       pass = @delegate.__send__(sym, *args, &block)
+
       __assert__(pass, error)
     end
 
-    # Puts together a suitable error message.
-    #
-    def __msg__(m, *a, &b)
-      inspection = @delegate.send(:inspect)
-      if @negated
-        "! #{inspection} #{m} #{a.collect{|x| x.inspect}.join(',')}"
-      else
-        "#{inspection} #{m} #{a.collect{|x| x.inspect}.join(',')}"
-      end
-      #self.class.message(m)[@delegate, *a] )
-    end
 
     # Simple assert.
     #--
@@ -319,6 +302,41 @@ module AE
         end
       end
       return nil
+    end
+
+    COMPARISON_OPERATORS = { :"==" => :"!=" }
+
+    # Message to use when making a comparion assertion.
+    def compare_message(operator, *args, &blk)
+      return nil unless COMPARISON_OPERATORS.key?(operator)
+      prefix = ""
+      a, b   = @delegate, args.first
+      if @negated
+        op = COMPARISON_OPERATORS[operator]
+        if op
+          operator = op
+        else
+          prefix   = "NOT "
+        end
+      end
+      if a.size > 13 or b.size > 13
+        diff = ANSI::Diff.new(a,b)
+        prefix + "a #{operator} b\na) " + diff.diff1 + "\nb) " + diff.diff2
+      else
+        prefix + "#{a.inspect} #{operator} #{b.inspect}"
+      end
+    end
+
+    # Puts together a suitable error message.
+    #
+    def generic_message(op, *a, &b)
+      inspection = @delegate.send(:inspect)
+      if @negated
+        "! #{inspection} #{op} #{a.collect{|x| x.inspect}.join(',')}"
+      else
+        "#{inspection} #{op} #{a.collect{|x| x.inspect}.join(',')}"
+      end
+      #self.class.message(m)[@delegate, *a] )
     end
 
   end

@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Module: AE::Legacy::Assertions</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../../assets/icon/module.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="module">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../../assets/icon/module.png" align="absmiddle">&nbsp;
+      
+      <a href="../../index.html">&quot;AE&quot;</a>&nbsp;
+      <a href="">AE::Legacy::Assertions</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../../lib/ae/legacy_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/ae/legacy.rb">lib/ae/legacy.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#method-i-assert">#assert</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_block">#assert_block</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_equal">#assert_equal</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_in_delta">#assert_in_delta</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_instance_of">#assert_instance_of</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_kind_of">#assert_kind_of</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_match">#assert_match</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_nil">#assert_nil</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_no_match">#assert_no_match</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_not_equal">#assert_not_equal</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_not_nil">#assert_not_nil</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_not_same">#assert_not_same</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_operator">#assert_operator</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_raise">#assert_raise</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_raises">#assert_raises</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_respond_to">#assert_respond_to</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_same">#assert_same</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_send">#assert_send</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-assert_throws">#assert_throws</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-flunk">#flunk</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../../HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="../../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../../NOTICE_rdoc.html">NOTICE.rdoc</a></li>
+        
+          <li class="file"><a href="../../APACHE2_txt.html">APACHE2.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../../AE.html">AE</a></li>
+        
+          <li class="module"><a href="../../AE/Assert.html">AE::Assert</a></li>
+        
+          <li class="class"><a href="../../AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="../../AE/Assertion.html">AE::Assertion</a></li>
+        
+          <li class="class"><a href="../../AE/Assertor.html">AE::Assertor</a></li>
+        
+          <li class="module"><a href="../../AE/CheckOK.html">AE::CheckOK</a></li>
+        
+          <li class="module"><a href="../../AE/Expect.html">AE::Expect</a></li>
+        
+          <li class="module"><a href="../../AE/Legacy.html">AE::Legacy</a></li>
+        
+          <li class="module"><a href="../../AE/Legacy/Assertions.html">AE::Legacy::Assertions</a></li>
+        
+          <li class="module"><a href="../../AE/Must.html">AE::Must</a></li>
+        
+          <li class="module"><a href="../../AE/Should.html">AE::Should</a></li>
+        
+          <li class="module"><a href="../../AE/Subjunctive.html">AE::Subjunctive</a></li>
+        
+          <li class="module"><a href="../../AE/World.html">AE::World</a></li>
+        
+          <li class="module"><a href="../../Kernel.html">Kernel</a></li>
+        
+          <li class="class"><a href="../../Kernel/Pry.html">Kernel::Pry</a></li>
+        
+          <li class="class"><a href="../../Object.html">Object</a></li>
+        
+          <li class="class"><a href="../../AE/Assertion.html">Object::Assertion</a></li>
+        
+          <li class="class"><a href="../../Exception.html">Exception</a></li>
+        
+          <li class="class"><a href="../../Module.html">Module</a></li>
+        
+          <li class="class"><a href="../../Numeric.html">Numeric</a></li>
+        
+          <li class="class"><a href="../../Proc.html">Proc</a></li>
+        
+          <li class="class"><a href="../../Symbol.html">Symbol</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle</a>
+                     <a href="http://rubyworks.github.com/redfish">RedFish</a>
+                     v1.0.1
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      
+<h1>Test::Unit <a href="../Legacy.html">Legacy</a> <a href="Assertions.html">Assertions</a></h1>
+
+<p>This module provides a compatibility layer for Test::Unit. This is an
+optional module and is intended for providing an easier transition from
+Test::Unit to <a href="../../AE.html">AE</a> assertions.</p>
+
+<p>Note that two methods are not provided, <tt>#assert_nothing_raised</tt>,
+and <tt>#assert_nothing_thrown</tt>.</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="assert-method" class="method-detail ">
+        <a name="method-i-assert"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert</span><span
+            class="method-args">(test=nil, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>The assertion upon which all other assertions are based.</p>
+
+<pre>assert [1, 2].include?(5)</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">test</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">test</span>
+    <span class="ruby-identifier">msg</span> = <span class="ruby-string">&quot;failed assertion (no message given)&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Assertion</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-identifier">caller</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">test</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Assertor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:backtrace=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">caller</span>)  <span class="ruby-comment"># TODO: Probably remove this!</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_block-method" class="method-detail ">
+        <a name="method-i-assert_block"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_block</span><span
+            class="method-args">(msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if the block yields true.</p>
+
+<p><a href="Assertions.html#method-i-assert_block">assert_block</a>
+“Couldn’t do the thing” do</p>
+
+<pre>do_the_thing</pre>
+
+<p>end</p>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_block-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_block</span>(<span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>) <span class="ruby-comment"># :yields:</span>
+  <span class="ruby-identifier">test</span> = <span class="ruby-operator">!</span> <span class="ruby-keyword">yield</span>
+  <span class="ruby-identifier">msg</span> = <span class="ruby-string">&quot;assertion failed&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_equal-method" class="method-detail ">
+        <a name="method-i-assert_equal"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_equal</span><span
+            class="method-args">(exp, act, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if expected == +actual.</p>
+
+<p>Note that the ordering of arguments is important, since a helpful error
+message is generated when this one fails that tells you the values of
+expected and actual.</p>
+
+<pre>assert_equal 'MY STRING', 'my string'.upcase</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_equal-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_equal</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">exp</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">act</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to be equal to #{exp.inspect}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_in_delta-method" class="method-detail ">
+        <a name="method-i-assert_in_delta"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_in_delta</span><span
+            class="method-args">(exp, act, delta, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if expected_float and actual_float are equal within delta tolerance.</p>
+
+<pre>assert_in_delta 0.05, (50000.0 / 10**6), 0.00001</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_in_delta-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_in_delta</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">delta</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">exp</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">act</span>.<span class="ruby-identifier">to_f</span>).<span class="ruby-identifier">abs</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">delta</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{exp} to be within #{delta} of #{act}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_instance_of-method" class="method-detail ">
+        <a name="method-i-assert_instance_of"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_instance_of</span><span
+            class="method-args">(cls, obj, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if object .instance_of? klass</p>
+
+<pre>assert_instance_of String, 'foo'</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_instance_of-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_instance_of</span>(<span class="ruby-identifier">cls</span>, <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">cls</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">obj</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj} to be a #{cls}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_kind_of-method" class="method-detail ">
+        <a name="method-i-assert_kind_of"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_kind_of</span><span
+            class="method-args">(cls, obj, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if object .kind_of? klass</p>
+
+<pre>assert_kind_of Object, 'foo'</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_kind_of-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_kind_of</span>(<span class="ruby-identifier">cls</span>, <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-identifier">cls</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj.inspect} to be a kind of #{cls}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_match-method" class="method-detail ">
+        <a name="method-i-assert_match"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_match</span><span
+            class="method-args">(exp, act, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if string =~ pattern.</p>
+
+<pre>assert_match(/\d+/, 'five, 6, seven')</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_match-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_match</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">act</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">exp</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to match #{exp.inspect}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_nil-method" class="method-detail ">
+        <a name="method-i-assert_nil"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_nil</span><span
+            class="method-args">(obj, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if object is nil.</p>
+
+<pre>assert_nil [1, 2].uniq!</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_nil-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_nil</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj.inspect} to be nil&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_no_match-method" class="method-detail ">
+        <a name="method-i-assert_no_match"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_no_match</span><span
+            class="method-args">(exp, act, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if regexp !~ string</p>
+
+<pre>assert_no_match(/two/, 'one 2 three')</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_no_match-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_no_match</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">act</span> <span class="ruby-operator">!~</span> <span class="ruby-identifier">exp</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to match #{exp.inspect}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_not_equal-method" class="method-detail ">
+        <a name="method-i-assert_not_equal"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_not_equal</span><span
+            class="method-args">(exp, act, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if expected != actual</p>
+
+<pre>assert_not_equal 'some string', 5</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_not_equal-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_not_equal</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">exp</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">act</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to not be equal to #{exp.inspect}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_not_nil-method" class="method-detail ">
+        <a name="method-i-assert_not_nil"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_not_nil</span><span
+            class="method-args">(obj, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if ! object .nil?</p>
+
+<pre>assert_not_nil '1 two 3'.sub!(/two/, '2')</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_not_nil-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_not_nil</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = <span class="ruby-operator">!</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj.inspect} to not be nil&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_not_same-method" class="method-detail ">
+        <a name="method-i-assert_not_same"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_not_same</span><span
+            class="method-args">(exp, act, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if ! actual .equal? expected</p>
+
+<pre>assert_not_same Object.new, Object.new</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_not_same-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_not_same</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">test</span> = <span class="ruby-operator">!</span> <span class="ruby-identifier">exp</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">act</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to not be the same as #{exp.inspect}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_operator-method" class="method-detail ">
+        <a name="method-i-assert_operator"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_operator</span><span
+            class="method-args">(o1, op, o2, msg="")</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Compares the <tt>object1</tt> with <tt>object2</tt> using operator.</p>
+
+<p>Passes if object1.send(operator, object2) is true.</p>
+
+<pre>assert_operator 5, :&gt;=, 4</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_operator-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_operator</span>(<span class="ruby-identifier">o1</span>, <span class="ruby-identifier">op</span>, <span class="ruby-identifier">o2</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-string">&quot;&quot;</span>)
+  <span class="ruby-identifier">test</span> = <span class="ruby-identifier">o1</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">op</span>, <span class="ruby-identifier">o2</span>)
+  <span class="ruby-identifier">msg</span> = <span class="ruby-node">&quot;Expected #{o1}.#{op}(#{o2}) to be true&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_raise-method" class="method-detail method-alias">
+        <a name="method-i-assert_raise"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_raise</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_raises-method" class="method-detail ">
+        <a name="method-i-assert_raises"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_raises</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if the block raises one of the given exceptions.</p>
+
+<pre>assert_raise RuntimeError, LoadError do
+  raise 'Boom!!!'
+end</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_raises-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_raises</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">msg</span> = (<span class="ruby-constant">Module</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">yield</span>
+    <span class="ruby-identifier">msg</span> = <span class="ruby-node">&quot;Expected #{exp} to be raised&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+    <span class="ruby-identifier">__assert__</span>(<span class="ruby-keyword">false</span>, <span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-identifier">test</span> = (<span class="ruby-identifier">exp</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">e</span>)
+    <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{exp} to be raised, but got #{e.class}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+    <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Assertions.html#method-i-assert_raise">assert_raise</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="assert_respond_to-method" class="method-detail ">
+        <a name="method-i-assert_respond_to"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_respond_to</span><span
+            class="method-args">(obj, meth, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if <tt>object</tt> respond_to? <tt>method</tt>.</p>
+
+<pre>assert_respond_to 'bugbear', :slice</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_respond_to-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 207</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_respond_to</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">meth</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{obj} (#{obj.class}) to respond to ##{meth}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-comment">#flip = (Symbol === obj) &amp;&amp; ! (Symbol === meth) # HACK for specs</span>
+  <span class="ruby-comment">#obj, meth = meth, obj if flip</span>
+  <span class="ruby-identifier">test</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">meth</span>)
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_same-method" class="method-detail ">
+        <a name="method-i-assert_same"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_same</span><span
+            class="method-args">(exp, act, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if <tt>actual</tt> .equal? <tt>expected</tt> (i.e. they are the same
+instance).</p>
+
+<pre>o = Object.new
+assert_same(o, o)</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_same-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 220</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_same</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">act</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{act.inspect} to be the same as #{exp.inspect}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">test</span> = <span class="ruby-identifier">exp</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">act</span>)
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_send-method" class="method-detail ">
+        <a name="method-i-assert_send"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_send</span><span
+            class="method-args">(send_array, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if the method send returns a true value. The parameter
+<tt>send_array</tt> is composed of:</p>
+<ul><li>
+<p>A receiver</p>
+</li><li>
+<p>A method</p>
+</li><li>
+<p>Arguments to the method</p>
+</li></ul>
+
+<p>Example:</p>
+
+<pre>assert_send [[1, 2], :include?, 4]</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_send-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 237</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_send</span>(<span class="ruby-identifier">send_array</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">r</span>, <span class="ruby-identifier">m</span>, *<span class="ruby-identifier">args</span> = *<span class="ruby-identifier">send_array</span>
+  <span class="ruby-identifier">test</span> = <span class="ruby-identifier">r</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">m</span>, *<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{r}.#{m}(*#{args.inspect}) to return true&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assert_throws-method" class="method-detail ">
+        <a name="method-i-assert_throws"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assert_throws</span><span
+            class="method-args">(sym, msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Passes if the block throws expected_symbol</p>
+
+<pre>assert_throws :done do
+  throw :done
+end</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="assert_throws-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 250</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_throws</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">msg</span>  = <span class="ruby-node">&quot;Expected #{sym} to have been thrown&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">test</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">catch</span>(<span class="ruby-identifier">sym</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-keyword">yield</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>     <span class="ruby-comment"># 1.9 exception</span>
+      <span class="ruby-identifier">default</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;, not #{e.message.split(/ /).last}&quot;</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>         <span class="ruby-comment"># 1.8 exception</span>
+      <span class="ruby-identifier">default</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;, not #{e.name.inspect}&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">test</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-identifier">test</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="flunk-method" class="method-detail ">
+        <a name="method-i-flunk"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">flunk</span><span
+            class="method-args">(msg=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Flunk always fails.</p>
+
+<pre>flunk 'Not done testing yet.'</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="flunk-source">
+<pre>
+<span class="ruby-comment"># File lib/ae/legacy.rb, line 270</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">__assert__</span>(<span class="ruby-keyword">false</span>, <span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

@@ -22,11 +22,11 @@ stats:
 rdoc:
   service : rdoc
   format  : redfish
-  exclude : [Syckfile, Profile, Manifest.txt]
+  exclude : [Redfile, Profile, MANIFEST, Version]
   output  : site/doc/api
 
-ridoc:
-  service: RIDoc
+ri:
+  service: RI
   include: ~
   exclude: ~
   output : .ri

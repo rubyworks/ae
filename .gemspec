@@ -1,13 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: ae
 version: !ruby/object:Gem::Version 
-  hash: 11
+  hash: 9
   prerelease: false
   segments: 
   - 1
   - 7
-  - 0
-  version: 1.7.0
+  - 1
+  version: 1.7.1
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -15,11 +15,11 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-04-28 00:00:00 -04:00
+date: 2011-05-07 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
-  name: syckle
+  name: redline
   prerelease: false
   requirement: &id001 !ruby/object:Gem::Requirement 
     none: false
@@ -75,8 +75,6 @@ files:
 - lib/ae/core_ext/exception.rb
 - lib/ae/core_ext/helpers.rb
 - lib/ae/core_ext.rb
-- lib/ae/detest.rb
-- lib/ae/dot.rb
 - lib/ae/expect.rb
 - lib/ae/legacy.rb
 - lib/ae/must.rb
@@ -86,10 +84,10 @@ files:
 - lib/ae/version.rb
 - lib/ae.rb
 - lib/ae.yml
+- HISTORY.rdoc
+- APACHE2.txt
 - README.rdoc
-- Apache2.txt
-- Syckfile
-- History.rdoc
+- Redfile
 - NOTICE.rdoc
 has_rdoc: true
 homepage: http://rubyworks.github.com/ae

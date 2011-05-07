@@ -19,8 +19,6 @@ lib/ae/check.rb
 lib/ae/core_ext/exception.rb
 lib/ae/core_ext/helpers.rb
 lib/ae/core_ext.rb
-lib/ae/detest.rb
-lib/ae/dot.rb
 lib/ae/expect.rb
 lib/ae/legacy.rb
 lib/ae/must.rb
@@ -30,8 +28,8 @@ lib/ae/subjunctive.rb
 lib/ae/version.rb
 lib/ae.rb
 lib/ae.yml
+HISTORY.rdoc
+APACHE2.txt
 README.rdoc
-Apache2.txt
-Syckfile
-History.rdoc
+Redfile
 NOTICE.rdoc

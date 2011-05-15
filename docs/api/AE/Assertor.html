@@ -353,7 +353,7 @@ href="Assertor.html">Assertor</a> as the end call of an assertion.</p>
           <div class="method-source-code"
             id="assert-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 61</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">assert</span>(<span class="ruby-identifier">pass</span>, <span class="ruby-identifier">error</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">negated</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">backtrace</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">negated</span> <span class="ruby-operator">^</span> <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">pass</span>
   <span class="ruby-identifier">increment_counts</span>(<span class="ruby-identifier">pass</span>)
@@ -392,7 +392,7 @@ when an assertion fails.</p>
           <div class="method-source-code"
             id="assertion_error-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 84</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">assertion_error</span>
   <span class="ruby-operator">::</span><span class="ruby-constant">Assertion</span>
 <span class="ruby-keyword">end</span></pre>
@@ -424,7 +424,7 @@ when an assertion fails.</p>
           <div class="method-source-code"
             id="counts-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 24</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">counts</span>
   <span class="ruby-identifier">$assertion_counts</span>
 <span class="ruby-keyword">end</span></pre>
@@ -458,7 +458,7 @@ when an assertion fails.</p>
           <div class="method-source-code"
             id="increment_counts-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 48</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">increment_counts</span>(<span class="ruby-identifier">pass</span>)
   <span class="ruby-identifier">counts</span>[<span class="ruby-value">:total</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">pass</span>
@@ -496,7 +496,7 @@ when an assertion fails.</p>
           <div class="method-source-code"
             id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 111</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">delegate</span>, <span class="ruby-identifier">opts</span>={}) <span class="ruby-comment">#, backtrace)</span>
   <span class="ruby-ivar">@delegate</span>  = <span class="ruby-identifier">delegate</span>
   <span class="ruby-ivar">@message</span>   = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:message</span>]
@@ -532,7 +532,7 @@ test framework supports.</p>
           <div class="method-source-code"
             id="raise_assertion-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 73</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">raise_assertion</span>(<span class="ruby-identifier">error</span>, <span class="ruby-identifier">negated</span>, <span class="ruby-identifier">backtrace</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-constant">Exception</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">error</span>
     <span class="ruby-identifier">error</span> = <span class="ruby-identifier">assertion_error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">error</span>)
@@ -574,7 +574,7 @@ test framework supports.</p>
           <div class="method-source-code"
             id="recount-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 33</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">recount</span>(<span class="ruby-identifier">reset</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">old_counts</span> = <span class="ruby-identifier">counts</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">reset</span>
@@ -621,7 +621,7 @@ defined explicitly, otherwise it somehow skips #method_missing.</p>
           <div class="method-source-code"
             id="3D-7E-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 248</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 249</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">=~</span>(<span class="ruby-identifier">match</span>)
   <span class="ruby-identifier">method_missing</span>(<span class="ruby-value">:&quot;=~&quot;</span>, <span class="ruby-identifier">match</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -667,7 +667,7 @@ arguments. Eg.</p>
           <div class="method-source-code"
             id="assert-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 147</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">assert</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>
 
@@ -734,7 +734,7 @@ href="Expect.html#method-i-expect">Expect#expect</a>)</p>
           <div class="method-source-code"
             id="expect-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 191</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 192</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">expect</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>  <span class="ruby-comment"># same as #assert</span>
 
@@ -811,7 +811,7 @@ href="Expect.html#method-i-expect">Expect#expect</a>)</p>
           <div class="method-source-code"
             id="flunk-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 241</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 242</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">flunk</span>(<span class="ruby-identifier">message</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">backtrace</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">__assert__</span>(<span class="ruby-keyword">false</span>, <span class="ruby-identifier">message</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@message</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -843,7 +843,7 @@ href="Expect.html#method-i-expect">Expect#expect</a>)</p>
           <div class="method-source-code"
             id="inspect-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 258</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 259</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
   <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">inspect</span>
 <span class="ruby-keyword">end</span></pre>
@@ -875,7 +875,7 @@ href="Expect.html#method-i-expect">Expect#expect</a>)</p>
           <div class="method-source-code"
             id="not-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 123</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">not</span>(<span class="ruby-identifier">msg</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@negated</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@negated</span>
   <span class="ruby-ivar">@message</span> = <span class="ruby-identifier">msg</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">msg</span>
@@ -909,7 +909,7 @@ href="Expect.html#method-i-expect">Expect#expect</a>)</p>
           <div class="method-source-code"
             id="send-source">
 <pre>
-<span class="ruby-comment"># File lib/ae/assertor.rb, line 253</span>
+<span class="ruby-comment"># File lib/ae/assertor.rb, line 254</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">op</span>, *<span class="ruby-identifier">a</span>, &amp;<span class="ruby-identifier">b</span>)
   <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">op</span>, *<span class="ruby-identifier">a</span>, &amp;<span class="ruby-identifier">b</span>)
 <span class="ruby-keyword">end</span></pre>

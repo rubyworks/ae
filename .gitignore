@@ -3,4 +3,6 @@
 doc
 pkg
 tmp
-site/docs
+site/doc
+site/log
+site/qed

@@ -1,11 +1,39 @@
-= Development Notes
+= 
+
+== DEPRECATE
+
+=== file://lib/ae/assertion.rb
+
+* DEPRECATE: This will be removed in favor of Assertor#counts. (16)
+
 
 == TODO
 
-=== file://lib/ae/assertor.rb
-* TODO: Ultimately better messages might be nice. (101)
+=== file://lib/ae/legacy.rb
 
-=== file://lib/ae/core_ext.rb
-* TODO: Can we call this #fail (overriding built-in)? (11)
-* TODO: Put in facets? (164)
-* TODO: wrong place, change yield? (165)
+* TODO: Probably remove this! (35)
+
+=== file://lib/ae/core_ext/helpers.rb
+
+* TODO: Put in facets? (160)
+* TODO: wrong place, change yield? (161)
+
+=== file://lib/ae/adapters/rspec.rb
+
+* TODO: Teach RSpec the expanded concept of assertions, as Exception
+classes that respond to `#assertion?` in the affirmative. (5)
+
+=== file://lib/ae/pry.rb
+
+* TODO: Is th cache really neccessry? (18)
+
+=== file://lib/ae/assertor.rb
+
+* TODO: Should this return a new Assertor instead of in place negation? (122)
+* TODO: Should we deprecate the receiver matches in favor of #expected ?
+In other words, should the <code>|| @delegate</code> be dropped? (189)
+* TODO: Should we use a more libreral determination of exception.
+e.g. <code>respond_to?(:exception)</code>. (267)
+* TODO: In future should probably be `@delegate.public_send(sym, *a, &b)`. (276)
+* TODO: Can the handling of the message be simplified/improved? (288)
+

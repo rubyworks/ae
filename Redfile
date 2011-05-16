@@ -7,23 +7,32 @@ dnote:
   service  : DNote
   loadpath : ~
   labels   : ~
-  output   : ~
-  format   : ~
+  output   : log/
+  formats  : [rdoc]
   active   : true
 
+dnote-site:
+  service  : DNote
+  loadpath : ~
+  labels   : ~
+  output   : site/log/dnote/
+  formats  : [index]  # index!!!
+  active   : true
+
+# TODO: how to get stats.txt in separate location?
 stats:
   service  : Stats
   title    : ~
   loadpath : ~
   exclude  : ~
-  output   : ~
+  output   : site/log/stats/
   active   : true
 
 rdoc:
   service : rdoc
   format  : redfish
   exclude : [Redfile, Profile, MANIFEST, Version]
-  output  : site/docs/api
+  output  : site/doc
 
 ri:
   service: RI

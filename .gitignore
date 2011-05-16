@@ -1,7 +1,6 @@
 .yardoc
 .ri
 doc
-log
 pkg
 tmp
 site/docs

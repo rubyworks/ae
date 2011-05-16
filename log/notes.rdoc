@@ -1,0 +1,11 @@
+= Development Notes
+
+== TODO
+
+=== file://lib/ae/assertor.rb
+* TODO: Ultimately better messages might be nice. (101)
+
+=== file://lib/ae/core_ext.rb
+* TODO: Can we call this #fail (overriding built-in)? (11)
+* TODO: Put in facets? (164)
+* TODO: wrong place, change yield? (165)

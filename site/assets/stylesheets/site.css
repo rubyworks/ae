@@ -35,7 +35,7 @@ pre { background: white; -moz-border-radius: 10px; color: #FF5599; font-weight: 
 .title {
   margin-left: 0; padding: 400px 0 0;
   text-align: left;
-  background: url(../img/gun-art-pink-black.gif) top left no-repeat;
+  background: url(../images/gun-art-pink-black.gif) top left no-repeat;
  }
 .title h1 { font-size: 64px; color: #FF5599; font-weight: bold; color: black; padding-bottom: 20px; }
 

@@ -72,7 +72,7 @@ module AE
     # The intent of the method is to raise an assertion failure
     # class that the test framework supports.
     def self.raise_assertion(error, negated, backtrace=nil)
-      if not Exception === error
+      if not ::Exception === error
         error = assertion_error.new(error)
       end
       error.set_negative(negated)
@@ -321,7 +321,7 @@ module AE
         end
       end
       if a.size > 13 or b.size > 13
-        diff = ANSI::Diff.new(a,b)
+        diff = ::ANSI::Diff.new(a,b)
         prefix + "a #{operator} b\na) " + diff.diff1 + "\nb) " + diff.diff2
       else
         prefix + "#{a.inspect} #{operator} #{b.inspect}"

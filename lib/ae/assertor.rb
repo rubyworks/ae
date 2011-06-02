@@ -308,10 +308,18 @@ module AE
     COMPARISON_OPERATORS = { :"==" => :"!=" }
 
     # Message to use when making a comparion assertion.
+    #
+    # NOTE: This message utilizes the ANSI gem to produce
+    # colorized comparisons. If you need to remove color
+    # output (for non-ANSI terminals) the ANSI library
+    # provides a master switch to deactive the ANSI codes,
+    # which can be set in your test helper scripts.
+    # 
+    # @see http://rubyworks.github.com/ansi
     def compare_message(operator, *args, &blk)
       return nil unless COMPARISON_OPERATORS.key?(operator)
       prefix = ""
-      a, b   = @delegate.inspect, args.first.inspect
+      a, b = @delegate.inspect, args.first.inspect
       if @negated
         op = COMPARISON_OPERATORS[operator]
         if op

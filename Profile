@@ -12,6 +12,7 @@ description:
   designed for reuse by other test frameworks.
 
 requires:
+  - ansi
   - redline (build)
   - qed     (test)
 

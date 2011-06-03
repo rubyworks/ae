@@ -1,13 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: ae
 version: !ruby/object:Gem::Version 
-  hash: 9
-  prerelease: false
+  hash: 15
+  prerelease: 
   segments: 
   - 1
   - 7
-  - 1
-  version: 1.7.1
+  - 2
+  version: 1.7.2
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -15,11 +15,10 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-05-07 00:00:00 -04:00
-default_executable: 
+date: 2011-06-03 00:00:00 Z
 dependencies: 
 - !ruby/object:Gem::Dependency 
-  name: redline
+  name: ansi
   prerelease: false
   requirement: &id001 !ruby/object:Gem::Requirement 
     none: false
@@ -30,10 +29,10 @@ dependencies:
         segments: 
         - 0
         version: "0"
-  type: :development
+  type: :runtime
   version_requirements: *id001
 - !ruby/object:Gem::Dependency 
-  name: qed
+  name: redline
   prerelease: false
   requirement: &id002 !ruby/object:Gem::Requirement 
     none: false
@@ -46,6 +45,20 @@ dependencies:
         version: "0"
   type: :development
   version_requirements: *id002
+- !ruby/object:Gem::Dependency 
+  name: qed
+  prerelease: false
+  requirement: &id003 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 3
+        segments: 
+        - 0
+        version: "0"
+  type: :development
+  version_requirements: *id003
 description: Assertive Expressive is an assertions library specifically designed for reuse by other test frameworks.
 email: transfire@gmail.com
 executables: []
@@ -87,9 +100,7 @@ files:
 - HISTORY.rdoc
 - APACHE2.txt
 - README.rdoc
-- Redfile
 - NOTICE.rdoc
-has_rdoc: true
 homepage: http://rubyworks.github.com/ae
 licenses: 
 - Apache 2.0
@@ -122,7 +133,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: ae
-rubygems_version: 1.3.7
+rubygems_version: 1.8.2
 signing_key: 
 specification_version: 3
 summary: Assertive Expressive

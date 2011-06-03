@@ -6,7 +6,8 @@ Minor release adds color diffs for failed equality comparisons to
 the error message, and it fixes an issue in which class references
 needed the toplevel prefix (`::`) to ensure they can be found in 
 all cases. Note that ANSI color diffs can be deactivated via
-the latest ANSI API.
+AE.ansi = false or using the master switch an upcoming release
+of the ANSI gem.
 
 Changes:
 

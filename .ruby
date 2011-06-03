@@ -24,6 +24,10 @@ resources:
 maintainers: []
 
 requires: 
+- group: []
+
+  name: ansi
+  version: 0+
 - group: 
   - build
   name: redline
@@ -33,7 +37,7 @@ requires:
   name: qed
   version: 0+
 manifest: MANIFEST
-version: 1.7.1
+version: 1.7.2
 licenses: 
 - Apache 2.0
 copyright: Copyright (c) 2008 Thomas Sawyer

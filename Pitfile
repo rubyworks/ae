@@ -31,7 +31,7 @@ stats:
 rdoc:
   service : rdoc
   format  : redfish
-  exclude : [Redfile, Profile, MANIFEST, Version]
+  exclude : [Pitfile, Profile, MANIFEST, Version]
   output  : site/doc
 
 ri:
@@ -45,7 +45,7 @@ qedoc:
   service: custom
   cycle: main
   document: |
-    puts `qedoc -o site/docs/qed -t "AE Demonstrandum" qed`
+    puts `qedoc -o site/qed -t "AE Demonstrandum" qed`
 
 testrb:
   service  : testrb
@@ -63,9 +63,6 @@ grancher:
   #  - site
   #  - [doc/rdoc, rdoc]
   #  - [doc/qedoc, qedoc]
-
-gemcutter:
-  active: true
 
 email:
   service : Email

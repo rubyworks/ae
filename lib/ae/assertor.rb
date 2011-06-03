@@ -309,11 +309,11 @@ module AE
 
     # Message to use when making a comparion assertion.
     #
-    # NOTE: This message utilizes the ANSI gem to produce
-    # colorized comparisons. If you need to remove color
-    # output (for non-ANSI terminals) the ANSI library
-    # provides a master switch to deactive the ANSI codes,
-    # which can be set in your test helper scripts.
+    # NOTE: This message utilizes the ANSI gem to produce colorized
+    # comparisons. If you need to remove color output (for non-ANSI
+    # terminals) you can either set `AE.ansi = false` or use the
+    # ANSI library's master switch to deactive all ANSI codes,
+    # which can be set in your test helper.
     # 
     # @see http://rubyworks.github.com/ansi
     def compare_message(operator, *args, &blk)
@@ -328,11 +328,15 @@ module AE
           prefix   = "NOT "
         end
       end
-      if a.size > 13 or b.size > 13
+      if AE.ansi?
         diff = ::ANSI::Diff.new(a,b)
-        prefix + "a #{operator} b\na) " + diff.diff1 + "\nb) " + diff.diff2
+        a = diff.diff1
+        b = diff.diff2
+      end
+      if a.size > 13 or b.size > 13
+        prefix + "a #{operator} b\na) " + a + "\nb) " + b
       else
-        prefix + "#{a.inspect} #{operator} #{b.inspect}"
+        prefix + "#{a} #{operator} #{b}"
       end
     end
 

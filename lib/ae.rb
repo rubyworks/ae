@@ -24,6 +24,24 @@ module AE
     $VERBOSE = verbose
   end
 
+  @ansi = true
+
+  #
+  def self.ansi?
+    @ansi
+  end
+
+  # To turn of ANSI colorized error messages off, set 
+  # ansi to +false+ in your test helper.
+  #
+  # Example
+  #
+  #   AE.ansi = false
+  #
+  def self.ansi=(boolean)
+    @ansi = boolean
+  end
+
 end
 
 require 'ae/version'

@@ -33,6 +33,7 @@ rdoc:
   format  : redfish
   exclude : [Pitfile, Profile, MANIFEST, Version]
   output  : site/doc
+  active  : false
 
 ri:
   service: RI

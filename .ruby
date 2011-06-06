@@ -18,8 +18,8 @@ resources:
   code: http://github.com/rubyworks/ae
   mail: http://groups.google.com/group/rubyworks-mailinglist
   docs: http://wiki.github.com/rubyworks/ae/docs/qed
-  wiki: http://wiki.github.com/rubyworks/ae
   bugs: http://github.com/rubyworks/ae/issues
+  wiki: http://wiki.github.com/rubyworks/ae
   home: http://rubyworks.github.com/ae
 maintainers: []
 
@@ -36,8 +36,8 @@ requires:
   - test
   name: qed
   version: 0+
-manifest: MANIFEST
-version: 1.7.2
+manifest: Manifest
+version: 1.7.3
 licenses: 
 - Apache 2.0
 copyright: Copyright (c) 2008 Thomas Sawyer

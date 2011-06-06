@@ -1,13 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: ae
 version: !ruby/object:Gem::Version 
-  hash: 15
+  hash: 13
   prerelease: 
   segments: 
   - 1
   - 7
-  - 2
-  version: 1.7.2
+  - 3
+  version: 1.7.3
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -15,7 +15,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-06-03 00:00:00 Z
+date: 2011-06-06 00:00:00 Z
 dependencies: 
 - !ruby/object:Gem::Dependency 
   name: ansi
@@ -91,6 +91,7 @@ files:
 - lib/ae/expect.rb
 - lib/ae/legacy.rb
 - lib/ae/must.rb
+- lib/ae/ok.rb
 - lib/ae/pry.rb
 - lib/ae/should.rb
 - lib/ae/subjunctive.rb

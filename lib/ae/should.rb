@@ -23,10 +23,15 @@ module AE
       Assertor.new(self, :backtrace=>caller).be(*args, &block)
     end
 
+    # Same as 'object.should == other'.
+    def should=(cmp)
+      Assertor.new(self, :backtrace=>caller).assert == cmp
+    end
+
     # Designate a negated expectation via a *functor*.
     # Read this as "should not".
     #
-    #   4.should! == 4  #=> Assertion Error
+    #   4.should! = 4  #=> Assertion Error
     #
     def should!(*args, &block)
       Assertor.new(self, :backtrace=>caller).not.be(*args, &block)

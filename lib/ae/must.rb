@@ -22,6 +22,11 @@ module AE
       Assertor.new(self, :backtrace=>caller).be(*args, &block)
     end
 
+    # Same as 'object.must == other'.
+    def must=(cmp)
+      Assertor.new(self, :backtrace=>caller) == cmp
+    end
+
     # Designate a negated expectation via a *functor*.
     # Read this as "must not".
     #

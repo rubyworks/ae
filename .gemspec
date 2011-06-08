@@ -1,13 +1,8 @@
 --- !ruby/object:Gem::Specification 
 name: ae
 version: !ruby/object:Gem::Version 
-  hash: 13
   prerelease: 
-  segments: 
-  - 1
-  - 7
-  - 3
-  version: 1.7.3
+  version: 1.7.4
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -15,7 +10,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-06-06 00:00:00 Z
+date: 2011-06-08 00:00:00 Z
 dependencies: 
 - !ruby/object:Gem::Dependency 
   name: ansi
@@ -25,9 +20,6 @@ dependencies:
     requirements: 
     - - ">="
       - !ruby/object:Gem::Version 
-        hash: 3
-        segments: 
-        - 0
         version: "0"
   type: :runtime
   version_requirements: *id001
@@ -39,9 +31,6 @@ dependencies:
     requirements: 
     - - ">="
       - !ruby/object:Gem::Version 
-        hash: 3
-        segments: 
-        - 0
         version: "0"
   type: :development
   version_requirements: *id002
@@ -53,9 +42,6 @@ dependencies:
     requirements: 
     - - ">="
       - !ruby/object:Gem::Version 
-        hash: 3
-        segments: 
-        - 0
         version: "0"
   type: :development
   version_requirements: *id003
@@ -118,18 +104,12 @@ required_ruby_version: !ruby/object:Gem::Requirement
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
-      hash: 3
-      segments: 
-      - 0
       version: "0"
 required_rubygems_version: !ruby/object:Gem::Requirement 
   none: false
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
-      hash: 3
-      segments: 
-      - 0
       version: "0"
 requirements: []
 

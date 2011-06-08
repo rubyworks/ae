@@ -1,5 +1,16 @@
 = RELEASE HISTORY
 
+== 1.7.4  2011-06-08
+
+Quick release fixes an issue dur to Ruby 1.9+ slightly broken
+constant lookup system. Yes, BasicObject has no clue. This is
+fixed using `const_missing` hook.
+
+Changes:
+
+* Add const_missing hook to Assertor class to redirect to 
+  toplevel methods.
+
 == 1.7.3  2011-06-06  D-Day
 
 This release simply adds a new optional help library, `ok.rb`.

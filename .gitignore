@@ -1,4 +1,5 @@
 .yardoc
+.rdoc
 .ri
 doc
 pkg

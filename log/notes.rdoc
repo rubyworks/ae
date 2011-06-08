@@ -1,31 +1,11 @@
 = 
 
-== DEPRECATE
-
-=== file://lib/ae/assertion.rb
-
-* DEPRECATE: This will be removed in favor of Assertor#counts. (16)
-
-
 == TODO
-
-=== file://lib/ae/legacy.rb
-
-* TODO: Probably remove this! (35)
-
-=== file://lib/ae/core_ext/helpers.rb
-
-* TODO: Put in facets? (160)
-* TODO: wrong place, change yield? (161)
 
 === file://lib/ae/adapters/rspec.rb
 
 * TODO: Teach RSpec the expanded concept of assertions, as Exception
 classes that respond to `#assertion?` in the affirmative. (5)
-
-=== file://lib/ae/pry.rb
-
-* TODO: Is th cache really neccessry? (18)
 
 === file://lib/ae/assertor.rb
 
@@ -36,4 +16,29 @@ In other words, should the <code>|| @delegate</code> be dropped? (189)
 e.g. <code>respond_to?(:exception)</code>. (267)
 * TODO: In future should probably be `@delegate.public_send(sym, *a, &b)`. (276)
 * TODO: Can the handling of the message be simplified/improved? (288)
+
+=== file://lib/ae/core_ext/helpers.rb
+
+* TODO: Put in facets? (160)
+* TODO: wrong place, change yield? (161)
+
+=== file://lib/ae/legacy.rb
+
+* TODO: Probably remove this! (35)
+
+=== file://lib/ae/ok.rb
+
+* TODO: This needs to be imporved. See KO project for
+better implementation. (1)
+
+=== file://lib/ae/pry.rb
+
+* TODO: Is th cache really neccessry? (18)
+
+
+== DEPRECATE
+
+=== file://lib/ae/assertion.rb
+
+* DEPRECATE: This will be removed in favor of Assertor#counts. (16)
 

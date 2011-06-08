@@ -352,6 +352,10 @@ module AE
       #self.class.message(m)[@delegate, *a] )
     end
 
+    # @see http://redmine.ruby-lang.org/issues/3768
+    def self.const_missing(const)
+     ::Object.const_get(const)
+    end
   end
 
 end

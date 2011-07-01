@@ -16,7 +16,6 @@ else
     #
     # Copyright 2004, 2006 by Jim Weirich (jim@weirichhouse.org).
     # All rights reserved.
-
     class BasicObject #:nodoc:
 
       # Hide the method named +name+ in the BlankSlate class.  Don't

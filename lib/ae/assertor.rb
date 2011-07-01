@@ -314,7 +314,9 @@ module AE
     # terminals) you can either set `AE.ansi = false` or use the
     # ANSI library's master switch to deactive all ANSI codes,
     # which can be set in your test helper.
-    # 
+    #
+    # @param operator [Symbol] operator/method
+    #
     # @see http://rubyworks.github.com/ansi
     def compare_message(operator, *args, &blk)
       return nil unless COMPARISON_OPERATORS.key?(operator)
@@ -342,6 +344,9 @@ module AE
 
     # Puts together a suitable error message.
     #
+    # @param op [Symbol] operator/method
+    #
+    # @return [String] message
     def generic_message(op, *a, &b)
       inspection = @delegate.send(:inspect)
       if @negated

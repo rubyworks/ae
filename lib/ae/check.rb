@@ -1,10 +1,14 @@
 module AE
 
+  #
   module CheckOK
+
+    #
     def check(&block)
       @_check = block
     end
 
+    #
     def ok(*args)
       @_check.call(*args)
     end

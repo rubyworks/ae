@@ -14,6 +14,7 @@ module Kernel
   # to test them directly, or if you wish to achieve *absolute
   # coverage*, say in mission critical systems.
   #
+  # @return [Pry] Pry functor
   #--
   # TODO: Is th cache really neccessry?
   #++

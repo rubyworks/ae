@@ -2,7 +2,7 @@ require 'ae/assertor'
 
 module AE
 
-  # = Subjunctive
+  # Subjunctive
   #
   # Mixin for Assertor that provides additional English-eque verbage
   # such as 'be' and 'an'. This makes it easier to create assertor

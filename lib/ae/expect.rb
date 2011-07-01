@@ -1,6 +1,5 @@
-require 'ae/assertor'
-
 module AE
+  require 'ae/assertor'
 
   # = Expect
   #
@@ -57,6 +56,7 @@ module AE
     # Like #expect but uses the reciever as the object
     # of expectation.
     #
+    # @example
     #   /x/.expected do
     #     "oooxooo"
     #   end

@@ -1,5 +1,7 @@
 module AE
+  # Access project metadata.
   #
+  # @return [Hash]
   def self.metadata
     @metadata ||= (
       require 'yaml'
@@ -13,7 +15,7 @@ module AE
     metadata[key] || super(name)
   end
 
-  # becuase Ruby 1.8~ gets in the way :(
+  # Becuase Ruby 1.8~ gets in the way :(
   VERSION = metadata['version']
 end
 

@@ -13,15 +13,16 @@ module AE
   #
   class Assertion < Exception
 
-    # DEPRECATE: This will be removed in favor of Assertor#counts.
+    # @deprecated
+    #   This will be removed in favor of `AE::Assertor.counts`.
     def self.counts
       AE::Assertor.counts
     end
 
     # New assertion (failure).
     #
-    # message - the failure message
-    # options - such as :backtrace
+    # @param message [String] the failure message
+    # @param options [Hash] options such as :backtrace
     #
     def initialize(message=nil, options={})
       super(message)
@@ -38,7 +39,9 @@ module AE
       true
     end
 
+    # Parents error message prefixed with "(assertion)".
     #
+    # @return [String] error message
     def to_s
       '(assertion) ' + super
     end

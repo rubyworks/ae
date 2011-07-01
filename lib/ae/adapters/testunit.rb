@@ -10,7 +10,7 @@ AE.assertion_error = ::Test::Unit::AssertionFailedError
 # In addition we teach #run to recognize any Exception class that
 # responds to #assertion? in the affirmative as an assertion
 # rather than an error.
-
+#
 module Test #:nodoc:
   module Unit #:nodoc:
     class TestCase #:nodoc:

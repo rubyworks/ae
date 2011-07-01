@@ -1,32 +1,24 @@
-# Copyright (c) 2008,2011 Thomas Sawyer
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# AE namespace.
 module AE
 
   # Set Assertion class. This is a convenience method
   # for framework adapters, used to set the exception class
   # that a framework uses to raise an assertion error.
+  #
+  # @param [Class]
+  #   The Exception class use to raise Assertions.
+  #
   def self.assertion_error=(exception_class)
     verbose, $VERBOSE = $VERBOSE, nil
     Object.const_set(:Assertion, exception_class)
     $VERBOSE = verbose
   end
 
+  # Default ANSI mode is "on".
   @ansi = true
 
+  # ANSI mode.
   #
+  # @return [Boolean] ANSI mode.
   def self.ansi?
     @ansi
   end
@@ -34,8 +26,7 @@ module AE
   # To turn of ANSI colorized error messages off, set 
   # ansi to +false+ in your test helper.
   #
-  # Example
-  #
+  # @example
   #   AE.ansi = false
   #
   def self.ansi=(boolean)

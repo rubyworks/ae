@@ -1,89 +1,41 @@
 ---
+github: {}
+
 gem:
-  service: Gem
-  active : true
+  autospec: true
 
 dnote:
   service  : DNote
-  loadpath : ~
   labels   : ~
-  output   : log/
-  formats  : [rdoc]
-  active   : true
+  output   : log/dnote.rdoc
 
-dnote-site:
-  service  : DNote
-  loadpath : ~
-  labels   : ~
-  output   : site/log/dnote/
-  formats  : [index]  # index!!!
-  active   : true
-
-# TODO: how to get stats.txt in separate location?
-stats:
-  service  : Stats
-  title    : ~
-  loadpath : ~
-  exclude  : ~
-  output   : site/log/stats/
-  active   : true
-
-rdoc:
-  service : rdoc
-  format  : redfish
-  exclude : [Pitfile, Profile, MANIFEST, Version]
-  output  : site/doc
-  active  : false
-
-ri:
-  service: RI
-  include: ~
-  exclude: ~
-  output : .ri
-  active : true
+yard:
+  yardopts: true
+  priority: -1
 
 qedoc:
-  service: custom
-  cycle: main
-  document: |
-    puts `qedoc -o site/qed -t "AE Demonstrandum" qed`
-
-testrb:
-  service  : testrb
-  tests    : ~
-  exclude  : ~
-  loadpath : ~
-  requires : ~
-  live     : false   
-  active   : false
-
-grancher:
-  service: Grancher
-  active: true
-  #sitemap:
-  #  - site
-  #  - [doc/rdoc, rdoc]
-  #  - [doc/qedoc, qedoc]
+  files : qed/
+  output: doc/QED.rdoc
+  title : AE Demonstrandum
 
 email:
   service : Email
   file    : ~
   subject : ~
-  mailto  : ruby-talk@ruby-lang.org
-#  from    : transfire@gmail.com
-#  server  : <%= ENV['EMAIL_SERVER'] %>
-#  port    : <%= ENV['EMAIL_PORT'] %>
-#  account : <%= ENV['EMAIL_ACCOUNT'] %>
-#  domain  : <%= ENV['EMAIL_DOMAIN'] %>
-#  login   : <%= ENV['EMAIL_LOGIN'] %>
-#  secure  : <%= ENV['EMAIL_SECURE'] %>
-  active  : true
+  mailto  : 
+    - ruby-talk@ruby-lang.org
+    - rubyworks-mailinglist@googlegroups.com
+  #from    : transfire@gmail.com
+  #server  : <%= ENV['EMAIL_SERVER'] %>
+  #port    : <%= ENV['EMAIL_PORT'] %>
+  #account : <%= ENV['EMAIL_ACCOUNT'] %>
+  #domain  : <%= ENV['EMAIL_DOMAIN'] %>
+  #login   : <%= ENV['EMAIL_LOGIN'] %>
+  #secure  : <%= ENV['EMAIL_SECURE'] %>
 
 vclog:
   service  : VClog
-  format   : html   # xml, txt
-  layout   : rel    # gnu
-  typed    : false
-  output   : ~
+  output   : log/history.rdoc
+  type     : history
   active   : false
 

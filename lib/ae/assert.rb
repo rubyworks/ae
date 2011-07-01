@@ -12,10 +12,10 @@ module AE
     #
     #   4.assert == 3
     #
-    # If only a single test argument is given then
-    # #assert simple validates that it evalutate to true.
-    # An optional message argument can be given in this
-    # case which will be used instead of the deafult message.
+    # If only a single test argument is given then #assert
+    # simply validates that it evalutate to true. An optional
+    # message argument can be given in this case which will
+    # be used instead of the deafult message.
     #
     #   assert(4==3, "not the same thing")
     #
@@ -24,11 +24,14 @@ module AE
     #
     #   assert{ 4==3 }
     #
+    # @return [Assertor] Assertion functor.
     def assert(*args, &block)
       Assertor.new(self, :backtrace=>caller).assert(*args, &block)
     end
 
     # Same as 'object.assert == other'.
+    #
+    # @return [Assertor] Assertion functor.
     def assert=(cmp)
       Assertor.new(self, :backtrace=>caller).assert == cmp
     end
@@ -37,11 +40,14 @@ module AE
     #
     #   4.refute == 4  #=> Assertion Error
     #
+    # @return [Assertor] Assertion functor.
     def refute(*args, &block)
       Assertor.new(self, :backtrace=>caller).not.assert(*args, &block)
     end
 
     # Same as 'object.refute == other'.
+    #
+    # @return [Assertor] Assertion functor.
     def refute=(cmp)
       Assertor.new(self, :backtrace=>caller).not.assert == cmp
     end
@@ -57,6 +63,15 @@ module AE
     alias_method :assert!, :refute
 
     # Directly raise an Assertion failure.
+    #
+    # @param message [String]
+    #   Error message.
+    #
+    # @param backtrace [String]
+    #   Backtrace, used to pass up an error from lower in the stack. 
+    #
+    # @raise [Assertion]
+    #   Assertion error with given `message`.
     def flunk(message=nil, backtrace=nil)
       #Assertor.new(self, :backtrace=>caller).assert(false, message)
       Assertor.assert(false, message, backtrace || caller)

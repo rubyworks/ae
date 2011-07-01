@@ -2,14 +2,13 @@ require 'ae/subjunctive'
 
 module AE
 
-  # = Should
+  # Should
   #
-  #  "Always and never are two words you should always
-  #   remember never to use."
+  #   "Always and never are two words you should always
+  #    remember never to use."
   #                              --Wendell Johnson
   #
-  # THIS IS AN OPTIONAL LIBRARY.
-  #
+  # @note THIS IS AN OPTIONAL LIBRARY.
   module Should
     # Make an assertion in subjunctive tense.
     #
@@ -19,11 +18,14 @@ module AE
     #     self == 4
     #   end
     #
+    # @return [Assertor] Assertion functor.
     def should(*args, &block)
       Assertor.new(self, :backtrace=>caller).be(*args, &block)
     end
 
     # Same as 'object.should == other'.
+    #
+    # @return [Assertor] Assertion functor.
     def should=(cmp)
       Assertor.new(self, :backtrace=>caller).assert == cmp
     end
@@ -33,6 +35,7 @@ module AE
     #
     #   4.should! = 4  #=> Assertion Error
     #
+    # @return [Assertor] Assertion functor.
     def should!(*args, &block)
       Assertor.new(self, :backtrace=>caller).not.be(*args, &block)
     end

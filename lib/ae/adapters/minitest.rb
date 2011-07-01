@@ -7,11 +7,15 @@ module MiniTest #:nodoc:
     # MiniTest tracks assertion counts internally in it's Unit class via the 
     # +assertion_count+ attribute. To work with AE we need add in AE's assertion
     # total by overriding the +assertion_count+ method.
+    #
+    # @return [Integer] Number of assertions made.
     def assertion_count
       @assertion_count + AE::Assertor.counts[:total]
     end
     # To teach MiniTest to recognize AE's expanded concept of assertions
-    # we add in an extra capture clause to the it's #puke method.
+    # we add in an extra capture clause to it's #puke method.
+    #
+    # @return [String] Status code is `S`, `F`, or `E`.
     def puke c, m, x
       case x
       when MiniTest::Skip

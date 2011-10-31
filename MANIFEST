@@ -1,12 +1,6 @@
-#!mast .ruby bin demo qed lib test [A-Z][A-Z]*
+#!mast .ruby .yardopts bin lib man qed spec test [A-Z]*.*
 .ruby
-qed/01_overview.rdoc
-qed/02_assertion.rdoc
-qed/03_assert.rdoc
-qed/04_subjunctive.rdoc
-qed/05_expect.rdoc
-qed/06_counts.rdoc
-qed/07_matchers.rdoc
+.yardopts
 lib/ae/adapter.rb
 lib/ae/adapters/minitest.rb
 lib/ae/adapters/rspec.rb
@@ -29,7 +23,14 @@ lib/ae/subjunctive.rb
 lib/ae/version.rb
 lib/ae.rb
 lib/ae.yml
+lib/t.rb
+qed/01_overview.rdoc
+qed/02_assertion.rdoc
+qed/03_assert.rdoc
+qed/04_subjunctive.rdoc
+qed/05_expect.rdoc
+qed/06_counts.rdoc
+qed/07_matchers.rdoc
 HISTORY.rdoc
-APACHE2.txt
 README.rdoc
 NOTICE.rdoc

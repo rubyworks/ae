@@ -40,9 +40,11 @@ module AE
       Assertor.new(self, :backtrace=>caller).not.be(*args, &block)
     end
 
-    # Not quite the literally the counter-term to *should* (rather *shall*), but
-    # it is close enough for our purposes and conveys the appropriate semantics.
-    #alias_method :shant, :should!
+    # NOTE: It would be nice if their were a single term that
+    # meant the opposite of should, rather than a two word compound.
+
+    # Alias for #should! method.
+    alias_method :should_not, :should!
 
     # Alias for #should! method.
     alias_method :shouldnt, :should!
@@ -54,4 +56,4 @@ class ::Object #:nodoc:
   include AE::Should
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer
+# Copyright (c) 2008 Thomas Sawyer, Rubyworks

@@ -6,8 +6,7 @@ module AE
   #   "It is not enough to succeed. Others must fail."
   #                           --Gore Vidal (1925 - )
   #
-  # THIS IS AN OPTIONAL LIBRARY.
-  #
+  # @note THIS IS AN OPTIONAL LIBRARY.
   module Must
     # The #must method is functionaly the same as #should.
     #
@@ -42,16 +41,19 @@ module AE
       Assertor.new(self, :backtrace=>caller).not.be(*args, &block)
     end
 
+    # TODO: Are these negation methods needed now, since Ruby 1.9 allows for
+    # redefining `!` as a method?
+
     # Perhaps not literally the counter-term to *must* (rather *will*),
-    # it is close enough for our purposes and conveys the appropriate
-    # semantics, and I think is more sightly than *mustnt*.
-    #
-    # This method may be deprecated in the future when Ruby 1.9 becomes
-    # mainstream, as it allows for redefining *#!* as a method.
+    # but close enough for our purposes, and conveys the appropriate
+    # semantics.
     alias_method :wont, :must!
 
     # Alias for #must! method.
-    #alias_method :musnt   , :must!
+    alias_method :must_not, :must!
+
+    # Alias for #must! method.
+    alias_method :mustnt, :must!
   end
 
 end

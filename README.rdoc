@@ -1,7 +1,13 @@
 = Assertive Expressive
 
-Author:: Thomas Sawyer
-License:: Apache 2.0
+{home}[http://rubyworks.github.com/ae]
+{code}[http://github.com/rubyworks/ae]
+{docs}[http://rubydoc.info/gems/ae]
+{wiki}[http://wiki.github.com/rubyworks/ae]
+{bugs}[http://github.com/rubyworks/ae/issues]
+{mail}[http://googlegroups.com/group/rubyworks-mailinglist]
+
+{<img src="http://travis-ci.org/rubyworks/ae.png" />}[http://travis-ci.org/rubyworks/ae]
 
 
 == DESCRIPTION
@@ -19,16 +25,6 @@ intended for reuse by any TDD, BDD or similar system.
 * But Facets is not a dependency; the extensions are built-in.
 * Easily extensible allowing for alternate notations.
 * Eats it's own dog food.
-
-
-== RESOURCES
-
-* home: http://rubyworks.github.com/ae
-* code: http://github.com/rubyworks/ae
-* docs: http://wiki.github.com/rubyworks/ae/docs/qed
-* wiki: http://wiki.github.com/rubyworks/ae
-* bugs: http://github.com/rubyworks/ae/issues
-* mail: http://googlegroups.com/group/rubyworks-mailinglist
 
 
 == SYNOPSIS

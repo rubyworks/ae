@@ -21,7 +21,7 @@ module AE
       # @return nothing
       def __assert__(test, msg=nil)
         msg = "failed assertion (no message given)" unless msg
-        raise Assertion.new(msg, caller[1..-1]) unless test
+        raise Assertion.new(msg, :backtrace=>caller[1..-1]) unless test
       end
 
       private :__assert__
@@ -35,7 +35,7 @@ module AE
       def assert(test=nil, msg=nil)
         if test
           msg = "failed assertion (no message given)" unless msg
-          raise Assertion.new(msg, caller) unless test
+          raise Assertion.new(msg, :backtrace=>caller) unless test
         else
           Assertor.new(self, :backtrace=>caller)  # TODO: Probably remove this!
         end

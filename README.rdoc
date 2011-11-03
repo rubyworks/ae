@@ -155,16 +155,15 @@ Windows users use 'ruby setup.rb all'.
 
 == COPYRIGHTS & LICENSE
 
-(Apache 2.0 License)
+(BSD-2-Clause License)
 
 Copyright (c) 2008,2010 Thomas Sawyer
 
 Unless otherwise provided for by the originating author, this
-program is distributed under the terms of the Apache 2.0 license.
-See the Apache2.txt for details.
+program is distributed under the terms of the *BSD-2-Clause* license.
+Portions of this program may be copyrighted by others.
 
-Portions of this program may be copyrighted by others. See the 
-NOTICE.rdoc file for details.
+See the NOTICE.rdoc file for details.
 
 AE is a Rubyworks[http://rubyworks.github.com] project.
 

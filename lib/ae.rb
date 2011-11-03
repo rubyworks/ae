@@ -1,5 +1,8 @@
 module AE
 
+  # TODO: Should we really be reseting a constant for ::Assertion?
+  # How about using a variable instead?
+
   # Set Assertion class. This is a convenience method
   # for framework adapters, used to set the exception class
   # that a framework uses to raise an assertion error.

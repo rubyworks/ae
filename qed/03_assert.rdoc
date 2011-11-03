@@ -57,19 +57,25 @@ Another way to get the opposite inference, is to use +not+.
 
   10.assert.not == 9
 
+== Lambda Assertions
 
-== Matchers & Lambda Assertions
-
-Passing a Proc object or an objec that responds to :to_proc, will use it
-as if it were a block of the method. This allows for a simple way to quickly
+Passing  +assert+ a `Proc` object, or any object that responds to `#call`,
+will be used as if it were a block. This allows for a simple way to quickly
 create reusable assertions.
 
   palindrome = lambda{ |word| word == word.reverse }
 
   "abracarba".assert palindrome
 
-Additionally is the object responds to #matches? then the receiver
-will be passed to this method to determine passage.
+The message for a failed assertion will come from calling `#to_s` on the
+object.
+
+== RSpec-style Assertion Matchers
+
+If an object passed to assert responds to `#matches?` then AE will handle
+the object as an RSpec-style mather, the receiver will be passed to the
+`#matches?` method to determine if the assertion passes and RSpec matcher
+message methods will be used if they are defined.
 
   palindrome = Object.new
 

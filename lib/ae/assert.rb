@@ -81,8 +81,4 @@ module AE
 
 end
 
-class ::Object #:nodoc:
-  include AE::Assert
-end
-
-# Copyright (c) 2008,2009 Thomas Sawyer
+# Copyright (c) 2008 Thomas Sawyer

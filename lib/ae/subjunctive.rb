@@ -8,11 +8,10 @@ module AE
   # such as 'be' and 'an'. This makes it easier to create assertor
   # methods of subjunctive terms like 'should'.
   #
-  # THIS IS AN OPTIONAL LIBRARY.
-  #
+  # @note THIS IS AN OPTIONAL LIBRARY.
   module Subjunctive
 
-    # Like #assert, except if an argument if provided and no block,
+    # Like #assert, except if an argument is provided and no block,
     # uses #equate? to compare the argument to the receiver. This
     # allows for statements of the form:
     #
@@ -38,7 +37,7 @@ module AE
     alias_method :is  , :be
     alias_method :does, :be
 
-    # The indefinite article is like #be, excpet that it compares a lone argument
+    # The indefinite article is like #be, except that it compares a lone argument
     # with #case?, rather than #equate?
     #
     def a(*args, &block)
@@ -63,4 +62,4 @@ class AE::Assertor
   include ::AE::Subjunctive
 end
 
-# Copyright (c) 2008,2009 Thomas Sawyer
+# Copyright (c) 2008 Thomas Sawyer

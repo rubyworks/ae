@@ -2,22 +2,22 @@ require 'ae/basic_object'
 
 module Kernel
 
+  # TODO: Is th cache really neccessry?
+
+  #
   $PRY_TABLE = {}
 
-  # Pry allows you to test private and protected methods,
-  # via a public-only interface.
+  # Pry allows you to test private and protected methods
+  # thru a public-only interface.
   #
   # Generally one should avoid testing private and protected
-  # method directly, instead relying on tests of public methods to
+  # methods directly, instead relying on tests of public methods to
   # indirectly test them, because private and protected methods are
-  # considered implementation details. But sometimes is necessary
+  # considered implementation details. But sometimes it is necessary
   # to test them directly, or if you wish to achieve *absolute
-  # coverage*, say in mission critical systems.
+  # coverage*, say in a mission critical system.
   #
-  # @return [Pry] Pry functor
-  #--
-  # TODO: Is th cache really neccessry?
-  #++
+  # @return [Pry] pry functor
   def pry
     $PRY_TABLE[self] ||= Pry.new do |op, *a, &b|
       __send__(op, *a, &b)

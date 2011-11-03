@@ -1,8 +1,7 @@
--o doc/yard
 --title "AE API"
 --protected
+--private
 lib/
 -
-[A-Z][A-Z]*
-log/*.rdoc
+[A-Z]*.*
 

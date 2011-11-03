@@ -1,10 +1,10 @@
 = Assertive Expressive
 
-{home}[http://rubyworks.github.com/ae]
-{code}[http://github.com/rubyworks/ae]
-{docs}[http://rubydoc.info/gems/ae]
-{wiki}[http://wiki.github.com/rubyworks/ae]
-{bugs}[http://github.com/rubyworks/ae/issues]
+{home}[http://rubyworks.github.com/ae] |
+{code}[http://github.com/rubyworks/ae] |
+{docs}[http://rubydoc.info/gems/ae] |
+{wiki}[http://wiki.github.com/rubyworks/ae] |
+{bugs}[http://github.com/rubyworks/ae/issues] |
 {mail}[http://googlegroups.com/group/rubyworks-mailinglist]
 
 {<img src="http://travis-ci.org/rubyworks/ae.png" />}[http://travis-ci.org/rubyworks/ae]

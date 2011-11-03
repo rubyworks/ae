@@ -1,6 +1,6 @@
 require 'ae/assertion'
 require 'ae/basic_object'
-require 'ansi/diff'
+require 'ae/ansi'
 
 module AE
 
@@ -91,7 +91,6 @@ module AE
     #def self.assay?
     #  @_assay ||= defined?(::Assay)
     #end
-
     #
     #def self.message(sym, neg, *args, &blk)
     #  if method = Message.lookup(sym) 
@@ -116,11 +115,10 @@ module AE
       @negated   = !!opts[:negated]
     end
 
+    # TODO: Should #not return a new Assertor instead of in place negation?
+
     # Negate the meaning of the assertion.
     #
-    #--
-    # TODO: Should this return a new Assertor instead of in place negation?
-    #++
     def not(msg=nil)
       @negated = !@negated
       @message = msg if msg
@@ -141,19 +139,15 @@ module AE
     #   assert something, parameter
     #
     # Returns +true+ or +false+ based on assertions success.
-    #--
-    # The use of #to_proc and #matches? as sepcial cases is not
-    # a robust solution.
-    #++
+    #
     def assert(*args, &block)
-      return self if args.empty? && !block
+      return self if !block && args.empty?
 
-      target = block || args.shift
+      target = args.shift unless block
       error  = nil
 
-      # Lambda
-      if ::Proc === target || target.respond_to?(:to_proc)
-        block  = target.to_proc
+      # Block
+      if block
         match  = args.shift
         result = block.arity > 0 ? block.call(@delegate) : block.call
         if match
@@ -164,14 +158,17 @@ module AE
           error = @message || block.inspect  # "#{result.inspect}"
         end
 
-      # Matcher
-      elsif target.respond_to?(:matches?) # Matchers
-        pass  = target.matches?(@delegate)
-        error = @message || matcher_message(target) #|| target.inspect
-        if target.respond_to?(:exception)
-          #error_class = target.failure_class
-          error = target.exception #(:backtrace=>@backtrace, :negated=>@negated)
-        end
+      # Proc-style
+      elsif proc_assertion?(target)
+        pass, error = proc_apply(target)
+
+      # Assay-style assertions
+      #elsif assay_assertion?(target)
+      #  pass, error = assay_assertion_apply(target)
+
+      # RSpec-style matchers
+      elsif rspec_matcher?(target)
+        pass, error = rspec_matcher_apply(target)
 
       # Truthiness
       else
@@ -182,23 +179,20 @@ module AE
       __assert__(pass, error)
     end
 
+    # TODO: Should we deprecate the receiver matches in favor of #expected ?
+    # In other words, should <code>|| @delegate</code> be dropped?
+
     # Internal expect, provides all functionality associated
     # with external #expect method. (See Expect#expect)
     #
-    #--
-    # TODO: Should we deprecate the receiver matches in favor of #expected ?
-    # In other words, should the <code>|| @delegate</code> be dropped?
-    #++
     def expect(*args, &block)
-      return self if args.empty? && !block  # same as #assert
+      return self if !block && args.empty?  # same as #assert
 
-      target = block || args.shift
-      error  = nil
+      pass  = false
+      error = nil
 
-      # Lambda
-      if ::Proc === target #|| target.respond_to?(:to_proc)
-        #block = target.to_proc
-        match = args.shift || @delegate
+      if block
+        match = args.shift || @delegate  # TODO: see above
         if exception?(match)
           $DEBUG, debug = false, $DEBUG  # b/c it always spits-out a NameError
           begin
@@ -220,19 +214,20 @@ module AE
           error  = @message || "#{match.inspect} === #{result.inspect}"
         end
 
-      # Matcher
-      elsif target.respond_to?(:matches?)
-        pass  = target.matches?(@delegate)
-        error = @message || matcher_message(target) #|| target.inspect
-        if target.respond_to?(:exception)
-          #error_class = target.failure_class
-          error = target.exception #failure(:backtrace=>@backtrace, :negated=>@negated)
-        end
+      ## Matcher
+      #elsif target.respond_to?(:matches?)
+      #  pass  = target.matches?(@delegate)
+      #  error = @message || matcher_message(target) #|| target.inspect
+      #  if target.respond_to?(:exception)
+      #    #error_class = target.failure_class
+      #    error = target.exception #failure(:backtrace=>@backtrace, :negated=>@negated)
+      #  end
 
-      # Case Equals
+      # Case Equality
       else
-        pass  = (target === @delegate)
-        error = @message || "#{target.inspect} === #{@delegate.inspect}"
+        target = args.shift
+        pass   = (target === @delegate)
+        error  = @message || "#{target.inspect} === #{@delegate.inspect}"
       end
 
       __assert__(pass, error)
@@ -260,20 +255,94 @@ module AE
       @delegate.inspect
     end
 
-    private
+   private
 
-    # Is the +object+ an Exception or an instance of one?
-    #--
+    # AE-STYLE ASSERTIONS
+
+    #
+    def proc_assertion?(target) 
+      ::Proc === target || target.respond_to?(:call) || target.respond_to?(:to_proc)
+    end
+
+    #
+    def proc_apply(target)
+      call  = target.method(:call) rescue target.to_proc
+      pass  = call.arity != 0 ? call.call(@delegate) : call.call
+      error = @message || (
+        to_s = target.method(:to_s)
+        to_s.arity == 0 ? to_s.call : to_s.call(@negated)
+      )
+      return pass, error
+    end
+
+    # ASSAY-STYLE ASSERTIONS
+    # (not yet supported b/c api is not 100%)
+
+    # Is the `assertion` object an assay-style assertion?
+    def assay_assertion?(assertion)
+      assertion.respond_to?(:exception) && assertion.respond_to?(:pass?)
+    end
+
+    #
+    def assay_assertion_apply(assay)
+      if @negated
+        pass  = assay.fail?(@delegate)
+        error = assay #.exception(@message || )
+      else
+        pass  = assay.pass?(@delegate)
+        error = assay #.exception(@message || )
+      end
+      return pass, error
+    end
+
+    # RSPEC-STYLE MATCHERS
+
+    # Is `target` an Rspec-style Matcher?
+    def rspec_matcher?(target)
+      target.respond_to?(:matches?)
+    end
+
+    #
+    def rspec_matcher_apply(matcher)
+      pass  = matcher.matches?(@delegate)
+      error = @message || rspec_matcher_message(matcher)
+      return pass, error
+    end
+
+    # TODO: Is there anything to be done with matcher.description?
+
+    #
+    def rspec_matcher_message(matcher)
+      if @negated
+        if matcher.respond_to?(:failure_message_for_should_not)
+          return matcher.failure_message_for_should_not
+        end
+        if matcher.respond_to?(:negative_failure_message)
+          return matcher.negative_failure_message
+        end
+      end
+
+      if matcher.respond_to?(:failure_message_for_should)
+        return matcher.failure_message_for_should
+      end
+      if matcher.respond_to?(:failure_message)
+        return matcher.failure_message
+      end
+
+      return matcher.to_s  # TODO: or just `nil` ?
+    end
+
     # TODO: Should we use a more libreral determination of exception.
     # e.g. <code>respond_to?(:exception)</code>.
-    #++
+
+    # Is the +object+ an Exception or an instance of one?
     def exception?(object)
       ::Exception === object or ::Class === object and object.ancestors.include?(::Exception)
     end
 
-    # Converts a missing method into an Assertion.
-    #
     # TODO: In future should probably be `@delegate.public_send(sym, *a, &b)`.
+
+    # Converts a missing method into an Assertion.
     def method_missing(sym, *args, &block)
       error = @message || compare_message(sym, *args, &block) || generic_message(sym, *args, &block)
 
@@ -282,29 +351,14 @@ module AE
       __assert__(pass, error)
     end
 
+    # TODO: Can the handling of the message be simplified/improved?
 
     # Simple assert.
-    #--
-    # TODO: Can the handling of the message be simplified/improved?
-    #++
     def __assert__(pass, error=nil)
       Assertor.assert(pass, error, @negated, @backtrace)
     end
 
     #
-    def matcher_message(matcher)
-      if @negated
-        if matcher.respond_to?(:negative_failure_message)
-          return matcher.failure_message
-        end
-      else
-        if matcher.respond_to?(:failure_message)
-          return matcher.failure_message
-        end
-      end
-      return nil
-    end
-
     COMPARISON_OPERATORS = { :"==" => :"!=" }
 
     # Message to use when making a comparion assertion.
@@ -371,4 +425,4 @@ end
 #  end
 #end
 
-# Copyright (c) 2008,2009 Thomas Sawyer
+# Copyright (c) 2008 Thomas Sawyer

@@ -50,5 +50,5 @@ module AE
 
 end
 
-# Set top-level Assertion to AE::Assertion
-Assertion = AE::Assertion
+# Set top-level Assertion to AE::Assertion if not already present.
+Assertion = AE::Assertion unless defined?(Assertion)

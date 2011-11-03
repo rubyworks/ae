@@ -69,7 +69,4 @@ module AE
 
 end
 
-class ::Object #:nodoc:
-  include AE::Expect
-end
-
+# Copyright (c) 2008 Thomas Sawyer

@@ -4,8 +4,8 @@ module AE
   # for framework adapters, used to set the exception class
   # that a framework uses to raise an assertion error.
   #
-  # @param [Class]
-  #   The Exception class use to raise Assertions.
+  # @param [Class] exception_class
+  #   The Exception subclass used to raise assertions.
   #
   def self.assertion_error=(exception_class)
     verbose, $VERBOSE = $VERBOSE, nil
@@ -13,29 +13,14 @@ module AE
     $VERBOSE = verbose
   end
 
-  # Default ANSI mode is "on".
-  @ansi = true
-
-  # ANSI mode.
-  #
-  # @return [Boolean] ANSI mode.
-  def self.ansi?
-    @ansi
-  end
-
-  # To turn of ANSI colorized error messages off, set 
-  # ansi to +false+ in your test helper.
-  #
-  # @example
-  #   AE.ansi = false
-  #
-  def self.ansi=(boolean)
-    @ansi = boolean
-  end
-
 end
 
 require 'ae/version'
 require 'ae/assert'
 require 'ae/expect'
+
+class ::Object
+  include AE::Assert
+  include AE::Expect
+end
 

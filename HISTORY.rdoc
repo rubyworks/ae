@@ -2,12 +2,15 @@
 
 == 1.8.0 / 2011-12-03 / Checkered Flag
 
-This new relase finally gets the optional Check Ok/No library
-is a usable state. It also modernizes the build configuration.
+This new relase improves support for Proc-based assertions and
+RSpec-style matchers. This release also finally gets the optional
+Check Ok/No library in a usable state. Also the build configuration
+has been brough up to date.
 
 Changes:
 
 * Finalize the Check mixin API.
+* Improve Proc and RSpec-style matchers.
 * Modernize the build configuration.
 
 

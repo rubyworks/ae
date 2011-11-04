@@ -6,7 +6,7 @@ gem:
 
 yard:
   yardopts: true
-  priority: -1
+  priority: 2
 
 qed:
   files: qed/
@@ -24,10 +24,10 @@ email:
 
 dnote:
   labels: ~
-  output: log/Notes.html
+  output: pages/log/notes.html
 
 vclog:
   output:
-    - log/History.html
-    - log/Changes.html
+    - pages/log/history.html
+    - pages/log/changes.html
 

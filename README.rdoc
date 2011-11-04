@@ -122,9 +122,9 @@ a TestUnit legacy module.
 
   require 'ae/legacy'
 
-This provides a module AE::Legacy::Assertions which is included in AE::World
+This provides a module `AE::Legacy::Assertions` which is included in AE::World
 and can be mixed into your test environment to provide old-school assertion
-methods. E.g.
+methods, e.g.
 
   assert_equal(foo, bar, "it failed")
 

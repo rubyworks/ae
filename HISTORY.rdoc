@@ -2,10 +2,10 @@
 
 == 1.8.0 / 2011-12-03 / Checkered Flag
 
-This new relase improves support for Proc-based assertions and
+This new release improves support for Proc-based assertions and
 RSpec-style matchers. This release also finally gets the optional
 Check Ok/No library in a usable state. Also the build configuration
-has been brough up to date.
+has been brought up to date.
 
 Changes:
 
@@ -16,7 +16,7 @@ Changes:
 
 == 1.7.4 / 2011-06-08
 
-Quick release fixes an issue due to Ruby 1.9+'s constant lookup
+Quick release fixes an issue due to Ruby 1.9+'s constant look-up
 system. Yes, BasicObject has no clue. This is fixed using the
 `const_missing` hook.
 
@@ -53,9 +53,9 @@ Changes:
 
 == 1.7.1 / 2011-05-06
 
-This release adds a specialized message for certain comparision
+This release adds a specialized message for certain comparison
 operators to allow them have a more forensic output. This is done
-via ANSI::Diff library. This release also deprecateds the optional
+via ANSI::Diff library. This release also deprecates the optional
 dot.rb and detest.rb emulation scripts.
 
 Changes:
@@ -69,7 +69,7 @@ Changes:
 AE now uses proper namespace for all classes. In particular, the `Assertor`
 class has become `AE::Assertor`. Only the `Assertion` class remains outside
 the `AE` namespace, as it is now used to map to the current exception class
-for raising assertions as defined by current test framwework. In addition,
+for raising assertions as defined by current test framework. In addition,
 AE's Kernel extensions, which are used to adapt AE for use with any given
 test framework have been moved to the AE and AE::Assertor classes as
 class methods along with AE's assertion count methods.
@@ -79,7 +79,7 @@ Changes:
 * All AE classes use proper namespace.
 * Framework methods moved to AE::Assertor class.
 * Assertion count tracking methods moved to AE::Assertor class.
-* AE::Assertion class simplified to a simple sublcass of Exception.
+* AE::Assertion class simplified to a simple subclass of Exception.
 
 
 == 1.6.1 / 2010-11-05
@@ -99,7 +99,7 @@ Changes:
 Support libraries defining toplevel methods, such as `legacy.rb`, now place
 their methods in AE::World module instead of Object. AE::World needs to
 to be included in the context desired for the testing framework used. This
-is important to prevent polution of the the Object namespace.
+is important to prevent pollution of the Object namespace.
 
 Changes:
 
@@ -113,7 +113,7 @@ Changes:
 This release adds adapters for TestUnit, MiniTest and RSpec. AE worked with
 them previously but AE assertions were seen as errors rather than nice
 assertions. Likewise assertion counts were off in the final tally. These
-adapters insert AE's counts so the the tally's are correct.
+adapters insert AE's counts so the tally are correct.
 
 In addition to this the Assertion class itself now acts as the final end
 point for all assertions, which makes for a very clean interface.
@@ -143,7 +143,7 @@ Changes:
 New release of AE adds support for RSpec-style matchers. This means
 it should be usable with Shoulda 3.0 and any other matchers library.
 This release also cleans up the underlying code, which is now
-extremely clean. Lastly a smal API change allows #asser to compare
+extremely clean. Lastly a small API change allows #assert to compare
 it's argument to the return of it's block using #==, just as #expect
 does using #===.
 
@@ -151,7 +151,7 @@ Changes:
 
 * Add RSpec-style matchers support.
 * Move #expect code to Assertor.
-* #assert method can do equality camparison.
+* #assert method can do equality comparison.
 
 
 == 1.2.3 / 2010-06-07
@@ -167,7 +167,7 @@ Changes:
 
 Version 1.2.2 simply add one new feature --the ability to
 use 'object.assert = other' instead of 'object.assert == other'.
-This was added simply becuase I found I often made the mistake
+This was added simply because I found I often made the mistake
 of a missing '=', and since #assert= has no definition, there
 was no reason not to have behave accordingly.
 
@@ -194,10 +194,10 @@ Changes:
 
 == 1.1.0 / 2009-09-06
 
-This release provided two major imporvements. The first is
+This release provided two major improvements. The first is
 the #expect method which is similar to #assert, but uses 
 case equality (#===) for comparison. And second, an optional
-library <tt>ae/legacy.rb<tt>, is has been added that provides
+library `ae/legacy.rb`, is has been added that provides
 backward compatibility with Test::Unit assertions, should it
 be needed.
 

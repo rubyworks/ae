@@ -40,9 +40,9 @@ revision: 0
 created: '2008-08-17'
 summary: Assertive Expressive
 title: AE
-version: 1.8.0
+version: 1.8.1
 name: ae
 description: ! "Assertive Expressive is an assertions library specifically designed
   \nfor reuse by other test frameworks."
 organization: Rubyworks
-date: '2011-11-03'
+date: '2011-11-04'

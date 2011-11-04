@@ -1,5 +1,14 @@
 = RELEASE HISTORY
 
+== 1.8.1 / 2011-12-04
+
+Fixed missing ae/ansi.rb file from distribution.
+
+Changes:
+
+* Update manifest, missing ae/ansi.rb
+
+
 == 1.8.0 / 2011-12-03 / Checkered Flag
 
 This new release improves support for Proc-based assertions and

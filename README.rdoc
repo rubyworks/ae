@@ -24,14 +24,14 @@ intended for reuse by any TDD, BDD or similar system.
 * Core extensions are standardized around Ruby Facets.
 * But Facets is not a dependency; the extensions are built-in.
 * Easily extensible allowing for alternate notations.
-* Eats it's own dog food.
+* Eats its own dog food.
 
 
 == SYNOPSIS
 
-AE defines the method +assert+. It's is compatible with the method
-as defined by Test::Unit and MiniTest, which verifies truth of a
-single argument (and can accept an optional failure message).
+AE defines the method +assert+. It is compatible with the method as
+defined by Test::Unit and MiniTest, which verifies truth of a single
+argument (and can accept an optional failure message).
 
   assert(true)
 
@@ -40,11 +40,11 @@ the result of which is likewise verified.
 
   assert{true}
 
-But the real power the AE's +assert+ method lies in it's use
-without argument or block. In that case it returns an instance of
-+Assertor+. An +Assertor+ is an <i>Assertions Functor</i>, or 
-<i>Higher-Order Function</i>. It is a function that operates on
-another function. With it, we can make assertions like so:
+But the real power the AE's +assert+ method lies in its use without
+argument or block. In that case it returns an instance of +Assertor+.
+An +Assertor+ is an <i>Assertions Functor</i>, or <i>Higher-Order
+Function</i>. It is a function that operates on another function.
+With it, we can make assertions like so:
 
   x.assert == y
 

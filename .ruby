@@ -1,6 +1,6 @@
 ---
 source:
-- meta
+- var
 authors:
 - name: Trans
   email: transfire@gmail.com
@@ -45,4 +45,4 @@ name: ae
 description: ! "Assertive Expressive is an assertions library specifically designed
   \nfor reuse by other test frameworks."
 organization: Rubyworks
-date: '2011-11-04'
+date: '2011-11-11'

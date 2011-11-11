@@ -335,6 +335,18 @@ module AE
         __assert__(test, msg)
       end
 
+      # Assert that an Array, or any other object the responds to #include?
+      # thus contains the given element.
+      #
+      # @raise [Assertion] if test fails
+      #
+      # @return nothing
+      def assert_includes(elem, array, msg=nil)
+        test = array.include?(elem)
+        msg = "Expected #{elem.inspect} is not found in #{array.inspect}" unless msg
+        __assert__(test, msg)
+      end
+
       # Flunk always fails.
       #
       # @example

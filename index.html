@@ -5,6 +5,12 @@
 
   <link href="assets/styles/reset.css" rel="stylesheet" type="text/css" />
   <link href="assets/styles/site.css"  rel="stylesheet" type="text/css" />
+
+  <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+  <script>
+    $(document).ready(function(){
+    });
+  </script>
 </HEAD>
 <BODY>
 
@@ -22,7 +28,7 @@
     <a href="http://wiki.github.com/rubyworks/ae">WIKI</a> <br/>
     <a href="http://rubydoc.info/github/rubyworks/ae/master/file/QED.rdoc">QED</a> <br/>
     <a href="http://rubydoc.info/github/rubyworks/ae/master/frames">API</a> <br/>
-    <a href="log/">LOG</a> <br/>
+    <a href="irc://irc.freenode.net/rubyworks">CHAT</a> <br/>
     <a href="http://rubygems.org/gems/ae">GEM</a> <br/>
     <a href="http://groups.google.com/group/rubyworks-mailinglist">MAIL</a> <br/>
     <a href="http://github.com/rubyworks/ae">CODE</a>
@@ -90,65 +96,6 @@
   <div class="copyright">
     Copyright (c) 2010 Rubyworks
   <div>
-
-<!--
-
-<p>AE is an assertions framework designed to serve as a reusable domain language
-for other test frameworks. It is light-weight, easy to use and highly versitle.</p>
-
-, such as <a href="http://proutils.github.com/qed">QED</a> and
-<a href="http://cukes.info">Cucumber</a>.
-
-Essentially AE defines the method <code>assert</code>. The method is compatible
-with the same method as defined by Test::Unit and minitest which verifies truth
-of a single argument (and can accept an optional failure message).</p>
-
-  <pre>
-  assert( true )
-  </pre>
-
-<p>In addition AE's <code>assert</code> method has been extended to accept a
-block, the result of which is likewise verified.</p>
-
-  <pre>
-  assert{ true }
-  </pre>
-
-<p>But the real power the AE's <code>assert</code> method lies in it's use
-without an argument or a block. In that case it returns an instance of
-<code>Assertor</code>. An <code>Assertor</code> is an <i>Assertions Functor</i>,
-or  <i>Higher-Order Function</i> --a function that operates on another function.
-With it, we easily make assertions with a fluent notation.</p>
-
-  <pre>
-  x.assert == y
-
-  a.assert.include? e
-
-  StandardError.assert.raised? do
-    ...
-  end
-  </pre>
-
-<p>And so forth. Any method can be used in conjunction with <code>assert</code>
-to make an assertion.</p>
-
-  <pre>
-  class String
-    def daffy?
-      /daffy/i =~ self
-    end
-  end
-
-  "Daffy Duck".assert.daffy?
-  </pre>
-
-<p>In addition to <code>assert</code>, AE provides two optional nomenclatures,
-<code>expect</code> and <code>should</code> (or <code>must</code>).</p>
-
-<p>Please have a look at the QED generated <a href="qedoc/index.html">Overview</a>
-or the RDoc generated <a href="rdoc/index.html">API Documentation</a> to learn more.</p>
--->
 
 <div id="rubyworks" style="position: fixed; bottom: 5px; right: 10px; padding: 0; opacity: 0.3;">
   <a href="http://rubyworks.github.com">

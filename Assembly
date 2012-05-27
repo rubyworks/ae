@@ -10,12 +10,12 @@ yard:
   priority: 2
 
 qed:
-  files: qed/
+  files: demo/
 
 qedoc:
-  files : qed/
-  output: QED.rdoc
-  title : AE Demonstrandum
+  files : demo/
+  output: DEMO.rdoc
+  title : AE Demonstrations
 
 email:
   service : Email
@@ -25,10 +25,10 @@ email:
 
 dnote:
   labels: ~
-  output: pages/log/notes.html
+  output: log/notes.html
 
 vclog:
   output:
-    - pages/log/history.html
-    - pages/log/changes.html
+    - log/history.html
+    - log/changes.html
 

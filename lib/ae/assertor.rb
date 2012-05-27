@@ -9,7 +9,7 @@ module AE
   #
   # An Assertor is an Assertion Functor. A Functor is a succinct name for what
   # is also known as Higher Order Function. In other words, it is a function
-  # that acts on a function. It is very similiar  to a delegator in most
+  # that acts on a function. It is very similiar to a delegator in most
   # respects, but is conditioned on the operation applied, rather then simply
   # passing-off to an alternate reciever.
   #
@@ -19,11 +19,11 @@ module AE
     ZERO_COUNTS = {:total=>0,:pass=>0,:fail=>0}
 
     # Initialize assertion counts global variable.
-    $assertion_counts = ZERO_COUNTS.dup
+    $ASSERTION_COUNTS = ZERO_COUNTS.dup
 
     # Returns Hash used to track assertion counts.
     def self.counts
-      $assertion_counts
+      $ASSERTION_COUNTS
     end
 
     # Reset assertion counts.

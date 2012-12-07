@@ -1,0 +1,52 @@
+---
+type: ruby
+revision: 2013
+sources:
+- var
+authors:
+- name: Trans
+  email: transfire@gmail.com
+organizations:
+- name: Rubyworks
+requirements: []
+conflicts: []
+alternatives: []
+resources:
+- type: home
+  uri: http://rubyworks.github.com/ae
+  label: Homepage
+- type: code
+  uri: http://github.com/rubyworks/ae
+  label: Source Code
+- type: docs
+  uri: http://rubydoc.info/gems/ae
+  label: Documentation
+- type: wiki
+  uri: http://wiki.github.com/rubyworks/ae
+  label: User Guide
+- type: bugs
+  uri: http://github.com/rubyworks/ae/issues
+  label: Issue Tracker
+- type: mail
+  uri: http://groups.google.com/group/rubyworks-mailinglist
+  label: Mailing List
+repositories:
+- scm: git
+  uri: git://github.com/rubyworks/ae.git
+  name: upstream
+categories: []
+load_path:
+- lib
+copyrights:
+- holder: Rubyworks
+  year: '2008'
+  license: BSD-2-Clause
+replacements: []
+created: '2008-08-17'
+summary: Assertive Expressive
+title: AE
+version: 1.8.1
+name: ae
+description: ! "Assertive Expressive is an assertions library specifically designed
+  \nfor reuse by other test frameworks."
+date: '2011-11-11'

@@ -1,4 +1,4 @@
-= Introduction
+# Introduction
 
 AE is an assertions framework for Ruby. It's designed
 around the concept of an Assertor. The Assertor is an
@@ -7,11 +7,11 @@ reroutes method calls while monitoring them for failing
 conditions.
 
 
-== What AE Provides
+## What AE Provides
 
 Requiring the AE library.
 
-  require 'ae'
+    require 'ae'
 
 Loads two classes, +Assertion+ and +Assertor+, the Kernel
 method +assert+ and it's antonyms +assert!+ and +refute+
@@ -19,20 +19,20 @@ and a set of core extensions that make writing certain types
 of assertions easier.
 
 
-== Assertion and Assertor Classes
+## Assertion and Assertor Classes
 
 The +Assertion+ class is at the heart of AE. All other AE
 methods depend on it. The +Assertion+ class is a subclass
 of Exception. When an assertion is made and fails, it is
 an instance of Assertion that is raised.
 
-  expect Assertion do
-    msg = "my failure message"
-    assert false, msg
-  end
+    expect Assertion do
+      msg = "my failure message"
+      assert false, msg
+    end
 
 Like any raised exception, the last Assertion message is available
-via <tt>$!</tt>.
+via `$!`.
 
 (FYI, in Test::Unit the equivalent class was called +AssertionFailedError+.)
 
@@ -46,26 +46,26 @@ invocation to monitor for failed conditions, upon which is raises
 Assertion exceptions.
 
 
-== Assertion Methods
+## Assertion Methods
 
 The three methods, +assert+, <tt>assert!</tt> and +refute+ all
 return an Assertor instance when used fluidly, i.e. magic-dot
 notation, higher-order notation, functor notation, whatever you
 prefer to call it.
 
-  assert(AE::Assertor === assert)
+    assert(AE::Assertor === assert)
 
 Through the use of +method_missing+, the Assertor allows us to write
 statements like:
 
-  1.assert == 1
+    1.assert == 1
 
 If the operation evaluates to false or nil, then an Assertion error
 is raised.
 
-  expect Assertion do
-    1.assert == 2
-  end
+    expect Assertion do
+      1.assert == 2
+    end
 
 The methods <tt>assert!</tt> and +refute+ are just like +assert+
 expect they purport the negative condition. Patterned after Ruby's
@@ -74,7 +74,7 @@ read "assert not". While +refute+ exists for the sake of those who
 find the use of a bang method for this purpose unsuited to them.
 
 
-== How It Works
+## How It Works
 
 An Assertor essentially sits in wait for a method call (via
 method_missing). When that happens it applies the method to the
@@ -82,11 +82,11 @@ original receiver, but wrapped in a clause that raises an
 Assertion should the statement fail. If we wanted to be 
 pedantic, we could write our assertions like:
 
-  raise Assertion.new("1 != 1") unless 1 == 1
+    raise Assertion.new("1 != 1") unless 1 == 1
 
 Instead of 
 
-  1.assert == 1
+    1.assert == 1
 
 Obviously using Assertor methods are whole lot more concise.
 

@@ -1,6 +1,6 @@
-= COPYRIGHT NOTICES
+# COPYRIGHT NOTICES
 
-== AE
+## AE
 
 Copyright:: (c) 2008 Thomas Sawyer
 License: BSD-2-Clause
@@ -32,7 +32,7 @@ License: BSD-2-Clause
     or implied, of Thoams Sawyer.
 
 
-== BlankSlate
+## BlankSlate
 
 Copyright:: (c) 2004,2006  Jim Weirich 
 License:: Custom

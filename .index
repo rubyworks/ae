@@ -1,14 +1,22 @@
 ---
-type: ruby
 revision: 2013
+type: ruby
 sources:
 - var
 authors:
 - name: Trans
   email: transfire@gmail.com
-organizations:
-- name: Rubyworks
-requirements: []
+organizations: []
+requirements:
+- name: ansi
+- groups:
+  - build
+  development: true
+  name: detroit
+- groups:
+  - test
+  development: true
+  name: qed
 conflicts: []
 alternatives: []
 resources:
@@ -31,22 +39,23 @@ resources:
   uri: http://groups.google.com/group/rubyworks-mailinglist
   label: Mailing List
 repositories:
-- scm: git
+- name: upstream
+  scm: git
   uri: git://github.com/rubyworks/ae.git
-  name: upstream
 categories: []
-load_path:
-- lib
 copyrights:
 - holder: Rubyworks
   year: '2008'
   license: BSD-2-Clause
-replacements: []
+customs: []
+paths:
+  lib:
+  - lib
 created: '2008-08-17'
 summary: Assertive Expressive
 title: AE
-version: 1.8.1
+version: 1.8.2
 name: ae
 description: ! "Assertive Expressive is an assertions library specifically designed
   \nfor reuse by other test frameworks."
-date: '2011-11-11'
+date: '2013-02-18'

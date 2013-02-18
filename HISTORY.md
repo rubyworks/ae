@@ -1,5 +1,16 @@
 # RELEASE HISTORY
 
+## 1.8.2 / 2013-02-18
+
+This release primarily fixes one bug --the assertions count
+global variable wasn't all caps, which prevented assertions
+from being counted correctly.
+
+Changes:
+
+* Fix $ASSERTION_COUNTS letter case.
+
+
 ## 1.8.1 / 2011-12-04
 
 Fixed missing ae/ansi.rb file from distribution.

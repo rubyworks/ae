@@ -1,5 +1,4 @@
 #!mast .ruby .yardopts bin lib man qed spec test [A-Z]*.*
-.ruby
 .yardopts
 lib/ae/adapter.rb
 lib/ae/adapters/minitest.rb

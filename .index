@@ -58,4 +58,4 @@ version: 1.8.2
 name: ae
 description: ! "Assertive Expressive is an assertions library specifically designed
   \nfor reuse by other test frameworks."
-date: '2013-02-18'
+date: '2013-03-09'

@@ -4,9 +4,8 @@
 [Documentation](http://rubydoc.info/gems/ae) /
 [User Manual](http://wiki.github.com/rubyworks/ae) /
 [Report Issue](http://github.com/rubyworks/ae/issues) /
-[Mailing List](http://googlegroups.com/group/rubyworks-mailinglist) /
-[IRC Channel](irc://irc.freenode.net/rubyworks) /
-[Source Code](http://github.com/rubyworks/ae) &nbsp; &nbsp;
+[Source Code](http://github.com/rubyworks/ae)
+
 [![Build Status](https://secure.travis-ci.org/rubyworks/ae.png)](http://travis-ci.org/rubyworks/ae)
 [![Gem Version](https://badge.fury.io/rb/ae.png)](http://badge.fury.io/rb/ae) &nbsp; &nbsp;
 [![Flattr Me](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/324911/Rubyworks-Ruby-Development-Fund)
@@ -153,6 +152,21 @@ and do:
     $ sudo setup.rb all
 
 Windows users use 'ruby setup.rb all'.
+
+
+## Contributing
+
+If you would like to contribute code to the AE project, for the upstream
+repository and create a branch for you changes. When your changes are ready
+for review (and no, they do not have to 100% perfect if you still have some issues
+you need help working out).
+
+It you need to personally discuss some ideas or issue you try to get up with us
+via the mailing list or the IRC channel.
+
+* [Source Code](http://github.com/rubyworks/ae) /
+* [IRC Channel](irc://irc.freenode.net/rubyworks) /
+* [Mailing List](http://googlegroups.com/group/rubyworks-mailinglist)
 
 
 ## Copyrights & License

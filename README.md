@@ -1,13 +1,13 @@
 # Assertive Expressive
 
-[Homepage](http://rubyworks.github.com/ae) /
-[Documentation](http://rubydoc.info/gems/ae) /
-[User Manual](http://wiki.github.com/rubyworks/ae) /
+[Website](http://rubyworks.github.com/ae) /
+[API](http://rubydoc.info/gems/ae) /
+[User Guide](http://wiki.github.com/rubyworks/ae) /
 [Report Issue](http://github.com/rubyworks/ae/issues) /
 [Source Code](http://github.com/rubyworks/ae)
 
-[![Build Status](https://secure.travis-ci.org/rubyworks/ae.png)](http://travis-ci.org/rubyworks/ae)
-[![Gem Version](https://badge.fury.io/rb/ae.png)](http://badge.fury.io/rb/ae) &nbsp; &nbsp;
+[![Gem Version](https://badge.fury.io/rb/ae.png)](http://badge.fury.io/rb/ae)
+[![Build Status](https://secure.travis-ci.org/rubyworks/ae.png)](http://travis-ci.org/rubyworks/ae) &nbsp; &nbsp;
 [![Flattr Me](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/324911/Rubyworks-Ruby-Development-Fund)
 
 

@@ -48,9 +48,9 @@ see in code examples and it also allows for multiple assertions in one call.
 For instance, in the case of `:equality`, multiple entries convey a
 meaning of logical-or.
 
-    ok 1=>2, 1=>1
+    ok 1=>2, 1.0=>1
 
-This would pass becuase the second assertion of equality is true.
+This would pass because the second assertion of equality is true.
 
 Another built in check is `:case_equality` which uses `#===` instead of `#==`
 to make the comparison.

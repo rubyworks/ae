@@ -1,5 +1,24 @@
 # RELEASE HISTORY
 
+## 1.9.0 / 2026-03-30
+
+Maintenance release. Modernized project tooling and cleaned up documentation.
+
+Changes:
+
+* Replace custom Indexer system with standard gemspec.
+* Replace Travis CI with GitHub Actions.
+* Replace Assembly/detroit with Rakefile.
+* Simplify version.rb to use a plain constant.
+* Update minitest adapter for minitest 5+.
+* Update testunit adapter for modern test-unit gem.
+* Fix typos and update URLs to HTTPS.
+* Add LICENSE.txt.
+* Move site from gh-pages to docs/.
+* Remove obsolete files (var/, etc/, MANIFEST, DEMO.rdoc).
+* Clean up .gitignore.
+
+
 ## 1.8.2 / 2013-02-18
 
 This release primarily fixes one bug --the assertions count

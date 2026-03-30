@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby
-
-import 'VERSION', :type=>'yaml'
-import 'PROFILE', :type=>'yaml'
-
-manifest 'MANIFEST'

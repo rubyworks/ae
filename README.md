@@ -1,14 +1,12 @@
 # Assertive Expressive
 
-[Website](http://rubyworks.github.com/ae) /
-[API](http://rubydoc.info/gems/ae) /
-[User Guide](http://wiki.github.com/rubyworks/ae) /
-[Report Issue](http://github.com/rubyworks/ae/issues) /
-[Source Code](http://github.com/rubyworks/ae)
+[Website](https://rubyworks.github.io/ae) /
+[API](https://rubydoc.info/gems/ae) /
+[Report Issue](https://github.com/rubyworks/ae/issues) /
+[Source Code](https://github.com/rubyworks/ae)
 
-[![Gem Version](https://badge.fury.io/rb/ae.png)](http://badge.fury.io/rb/ae)
-[![Build Status](https://secure.travis-ci.org/rubyworks/ae.png)](http://travis-ci.org/rubyworks/ae) &nbsp; &nbsp;
-[![Flattr Me](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/324911/Rubyworks-Ruby-Development-Fund)
+[![Gem Version](https://img.shields.io/gem/v/ae.svg?style=flat)](https://rubygems.org/gems/ae)
+[![Build Status](https://github.com/rubyworks/ae/actions/workflows/test.yml/badge.svg)](https://github.com/rubyworks/ae/actions/workflows/test.yml)
 
 
 ## About
@@ -25,12 +23,12 @@ intended for reuse by any TDD, BDD or similar system.
 * Core extensions are standardized around Ruby Facets.
 * But Facets is not a dependency; the extensions are built-in.
 * Easily extensible allowing for alternate notations.
-* Eats it's own dog food.
+* Eats its own dog food.
 
 
 ## Synopsis
 
-AE defines the method `assert`. It's is compatible with the method
+AE defines the method `assert`. It is compatible with the method
 as defined by Test::Unit and MiniTest, which verifies truth of a
 single argument (and can accept an optional failure message).
 
@@ -164,9 +162,8 @@ you need help working out).
 It you need to personally discuss some ideas or issue you try to get up with us
 via the mailing list or the IRC channel.
 
-* [Source Code](http://github.com/rubyworks/ae) /
-* [IRC Channel](irc://irc.freenode.net/rubyworks) /
-* [Mailing List](http://googlegroups.com/group/rubyworks-mailinglist)
+* [Source Code](https://github.com/rubyworks/ae) /
+* [Mailing List](https://groups.google.com/group/rubyworks-mailinglist)
 
 
 ## Copyrights & License
@@ -177,7 +174,7 @@ Unless otherwise provided for by the originating author, this
 program is distributed under the terms of the *BSD-2-Clause* license.
 Portions of this program may be copyrighted by others.
 
-See the NOTICE.rdoc file for details.
+See the NOTICE.md file for details.
 
-AE is a [Rubyworks](http://rubyworks.github.com) project.
+AE is a [Rubyworks](https://rubyworks.github.io) project.
 

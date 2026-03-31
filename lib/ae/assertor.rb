@@ -371,7 +371,7 @@ module AE
     #
     # @param operator [Symbol] operator/method
     #
-    # @see http://rubyworks.github.com/ansi
+    # @see https://rubyworks.github.io/ansi
     def compare_message(operator, *args, &blk)
       return nil unless COMPARISON_OPERATORS.key?(operator)
       prefix = ""

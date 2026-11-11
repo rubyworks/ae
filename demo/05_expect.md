@@ -18,11 +18,27 @@ than #assert. For example we can test for a subclass.
       3
     end
 
-  Assertion.assert.raised? do
-    expect Numeric do
-      "3"
+    Assertion.assert.raised? do
+      expect Numeric do
+        "3"
+      end
     end
-  end
+
+Any expected value counts, even `nil` or `false`.
+
+    expect nil do
+      nil
+    end
+
+    Assertion.assert.raised? do
+      "abc".expect nil do
+        "abc"
+      end
+    end
+
+A block that takes an argument is given the receiver.
+
+    "abc".expect(3) { |s| s.size }
 
 
 ## Exception Expectation
@@ -36,6 +52,22 @@ then #expect will check to see if the block raises that kind of exception.
 
     expect Assertion do
       expect(nil)
+    end
+
+An instance of an Exception class stands for its class.
+
+    expect ArgumentError.new do
+      raise ArgumentError
+    end
+
+An exception of another kind fails the expectation, but an interrupt or
+an exit is never caught, so it isn't mistaken for a failure, or for
+a pass when negated.
+
+    expect SystemExit do
+      expect! ArgumentError do
+        exit
+      end
     end
 
 This is an important distinction to note because it means `#expect` can not be used

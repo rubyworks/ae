@@ -29,7 +29,7 @@ intended for reuse by any TDD, BDD or similar system.
 ## Synopsis
 
 AE defines the method `assert`. It is compatible with the method
-as defined by Test::Unit and MiniTest, which verifies truth of a
+as defined by Test::Unit and Minitest, which verifies truth of a
 single argument (and can accept an optional failure message).
 
     assert(true)
@@ -63,6 +63,14 @@ to make an assertion. Eg.
     end
 
     "Daffy Duck".assert.daffy?
+
+The method's result is what gets asserted, so to compare a result,
+call the method before `assert`:
+
+    x.size.assert == 3
+
+Written as `x.assert.size == 3`, it would check only that `size`
+is truthy, and AE warns about that.
 
 When an assertion fails an Assertion exception is raised. Any test
 framework can catch this exception and process it accordingly.

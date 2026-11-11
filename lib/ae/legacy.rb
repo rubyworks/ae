@@ -1,3 +1,5 @@
+require 'ae/assertor'
+
 module AE
 
   module Legacy #:nodoc:
@@ -21,7 +23,8 @@ module AE
       # @return nothing
       def __assert__(test, msg=nil)
         msg = "failed assertion (no message given)" unless msg
-        raise Assertion.new(msg, :backtrace=>caller[1..-1]) unless test
+        Assertor.assert(test, msg, false, caller[1..-1])
+        nil
       end
 
       private :__assert__
@@ -31,14 +34,18 @@ module AE
       # @example
       #   assert [1, 2].include?(5)
       #
-      # @return [Assertor] if `test` not given
-      def assert(test=nil, msg=nil)
-        if test
-          msg = "failed assertion (no message given)" unless msg
-          raise Assertion.new(msg, :backtrace=>caller) unless test
-        else
-          Assertor.new(self, :backtrace=>caller)  # TODO: Probably remove this!
+      # With a block and no test, it works like #assert_block.
+      #
+      # @return [Assertor] if neither `test` nor a block is given
+      def assert(*args, &block)
+        if args.empty?
+          return assert_block(&block) if block
+          return Assertor.new(self, :backtrace=>caller)  # TODO: Probably remove this!
         end
+        test, msg = *args
+        msg = "failed assertion (no message given)" unless msg
+        Assertor.assert(test, msg, false, caller)
+        nil
       end
 
       # Passes if the block yields true.
@@ -52,7 +59,7 @@ module AE
       #
       # @return nothing
       def assert_block(msg=nil) # :yields:
-        test = ! yield
+        test = yield
         msg = "assertion failed" unless msg
         __assert__(test, msg)
       end
@@ -98,8 +105,8 @@ module AE
       #
       # @return nothing
       def assert_instance_of(cls, obj, msg=nil)
-        test = (cls === obj)
-        msg  = "Expected #{obj} to be a #{cls}" unless msg
+        test = obj.instance_of?(cls)
+        msg  = "Expected #{obj.inspect} to be an instance of #{cls}" unless msg
         __assert__(test, msg)
       end
 
@@ -155,7 +162,7 @@ module AE
       # @return nothing
       def assert_no_match(exp, act, msg=nil)
         test = (act !~ exp)
-        msg  = "Expected #{act.inspect} to match #{exp.inspect}" unless msg
+        msg  = "Expected #{act.inspect} not to match #{exp.inspect}" unless msg
         __assert__(test, msg)
       end
 
@@ -211,13 +218,14 @@ module AE
       # @raise [Assertion] if test fails
       #
       # @return nothing
-      def assert_operator(o1, op, o2, msg="")
+      def assert_operator(o1, op, o2, msg=nil)
         test = o1.__send__(op, o2)
         msg = "Expected #{o1}.#{op}(#{o2}) to be true" unless msg
         __assert__(test, msg)
       end
 
-      # Passes if the block raises one of the given exceptions.
+      # Passes if the block raises one of the given exceptions,
+      # or a subclass of one. With none given, StandardError.
       #
       # @example
       #   assert_raise RuntimeError, LoadError do
@@ -226,19 +234,23 @@ module AE
       #
       # @raise [Assertion] if test fails
       #
-      # @return nothing
+      # @return [Exception] the exception raised
       def assert_raises(*args)
-        msg = (Module === args.last ? nil : args.pop)
+        msg  = (Module === args.last ? nil : args.pop)
+        exps = args.empty? ? [StandardError] : args
         begin
           yield
-          msg = "Expected #{exp} to be raised" unless msg
-          __assert__(false, msg)
-        rescue Exception => e
-          test = (exp === e)
-          msg  = "Expected #{exp} to be raised, but got #{e.class}" unless msg
-          __assert__(test, msg)
+        rescue *exps => e
+          Assertor.assert(true)
           return e
+        rescue SignalException, SystemExit, NoMemoryError
+          raise
+        rescue Exception => e
+          msg = "Expected #{exps.join(' or ')} to be raised, but got #{e.class}: #{e.message}" unless msg
+          __assert__(false, msg)
         end
+        msg = "Expected #{exps.join(' or ')} to be raised" unless msg
+        __assert__(false, msg)
       end
 
       alias_method :assert_raise, :assert_raises
@@ -320,19 +332,17 @@ module AE
       #
       # @return nothing
       def assert_throws(sym, msg=nil)
-        msg  = "Expected #{sym} to have been thrown" unless msg
+        default = "Expected #{sym.inspect} to have been thrown"
         test = true
         catch(sym) do
           begin
             yield
-          rescue ArgumentError => e     # 1.9 exception
-            default += ", not #{e.message.split(/ /).last}"
-          rescue NameError => e         # 1.8 exception
-            default += ", not #{e.name.inspect}"
+          rescue UncaughtThrowError => e
+            default += ", not #{e.tag.inspect}"
           end
           test = false
         end
-        __assert__(test, msg)
+        __assert__(test, msg || default)
       end
 
       # Assert that an Array, or any other object the responds to #include?

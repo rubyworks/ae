@@ -1,3 +1,5 @@
+require 'ae/assertor'
+
 module AE
 
   # The Ok mixin is a reusable assertion helper that
@@ -20,7 +22,7 @@ module AE
       #
       def message(&block)
         if block
-          @message = message
+          @message = block
         end
         @message
       end
@@ -50,12 +52,18 @@ module AE
 
       #
       def ok!(*args)
-        assert(call(*args), to_s(*args))
+        check!(args, false, caller)
       end
 
       #
       def no!(*args)
-        refute(call(*args), to_s(*args))
+        check!(args, true, caller)
+      end
+
+      # Assert the check for the given arguments, negated or not.
+      # The backtrace says where the failure is reported.
+      def check!(args, negated, backtrace)
+        Assertor.assert(call(*args), ::Kernel.proc { to_s(*args) }, negated, backtrace)
       end
     end
 
@@ -80,7 +88,7 @@ module AE
     #   end
     #
     def self.define(name, &block)
-      table[name] = Check::Proc.new(name, &block)
+      table[name] = Check::Proc.new(:name=>name, &block)
     end
 
     #
@@ -127,12 +135,12 @@ module AE
 
     #
     def ok(*args)
-      __check__.ok!(*args)
+      __check__.check!(args, false, caller)
     end
 
     #
     def no(*args)
-      __check__.no!(*args)
+      __check__.check!(args, true, caller)
     end
 
     # Returns the current check.

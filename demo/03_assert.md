@@ -39,6 +39,16 @@ into the block as a block argument.
       /h/ =~ s
     end
 
+Given an argument as well, `assert` compares it to the block's result
+using `#==`. Any argument counts, even `false` or `nil`.
+
+    assert(5) { 2 + 3 }
+    assert(nil) { nil }
+
+    Assertion.assert.raised? do
+      assert(false) { true }
+    end
+
 
 ## Antonyms for Assert
 
@@ -67,8 +77,21 @@ create reusable assertions.
 
     "abracarba".assert palindrome
 
+A lambda that takes no arguments is called without the receiver.
+
+    "abracarba".assert lambda { true }
+
 The message for a failed assertion will come from calling `#to_s` on the
 object.
+
+A Hash or a Symbol is a value like any other, even though each has
+`#to_proc`, so here `assert` and `refute` check only that it is truthy.
+
+    assert({a: 1})
+
+    Assertion.assert.raised? do
+      refute({a: 1})
+    end
 
 ## RSpec-style Assertion Matchers
 
@@ -91,11 +114,25 @@ message methods will be used if they are defined.
 Rather then the general form.
 
     x = 10
-    x.assert.object_id == x.object_id
+    x.object_id.assert == x.object_id
 
 We can use Ruby's own `equal?`> method.
 
     x.assert.equal?(x)
+
+It fails for an equal but separate object.
+
+    Assertion.assert.raised? do
+      "abc".assert.equal?("abc".dup)
+    end
+
+And the opposite.
+
+    x.refute.equal?(11)
+
+    Assertion.assert.raised? do
+      x.refute.equal?(x)
+    end
 
 AE provides `identical?`> method as an alternative
 to make it a bit more clear.
@@ -205,6 +242,12 @@ necessary. Assert combined with +instance_eval+ makes it easy too.
       @a == 1
     end
 
+    Assertion.assert.raised? do
+      x.assert.instance_eval do
+        @a == 2
+      end
+    end
+
 
 ## Catch/Try Assertions
 
@@ -247,6 +290,57 @@ AE adds `true?` and `false?` which acts accordingly.
     false.assert.false?
 
 
+## Keyword Arguments
+
+Keyword arguments are passed on to the method as keywords.
+
+    class Gate
+      def open?(strict: false)
+        !strict
+      end
+    end
+
+    Gate.new.assert.open?(strict: false)
+    Gate.new.refute.open?(strict: true)
+
+
+## Comparing a Method's Result
+
+A method called on `assert` makes the assertion itself, so its result
+can't be compared afterwards. Here `size` returns 2, which is truthy, so
+the assertion passes. The comparison with 3 is then made with the
+assertion's own result, and checks nothing.
+
+    require 'stringio'
+    $stderr, stderr = StringIO.new, $stderr
+
+    [1, 2].assert.size == 3
+
+    warning, $stderr = $stderr.string, stderr
+
+To compare a result, call the method first.
+
+    [1, 2].size.assert == 2
+
+Because this is an easy mistake to make, AE warns when a method called
+without arguments returns something other than true, false or nil.
+
+    warning.assert.include?("`size` returned 2")
+
+
+## Flunk
+
+`flunk` always fails, negated or not.
+
+    Assertion.assert.raised? do
+      flunk "not done yet"
+    end
+
+    Assertion.assert.raised? do
+      10.refute.flunk
+    end
+
+
 ## Send Assertions
 
 Assert that a method can be successfully called.
@@ -259,11 +353,16 @@ Assert that a method can be successfully called.
 You may wish to assert that a numeric value is with some
 range.
 
-    3.in_delta?(1,5)
+    3.assert.in_delta?(1,5)
 
-Or minimum range.
+Or minimum range, relative to the smaller of the two magnitudes.
 
-    3.in_epsilon?(3,5)
+    3.assert.in_epsilon?(3,5)
+    -100.0.assert.in_epsilon?(-100.05, 0.01)
+
+    Assertion.assert.raised? do
+      -100.0.assert.in_epsilon?(-101.5, 0.01)
+    end
 
 
 ## Verifying Object State
@@ -282,11 +381,14 @@ can be used in conjunction with +assert+.
       @a.assert == 4
     end
 
-However #instance_eval is a reserved method for the underlying Assertor class,
-so it cannot be used on #assert, e.g.
+Calling #instance_eval on #assert works too, as shown under "Assertions
+on Object State" above: the block runs in the object, and its result
+is the assertion.
 
-    x.assert.instance_eval do
-      @a == "obvisouly wrong"
+    Assertion.assert.raised? do
+      x.assert.instance_eval do
+        @a == "obviously wrong"
+      end
     end
 
 AE offers an optional helper method for times when testing underlying private

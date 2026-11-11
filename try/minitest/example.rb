@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'ae/adapters/minitest'
 
-class MiniTestSupport < MiniTest::Unit::TestCase
+class MiniTestSupport < Minitest::Test
 
   def test_assert_pass
     x = 5

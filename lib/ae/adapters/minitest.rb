@@ -2,40 +2,44 @@ require 'ae'
 
 AE.assertion_error = ::Minitest::Assertion
 
-module Minitest #:nodoc:
-  class Test #:nodoc:
-    # Override capture_exceptions to recognize AE assertion errors
-    # as test failures rather than errors.
-    alias_method :capture_exceptions_without_ae, :capture_exceptions
+module AE
+  # Minitest adapter. AE raises Minitest::Assertion, so failures are
+  # reported as failures, and each AE assertion is added to the
+  # running test's assertion count.
+  module MinitestAdapter
+    # Notes the running test, and reports any other exception that
+    # says it is an assertion as a failure rather than an error.
+    module Test
+      def capture_exceptions
+        previous = ::Thread.current[:ae_minitest_test]
+        ::Thread.current[:ae_minitest_test] = self
+        super do
+          begin
+            yield
+          rescue ::Minitest::Assertion
+            raise
+          rescue ::Exception => e
+            raise unless e.respond_to?(:assertion?) && e.assertion?
+            failure = ::Minitest::Assertion.new(e.message)
+            failure.set_backtrace(e.backtrace)
+            raise failure
+          end
+        end
+      ensure
+        ::Thread.current[:ae_minitest_test] = previous
+      end
+    end
 
-    def capture_exceptions
-      yield
-    rescue *PASSTHROUGH_EXCEPTIONS
-      raise
-    rescue Assertion => e
-      self.failures << e
-    rescue Exception => e
-      if e.respond_to?(:assertion?) && e.assertion?
-        failure = Assertion.new(e.message)
-        failure.set_backtrace(e.backtrace)
-        self.failures << failure
-      else
-        self.failures << UnexpectedError.new(sanitize_exception(e))
+    # Adds each AE assertion to the running test's count.
+    module Counts
+      def increment_counts(pass)
+        test = ::Thread.current[:ae_minitest_test]
+        test.assertions += 1 if test
+        super
       end
     end
   end
 end
 
-class AE::Assertor #:nodoc:
-  # MiniTest tracks assertion counts internally. To work with AE we
-  # override increment_counts to also update AE's own counter.
-  def self.increment_counts(pass)
-    counts[:total] += 1
-    if pass
-      counts[:pass] += 1
-    else
-      counts[:fail] += 1
-    end
-    return counts
-  end
-end
+Minitest::Test.prepend(AE::MinitestAdapter::Test)
+AE::Assertor.singleton_class.prepend(AE::MinitestAdapter::Counts)

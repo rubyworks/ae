@@ -3,9 +3,9 @@
 Matchers are simply Procs or objects with the proper interface that can be
 passed to #assert or #refute (or other Assertor) as an ecapsulated test.
 
-## Proc or #to_proc
+## Proc or #call
 
-Passing a Proc object or an object that responds to `:to_proc`, will use it
+Passing a Proc object, or any object that responds to `#call`, will use it
 as if it were a block of the method. This allows for a simple way to quickly
 create reusable assertions.
 

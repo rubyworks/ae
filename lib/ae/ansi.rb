@@ -2,25 +2,27 @@ require 'ansi/diff'
 
 module AE
 
-  # Default ANSI mode is "on".
-  @ansi = true
+  # ANSI mode is automatic until it is set: on when standard output is
+  # a terminal and the NO_COLOR environment variable is not set.
+  @ansi = nil
 
   # ANSI mode.
   #
   # @return [Boolean] ANSI mode.
   def self.ansi?
-    @ansi
+    return @ansi unless @ansi.nil?
+    $stdout.respond_to?(:tty?) && $stdout.tty? && ENV.fetch('NO_COLOR', '').empty?
   end
 
-  # To turn of ANSI colorized error messages off, set 
-  # ansi to +false+ in your test helper.
+  # To turn ANSI colorized error messages on or off, set
+  # ansi to +true+ or +false+ in your test helper. Set it to
+  # +nil+ to go back to the automatic setting.
   #
   # @example
   #   AE.ansi = false
   #
   def self.ansi=(boolean)
-    @ansi = boolean
+    @ansi = boolean.nil? ? nil : !!boolean
   end
 
 end
-

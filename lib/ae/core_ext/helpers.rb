@@ -40,13 +40,13 @@ module Kernel
     end
   end
 
-  # Word form for #=~. Also can take a block.
+  # Word form for #=~. Also can take a block. An object without
+  # #=~ matches nothing, as Object#=~ did before Ruby 3.2.
+  #
+  # Note that String, Symbol and Regexp have their own #match?.
   def match?(value=NoArgument)
-    if block_given?
-      self =~ yield
-    else
-      self =~ value
-    end
+    value = yield if block_given?
+    respond_to?(:=~) ? (self =~ value) : nil
   end
 
   # Broad equality.
@@ -54,12 +54,15 @@ module Kernel
     equal?(x) || eql?(x) || self == x || self === x
   end
 
-  # Can a message be sent to the receiver successfully?
-  def send?(method, *args, &block)
+  # Can a message be sent to the receiver successfully? Only a
+  # missing +method+ counts as failure; a NoMethodError raised from
+  # inside the method is a bug, and is raised as usual.
+  def send?(method, *args, **kw, &block)
     begin
-      __send__(method, *args, &block)
+      __send__(method, *args, **kw, &block)
       true
-    rescue NoMethodError
+    rescue NoMethodError => error
+      raise unless error.name == method.to_sym && error.receiver.equal?(self)
       false
     end
   end
@@ -112,9 +115,9 @@ class Numeric
   # Alias for #in_delta.
   alias_method :close?, :in_delta?
 
-  # Verify epsilon tolerance.
+  # Verify epsilon tolerance, relative to the smaller magnitude.
   def in_epsilon?(orig, epsilon=0.001)
-    in_delta?(orig, [orig, self].min * epsilon)
+    in_delta?(orig, [orig.abs, self.abs].min * epsilon)
   end
 end
 
@@ -144,13 +147,13 @@ class Proc
     end
   end
 
-  #
+  # Does calling the procedure throw +sym+? Throwing another
+  # symbol counts as no; any error is raised as usual.
   def throws?(sym, *args)
     catch(sym) do
       begin
         call(*args)
-      rescue ArgumentError  # 1.9 exception
-      rescue NameError      # 1.8 exception
+      rescue UncaughtThrowError
       end
       return false
     end
@@ -168,14 +171,13 @@ class Proc
 end
 
 class Symbol
-  # Does the block throw this symbol?
-  #
+  # Does the block throw this symbol? Throwing another symbol
+  # counts as no; any error is raised as usual.
   def thrown?(*args)
     catch(self) do
       begin
         yield(*args)
-      rescue ArgumentError  # 1.9 exception
-      rescue NameError      # 1.8 exception
+      rescue UncaughtThrowError
       end
       return false
     end

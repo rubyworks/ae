@@ -73,8 +73,7 @@ module AE
     # @raise [Assertion]
     #   Assertion error with given `message`.
     def flunk(message=nil, backtrace=nil)
-      #Assertor.new(self, :backtrace=>caller).assert(false, message)
-      Assertor.assert(false, message, backtrace || caller)
+      Assertor.assert(false, message, false, backtrace || caller)
     end
 
   end

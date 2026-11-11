@@ -4,3 +4,4 @@ log
 pkg
 tmp
 Gemfile.lock
+*.gem

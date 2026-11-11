@@ -59,8 +59,12 @@ module AE
     # Basic assertion. This method by-passes all the Assertor fluent
     # constructs and performs the underlying assertion procedure. It
     # is used by Assertor as the end call of an assertion.
+    #
+    # The +error+ can be a message, an exception, or a Proc that
+    # returns either. A Proc is only called if the assertion fails,
+    # which saves building a message that is never shown.
     def self.assert(pass, error=nil, negated=nil, backtrace=nil)
-      pass = negated ^ !!pass
+      pass = !!negated ^ !!pass
       increment_counts(pass)
       if !pass
         backtrace = backtrace || caller
@@ -72,6 +76,7 @@ module AE
     # The intent of the method is to raise an assertion failure
     # class that the test framework supports.
     def self.raise_assertion(error, negated, backtrace=nil)
+      error = error.call if ::Proc === error
       if not ::Exception === error
         error = assertion_error.new(error)
       end
@@ -101,10 +106,29 @@ module AE
     #  end
     #end
 
-    #
-    if ::RUBY_VERSION >= '1.9'
-      eval "private :==, :!, :!="  # using eval here b/c it's a syntax error in 1.8-
+    # Ruby's BasicObject has a few public methods of its own, which would
+    # answer a call themselves instead of making an assertion. Making
+    # these private sends them through #method_missing like any other
+    # method, so `x.assert.instance_eval { @a == 1 }` asserts something
+    # about `x`. Only #__send__ and #__id__ stay public, because Ruby
+    # relies on them.
+    private :==, :!, :!=, :equal?, :instance_eval, :instance_exec
+
+    # Methods with no arguments whose result is not true, false or nil
+    # get a warning, once per line, because the result is probably
+    # meant to be compared, as in `x.assert.size == 3`. That compares
+    # the assertion's own result, true, and checks nothing.
+    def self.chain_warning(where, message)
+      @chain_warnings ||= {}
+      return if @chain_warnings[where]
+      @chain_warnings[where] = true
+      ::Kernel.warn("#{where}: warning: #{message}")
     end
+
+    # Color diffs are skipped when the two strings are this large
+    # (the product of their lengths), because building one takes
+    # time and memory in proportion.
+    DIFF_LIMIT = 1_000_000
 
     # New Assertor.
     #
@@ -143,23 +167,22 @@ module AE
     def assert(*args, &block)
       return self if !block && args.empty?
 
-      target = args.shift unless block
-      error  = nil
-
       # Block
       if block
-        match  = args.shift
         result = block.arity > 0 ? block.call(@delegate) : block.call
-        if match
-          pass  = (match == result)
-          error = @message || "#{match.inspect} == #{result.inspect}"
+        if args.empty?
+          return __assert__(result) { @message || block.inspect }
         else
-          pass  = result
-          error = @message || block.inspect  # "#{result.inspect}"
+          # Any expected value counts, even false or nil.
+          match = args.shift
+          return __assert__(match == result) { @message || "#{__inspect__(match)} == #{__inspect__(result)}" }
         end
+      end
+
+      target = args.shift
 
       # Proc-style
-      elsif proc_assertion?(target)
+      if proc_assertion?(target)
         pass, error = proc_apply(target)
 
       # Assay-style assertions
@@ -192,26 +215,32 @@ module AE
       error = nil
 
       if block
-        match = args.shift || @delegate  # TODO: see above
+        # Any expected value counts, even false or nil.
+        match = args.empty? ? @delegate : args.shift  # TODO: see above
         if exception?(match)
+          # An exception instance stands for its class.
+          klass = ::Class === match ? match : match.class
           $DEBUG, debug = false, $DEBUG  # b/c it always spits-out a NameError
           begin
             block.arity > 0 ? block.call(@delegate) : block.call
             pass  = false
-            error = "#{match} not raised"
-          rescue match => error
+            error = "#{klass} not raised"
+          rescue klass
             pass  = true
-            error = "#{match} raised"
-          rescue ::Exception => error
+            error = "#{klass} raised"
+          rescue ::SignalException, ::SystemExit, ::NoMemoryError
+            raise
+          rescue ::Exception => e
             pass  = false
-            error = "#{match} expected but #{error.class} was raised"
+            error = "#{klass} expected but #{e.class} was raised: #{e.message}"
           ensure
             $DEBUG = debug
           end
+          error = @message || error
         else
-          result = block.arity > 0 ? block.call(@delegte) : block.call
+          result = block.arity > 0 ? block.call(@delegate) : block.call
           pass   = (match === result)
-          error  = @message || "#{match.inspect} === #{result.inspect}"
+          error  = ::Kernel.proc { @message || "#{__inspect__(match)} === #{__inspect__(result)}" }
         end
 
       ## Matcher
@@ -227,15 +256,15 @@ module AE
       else
         target = args.shift
         pass   = (target === @delegate)
-        error  = @message || "#{target.inspect} === #{@delegate.inspect}"
+        error  = ::Kernel.proc { @message || "#{__inspect__(target)} === #{__inspect__(@delegate)}" }
       end
 
       __assert__(pass, error)
     end
 
-    #
+    # Fail, whether or not the assertion is negated.
     def flunk(message=nil, backtrace=nil)
-      __assert__(false, message || @message)
+      Assertor.assert(false, message || @message, false, backtrace || @backtrace)
     end
 
     # Ruby seems to have a quark in it's implementation whereby
@@ -246,8 +275,8 @@ module AE
     end
 
     #
-    def send(op, *a, &b)
-      method_missing(op, *a, &b)
+    def send(op, *a, **kw, &b)
+      method_missing(op, *a, **kw, &b)
     end
 
     #
@@ -259,19 +288,23 @@ module AE
 
     # AE-STYLE ASSERTIONS
 
-    #
-    def proc_assertion?(target) 
-      ::Proc === target || target.respond_to?(:call) || target.respond_to?(:to_proc)
+    # Is `target` a Proc, or any other object that responds to #call?
+    # A Hash or Symbol is a value like any other, even though it has
+    # #to_proc.
+    def proc_assertion?(target)
+      ::Proc === target || target.respond_to?(:call)
     end
 
     #
     def proc_apply(target)
-      call  = target.method(:call) rescue target.to_proc
-      pass  = call.arity != 0 ? call.call(@delegate) : call.call
-      error = @message || (
-        to_s = target.method(:to_s)
-        to_s.arity == 0 ? to_s.call : to_s.call(@negated)
-      )
+      arity = (::Proc === target || ::Method === target) ? target.arity : target.method(:call).arity
+      pass  = arity != 0 ? target.call(@delegate) : target.call
+      error = ::Kernel.proc {
+        @message || (
+          to_s = target.method(:to_s)
+          to_s.arity == 0 ? to_s.call : to_s.call(@negated)
+        )
+      }
       return pass, error
     end
 
@@ -305,7 +338,7 @@ module AE
     #
     def rspec_matcher_apply(matcher)
       pass  = matcher.matches?(@delegate)
-      error = @message || rspec_matcher_message(matcher)
+      error = ::Kernel.proc { @message || rspec_matcher_message(matcher) }
       return pass, error
     end
 
@@ -335,27 +368,55 @@ module AE
     # TODO: Should we use a more libreral determination of exception.
     # e.g. <code>respond_to?(:exception)</code>.
 
-    # Is the +object+ an Exception or an instance of one?
+    # Is the +object+ an Exception class or an instance of one?
     def exception?(object)
-      ::Exception === object or ::Class === object and object.ancestors.include?(::Exception)
+      ::Exception === object || (::Class === object && object <= ::Exception)
     end
 
     # TODO: In future should probably be `@delegate.public_send(sym, *a, &b)`.
 
     # Converts a missing method into an Assertion.
-    def method_missing(sym, *args, &block)
-      error = @message || compare_message(sym, *args, &block) || generic_message(sym, *args, &block)
+    def method_missing(sym, *args, **kw, &block)
+      pass = @delegate.__send__(sym, *args, **kw, &block)
 
-      pass = @delegate.__send__(sym, *args, &block)
+      if args.empty? && kw.empty? && !block
+        __chain_warning__(sym, pass)
+      end
 
-      __assert__(pass, error)
+      __assert__(pass) do
+        @message || compare_message(sym, *args) || generic_message(sym, *args, **kw)
+      end
     end
 
     # TODO: Can the handling of the message be simplified/improved?
 
-    # Simple assert.
-    def __assert__(pass, error=nil)
-      Assertor.assert(pass, error, @negated, @backtrace)
+    # Simple assert. The failure message can be given as a block,
+    # which is only called if the assertion fails.
+    def __assert__(pass, error=nil, &message)
+      Assertor.assert(pass, error || message, @negated, @backtrace)
+    end
+
+    # Warn about `x.assert.size == 3`, which checks only that `size`
+    # is truthy. See Assertor.chain_warning.
+    def __chain_warning__(sym, result)
+      return if ::TrueClass === result || ::FalseClass === result || ::NilClass === result
+      name = sym.to_s
+      return unless /\A[a-z_]\w*\z/i.match?(name)
+      where = @backtrace.first.to_s.sub(/:in .*\z/, '')
+      value = __inspect__(result)
+      value = value[0, 40] + '...' if value.size > 43
+      Assertor.chain_warning(where,
+        "`#{name}` returned #{value}, so AE only checked that it was truthy. " \
+        "To compare the result, write `object.#{name}.assert == expected`."
+      )
+    end
+
+    # The object's #inspect, or a plain description of it if #inspect
+    # is missing or broken. A failure message shouldn't fail itself.
+    def __inspect__(object)
+      object.inspect
+    rescue ::StandardError
+      ::Kernel.instance_method(:to_s).bind_call(object)
     end
 
     #
@@ -364,10 +425,9 @@ module AE
     # Message to use when making a comparion assertion.
     #
     # NOTE: This message utilizes the ANSI gem to produce colorized
-    # comparisons. If you need to remove color output (for non-ANSI
-    # terminals) you can either set `AE.ansi = false` or use the
-    # ANSI library's master switch to deactive all ANSI codes,
-    # which can be set in your test helper.
+    # comparisons, when standard output is a terminal and NO_COLOR is
+    # not set. To choose for yourself, set `AE.ansi = false` (or true)
+    # in your test helper.
     #
     # @param operator [Symbol] operator/method
     #
@@ -375,7 +435,7 @@ module AE
     def compare_message(operator, *args, &blk)
       return nil unless COMPARISON_OPERATORS.key?(operator)
       prefix = ""
-      a, b = @delegate.inspect, args.first.inspect
+      a, b = __inspect__(@delegate), __inspect__(args.first)
       if @negated
         op = COMPARISON_OPERATORS[operator]
         if op
@@ -384,7 +444,7 @@ module AE
           prefix   = "NOT "
         end
       end
-      if AE.ansi?
+      if AE.ansi? && a.size * b.size <= DIFF_LIMIT
         diff = ::ANSI::Diff.new(a,b)
         a = diff.diff1
         b = diff.diff2
@@ -401,12 +461,13 @@ module AE
     # @param op [Symbol] operator/method
     #
     # @return [String] message
-    def generic_message(op, *a, &b)
-      inspection = @delegate.send(:inspect)
+    def generic_message(op, *a, **kw, &b)
+      inspection = __inspect__(@delegate)
+      list = a.map { |x| __inspect__(x) } + kw.map { |k, v| "#{k}: #{__inspect__(v)}" }
       if @negated
-        "! #{inspection} #{op} #{a.collect{|x| x.inspect}.join(',')}"
+        "! #{inspection} #{op} #{list.join(',')}"
       else
-        "#{inspection} #{op} #{a.collect{|x| x.inspect}.join(',')}"
+        "#{inspection} #{op} #{list.join(',')}"
       end
       #self.class.message(m)[@delegate, *a] )
     end

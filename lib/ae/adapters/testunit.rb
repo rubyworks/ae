@@ -27,14 +27,31 @@ module Test #:nodoc:
   end
 end
 
-class AE::Assertor #:nodoc:
-  def self.increment_counts(pass)
-    counts[:total] += 1
-    if pass
-      counts[:pass] += 1
-    else
-      counts[:fail] += 1
+module AE
+  # Test::Unit adapter. Each AE assertion is added to the running
+  # test's assertion count.
+  module TestUnitAdapter
+    # Notes the running test.
+    module Test
+      def run(*args, **kw, &block)
+        previous = ::Thread.current[:ae_testunit_test]
+        ::Thread.current[:ae_testunit_test] = self
+        super
+      ensure
+        ::Thread.current[:ae_testunit_test] = previous
+      end
     end
-    return counts
+
+    # Adds each AE assertion to the running test's count.
+    module Counts
+      def increment_counts(pass)
+        test = ::Thread.current[:ae_testunit_test]
+        test.__send__(:add_assertion) if test
+        super
+      end
+    end
   end
 end
+
+Test::Unit::TestCase.prepend(AE::TestUnitAdapter::Test)
+AE::Assertor.singleton_class.prepend(AE::TestUnitAdapter::Counts)

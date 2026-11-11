@@ -14,8 +14,8 @@ module AE
     #   4.must == 3  #=> Assertion Error
     #
     # @example
-    #   4.must do
-    #     self == 4
+    #   4.must do |x|
+    #     x == 4
     #   end
     #
     # @return [Assertor] Assertion functor.

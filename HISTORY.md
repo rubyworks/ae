@@ -1,5 +1,57 @@
 # RELEASE HISTORY
 
+## 1.9.1 / 2026-11-10
+
+This release fixes assertions that checked nothing, or less than they
+appeared to. So some tests that passed before may now fail, but each
+of those was not checking what it said.
+
+Changes:
+
+* Fix `x.assert.equal?(y)`, which always passed. Ruby's BasicObject,
+  Assertor's superclass, has its own public `equal?`, so the call
+  never became an assertion. Now it does, like `==`, `!=` and `!`.
+* `x.assert.instance_eval { ... }` and `instance_exec` go to the
+  object, so the block's result is the assertion. They used to run in
+  the Assertor and check nothing.
+* Warn about `x.assert.size == 3`, which checks only that `size` is
+  truthy. The warning comes when a method called with no arguments
+  returns something other than true, false or nil. Write
+  `x.size.assert == 3` instead.
+* Pass keyword arguments on as keywords.
+* `assert(expected) { ... }` and `expect(expected) { ... }` compare
+  with any expected value, including `false` and `nil`.
+* A Hash or Symbol is no longer used as a proc because it has
+  `#to_proc`, so `refute({a: 1})` fails. A lambda that takes no
+  arguments works as a matcher.
+* Fix `flunk`, which raised NoMethodError, and passed when negated.
+* Fix `expect` with a block that takes the receiver, and with an
+  exception instance. It no longer catches an interrupt or an exit.
+* Fix the legacy Test::Unit assertions: `assert(false)` never failed,
+  `assert_block` was inverted, `assert_raises` and `assert_throws`
+  were broken, and `assert_instance_of` accepted a subclass. They are
+  counted now, and raise the test framework's assertion error.
+* The minitest and test-unit adapters add AE's assertions to the
+  test's count, and `ae/adapter` finds current minitest, which no
+  longer defines `MiniTest`.
+* Build failure messages only for failures. A passing `==` on two
+  1000-element arrays took five seconds. A broken `#inspect` no
+  longer breaks the message, and very large color diffs are skipped.
+* Color diffs are on only when standard output is a terminal and
+  NO_COLOR is not set. `AE.ansi = true` or `false` still decides.
+* `Kernel#pry` no longer caches, which mixed up equal objects and
+  kept them all alive. It passes keywords, and sends `==` and the
+  like to the object.
+* Fix `in_epsilon?` for negative numbers, `match?` for objects without
+  `=~`, and `throws?`, `thrown?` and `send?`, which hid errors raised
+  by the code under test.
+* Fix `AE::Check.define` and `Check::Proc#message`, and report a failed
+  `ok` or `no` at the line that called it.
+* Add demos for the legacy assertions and the adapters, and fix demos
+  that asserted nothing.
+* Test on Ruby 4.0.
+
+
 ## 1.9.0 / 2026-03-30
 
 Maintenance release. Modernized project tooling and cleaned up documentation.

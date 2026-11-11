@@ -2,11 +2,6 @@ require 'ae/basic_object'
 
 module Kernel
 
-  # TODO: Is th cache really neccessry?
-
-  #
-  $PRY_TABLE = {}
-
   # Pry allows you to test private and protected methods
   # thru a public-only interface.
   #
@@ -19,21 +14,23 @@ module Kernel
   #
   # @return [Pry] pry functor
   def pry
-    $PRY_TABLE[self] ||= Pry.new do |op, *a, &b|
-      __send__(op, *a, &b)
+    Pry.new do |op, *a, **kw, &b|
+      __send__(op, *a, **kw, &b)
     end
   end
 
   # Pry Functor
   class Pry < AE::BasicObject
-    #instance_methods.each{ |m| private m unless m.to_s =~ /^__/ }
+    # Send these to the object too, rather than answering them here.
+    private :==, :!, :!=, :equal?, :instance_eval, :instance_exec
+
     def initialize(&function)
       @function = function
     end
-    def method_missing(op, *a, &b)
-      @function.call(op, *a, &b)
+
+    def method_missing(op, *a, **kw, &b)
+      @function.call(op, *a, **kw, &b)
     end
   end
 
 end
-

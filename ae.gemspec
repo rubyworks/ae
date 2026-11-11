@@ -1,6 +1,8 @@
+require_relative 'lib/ae/version'
+
 Gem::Specification.new do |s|
   s.name        = 'ae'
-  s.version     = '1.9.0'
+  s.version     = AE::VERSION
   s.summary     = 'Assertive Expressive'
   s.description = 'Assertive Expressive is an assertions library specifically designed ' \
                   'for reuse by other test frameworks.'
@@ -20,4 +22,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rake', '>= 13'
   s.add_development_dependency 'qed', '>= 2.9'
+  s.add_development_dependency 'minitest', '>= 5'
+  s.add_development_dependency 'test-unit', '>= 3'
 end
